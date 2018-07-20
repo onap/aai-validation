@@ -1,0 +1,72 @@
+<!--
+============LICENSE_START===================================================
+Copyright (c) 2018 Amdocs
+============================================================================
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+============LICENSE_END=====================================================
+-->
+<model>
+	<model-name-version-id>virtual-data-center-widget-id</model-name-version-id>
+	<model-type>widget</model-type>
+	<model-name>virtual-data-center</model-name>
+	<model-id>vdc-model-id</model-id>
+	<model-version>v1.0</model-version>
+	<resource-version>1466417894</resource-version>
+	<model-elements>
+		<model-element>
+			<model-element-uuid>6d2dbb11-d509-4e03-8ed9-05bf4aad99d2</model-element-uuid>
+			<new-data-del-flag>T</new-data-del-flag>
+			<cardinality>unbounded</cardinality>
+			<linkage-points/>
+			<resource-version>1466417894</resource-version>
+			<model-constraints/>
+			<relationship-list>
+				<relationship>
+					<related-to>model</related-to>
+					<related-link>https://10.223.41.94:8443/aai/v7/service-design-and-creation/models/model/l2-bridge-for-wan-connector-resource-id/</related-link>
+					<relationship-data>
+						<relationship-key>model.model-name-version-id</relationship-key>
+						<relationship-value>e2ccd5c5-bc6e-4ed0-8378-6805ee6ba161</relationship-value>
+					</relationship-data>
+					<related-to-property>
+						<property-key>model.model-name</property-key>
+						<property-value>l2-bridge-for-wan-connector</property-value>
+					</related-to-property>
+					<related-to-property>
+						<property-key>model.model-type</property-key>
+						<property-value>resource</property-value>
+					</related-to-property>
+				</relationship>
+			</relationship-list>
+		</model-element>
+	</model-elements>
+	<metadata/>
+	<relationship-list>
+		<relationship>
+			<related-to>model-element</related-to>
+			<related-link>https://10.223.41.94:8443/aai/v7/service-design-and-creation/model-elements/model-element/8c0fd413-0d2b-491b-ad14-10c434c359bb/</related-link>
+			<relationship-data>
+				<relationship-key>model-element.model-element-uuid</relationship-key>
+				<relationship-value>8c0fd413-0d2b-491b-ad14-10c434c359bb</relationship-value>
+			</relationship-data>
+			<relationship-data>
+				<relationship-key>model-element.model-element-uuid</relationship-key>
+				<relationship-value>54629607-160a-4dcf-8c5c-15b8a3756f9a</relationship-value>
+			</relationship-data>
+			<relationship-data>
+				<relationship-key>model.model-name-version-id</relationship-key>
+				<relationship-value>wan-connector-service-id</relationship-value>
+			</relationship-data>
+		</relationship>
+	</relationship-list>
+</model>

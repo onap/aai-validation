@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+============LICENSE_START===================================================
+Copyright (c) 2018 Amdocs
+============================================================================
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+============LICENSE_END=====================================================
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<import resource="itest-topic-config-beans.xml" />
+    <import resource="../oxm-reader/oxm-reader-beans.xml" />
+
+	<!-- PROPERTY FILES -->
+	<context:property-placeholder location="classpath:event-reader.properties" ignore-unresolvable="true" />
+	<context:property-placeholder location="classpath:validation-service.properties" ignore-unresolvable="true" />
+	<context:property-placeholder location="classpath:aai-environment.properties" ignore-unresolvable="true" />
+	
+	<!-- CONFIG BEANS -->
+	<bean id="eventReaderConfig" class="org.onap.aai.validation.config.EventReaderConfig" />
+	<bean id="topicAdminConfig" class="org.onap.aai.validation.config.TopicAdminConfig" />
+	<bean id="validationControllerConfig" class="org.onap.aai.validation.config.ValidationControllerConfig" />
+	<bean id="mappingFile" class="org.apache.commons.io.IOUtils" factory-method="toString">
+		<constructor-arg value="file:src/integration-test/resources/model-instance-mapping.json_conf" type="java.io.InputStream" />
+	</bean>
+	<bean id="modelConfig" class="org.onap.aai.validation.config.ModelConfig">
+		<property name="modelCacheExpirySeconds" value="${model.cache.expirySeconds}" />
+	</bean>
+	<bean id="restConfig" class="org.onap.aai.validation.config.RestConfig">
+		<property name="host" value="${host}" />
+		<property name="port" value="${port}" />
+		<property name="protocol" value="${httpProtocol}" />
+		<property name="baseModelURI" value="${baseModelURI}" />
+		<property name="trustStorePath" value="${trustStorePath}" />
+		<property name="trustStorePassword" value="${trustStorePassword.x}" />
+		<property name="keyStorePath" value="${keyStorePath}" />
+		<property name="keyStorePassword" value="${keyStorePassword.x}" />
+		<property name="keyManagerFactoryAlgorithm" value="${keyManagerFactoryAlgorithm}" />
+		<property name="keyStoreType" value="${keyStoreType}" />
+		<property name="securityProtocol" value="${securityProtocol}" />
+		<property name="connectionTimeout" value="${connectionTimeout}" />
+		<property name="readTimeout" value="${readTimeout}" />
+	</bean>
+	
+	<!-- READER BEANS -->
+	<bean id="jsonReader" class="org.onap.aai.validation.reader.JsonReader" />
+
+	<bean id="eventReader" class="org.onap.aai.validation.reader.EventReader">
+		<constructor-arg ref="eventReaderConfig" />
+		<constructor-arg ref="jsonReader" />
+		<constructor-arg ref="oxmReader" />
+	</bean>
+
+	<bean id="messagePublisher" class="org.onap.aai.validation.publisher.ValidationEventPublisher" >
+		<constructor-arg ref="topicConfig" />
+		<constructor-arg ref="topicAdminConfig" />
+	</bean>
+
+	<bean id="validationController" class="org.onap.aai.validation.controller.ValidationController" >
+		<constructor-arg ref="validationControllerConfig" />
+		<constructor-arg ref="eventReader" />
+		<constructor-arg ref="ruleDrivenValidator" />
+		<constructor-arg ref="modelDrivenValidator" />
+		<constructor-arg ref="messagePublisher" />
+	</bean>
+
+	<bean id="eventPollingService" class="org.onap.aai.validation.services.EventPollingService" >
+		<constructor-arg ref="topicConfig" />
+		<property name="validationController" ref="validationController" />
+	</bean>
+	
+	<bean id="startupServlet" class="org.onap.aai.validation.servlet.StartupServlet" >
+		<constructor-arg ref="eventPollingService" />
+		<constructor-arg ref="topicAdminConfig" />
+	</bean>
+
+	<bean id="rulesConfigurationPath" class="java.nio.file.Paths" factory-method="get">
+	    <constructor-arg value="src/test/resources/rule-driven-validator/rules/" />
+	    <constructor-arg><array /></constructor-arg>
+	</bean>
+
+	<bean id="ruleDrivenValidator" class="org.onap.aai.validation.ruledriven.RuleDrivenValidator">
+		<constructor-arg ref="rulesConfigurationPath" />
+		<constructor-arg ref="oxmReader" />
+		<constructor-arg ref="eventReader" />
+		<constructor-arg name="ruleIndexingConfig">
+			<null />
+		</constructor-arg>
+	</bean>
+	
+	<!-- MODEL VALIDATION BEANS -->
+	<bean id="modelCacheManager" class="org.onap.aai.validation.modeldriven.ModelCacheManager">
+		<constructor-arg ref="modelConfig" />
+		<constructor-arg ref="restConfig" />
+	</bean>
+
+	<bean id="modelInstanceMappingReader" class="org.onap.aai.validation.modeldriven.configuration.mapping.ModelInstanceMappingReader">
+		<constructor-arg ref="mappingFile" />
+	</bean>
+
+	<bean id="instanceReader" class="org.onap.aai.validation.modeldriven.validator.InstanceReader">
+		<constructor-arg ref="jsonReader" />
+		<constructor-arg ref="oxmReader" />
+	</bean>
+
+	<bean id="modelDrivenValidator" class="org.onap.aai.validation.modeldriven.validator.ModelDrivenValidator">
+		<constructor-arg ref="modelCacheManager" />
+		<constructor-arg ref="modelInstanceMappingReader" />
+		<constructor-arg ref="instanceReader" />
+		<constructor-arg ref="eventReader" />
+	</bean>
+</beans>

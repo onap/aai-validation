@@ -1,0 +1,75 @@
+{
+	"cambria.partition": "AAI",
+	"event-header": {
+		"id": "20160525111931-22f454f0-93ff-4571-bed0-573ca6c85353",
+		"timestamp": "20160525-11:19:31:421",
+		"source-name": "RO",
+		"domain": "devINT1",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"version": "v7",
+		"action": "CREATE",
+		"entity-type": "UNKNOWN-ENTITY-TYPE",
+		"top-entity-type": "UNKNOWN-ENTITY-TYPE",
+		"entity-link": "https://mtanjv9aaas03.aic.cip.att.com:8443/aai/v7/network/generic-vnfs/generic-vnf/VAPP-1581",
+    "topic-name": "topicName",
+    "event-id": "7994f700-766b-47ed-a322-194346edd92e"
+	},
+	"entity": {
+		"vnf-id": "VAPP-1581",
+		"vnf-name": "example-vnf-name-val-3501",
+		"vnf-name2": "example-vnf-name2-val-3501",
+		"vnf-type": "example-vnf-type-val-3501",
+		"regional-resource-zone": "example-regional-resource-zone-val-3501",
+		"prov-status": "example-prov-status-val-3501",
+		"operational-state": "example-operational-state-val-3501",
+		"license-key": "example-license-key-val-3501",
+		"equipment-role": "example-equipment-role-val-3501",
+		"orchestration-status": "example-orchestration-status-val-3501",
+		"heat-stack-id": "example-heat-stack-id-val-3501",
+		"mso-catalog-key": "example-mso-catalog-key-val-3501",
+		"management-option": "example-management-option-val-3501",
+		"ipv4-oam-address": "example-ipv4-oam-address-val-3501",
+		"ipv4-loopback0-address": "example-ipv4-loopback0-address-val-3501",
+		"nm-lan-v6-address": "example-nm-lan-v6-address-val-3501",
+		"management-v6-address": "example-management-v6-address-val-3501",
+		"vcpu": 1817,
+		"vcpu-units": "example-vcpu-units-val-3501",
+		"vmemory": 6020,
+		"vmemory-units": "example-vmemory-units-val-3501",
+		"vdisk": 5281,
+		"vdisk-units": "example-vdisk-units-val-3501",
+		"in-maint": false,
+		"is-closed-loop-disabled": true,
+		"resource-version": "1464189571",
+		"relationship-list": {
+			"relationship": {
+				"related-to": "logical-link",
+				"related-link": "https://loopback.att.com:8443/aai/v7/network/logical-links/logical-link/link-01/",
+				"relationship-data": {
+					"relationship-key": "logical-link.link-name",
+					"relationship-value": "link-01"
+				}
+			}
+		},
+		"l-interfaces": {
+			
+		},
+		"lag-interfaces": {
+			"lag-interface": {
+				"interface-name": "example-interface-name-val-3131",
+				"resource-version": "1464189571",
+				"relationship-list": {
+					
+				},
+				"l-interfaces": {
+					
+				}
+			}
+		},
+		"vf-modules": {
+			
+		}
+	}
+}

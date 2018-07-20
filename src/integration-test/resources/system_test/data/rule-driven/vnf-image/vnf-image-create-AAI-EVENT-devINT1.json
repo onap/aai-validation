@@ -1,0 +1,24 @@
+{
+	"cambria.partition": "AAI",
+	"entity": {
+		"resource-version": "1476735375",
+		"application": "VM01",
+		"att-uuid": "750c29ff-12cb-4be5-88bc-648f27748113",
+		"application-vendor": "FORTINET",
+		"application-version": "5.2.7"
+	},
+	"event-header": {
+		"timestamp": "20161017-20:16:15:401",
+		"id": "20161017201615-5c32427c-1354-4c40-924d-ef860580287e",
+		"action": "CREATE",
+		"domain": "devINT1",
+		"source-name": "ModelLoader",
+		"entity-link": "https://aai-app.mtcnj.ecomp.cci.att.com:8443/aai/v8/service-design-and-creation/vnf-images/vnf-image/750c29ff-12cb-4be5-88bc-648f27748113",
+		"entity-type": "vnf-image",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"top-entity-type": "vnf-image",
+		"version": "v8"
+	}
+}

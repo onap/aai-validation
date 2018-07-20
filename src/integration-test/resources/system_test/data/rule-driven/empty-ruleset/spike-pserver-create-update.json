@@ -1,0 +1,56 @@
+{
+  "cambria.partition": "AAI",
+  "entity": [
+    {
+      "transaction-id": "3b45dfa2-7a0a-47be-9b62-4jChYTSaDZd1",
+      "vertex": {
+        "schema-version": "v11",
+        "type": "pserver",
+        "key": "a5u3uo-4qpkw0-ba51-4jChYTSaDZd1",
+        "properties": {
+          "ptnii-equip-name": "fdsa",
+          "hostname": "mtanjasdf119snd",
+          "equip-type": "server-new",
+          "equip-vendor": "HP",
+          "equip-model": "DL380p-nd",
+          "in-maint": false,
+          "fqdn": "mtanjrsv119.mtanj.sbcglobal.net",
+          "purpose": "",
+          "ipv4-oam-address": "135.182.138.60",
+          "aai-node-type": "pserver"
+        }
+      },
+      "operation": "CREATE",
+      "timestamp": 1519189272389
+    },
+    {
+      "transaction-id": "3b45dfa2-7a0a-47be-9b62-4jChYTSaDZd1",
+      "vertex": {
+        "schema-version": "v11",
+        "type": "pserver",
+        "key": "a5u3uo-4qpkw0-ba51-4jChYTSaDZd1",
+        "properties": {
+          "ptnii-equip-name": "fdsa",
+          "hostname": "mtanjasdf119snd",
+          "equip-type": "server-new",
+          "equip-vendor": "HP",
+          "equip-model": "DL380p-nd",
+          "in-maint": false,
+          "fqdn": "mtanjrsv119.mtanj.sbcglobal.net",
+          "purpose": "",
+          "ipv4-oam-address": "135.182.138.60",
+          "aai-node-type": "pserver"
+        }
+      },
+      "operation": "UPDATE",
+      "timestamp": 1519189272444
+    }
+  ],
+  "event-header": {
+    "timestamp": "1519189272555",
+    "id": "3b45dfa2-7a0a-47be-9b62-4jChYTSaDZd1",
+    "source-name": "SPIKE",
+    "entity-type": "pserver",
+    "event-type": "EMPTY-RULESET-EVENT"
+  }
+}

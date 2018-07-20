@@ -1,0 +1,167 @@
+{
+	"cambria.partition ": "AAI ",
+	"entity": {
+		"physical-location-id": "MTWNJZZZLCP",
+		"data-center-code": "mtznj-dc",
+		"complex-name": "mtznj",
+		"resource-version": "1463283799",
+		"physical-location-type": "CO",
+		"street1": "200 South Laurel Ave.",
+		"street2": "",
+		"city": "Middletown",
+		"state": "NJ",
+		"postal-code": "07748",
+		"country": "USA",
+		"region": "US",
+		"latitude": "40.395968",
+		"longitude": "-74.135344",
+		"elevation": "",
+		"lata": "224",
+		"ctag-pools": {
+			"ctag-pool": [{
+				"target-pe": "mtznj301vr1",
+				"availability-zone-name": "mtznj-esx-az01",
+				"ctag-pool-purpose": "IPAG",
+				"ctag-values": "2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025",
+				"resource-version": "1455590484",
+				"relationship-list": {
+					"relationship": [{
+						"related-to": "availability-zone",
+						"related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/availability-zones/availability-zone/mtznj-esx-az01/",
+						"relationship-data": [{
+							"relationship-key": "cloud-region.cloud-owner",
+							"relationship-value": "att-aic"
+						}, {
+							"relationship-key": "cloud-region.cloud-region-id",
+							"relationship-value": "AAIAIC25"
+						}, {
+							"relationship-key": "availability-zone.availability-zone-name",
+							"relationship-value": "mtznj-esx-az01"
+						}]
+					}]
+				}
+			}, {
+				"target-pe": "VPESAT-mtznj401me6",
+				"availability-zone-name": "mtznj-esx-az01",
+				"ctag-pool-purpose": "VPE",
+				"ctag-values": "3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3032,3033,3034,3035,3036,3037,3038,3039,3040,3041,3042,3043,3044,3045,3046,3047,3048,3049,3050",
+				"resource-version": "1455590484",
+				"relationship-list": {
+					"relationship": [{
+						"related-to": "vpe",
+						"related-link": "https://135.16.121.249:8443/aai/v8/network/vpes/vpe/VPESAT-mtanjrsv126/",
+						"relationship-data": [{
+							"relationship-key": "vpe.vnf-id",
+							"relationship-value": "VPESAT-mtanjrsv126"
+						}],
+						"related-to-property": [{
+							"property-key": "vpe.vnf-name",
+							"property-value": "mtanjrsv126"
+						}]
+					}, {
+						"related-to": "availability-zone",
+						"related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/availability-zones/availability-zone/mtznj-esx-az01/",
+						"relationship-data": [{
+							"relationship-key": "cloud-region.cloud-owner",
+							"relationship-value": "att-aic"
+						}, {
+							"relationship-key": "cloud-region.cloud-region-id",
+							"relationship-value": "AAIAIC25"
+						}, {
+							"relationship-key": "availability-zone.availability-zone-name",
+							"relationship-value": "mtznj-esx-az01"
+						}]
+					}]
+				}
+			}]
+		},
+		"relationship-list": {
+			"relationship": [{
+				"related-to": "pserver",
+				"related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/pservers/pserver/mtznj101snd/",
+				"relationship-data": [{
+					"relationship-key": "pserver.hostname",
+					"relationship-value": "mtznj101snd"
+				}],
+				"related-to-property": [{
+					"property-key": "pserver.pserver-name2"
+				}]
+			}, {
+				"related-to": "pserver",
+				"related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/pservers/pserver/mtznjtax101/",
+				"relationship-data": [{
+					"relationship-key": "pserver.hostname",
+					"relationship-value": "mtznjtax101"
+				}],
+				"related-to-property": [{
+					"property-key": "pserver.pserver-name2"
+				}]
+			}, {
+				"related-to": "vce",
+				"related-link": "https://135.16.121.249:8443/aai/v8/network/vces/vce/19a2ac02-bed0-4d84-a751-6dffffffffff/",
+				"relationship-data": [{
+					"relationship-key": "vce.vnf-id",
+					"relationship-value": "19a2ac02-bed0-4d84-a751-6dffffffffff"
+				}],
+				"related-to-property": [{
+					"property-key": "vce.vnf-name",
+					"property-value": "mtznj431vbc"
+				}]
+			}, {
+				"related-to": "pserver",
+				"related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/pservers/pserver/mtznj125snd/",
+				"relationship-data": [{
+					"relationship-key": "pserver.hostname",
+					"relationship-value": "mtznj125snd"
+				}],
+				"related-to-property": [{
+					"property-key": "pserver.pserver-name2"
+				}]
+			}, {
+				"related-to": "oam-network",
+				"related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/oam-networks/oam-network/ca084d91-ffff-ffff-a1bf-a8a7f1969f80/",
+				"relationship-data": [{
+					"relationship-key": "cloud-region.cloud-owner",
+					"relationship-value": "att-aic"
+				}, {
+					"relationship-key": "cloud-region.cloud-region-id",
+					"relationship-value": "AAIAIC25"
+				}, {
+					"relationship-key": "oam-network.network-uuid",
+					"relationship-value": "ca084d91-ffff-ffff-a1bf-a8a7f1969f80"
+				}],
+				"related-to-property": [{
+					"property-key": "oam-network.network-name",
+					"property-value": "MARK-OAM-1323"
+				}]
+			}, {
+				"related-to": "availability-zone",
+				"related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/availability-zones/availability-zone/mtznj-esx-az01/",
+				"relationship-data": [{
+					"relationship-key": "cloud-region.cloud-owner",
+					"relationship-value": "att-aic"
+				}, {
+					"relationship-key": "cloud-region.cloud-region-id",
+					"relationship-value": "AAIAIC25"
+				}, {
+					"relationship-key": "availability-zone.availability-zone-name",
+					"relationship-value": "mtznj-esx-az01"
+				}]
+			}]
+		}
+	},
+	"event-header": {
+		"timestamp": "20161017-20:56:15:411",
+		"id": "20161017205615-c0e8aa29-dcf3-4267-9fd3-e508c271234",
+		"action": "UPDATE",
+		"domain": "devINT1",
+		"source-name": "ComplexTestData",
+		"entity-link": "https://aai-app.mtcnj.ecomp.cci.att.com:8443/aai/v8/network/newvces/newvce/7150963a-9054-4046-a285-a572edf2deb6",
+		"entity-type": "complex",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"top-entity-type": "complex",
+		"version": "v8"
+	}
+}

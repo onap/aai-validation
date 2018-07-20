@@ -1,0 +1,6 @@
+{
+  "swaggerVersion" : "1.2",
+  "apiVersion" : "1",
+  "basePath" : "http://localhost:9500/services/validation-service/v1/static",
+  "apis" : [ ]
+}
