@@ -1,0 +1,164 @@
+{
+	"cambria.partition": "AAI",
+	"event-header": {
+		"id": "20160525162737-61c49d41-5338-4755-af54-06cee9fe4acf",
+		"timestamp": "20160525-16:27:37:353",
+		"source-name": "RO",
+		"domain": "e2e1",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"version": "v7",
+		"action": "CREATE",
+		"entity-type": "vserver",
+		"top-entity-type": "cloud-region",
+		"entity-link": "https://mtanjv9aaas03.aic.cip.att.com:8443/aai/v7/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/example-tenant-id-val-88551/vservers/vserver/example-vserver-id-val-34666"
+	},
+	"entity": {
+		"cloud-owner": "att-aic",
+		"cloud-region-id": "AAIAIC25",
+		"tenants": {
+			"tenant": [
+				{
+					"tenant-id": "example-tenant-id-val-88551",
+					"tenant-name": "example-tenant-name-val-88551",
+					"vservers": {
+						"vserver": [
+							{
+								"vserver-id": "example-vserver-id-val-34666",
+								"vserver-name": "example-vserver-name-val-34666",
+								"vserver-name2": "example-vserver-name2-val-34666",
+								"prov-status": "PREPROV",
+								"vserver-selflink": "example-vserver-selflink-val-34666",
+								"in-maint": true,
+								"is-closed-loop-disabled": true,
+								"resource-version": "1464193654",
+								"volumes": {
+									"volume": [
+										{
+											"volume-id": "example-volume-id-val-79195",
+											"volume-selflink": "example-volume-selflink-val-79195",
+											"resource-version": "1464193654",
+											"relationship-list": {
+												
+											}
+										}
+									]
+								},
+								"relationship-list": {
+									
+								},
+								"l-interfaces": {
+									"l-interface": [
+										{
+											"interface-name": "example-interface-name-val-25679",
+											"interface-role": "example-interface-role-val-25679",
+											"v6-wan-link-ip": "example-v6-wan-link-ip-val-25679",
+											"selflink": "example-selflink-val-25679",
+											"interface-id": "example-interface-id-val-25679",
+											"macaddr": "example-macaddr-val-25679",
+											"network-name": "example-network-name-val-25679",
+											"resource-version": "1464193654",
+											"vlans": {
+												"vlan": [
+													{
+														"vlan-interface": "example-vlan-interface-val-28675",
+														"vlan-id-inner": 22278797,
+														"vlan-id-outer": 22278797,
+														"resource-version": "1464193654",
+														"speed-value": "example-speed-value-val-28675",
+														"speed-units": "example-speed-units-val-28675",
+														"vlan-description": "example-vlan-description-val-28675",
+														"relationship-list": {
+															
+														},
+														"l3-interface-ipv4-address-list": [
+															{
+																"l3-interface-ipv4-address": "example-l3-interface-ipv4-address-val-39271",
+																"l3-interface-ipv4-prefix-length": 78868308,
+																"vlan-id-inner": 78868308,
+																"vlan-id-outer": 78868308,
+																"is-floating": true,
+																"resource-version": "1464193654",
+																"relationship-list": {
+																	
+																}
+															}
+														],
+														"l3-interface-ipv6-address-list": [
+															{
+																"l3-interface-ipv6-address": "example-l3-interface-ipv6-address-val-4005",
+																"l3-interface-ipv6-prefix-length": 78340763,
+																"vlan-id-inner": 78340763,
+																"vlan-id-outer": 78340763,
+																"is-floating": true,
+																"resource-version": "1464193654",
+																"relationship-list": {
+																	
+																}
+															}
+														]
+													}
+												]
+											},
+											"sriov-vfs": {
+												"sriov-vf": [
+													{
+														"pci-id": "example-pci-id-val-85354",
+														"vf-vlan-filter": "example-vf-vlan-filter-val-85354",
+														"vf-mac-filter": "example-vf-mac-filter-val-85354",
+														"vf-vlan-strip": true,
+														"vf-vlan-anti-spoof-check": true,
+														"vf-mac-anti-spoof-check": true,
+														"vf-mirrors": "example-vf-mirrors-val-85354",
+														"vf-broadcast-allow": true,
+														"vf-unknown-multicast-allow": true,
+														"vf-unknown-unicast-allow": true,
+														"resource-version": "1464193654",
+														"relationship-list": {
+															
+														}
+													}
+												]
+											},
+											"relationship-list": {
+												
+											},
+											"l3-interface-ipv4-address-list": [
+												{
+													"l3-interface-ipv4-address": "example-l3-interface-ipv4-address-val-21446",
+													"l3-interface-ipv4-prefix-length": 71127022,
+													"vlan-id-inner": 71127022,
+													"vlan-id-outer": 71127022,
+													"is-floating": true,
+													"resource-version": "1464193654",
+													"relationship-list": {
+														
+													}
+												}
+											],
+											"l3-interface-ipv6-address-list": [
+												{
+													"l3-interface-ipv6-address": "example-l3-interface-ipv6-address-val-88071",
+													"l3-interface-ipv6-prefix-length": 55080281,
+													"vlan-id-inner": 55080281,
+													"vlan-id-outer": 55080281,
+													"is-floating": true,
+													"resource-version": "1464193654",
+													"relationship-list": {
+														
+													}
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}
+

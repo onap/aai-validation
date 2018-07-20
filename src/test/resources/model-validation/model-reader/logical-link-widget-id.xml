@@ -1,0 +1,181 @@
+<!--
+============LICENSE_START===================================================
+Copyright (c) 2018 Amdocs
+============================================================================
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+============LICENSE_END=====================================================
+-->
+<model>
+    <model-name-version-id>e2ccd5c5-bc6e-4ed0-8378-6805ee6ba161</model-name-version-id>
+    <model-type>resource</model-type>
+    <model-name>VL ELAN</model-name>
+    <model-id>932518e5-4260-4cc4-8038-df604a367f85</model-id>
+    <model-version>1</model-version>
+    <model-description>An l2-bridge used by a wan connector connects an ipe to a SBG or DBE</model-description>
+    <resource-version>1466698622</resource-version>
+    <model-elements>
+        <model-element>
+            <model-element-uuid>c44dbdf9-494e-49c1-b462-74e24e837b22</model-element-uuid>
+            <new-data-del-flag>T</new-data-del-flag>
+            <cardinality>unbounded</cardinality>
+            <linkage-points/>
+            <resource-version>1466698621</resource-version>
+            <model-elements>
+                <model-element>
+                    <model-element-uuid>ad161a89-ef32-4b2c-b86d-7fbb7a251571</model-element-uuid>
+                    <new-data-del-flag>T</new-data-del-flag>
+                    <cardinality>unbounded</cardinality>
+                    <linkage-points/>
+                    <resource-version>1466698621</resource-version>
+                    <relationship-list>
+                        <relationship>
+                            <related-to>model</related-to>
+                            <related-link>https://aai-ext1.test.att.com:8443/aai/v7/service-design-and-creation/models/model/6614ffae-6e64-4c78-9dea-4d5c0f057ea2/</related-link>
+                            <relationship-data>
+                                <relationship-key>model.model-name-version-id</relationship-key>
+                                <relationship-value>6614ffae-6e64-4c78-9dea-4d5c0f057ea2</relationship-value>
+                            </relationship-data>
+                            <related-to-property>
+                                <property-key>model.model-name</property-key>
+                                <property-value>pBgf</property-value>
+                            </related-to-property>
+                            <related-to-property>
+                                <property-key>model.model-type</property-key>
+                                <property-value>resource</property-value>
+                            </related-to-property>
+                        </relationship>
+                    </relationship-list>
+                </model-element>
+                <model-element>
+                    <model-element-uuid>a1b205ea-17bb-442b-83a3-38b4e0fcb099</model-element-uuid>
+                    <new-data-del-flag>T</new-data-del-flag>
+                    <cardinality>unbounded</cardinality>
+                    <linkage-points/>
+                    <resource-version>1466698621</resource-version>
+                    <relationship-list>
+                        <relationship>
+                            <related-to>model</related-to>
+                            <related-link>https://aai-ext1.test.att.com:8443/aai/v7/service-design-and-creation/models/model/0d23052d-8ffe-433e-a25d-da5da027bb7c/</related-link>
+                            <relationship-data>
+                                <relationship-key>model.model-name-version-id</relationship-key>
+                                <relationship-value>0d23052d-8ffe-433e-a25d-da5da027bb7c</relationship-value>
+                            </relationship-data>
+                            <related-to-property>
+                                <property-key>model.model-name</property-key>
+                                <property-value>vDbe</property-value>
+                            </related-to-property>
+                            <related-to-property>
+                                <property-key>model.model-type</property-key>
+                                <property-value>resource</property-value>
+                            </related-to-property>
+                        </relationship>
+                    </relationship-list>
+                </model-element>
+                <model-element>
+                    <model-element-uuid>193ec825-44ce-4416-85ac-20a6b6663575</model-element-uuid>
+                    <new-data-del-flag>T</new-data-del-flag>
+                    <cardinality>unbounded</cardinality>
+                    <linkage-points>
+                        <linkage-point>pserver|lag-interface|l-interface</linkage-point>
+                        <linkage-point>pserver|p-interface|l-interface</linkage-point>
+                        <linkage-point>vlan|l-interface</linkage-point>
+                    </linkage-points>
+                    <resource-version>1466698621</resource-version>
+                    <relationship-list>
+                        <relationship>
+                            <related-to>model</related-to>
+                            <related-link>https://aai-ext1.test.att.com:8443/aai/v7/service-design-and-creation/models/model/5ed1c299-4d31-4531-ae43-4bb56f8f10c8/</related-link>
+                            <relationship-data>
+                                <relationship-key>model.model-name-version-id</relationship-key>
+                                <relationship-value>5ed1c299-4d31-4531-ae43-4bb56f8f10c8</relationship-value>
+                            </relationship-data>
+                            <related-to-property>
+                                <property-key>model.model-name</property-key>
+                                <property-value>ipe</property-value>
+                            </related-to-property>
+                            <related-to-property>
+                                <property-key>model.model-type</property-key>
+                                <property-value>resource</property-value>
+                            </related-to-property>
+                        </relationship>
+                    </relationship-list>
+                </model-element>
+                <model-element>
+                    <model-element-uuid>059db56c-6d72-4023-9fc3-0db29534ddff</model-element-uuid>
+                    <new-data-del-flag>T</new-data-del-flag>
+                    <cardinality>unbounded</cardinality>
+                    <linkage-points/>
+                    <resource-version>1466698621</resource-version>
+                    <relationship-list>
+                        <relationship>
+                            <related-to>model</related-to>
+                            <related-link>https://aai-ext1.test.att.com:8443/aai/v7/service-design-and-creation/models/model/43095b8a-8e9c-4a76-8490-6120140f6804/</related-link>
+                            <relationship-data>
+                                <relationship-key>model.model-name-version-id</relationship-key>
+                                <relationship-value>43095b8a-8e9c-4a76-8490-6120140f6804</relationship-value>
+                            </relationship-data>
+                            <related-to-property>
+                                <property-key>model.model-name</property-key>
+                                <property-value>vSbg</property-value>
+                            </related-to-property>
+                            <related-to-property>
+                                <property-key>model.model-type</property-key>
+                                <property-value>resource</property-value>
+                            </related-to-property>
+                        </relationship>
+                    </relationship-list>
+                </model-element>
+            </model-elements>
+            <relationship-list>
+                <relationship>
+                    <related-to>model</related-to>
+                    <related-link>https://aai-ext1.test.att.com:8443/aai/v7/service-design-and-creation/models/model/fa01ef50-bbb5-49d4-91d1-ebbda9816e01/</related-link>
+                    <relationship-data>
+                        <relationship-key>model.model-name-version-id</relationship-key>
+                        <relationship-value>fa01ef50-bbb5-49d4-91d1-ebbda9816e01</relationship-value>
+                    </relationship-data>
+                    <related-to-property>
+                        <property-key>model.model-name</property-key>
+                        <property-value>logical-link</property-value>
+                    </related-to-property>
+                    <related-to-property>
+                        <property-key>model.model-type</property-key>
+                        <property-value>widget</property-value>
+                    </related-to-property>
+                </relationship>
+            </relationship-list>
+        </model-element>
+    </model-elements>
+    <relationship-list>
+        <relationship>
+            <related-to>model-element</related-to>
+            <related-link>https://aai-ext1.test.att.com:8443/aai/v7/service-design-and-creation/models/model/668464da-6d41-4599-bdbb-2576147b440e/model-elements/model-element/93a37846-b497-490e-bc97-7d130022d6db/model-elements/model-element/200de3d5-c207-47c2-a507-8846ba1d7068/model-elements/model-element/7ccfe6b5-6566-4b44-83d3-b79f5de7a87b/</related-link>
+            <relationship-data>
+                <relationship-key>model.model-name-version-id</relationship-key>
+                <relationship-value>668464da-6d41-4599-bdbb-2576147b440e</relationship-value>
+            </relationship-data>
+            <relationship-data>
+                <relationship-key>model-element.model-element-uuid</relationship-key>
+                <relationship-value>93a37846-b497-490e-bc97-7d130022d6db</relationship-value>
+            </relationship-data>
+            <relationship-data>
+                <relationship-key>model-element.model-element-uuid</relationship-key>
+                <relationship-value>200de3d5-c207-47c2-a507-8846ba1d7068</relationship-value>
+            </relationship-data>
+            <relationship-data>
+                <relationship-key>model-element.model-element-uuid</relationship-key>
+                <relationship-value>7ccfe6b5-6566-4b44-83d3-b79f5de7a87b</relationship-value>
+            </relationship-data>
+        </relationship>
+    </relationship-list>
+</model>

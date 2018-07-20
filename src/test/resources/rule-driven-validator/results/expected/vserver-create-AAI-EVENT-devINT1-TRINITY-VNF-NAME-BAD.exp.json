@@ -1,0 +1,128 @@
+{
+  "validationId": "VALIDATIONID",
+  "validationTimestamp": "TIMESTAMP",
+  "entityId": {
+    "vserver-id": "c385bb3e-6ebd-4898-bc92-792e0ac2db50"
+  },
+  "entityType": "vserver",
+  "entityLink": "cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/example-tenant-id-val-88551/vservers/vserver/example-vserver-id-val-34666",
+  "resourceVersion": "1475160142",
+  "violations": [
+    {
+      "violationId": "902c29a0f080d252ea4c370f75eee42426426710258e8e47b39aab15c8d6508f",
+      "category": "INVALID_VALUE",
+      "severity": "CRITICAL",
+      "violationType": "Rule",
+      "validationRule": "prov-status",
+      "violationDetails": {
+        "prov-status": "ACTIVE"
+      },
+      "errorMessage": "Invalid prov-status value. Must be PREPROV, NVTPROV, PROV, CAPPED, DECOM, or RETIRED"
+    },
+    {
+      "violationId": "4e100c3055f1a03608adc655bf1ece9c26a2eeda7a58d652689be52535626f36",
+      "category": "INVALID_NAME",
+      "severity": "MINOR",
+      "violationType": "Rule",
+      "validationRule": "vserver related to TRINITY image and generic-vnf.vnf-name matches naming convention",
+      "violationDetails": {
+        "relationship-list.relationship[*]": [
+          {
+            "related-to": "generic-vnf",
+            "related-link": "https://135.16.121.249:8443/aai/v8/network/generic-vnfs/generic-vnf/ctpx12345v/",
+            "relationship-data": [
+              {
+                "relationship-key": "generic-vnf.vnf-id",
+                "relationship-value": "ctpx12345v"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "generic-vnf.vnf-name",
+                "property-value": "ctpx12345v"
+              }
+            ]
+          },
+          {
+            "related-to": "vf-module",
+            "related-link": "https://135.16.121.249:8443/aai/v8/network/generic-vnfs/generic-vnf/ctpx12345v/vf-modules/vf-module/ctpx12345v/",
+            "relationship-data": [
+              {
+                "relationship-key": "generic-vnf.vnf-id",
+                "relationship-value": "ctpx12345v"
+              },
+              {
+                "relationship-key": "vf-module.vf-module-id",
+                "relationship-value": "ctpx12345v"
+              }
+            ]
+          },
+          {
+            "related-to": "image",
+            "related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/images/image/TRINITY-IMAGE/",
+            "relationship-data": [
+              {
+                "relationship-key": "cloud-region.cloud-owner",
+                "relationship-value": "att-aic"
+              },
+              {
+                "relationship-key": "cloud-region.cloud-region-id",
+                "relationship-value": "AAIAIC25"
+              },
+              {
+                "relationship-key": "image.image-id",
+                "relationship-value": "TRINITY-IMAGE"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "image.image-name",
+                "property-value": "TRINITY IMAGE"
+              }
+            ]
+          },
+          {
+            "related-to": "pserver",
+            "related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/pservers/pserver/TRINITY-PSERVER/",
+            "relationship-data": [
+              {
+                "relationship-key": "pserver.hostname",
+                "relationship-value": "TRINITY-PSERVER"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "pserver.pserver-name2"
+              }
+            ]
+          },
+          {
+            "related-to": "flavor",
+            "related-link": "https://135.16.121.249:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/flavors/flavor/TRINITY-Flavor/",
+            "relationship-data": [
+              {
+                "relationship-key": "cloud-region.cloud-owner",
+                "relationship-value": "att-aic"
+              },
+              {
+                "relationship-key": "cloud-region.cloud-region-id",
+                "relationship-value": "AAIAIC25"
+              },
+              {
+                "relationship-key": "flavor.flavor-id",
+                "relationship-value": "TRINITY-Flavor"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "flavor.flavor-name",
+                "property-value": "TRINITY Flavor"
+              }
+            ]
+          }
+        ]
+      },
+      "errorMessage": "Invalid name - if vserver is related to an image named TRINITY, then the related generic-vnf name must match xxxxnnnnv (where x = character and n = number)"
+    }
+  ]
+}

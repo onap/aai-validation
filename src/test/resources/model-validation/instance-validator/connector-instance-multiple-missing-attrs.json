@@ -1,0 +1,50 @@
+{
+	"cambria.partition": "AAI",
+	"event-header": {
+		"id": "20160525162737-61c49d41-5338-4755-af54-06cee9fe4acf",
+		"timestamp": "20160525-16:27:37:353",
+		"source-name": "RO",
+		"domain": "devINT1",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"version": "v9",
+		"action": "CREATE",
+		"entity-type": "connector",
+		"top-entity-type": "connector",
+		"entity-link": "https://mtanjv9aaas03.aic.cip.att.com:8443/aai/v9/business/connectors/connector/c7611ebe-c324-48f1-8085-94aef0c12fd"
+	},
+	"entity": {
+		"inventory-response-item": [
+			{
+				"connector": {
+					"resource-instance-id": "c7611ebe-c324-48f1-8085-94aef0c12fd",
+					"resource-version": "1467975776",
+					"persona-model-id": "connector-widget-id",
+					"persona-model-version": "v1.0",
+					"widget-model-id": "example-widget-model-id-val-69486",
+					"widget-model-version": "v1.0"
+				},
+				"extra-properties": {
+				},
+				"inventory-response-items": {
+					"inventory-response-item": [
+						{
+							"virtual-data-center": {
+								"vdc-id": "vdc-01",
+								"vdc-name": "example-vdc-name-val-10107",
+								"resource-version": "1467975781"
+							},
+							"extra-properties": {
+								
+							},
+							"inventory-response-items": {
+								
+							}
+						}
+					]
+				}
+			}
+		]
+	}
+}

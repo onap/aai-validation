@@ -1,0 +1,45 @@
+{
+	"cambria.partition": "AAI",
+	"entity": {
+		"vnf-id": "baa824f4-57a9-4d7b-a5fa-cbc42b0860d3",
+		"vf-modules": {
+			"vf-module": [{
+				"persona-model-version": "1",
+				"persona-model-id": "199bb5d6-2104-47f3-ad03-8684e55f7061",
+				"resource-version": "1476735608",
+				"orchestration-status": "pending-delete",
+				"is-base-vf-module": true,
+				"vf-module-id": "da7b73c7-f9ab-4ca4-8c56-bd220329afb2",
+				"relationship-list": {
+					"relationship": [{
+						"relationship-data": [{
+							"relationship-key": "l3-network.network-id",
+							"relationship-value": "6bf31bb1-1ec4-423f-a03f-5b81b4410606"
+						}],
+						"related-to-property": [{
+							"property-value": "Trinity_OAMP_3900",
+							"property-key": "l3-network.network-name"
+						}],
+						"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/network/l3-networks/l3-network/6bf31bb1-1ec4-423f-a03f-5b81b4410606/",
+						"related-to": "l3-network"
+					}]
+				},
+				"vf-module-name": "fnfm0001v_base_module"
+			}]
+		}
+	},
+	"event-header": {
+		"timestamp": "20161017-20:20:10:357",
+		"id": "20161017202010-54bef76b-32b9-442b-bca8-b31f1cc84a84",
+		"action": "DELETE",
+		"domain": "devINT1",
+		"source-name": "MSO",
+		"entity-link": "https://aai-app.mtcnj.ecomp.cci.att.com:8443/aai/v8/network/generic-vnfs/generic-vnf/baa824f4-57a9-4d7b-a5fa-cbc42b0860d3/vf-modules/vf-module/da7b73c7-f9ab-4ca4-8c56-bd220329afb2/",
+		"entity-type": "vf-module",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-RUBBISH",
+		"top-entity-type": "generic-vnf",
+		"version": "v8"
+	}
+}

@@ -1,0 +1,59 @@
+{
+	"cambria.partition ": "AAI ",
+	"entity": {
+		"resource-version": "1476737775",
+		"equipment-role": "VCE",
+		"ipv4-oam-address": "10.40.128.162",
+		"prov-status": "NVTPROV",
+		"vnf-name2": "USETEEMTJWNVBR084",
+		"vnf-name": "mtjnj484vbc",
+		"vnf-type": "esx-vce",
+		"vnf-id2": "7150963a-9054-4046-a285-a572edf2deb6",
+		"l-interfaces": {
+			"l-interface": [{
+				"resource-version": "1474030762",
+				"vlans": {
+					"vlan": [{
+						"speed-value": "20",
+						"resource-version": "1474030762",
+						"speed-units": "Mbps",
+						"vlan-interface": "dp0p192p1.3087",
+						"vlan-id-inner": 3087,
+						"vlan-id-outer": 3503
+					}]
+				},
+				"v6-wan-link-ip": "2001:1890:1cff:ff01:0000:0000:ff00:0002",
+				"interface-name": "dp0p192p1",
+				"interface-role": "UPLINK"
+			}, {
+				"resource-version": "1474030762",
+				"vlans": {
+					"vlan": [{
+						"speed-value": "20",
+						"resource-version": "1474030762",
+						"speed-units": "Mbps",
+						"vlan-interface": "dp0p224p1.2587",
+						"vlan-id-inner": 2587,
+						"vlan-id-outer": 3502
+					}]
+				},
+				"interface-name": "dp0p224p1",
+				"interface-role": "CUSTOMER"
+			}]
+		}
+	},
+	"event-header": {
+		"timestamp": "20161017-20:56:15:411",
+		"id": "20161017205615-c0e8aa29-dcf3-4267-9fd3-e508c2795e0a",
+		"action": "UPDATE",
+		"domain": "devINT1",
+		"source-name": "NewvceCreator",
+		"entity-link": "https://aai-app.mtcnj.ecomp.cci.att.com:8443/aai/v8/network/newvces/newvce/7150963a-9054-4046-a285-a572edf2deb6",
+		"entity-type": "newvce",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"top-entity-type": "newvce",
+		"version": "v8"
+	}
+}

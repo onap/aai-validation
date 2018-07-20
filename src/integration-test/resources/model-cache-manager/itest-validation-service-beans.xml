@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+============LICENSE_START===================================================
+Copyright (c) 2018 Amdocs
+============================================================================
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+============LICENSE_END=====================================================
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- ////////////////////////////////////////////////////////////////// -->
+	<!-- PROPERTY AND CONFIGURATION FILES -->
+	<!-- ////////////////////////////////////////////////////////////////// -->
+	<context:property-placeholder location="classpath:model-cache-manager/aai-environment.properties" ignore-unresolvable="true" />
+	<context:property-placeholder location="classpath:model-cache-manager/validation-service.properties" ignore-unresolvable="true" />
+
+	<!-- ////////////////////////////////////////////////////////////////// -->
+	<!-- CONFIG BEANS -->
+	<!-- ////////////////////////////////////////////////////////////////// -->
+	<bean id="modelConfig" class="org.onap.aai.validation.config.ModelConfig">
+		<property name="modelCacheExpirySeconds" value="${model.cache.expirySeconds}" />
+	</bean>
+
+	<bean id="restConfig" class="org.onap.aai.validation.config.RestConfig">
+		<property name="host" value="${host}" />
+		<property name="port" value="${port}" />
+		<property name="protocol" value="${httpProtocol}" />
+		<property name="baseModelURI" value="${baseModelURI}" />
+		<property name="trustStorePath" value="${trustStorePath}" />
+		<property name="trustStorePassword" value="${trustStorePassword.x}" />
+		<property name="keyStorePath" value="${keyStorePath}" />
+		<property name="keyStorePassword" value="${keyStorePassword.x}" />
+		<property name="keyManagerFactoryAlgorithm" value="${keyManagerFactoryAlgorithm}" />
+		<property name="keyStoreType" value="${keyStoreType}" />
+		<property name="securityProtocol" value="${securityProtocol}" />
+		<property name="connectionTimeout" value="${connectionTimeout}" />
+		<property name="readTimeout" value="${readTimeout}" />
+	</bean>
+
+	<bean id="fileBasedRestConfig" class="org.onap.aai.validation.config.RestConfig">
+		<property name="host" value="${host}" />
+		<property name="port" value="${port}" />
+		<property name="protocol" value="file" />
+		<property name="baseModelURI" value="src/test/resources/model-validation/instance-validator/all-models.xml" />
+		<property name="trustStorePath" value="${trustStorePath}" />
+		<property name="trustStorePassword" value="${trustStorePassword.x}" />
+		<property name="keyStorePath" value="${keyStorePath}" />
+		<property name="keyStorePassword" value="${keyStorePassword.x}" />
+		<property name="keyManagerFactoryAlgorithm" value="${keyManagerFactoryAlgorithm}" />
+		<property name="keyStoreType" value="${keyStoreType}" />
+		<property name="securityProtocol" value="${securityProtocol}" />
+		<property name="connectionTimeout" value="${connectionTimeout}" />
+		<property name="readTimeout" value="${readTimeout}" />
+	</bean>
+
+	<!-- ////////////////////////////////////////////////////////////////// -->
+	<!-- IMPLEMENTATION BEANS -->
+	<!-- ////////////////////////////////////////////////////////////////// -->
+
+	<!-- MODEL VALIDATION BEANS -->
+	<bean id="modelCacheManager" class="org.onap.aai.validation.modeldriven.ModelCacheManager">
+		<constructor-arg ref="modelConfig" />
+		<constructor-arg ref="restConfig" />
+	</bean>
+</beans>

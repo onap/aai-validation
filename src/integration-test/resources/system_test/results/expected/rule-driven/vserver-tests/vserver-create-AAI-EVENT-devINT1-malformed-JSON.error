@@ -1,0 +1,1 @@
+VS-500, JSON could not be parsed.; Caused by: com.google.gson.stream.MalformedJsonException: Unterminated object at line 151 column 7 path $.entity.tenants.tenant[0].vservers

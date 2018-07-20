@@ -1,0 +1,128 @@
+{
+  "cambria.partition": "AAI",
+  "event-header": {
+    "id": "20160525162737-61c49d41-5338-4755-af54-06cee9fe4acf",
+    "timestamp": "20160525-16:27:37:353",
+    "source-name": "RO",
+    "domain": "devINT1",
+    "sequence-number": "0",
+    "severity": "NORMAL",
+    "event-type": "AAI-EVENT",
+    "version": "v8",
+    "action": "CREATE",
+    "entity-type": "pserver",
+    "top-entity-type": "pserver",
+    "entity-link": "https://inventory/v8/cloud-infrastructure/pservers/pserver/example-vserver-id-val-34666"
+  },
+  "entity": {
+    "hostname": "gdrmi101sd9",
+    "ptnii-equip-name": "gdrmi101sd9",
+    "equip-type": "toa",
+    "equip-vendor": "HP",
+    "equip-model": "DL380p9-nd",
+    "fqdn": "gdrmirsv101.gdrmi.sbcglobal.net",
+    "ipv4-oam-address": "12.80.20.75",
+    "in-maint": false,
+    "resource-version": "1478050351",
+    "purpose": "LCP",
+    "inv-status": "In Service",
+    "relationship-list": {
+      "relationship": [
+        {
+          "related-to": "complex",
+          "related-link": "https://inventory/v8/cloud-infrastructure/complexes/complex/GDRPMIBL/",
+          "relationship-data": [
+            {
+              "relationship-key": "complex.physical-location-id",
+              "relationship-value": "GDRPMIBL"
+            }
+          ]
+        }
+      ]
+    },
+    "p-interfaces": {
+      "p-interface": [
+        {
+          "interface-name": "p4p1-4/1",
+          "speed-value": "10000000",
+          "speed-units": "kbps",
+          "resource-version": "1478051189",
+          "relationship-list": {
+            "relationship": [
+              {
+                "related-to": "physical-link",
+                "related-link": "https://inventory/v8/network/physical-links/physical-link/gdrmi101sd9%3Ap4p1-4%2F1%7Cgdrmitax101%3Axe-0%2F0%2F1/",
+                "relationship-data": [
+                  {
+                    "relationship-key": "physical-link.link-name",
+                    "relationship-value": "gdrmi101sd9:p4p1-4/1|gdrmitax101:xe-0/0/1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "interface-name": "p4p2-4/2",
+          "speed-value": "10000000",
+          "speed-units": "kbps",
+          "resource-version": "1478051190",
+          "relationship-list": {
+            "relationship": [
+              {
+                "related-to": "physical-link",
+                "related-link": "https://inventory/v8/network/physical-links/physical-link/gdrmi101sd9%3Ap4p2-4%2F2%7Cgdrmitax101%3Axe-0%2F0%2F51/",
+                "relationship-data": [
+                  {
+                    "relationship-key": "physical-link.link-name",
+                    "relationship-value": "gdrmi101sd9:p4p2-4/2|gdrmitax101:xe-0/0/51"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "interface-name": "p6p1-6/1",
+          "speed-value": "10000000",
+          "speed-units": "kbps",
+          "resource-version": "1478051200",
+          "relationship-list": {
+            "relationship": [
+              {
+                "related-to": "physical-link",
+                "related-link": "https://inventory/v8/network/physical-links/physical-link/gdrmi101sd9%3Ap6p1-6%2F1%7Cgdrmitax102%3Axe-1%2F0%2F51/",
+                "relationship-data": [
+                  {
+                    "relationship-key": "physical-link.link-name",
+                    "relationship-value": "gdrmi101sd9:p6p1-6/1|gdrmitax102:xe-1/0/51"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "interface-name": "p6p2-6/2",
+          "speed-value": "10000000",
+          "speed-units": "kbps",
+          "resource-version": "1478051199",
+          "relationship-list": {
+            "relationship": [
+              {
+                "related-to": "physical-link",
+                "related-link": "https://inventory/v8/network/physical-links/physical-link/gdrmi101sd9%3Ap6p2-6%2F2%7Cgdrmitax102%3Axe-1%2F0%2F1/",
+                "relationship-data": [
+                  {
+                    "relationship-key": "physical-link.link-name",
+                    "relationship-value": "gdrmi101sd9:p6p2-6/2|gdrmitax102:xe-1/0/1"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

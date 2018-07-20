@@ -1,0 +1,62 @@
+{
+	"cambria.partition": "AAI",
+	"entity": {
+		"cloud-region-id": "AAIAIC25",
+		"cloud-owner": "att-aic",
+		"tenants": {
+			"tenant": [{
+				"vservers": {
+					"vserver": [{
+						"resource-version": "1476736933",
+						"is-closed-loop-disabled": false,
+						"vserver-selflink": "https://aai-app-e2e.test.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/USETEJORLFL0154UJZZ01%3A%3AuCPE-VMS/vservers/vserver/26c62277-07f4-449c-9f0a-4247ac28f944",
+						"vserver-name": "USETEJORLFL0154UJZZ01-USETEJORLFL0154UJTE08",
+						"vserver-id": "26c62277-07f4-449c-9f0a-4247ac28f944",
+						"in-maint": false,
+						"vserver-name2": "USETEJORLFL0154UJTE08",
+						"relationship-list": {
+							"relationship": [{
+								"relationship-data": [{
+									"relationship-key": "generic-vnf.vnf-id",
+									"relationship-value": "e5365951-9d90-4853-afae-c34a0707e3b6"
+								}],
+								"related-to-property": [{
+									"property-value": "USETEJORLFL0154UJTE08",
+									"property-key": "generic-vnf.vnf-name"
+								}],
+								"related-link": "https://aai-app-e2e.test.att.com:8443/aai/v8/network/generic-vnfs/generic-vnf/e5365951-9d90-4853-afae-c34a0707e3b6/",
+								"related-to": "generic-vnf"
+							},
+							{
+								"relationship-data": [{
+									"relationship-key": "pserver.hostname",
+									"relationship-value": "USETEJORLFL0154UJZZ01"
+								}],
+								"related-to-property": [{
+									"property-key": "pserver.pserver-name2"
+								}],
+								"related-link": "https://aai-app-e2e.test.att.com:8443/aai/v8/cloud-infrastructure/pservers/pserver/USETEJORLFL0154UJZZ01/",
+								"related-to": "pserver"
+							}]
+						}
+					}]
+				},
+				"tenant-id": "USETEJORLFL0154UJZZ01::uCPE-VMS"
+			}]
+		}
+	},
+	"event-header": {
+		"timestamp": "20161017-20:43:11:262",
+		"id": "20161017204311-000bc9ba-56f2-4934-9fe1-595c6aa5db62",
+		"action": "DELETE",
+		"domain": "e2e1",
+		"source-name": "SDNC",
+		"entity-link": "https://aai-app.mtcnj.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/USETEJORLFL0154UJZZ01%3A%3AuCPE-VMS/vservers/vserver/26c62277-07f4-449c-9f0a-4247ac28f944",
+		"entity-type": "vserver",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"top-entity-type": "cloud-region",
+		"version": "v8"
+	}
+}

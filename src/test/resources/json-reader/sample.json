@@ -1,0 +1,13 @@
+{
+	"event-header": {
+		"entity-type": "vserver",
+		"sample-integer": 1,
+		"sample-boolean": true,
+		"sample-object": {
+			"property": "value"
+		},
+		"sample-array": [
+			"one"
+		]
+	}
+}

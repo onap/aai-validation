@@ -1,0 +1,224 @@
+{
+	"cambria.partition": "AAI",
+	"entity": {
+		"equipment-role": "SESSION DIRECTR",
+		"resource-version": "1476738439",
+		"is-closed-loop-disabled": false,
+		"vnf-name": "ibcx0003v",
+		"vnf-type": "vUSP - Metaswitch vSBC",
+		"vnf-id": "ibcx0003v",
+		"in-maint": false,
+		"lag-interfaces": {},
+		"l-interfaces": {},
+		"prov-status": "NVTPROV",
+		"orchestration-status": "NOT ORCHESTRATED",
+		"service-id": "e433710f-9217-458d-a79d-1c7aff376d89",
+		"vf-modules": {
+			"vf-module": [{
+				"resource-version": "1474037069",
+				"orchestration-status": "NOT ORCHESTRATED",
+				"heat-stack-id": "",
+				"is-base-vf-module": true,
+				"vf-module-id": "ibcx0003v",
+				"relationship-list": {
+					"relationship": [{
+						"relationship-data": [{
+							"relationship-key": "vserver.vserver-id",
+							"relationship-value": "227be8ce-05f9-4394-80c1-2f8f9f193a56"
+						}, {
+							"relationship-key": "tenant.tenant-id",
+							"relationship-value": "092eb9e8e4b7412e8787dd091bc58e86"
+						}, {
+							"relationship-key": "cloud-region.cloud-owner",
+							"relationship-value": "att-aic"
+						}, {
+							"relationship-key": "cloud-region.cloud-region-id",
+							"relationship-value": "AAIAIC25"
+						}],
+						"related-to-property": [{
+							"property-value": "ibcx0003vm006",
+							"property-key": "vserver.vserver-name"
+						}],
+						"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/092eb9e8e4b7412e8787dd091bc58e86/vservers/vserver/227be8ce-05f9-4394-80c1-2f8f9f193a56/",
+						"related-to": "vserver"
+					}, {
+						"relationship-data": [{
+							"relationship-key": "vserver.vserver-id",
+							"relationship-value": "30eb2f09-b029-477d-bdf3-a5159c51cc11"
+						}, {
+							"relationship-key": "tenant.tenant-id",
+							"relationship-value": "092eb9e8e4b7412e8787dd091bc58e86"
+						}, {
+							"relationship-key": "cloud-region.cloud-owner",
+							"relationship-value": "att-aic"
+						}, {
+							"relationship-key": "cloud-region.cloud-region-id",
+							"relationship-value": "AAIAIC25"
+						}],
+						"related-to-property": [{
+							"property-value": "ibcx0003vm002",
+							"property-key": "vserver.vserver-name"
+						}],
+						"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/092eb9e8e4b7412e8787dd091bc58e86/vservers/vserver/30eb2f09-b029-477d-bdf3-a5159c51cc11/",
+						"related-to": "vserver"
+					}, {
+						"relationship-data": [{
+							"relationship-key": "vserver.vserver-id",
+							"relationship-value": "782e344f-a77e-4c0f-970e-6d020cd694ed"
+						}, {
+							"relationship-key": "tenant.tenant-id",
+							"relationship-value": "092eb9e8e4b7412e8787dd091bc58e86"
+						}, {
+							"relationship-key": "cloud-region.cloud-owner",
+							"relationship-value": "att-aic"
+						}, {
+							"relationship-key": "cloud-region.cloud-region-id",
+							"relationship-value": "AAIAIC25"
+						}],
+						"related-to-property": [{
+							"property-value": "ibcx0003vm001",
+							"property-key": "vserver.vserver-name"
+						}],
+						"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/092eb9e8e4b7412e8787dd091bc58e86/vservers/vserver/782e344f-a77e-4c0f-970e-6d020cd694ed/",
+						"related-to": "vserver"
+					}, {
+						"relationship-data": [{
+							"relationship-key": "vserver.vserver-id",
+							"relationship-value": "4882b603-f769-4be8-99b1-c38b581d86fe"
+						}, {
+							"relationship-key": "tenant.tenant-id",
+							"relationship-value": "092eb9e8e4b7412e8787dd091bc58e86"
+						}, {
+							"relationship-key": "cloud-region.cloud-owner",
+							"relationship-value": "att-aic"
+						}, {
+							"relationship-key": "cloud-region.cloud-region-id",
+							"relationship-value": "AAIAIC25"
+						}],
+						"related-to-property": [{
+							"property-value": "ibcx0003vm005",
+							"property-key": "vserver.vserver-name"
+						}],
+						"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/092eb9e8e4b7412e8787dd091bc58e86/vservers/vserver/4882b603-f769-4be8-99b1-c38b581d86fe/",
+						"related-to": "vserver"
+					}]
+				},
+				"vf-module-name": "ibcx0003v_migrated.base.module-0"
+			}]
+		},
+		"relationship-list": {
+			"relationship": [{
+				"relationship-data": [{
+					"relationship-key": "vserver.vserver-id",
+					"relationship-value": "227be8ce-05f9-4394-80c1-2f8f9f193a56"
+				}, {
+					"relationship-key": "tenant.tenant-id",
+					"relationship-value": "092eb9e8e4b7412e8787dd091bc58e86"
+				}, {
+					"relationship-key": "cloud-region.cloud-owner",
+					"relationship-value": "att-aic"
+				}, {
+					"relationship-key": "cloud-region.cloud-region-id",
+					"relationship-value": "AAIAIC25"
+				}],
+				"related-to-property": [{
+					"property-value": "ibcx0003vm006",
+					"property-key": "vserver.vserver-name"
+				}],
+				"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/092eb9e8e4b7412e8787dd091bc58e86/vservers/vserver/227be8ce-05f9-4394-80c1-2f8f9f193a56/",
+				"related-to": "vserver"
+			}, {
+				"relationship-data": [{
+					"relationship-key": "vserver.vserver-id",
+					"relationship-value": "30eb2f09-b029-477d-bdf3-a5159c51cc11"
+				}, {
+					"relationship-key": "tenant.tenant-id",
+					"relationship-value": "092eb9e8e4b7412e8787dd091bc58e86"
+				}, {
+					"relationship-key": "cloud-region.cloud-owner",
+					"relationship-value": "att-aic"
+				}, {
+					"relationship-key": "cloud-region.cloud-region-id",
+					"relationship-value": "AAIAIC25"
+				}],
+				"related-to-property": [{
+					"property-value": "ibcx0003vm002",
+					"property-key": "vserver.vserver-name"
+				}],
+				"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/092eb9e8e4b7412e8787dd091bc58e86/vservers/vserver/30eb2f09-b029-477d-bdf3-a5159c51cc11/",
+				"related-to": "vserver"
+			}, {
+				"relationship-data": [{
+					"relationship-key": "service-instance.service-instance-id",
+					"relationship-value": "62eb3798-b90d-4bc0-9635-c70473a49ae3"
+				}, {
+					"relationship-key": "service-subscription.service-type",
+					"relationship-value": "VIRTUAL USP"
+				}, {
+					"relationship-key": "customer.global-customer-id",
+					"relationship-value": "e433710f-9217-458d-a79d-1c7aff376d89"
+				}],
+				"related-to-property": [{
+					"property-value": "",
+					"property-key": "service-instance.service-instance-name"
+				}],
+				"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/business/customers/customer/e433710f-9217-458d-a79d-1c7aff376d89/service-subscriptions/service-subscription/VIRTUAL%20USP/service-instances/service-instance/62eb3798-b90d-4bc0-9635-c70473a49ae3/",
+				"related-to": "service-instance"
+			}, {
+				"relationship-data": [{
+					"relationship-key": "vserver.vserver-id",
+					"relationship-value": "782e344f-a77e-4c0f-970e-6d020cd694ed"
+				}, {
+					"relationship-key": "tenant.tenant-id",
+					"relationship-value": "092eb9e8e4b7412e8787dd091bc58e86"
+				}, {
+					"relationship-key": "cloud-region.cloud-owner",
+					"relationship-value": "att-aic"
+				}, {
+					"relationship-key": "cloud-region.cloud-region-id",
+					"relationship-value": "AAIAIC25"
+				}],
+				"related-to-property": [{
+					"property-value": "ibcx0003vm001",
+					"property-key": "vserver.vserver-name"
+				}],
+				"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/092eb9e8e4b7412e8787dd091bc58e86/vservers/vserver/782e344f-a77e-4c0f-970e-6d020cd694ed/",
+				"related-to": "vserver"
+			}, {
+				"relationship-data": [{
+					"relationship-key": "vserver.vserver-id",
+					"relationship-value": "4882b603-f769-4be8-99b1-c38b581d86fe"
+				}, {
+					"relationship-key": "tenant.tenant-id",
+					"relationship-value": "092eb9e8e4b7412e8787dd091bc58e86"
+				}, {
+					"relationship-key": "cloud-region.cloud-owner",
+					"relationship-value": "att-aic"
+				}, {
+					"relationship-key": "cloud-region.cloud-region-id",
+					"relationship-value": "AAIAIC25"
+				}],
+				"related-to-property": [{
+					"property-value": "ibcx0003vm005",
+					"property-key": "vserver.vserver-name"
+				}],
+				"related-link": "https://aai-app-e2e.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/092eb9e8e4b7412e8787dd091bc58e86/vservers/vserver/4882b603-f769-4be8-99b1-c38b581d86fe/",
+				"related-to": "vserver"
+			}]
+		}
+	},
+	"event-header": {
+		"timestamp": "20161017-21:07:19:177",
+		"id": "20161017210719-5d536162-3a71-4daa-9059-ea45d6843584",
+		"action": "UPDATE",
+		"domain": "devINT1",
+		"source-name": "APPC",
+		"entity-link": "https://aai-app-e2e.test.att.com:8443/aai/v8/network/generic-vnfs/generic-vnf/ibcx0003v/",
+		"entity-type": "generic-vnf",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"top-entity-type": "generic-vnf",
+		"version": "v8"
+	}
+}

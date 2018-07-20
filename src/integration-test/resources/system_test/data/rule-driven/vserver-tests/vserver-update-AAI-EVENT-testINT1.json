@@ -1,0 +1,108 @@
+{
+	"cambria.partition": "AAI",
+	"entity": {
+		"cloud-region-id": "AAIAIC25",
+		"cloud-owner": "att-aic",
+		"tenants": {
+			"tenant": [{
+				"vservers": {
+					"vserver": [{
+						"resource-version": "1476735222",
+						"is-closed-loop-disabled": false,
+						"vserver-selflink": "http://compute.rdm2.cci.att.com:8774/v2/d52b9dea5d0f4e5d90be3590ac8c78a9/servers/fd280243-cd5c-424e-b629-533cabe2a164",
+						"vserver-name": "vm-54",
+						"vserver-id": "fd280243-cd5c-424e-b629-533cabe2a164",
+						"in-maint": false,
+						"vserver-name2": "VM_54",
+						"l-interfaces": {
+							"l-interface": [{
+								"resource-version": "1452288058",
+								"macaddr": "02:fd:59:37:be:3c",
+								"selflink": "http://network.rdm2.cci.att.com:9696/v2.0/ports/fd5937be-3ca4-4db0-89c9-e210bf8bf31f",
+								"interface-id": "fd5937be-3ca4-4db0-89c9-e210bf8bf31f",
+								"l3-interface-ipv4-address-list": [{
+									"resource-version": "1452288058",
+									"l3-interface-ipv4-address": "192.168.112.56",
+									"neutron-network-id": "a2e5433f-38c7-420e-9c06-134ee893de3f",
+									"neutron-subnet-id": "b58a5b21-1f3b-42b8-93a6-109b2a700fdb",
+									"is-floating": false,
+									"l3-interface-ipv4-prefix-length": 24
+								}],
+								"interface-name": "fd5937be-3ca4-4db0-89c9-e210bf8bf31f",
+								"network-name": "CinderVolumeNetwork"
+							}]
+						},
+						"relationship-list": {
+							"relationship": [{
+								"relationship-data": [{
+									"relationship-key": "cloud-region.cloud-owner",
+									"relationship-value": "att-aic"
+								},
+								{
+									"relationship-key": "cloud-region.cloud-region-id",
+									"relationship-value": "AAIAIC25"
+								},
+								{
+									"relationship-key": "image.image-id",
+									"relationship-value": "fc2b5df5-0e28-4c05-9e8c-75cebbd537e5"
+								}],
+								"related-to-property": [{
+									"property-value": "TestVM",
+									"property-key": "image.image-name"
+								}],
+								"related-link": "https://aai-app-e2e.test.att.com:8443/aai/v7/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/images/image/fc2b5df5-0e28-4c05-9e8c-75cebbd537e5/",
+								"related-to": "image"
+							},
+							{
+								"relationship-data": [{
+									"relationship-key": "pserver.hostname",
+									"relationship-value": "rdm2r06c010.rdm2.cci.att.com"
+								}],
+								"related-to-property": [{
+									"property-key": "pserver.pserver-name2"
+								}],
+								"related-link": "https://aai-app-e2e.test.att.com:8443/aai/v7/cloud-infrastructure/pservers/pserver/rdm2r06c010.rdm2.cci.att.com/",
+								"related-to": "pserver"
+							},
+							{
+								"relationship-data": [{
+									"relationship-key": "cloud-region.cloud-owner",
+									"relationship-value": "att-aic"
+								},
+								{
+									"relationship-key": "cloud-region.cloud-region-id",
+									"relationship-value": "AAIAIC25"
+								},
+								{
+									"relationship-key": "flavor.flavor-id",
+									"relationship-value": "31"
+								}],
+								"related-to-property": [{
+									"property-value": "m1.small",
+									"property-key": "flavor.flavor-name"
+								}],
+								"related-link": "https://aai-app-e2e.test.att.com:8443/aai/v7/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/flavors/flavor/31/",
+								"related-to": "flavor"
+							}]
+						}
+					}]
+				},
+				"tenant-id": "d52b9dea5d0f4e5d90be3590ac8c78a9"
+			}]
+		}
+	},
+	"event-header": {
+		"timestamp": "20161017-20:13:45:472",
+		"id": "20161017201345-af157723-3835-4619-b6d8-dc16c19308bb",
+		"action": "UPDATE",
+		"domain": "testINT1",
+		"source-name": "RO",
+		"entity-link": "https://aai-app.mtcnj.ecomp.cci.att.com:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/att-aic/AAIAIC25/tenants/tenant/d52b9dea5d0f4e5d90be3590ac8c78a9/vservers/vserver/fd280243-cd5c-424e-b629-533cabe2a164",
+		"entity-type": "vserver",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"top-entity-type": "cloud-region",
+		"version": "v8"
+	}
+}
