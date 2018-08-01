@@ -22,7 +22,6 @@ limitations under the License.
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
-	<import resource="topic-config-beans.xml" />
 
 	<!-- ////////////////////////////////////////////////////////////////// -->
 	<!-- PROPERTY AND CONFIGURATION FILES -->
@@ -134,7 +133,6 @@ limitations under the License.
 	<!-- IMPLEMENTATION BEANS -->
 	<!-- ////////////////////////////////////////////////////////////////// -->
 	<bean id="messagePublisher" class="org.onap.aai.validation.publisher.ValidationEventPublisher">
-		<constructor-arg ref="topicConfig" />
 		<constructor-arg ref="topicAdminConfig" />
 	</bean>
 
@@ -147,7 +145,6 @@ limitations under the License.
 	</bean>
 
 	<bean id="eventPollingService" class="org.onap.aai.validation.services.EventPollingService">
-		<constructor-arg ref="topicConfig" />
 		<property name="validationController" ref="validationController" />
 	</bean>
 

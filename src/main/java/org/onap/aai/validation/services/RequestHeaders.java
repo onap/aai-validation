@@ -20,12 +20,12 @@ package org.onap.aai.validation.services;
 import org.springframework.http.HttpHeaders;
 
 /**
- * Bean to represent the ECOMP request/transaction IDs required for EELF logging.
+ * Bean to represent the ONAP request/transaction IDs required for EELF logging.
  *
  */
 public class RequestHeaders {
 
-    // ECOMP request ID a.k.a. transaction ID or correlation ID
+    // ONAP request ID a.k.a. transaction ID or correlation ID
     public static final String HEADER_REQUEST_ID = "X-ECOMP-RequestID";
     public static final String HEADER_SERVICE_INSTANCE_ID = "X-ECOMP-ServiceInstanceID";
 

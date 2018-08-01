@@ -43,7 +43,7 @@ public class TestRequestHeaders {
     }
 
     @Test
-    public void testECOMPHeaders() {
+    public void testONAPHeaders() {
         String transactionId = "transaction-id";
         String serviceInstanceId = "service-instance-id";
 

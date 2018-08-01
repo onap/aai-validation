@@ -18,7 +18,7 @@ limitations under the License.
 -->
 <configuration scan="true" scanPeriod="30 seconds" debug="true">
     <property name="componentName" value="AAI-VS" />
-    <property name="logDirectory" value="${AJSC_HOME}/logs/${componentName}" />
+    <property name="logDirectory" value="logs/${componentName}" />
 
     <!-- default EELF log file names -->
     <property name="generalLogName" value="error" />

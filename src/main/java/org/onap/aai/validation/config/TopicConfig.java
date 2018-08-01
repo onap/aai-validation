@@ -24,10 +24,15 @@ import java.util.Objects;
 import java.util.Properties;
 import javax.annotation.Resource;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * Gets the configuration of the topics. The topics are configured using Spring in topic-config-beans.xml.
  */
+
+@Component("TopicConfig")
 public class TopicConfig {
 
     private List<String> consumerTopicNames;
@@ -40,14 +45,24 @@ public class TopicConfig {
     List<Topic> consumerTopics = new ArrayList<>();
     List<Topic> publisherTopics = new ArrayList<>();
 
+    @Autowired
+    public TopicConfig (@Value("${consumer.topic.names}") final String consumerNames, @Value("${publisher.topic.names}") final String publisherNames){
+
+        consumerTopicNames = Arrays.asList(consumerNames.split(","));;
+        publisherTopicNames = Arrays.asList(publisherNames.split(","));;
+
+
+    }
     /**
      * Gets the configuration of topics for consumption.
      *
      * @return a list of topic configurations.
      */
-    public List<Topic> getConsumerTopics() {
+    public List<Topic> getConsumerTopics()
+    {
         return populateTopics(consumerTopics, consumerTopicNames);
     }
+
 
     /**
      * Gets the configuration of topics for publishing.

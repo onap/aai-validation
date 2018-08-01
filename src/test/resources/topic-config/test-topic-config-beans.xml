@@ -20,6 +20,7 @@ limitations under the License.
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
 	<!-- TOPIC NAMES -->
 	<bean id="topicConfig" class="org.onap.aai.validation.config.TopicConfig">
 		<property name="consumerTopicNames">

@@ -28,12 +28,14 @@ import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.onap.aai.validation.config.TopicConfig;
+import org.onap.aai.validation.ValidationServiceApplication;
 import org.onap.aai.validation.config.TopicConfig.Topic;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:topic-config/test-validation-service-beans.xml"})
+@ContextConfiguration(locations = {"classpath:/topic-config/test-validation-service-beans.xml"})
 public class TestTopicConfig {
 
     static {
@@ -46,20 +48,24 @@ public class TestTopicConfig {
     @Resource(name = "topicProperties")
     private Properties topicProperties;
 
+
     @Test
     public void testGetTopicProperties() throws Exception {
         assertThat(topicProperties.getProperty("aai-event.name"), is("aai-event"));
         assertThat(topicProperties.getProperty("aai-data-export.name"), is("aai-data-export"));
     }
 
+
+
     @Test
     public void testGetConsumerTopicsFromTopicConfig() throws Exception {
         assertThat(topicConfigurations.getConsumerTopicNames(), containsInAnyOrder("aai-event", "aai-data-export"));
     }
 
+
     @Test
     public void testGetConsumerTopicConfigurationObjects() throws Exception {
-        Topic eventTopic = new TopicConfig().new Topic();
+        Topic eventTopic = new TopicConfig("aai-event","aai-data-integrity").new Topic();
         eventTopic.setName("aai-event");
         eventTopic.setHost("event-dummy-host");
         eventTopic.setUsername("event-dummy-username");
@@ -68,7 +74,7 @@ public class TestTopicConfig {
         eventTopic.setConsumerId("event-dummy-consumer-id");
         eventTopic.setTransportType("event-dummy-transport-type");
 
-        Topic exportTopic = new TopicConfig().new Topic();
+        Topic exportTopic = new TopicConfig("aai-data-export","aai-data-integrity").new Topic();
         exportTopic.setName("aai-data-export");
         exportTopic.setHost("export-dummy-host");
         exportTopic.setUsername("export-dummy-username");
@@ -84,7 +90,7 @@ public class TestTopicConfig {
 
     @Test
     public void testGetPublisherTopicConfigurationObjects() throws Exception {
-        Topic integrityTopic = new TopicConfig().new Topic();
+        Topic integrityTopic = new TopicConfig("aai-data-export","aai-data-integrity").new Topic();
         integrityTopic.setName("aai-data-integrity");
         integrityTopic.setHost("integrity-dummy-host");
         integrityTopic.setPartition("integrity-dummy-partition");
@@ -96,4 +102,6 @@ public class TestTopicConfig {
 
         assertThat(publisherTopics, containsInAnyOrder(integrityTopic));
     }
+
+
 }

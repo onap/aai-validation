@@ -42,6 +42,8 @@ public class TestValidationEventPublisher {
 
     static {
         System.setProperty("AJSC_HOME", ".");
+        System.setProperty("consumer.topic.names", "poa-rule-validation");
+        System.setProperty("publisher.topic.names", "poa-audit-result");
     }
 
     private DMaaPEventPublisher mockEventPublisher;
@@ -54,7 +56,7 @@ public class TestValidationEventPublisher {
         TopicAdminConfig mockTopicAdminConfig = Mockito.mock(TopicAdminConfig.class);
         when(mockTopicAdminConfig.isPublishEnable()).thenReturn(true);
 
-        Topic topic1 = new TopicConfig().new Topic();
+        Topic topic1 = new TopicConfig("poa-rule-validation","poa-audit-result").new Topic();
         topic1.setName("aai-data-integrity");
         topic1.setHost("integrity-dummy-host");
         topic1.setPartition("integrity-dummy-partition");

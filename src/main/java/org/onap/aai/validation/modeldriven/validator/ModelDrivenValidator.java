@@ -49,7 +49,7 @@ import org.onap.aai.validation.result.Violation.Builder;
 import org.onap.aai.validation.result.Violation.ViolationType;
 
 /**
- * Validates object instances against the ECOMP model.
+ * Validates object instances against the ONAP model.
  *
  */
 public class ModelDrivenValidator implements Validator {
