@@ -1,0 +1,599 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_86820f51",
+        "filename": "bundleconfig/etc/oxm/aai_oxm_cloud_v12.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This license needs to be updated for onap",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6681f349",
+        "filename": "bundleconfig/etc/oxm/aai_oxm_without_cloud_v12.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This license needs to be updated for onap",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_66aa53d6",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "I think this should be org.onap.aai",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_26ac5bed",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "Any reason to keep this in?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_06afdfe4",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "Any reason to keep this in?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c68fa774",
+        "filename": "project-configs/code-tools/sonar-secret.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This file ( probably this whole folder tree ) should be removed",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e68c2382",
+        "filename": "project-configs/maven/conf/settings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This file ( probably this whole folder tree ) MUST be removed",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_46f3970a",
+        "filename": "src/integration-test/resources/authentication/amdocs_lab_keystore",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "I don\u0027t feel right about this being committed",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_66f813e6",
+        "filename": "src/integration-test/resources/events/vserver-create-event-invalid-domain.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.  This is true for all the json test artifacts I\u0027ve seen",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_06dd9f70",
+        "filename": "src/integration-test/resources/events/vserver-create-event-invalid-domain.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "another ATT reference",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_46cab7a2",
+        "filename": "src/integration-test/resources/events/vserver-create-event-invalid-eventtype.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_26c1bb80",
+        "filename": "src/integration-test/resources/events/vserver-create-event-invalid-eventtype.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "can\u0027t reference AT\u0026T",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c6e6c744",
+        "filename": "src/integration-test/resources/model-cache-manager/aai-environment.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "does this need to be \"amdocs\" ?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_66cfb3b1",
+        "filename": "src/integration-test/resources/system_test/data/model-driven/connector/connector-create-excess-metadata.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_06c4bf90",
+        "filename": "src/integration-test/resources/system_test/data/model-driven/connector/connector-create-missing-attribute.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c6bd6704",
+        "filename": "src/integration-test/resources/system_test/data/model-driven/connector/connector-create-no-metadata.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_86376fb0",
+        "filename": "src/integration-test/resources/system_test/data/model-driven/connector/connector-create-no-model.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_064b5f2c",
+        "filename": "src/integration-test/resources/system_test/data/model-driven/connector/connector-create-valid.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e65183d9",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/complexes/complexes-update-AAI-EVENT-devINT1-bad-network-name.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This whole file is pointing to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_865e8fe8",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/complexes/complexes-update-AAI-EVENT-devINT1-good-network-name.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_06727f7c",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/empty-ruleset/spike-pserver-create-update.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_465877fa",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/empty-ruleset/spike-pserver-create-update.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_665d73e9",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/empty-ruleset/spike-pserver-create-update.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_266f7b94",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/empty-ruleset/spike-pserver-create-update.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c66b2784",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/empty-ruleset/spike-pserver-create-update.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e668a389",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/empty-ruleset/spike-pserver-create-update.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.  We can\u0027t let this go out.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_86052fc4",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/generic-vnf/generic-vnf-update-AAI-EVENT-devINT1-bad-ipv4.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This whole file points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a60aabd0",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/generic-vnf/generic-vnf-update-AAI-EVENT-devINT1-good-ipv4.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This whole file points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_661493f5",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/generic-vnf/generic-vnf-update-AAI-EVENT-devINT1-missing-ipv4.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This whole file points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_06f91fc8",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/newvce/newvce-INVALID-ACTION-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c60247b4",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/newvce/newvce-INVALID-ACTION-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e6ff43a9",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/newvce/newvce-update-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_862c4f4c",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-bad-equip-name.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a6314ba4",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-bad-equip-name.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4626376a",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-bad-equip-name.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T13:52:42Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
