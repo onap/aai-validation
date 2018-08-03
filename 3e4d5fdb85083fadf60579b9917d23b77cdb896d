@@ -594,6 +594,1536 @@
       "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e6ed03f1",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-bad-equip-type.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a6bf0bd0",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-bad-equip-type.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_46b4f7f1",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-good.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_66b9f3e8",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-good.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_06ceff83",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-inv-status-missing.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_26cbfb73",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-inv-status-missing.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c6c7a763",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-inv-status.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e6c42361",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-inv-status.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_86a1afab",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vf-module/vf-module-delete-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a6a62bc0",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vf-module/vf-module-delete-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e672e348",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vf-module/vf-module-delete-AAI-EVENT-e2e1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_868f6f23",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vf-module/vf-module-delete-AAI-EVENT-e2e1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4699576d",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vf-module/vf-module-delete-AAI-RUBBISH-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_06a35f9f",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vf-module/vf-module-delete-AAI-RUBBISH-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e6a9837c",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vnf-image/vnf-image-create-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_86044f7f",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a6094b97",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "can\u0027t reference AT\u0026T",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_46fe376d",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_66033374",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_06f83f7b",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c6f1e796",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e6ee63b4",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4635d744",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_862befea",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "This points to internal AT\u0026T servers and infrastructure.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_063fdf26",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-GOOD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_263c5b2f",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-malformed-JSON.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_86120fb3",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1-two-vserver-objects.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a6170ba3",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_460cf794",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-EVENT-e2e1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6611f3ab",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-create-AAI-INVALID-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0626ff16",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-delete-AAI-BAD123-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2623fb06",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-delete-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c61fa7b6",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-delete-AAI-EVENT-e2e1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e61c23c4",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-update-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8679affe",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-update-AAI-EVENT-testINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a67e2be3",
+        "filename": "src/integration-test/resources/system_test/data/rule-driven/vserver-tests/vserver-update-AAI-TEST9-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_066d9f32",
+        "filename": "src/integration-test/resources/system_test/results/expected/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-inv-status-missing.exp.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_266a1b1b",
+        "filename": "src/integration-test/resources/system_test/results/expected/rule-driven/pserver/pserver-create-AAI-EVENT-devINT1-inv-status.exp.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c676c706",
+        "filename": "src/integration-test/resources/system_test/testRunner/DARE.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e673c313",
+        "filename": "src/integration-test/resources/system_test/testRunner/DIMO.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_26d8dbee",
+        "filename": "src/main/resources/logback.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "I thought we refactored to not use AJSC.  Are these properties needed?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_46d157cc",
+        "filename": "src/main/scripts/encNameValue.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "Is this comment right?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_466dd703",
+        "filename": "src/test/java/org/onap/aai/validation/auth/MicroServiceAuthTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0677dfd5",
+        "filename": "src/test/java/org/onap/aai/validation/config/TestRestConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "is this needed?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_26745bce",
+        "filename": "src/test/java/org/onap/aai/validation/config/TestTopicAdminConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "is this needed?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_864a0f82",
+        "filename": "src/test/java/org/onap/aai/validation/config/TestTopicConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "is this needed?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a64f0b92",
+        "filename": "src/test/java/org/onap/aai/validation/config/TestValidationControllerConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_065eff45",
+        "filename": "src/test/java/org/onap/aai/validation/controller/TestValidationController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "As mentioned earlier, I don\u0027t think this is still needed without using AJSC.  I\u0027ll refrain from adding this comment to any other test classes, but please review them.",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4612b763",
+        "filename": "src/test/resources/event-reader/generic-vnf-create-event.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6617b352",
+        "filename": "src/test/resources/event-reader/invalid-event-1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_060cbf41",
+        "filename": "src/test/resources/event-reader/invalid-event-2.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2609bb31",
+        "filename": "src/test/resources/event-reader/invalid-event-3.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c6056715",
+        "filename": "src/test/resources/event-reader/invalid-event-4.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e602e30a",
+        "filename": "src/test/resources/event-reader/invalid-event-5.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_81ff5901",
+        "filename": "src/test/resources/event-reader/vserver-create-event.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a104d515",
+        "filename": "src/test/resources/logback.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed anymore",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2110c54d",
+        "filename": "src/test/resources/model-validation/instance-validator/all-models.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c11c716d",
+        "filename": "src/test/resources/model-validation/instance-validator/connector-instance-errors.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e1196d7a",
+        "filename": "src/test/resources/model-validation/instance-validator/connector-instance-multiple-missing-attrs.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_812679b9",
+        "filename": "src/test/resources/model-validation/instance-validator/connector-instance-multiple-unexpected-attrs.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4120619b",
+        "filename": "src/test/resources/model-validation/instance-validator/connector-instance-no-model-id.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_61255daa",
+        "filename": "src/test/resources/model-validation/instance-validator/connector-instance-success.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_013a69cd",
+        "filename": "src/test/resources/model-validation/instance-validator/connector-instance-unknown-model-id.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c13311f5",
+        "filename": "src/test/resources/model-validation/instance-validator/connector-instance.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a1793595",
+        "filename": "src/test/resources/model-validation/instance-validator/connector-widget-id.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_213e85b9",
+        "filename": "src/test/resources/model-validation/model-parser/all-models.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c14a3155",
+        "filename": "src/test/resources/model-validation/model-reader/all-models.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8174399d",
+        "filename": "src/test/resources/model-validation/model-reader/connector-widget-id-no-children-1.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e1472d4a",
+        "filename": "src/test/resources/model-validation/model-reader/connector-widget-id-no-children-2.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_416e21cb",
+        "filename": "src/test/resources/model-validation/model-reader/connector-widget-id.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_61731db2",
+        "filename": "src/test/resources/model-validation/model-reader/logical-link-widget-id.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_216525e1",
+        "filename": "src/test/resources/model-validation/model-reader/virtual-data-center-widget-id.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_819bd9c8",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v0.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "this should be org.onap... right?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a187f560",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v10.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a1a055f5",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v10.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "should be org.onap right?",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8182f950",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v8.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_41a5c102",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v8.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "org.onap...",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c1b8f12c",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v9.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_01afc9e4",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v9.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "org.onap...",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_417ce172",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_vnonDigit.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "org.onap",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6181dd49",
+        "filename": "src/test/resources/rule-driven-validator/results/expected/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.exp.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0196e994",
+        "filename": "src/test/resources/rule-driven-validator/results/expected/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-GOOD.exp.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c18f9174",
+        "filename": "src/test/resources/rule-driven-validator/results/expected/vserver-create-event.exp.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e18c0d82",
+        "filename": "src/test/resources/rule-driven-validator/results/expected/vserver-update-AAI-EVENT-devINT1.exp.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_81e9991c",
+        "filename": "src/test/resources/rule-driven-validator/test_events/generic-vnf-create-event.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_41f3810a",
+        "filename": "src/test/resources/rule-driven-validator/test_events/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-BAD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_61f8fde5",
+        "filename": "src/test/resources/rule-driven-validator/test_events/vserver-create-AAI-EVENT-devINT1-TRINITY-VNF-NAME-GOOD.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_01dd8970",
+        "filename": "src/test/resources/rule-driven-validator/test_events/vserver-create-event.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_21da0579",
+        "filename": "src/test/resources/rule-driven-validator/test_events/vserver-update-AAI-EVENT-devINT1.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e1e3ad31",
+        "filename": "src/test/resources/validation-result/vserver-create-event.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 659
+      },
+      "writtenOn": "2018-08-03T15:26:22Z",
+      "side": 1,
+      "message": "We need to replace all references to AT\u0026T servers, AIC, and internal IP addresses",
+      "revId": "3e4d5fdb85083fadf60579b9917d23b77cdb896d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
