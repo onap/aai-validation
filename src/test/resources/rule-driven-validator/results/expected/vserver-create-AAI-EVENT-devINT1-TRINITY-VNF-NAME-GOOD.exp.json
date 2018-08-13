@@ -1,0 +1,23 @@
+{
+  "validationId": "VALIDATIONID",
+  "validationTimestamp": "TIMESTAMP",
+  "entityId": {
+    "vserver-id": "c385bb3e-6ebd-4898-bc92-792e0ac2db50"
+  },
+  "entityType": "vserver",
+  "entityLink": "cloud-infrastructure/cloud-regions/cloud-region/region1/AAIregion1/tenants/tenant/example-tenant-id-val-88551/vservers/vserver/example-vserver-id-val-34666",
+  "resourceVersion": "1475160142",
+  "violations": [
+    {
+      "violationId": "3855354af5e3da4383dd39beac0c814e5125e0afa3bf0332f9289aa6178db5d6",
+      "category": "INVALID_VALUE",
+      "severity": "CRITICAL",
+      "violationType": "Rule",
+      "validationRule": "prov-status",
+      "violationDetails": {
+        "prov-status": "ACTIVE"
+      },
+      "errorMessage": "Invalid prov-status value. Must be PREPROV, NVTPROV, PROV, CAPPED, DECOM, or RETIRED"
+    }
+  ]
+}

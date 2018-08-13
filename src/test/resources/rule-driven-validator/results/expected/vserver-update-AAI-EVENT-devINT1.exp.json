@@ -1,0 +1,38 @@
+{
+  "validationId": "VALIDATIONID",
+  "validationTimestamp": "TIMESTAMP",
+  "entityId": {
+    "vserver-id": "fd280243-cd5c-424e-b629-533cabe2a164"
+  },
+  "entityType": "vserver",
+  "entityLink": "cloud-infrastructure/cloud-regions/cloud-region/region1/AAIregion1/tenants/tenant/d52b9dea5d0f4e5d90be3590ac8c78a9/vservers/vserver/fd280243-cd5c-424e-b629-533cabe2a164",
+  "resourceVersion": "1476735222",
+  "violations": [
+    {
+      "violationId": "af7226e6b786fb8ad20e1ef088c1b04fd0408093405ca51559f001607ab758e0",
+      "category": "INVALID_VALUE",
+      "severity": "CRITICAL",
+      "violationType": "Rule",
+      "validationRule": "prov-status",
+      "violationDetails": {
+        "prov-status": null
+      },
+      "errorMessage": "Invalid prov-status value. Must be PREPROV, NVTPROV, PROV, CAPPED, DECOM, or RETIRED"
+    },
+    {
+      "violationId": "daf1c3d071651c081f05f913e0fe2ba4750d2a1fa1699d60a7693126615c4a07",
+      "category": "MISSING_REL",
+      "severity": "MINOR",
+      "violationType": "Rule",
+      "validationRule": "vserver is related to a vnf (vce or newvce or vpe or generic-vnf)",
+      "violationDetails": {
+        "relationship-list.relationship[*].related-to": [
+          "image",
+          "pserver",
+          "flavor"
+        ]
+      },
+      "errorMessage": "Missing relationship - a vserver must be related to a vnf (vce or newvce or vpe or generic-vnf)"
+    }
+  ]
+}

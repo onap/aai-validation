@@ -1,0 +1,18 @@
+[
+	{
+		"mappingType": "RELATIONSHIP",
+		"model": {
+			"root": "model-elements/model-element",
+			"id": "relationship-list/relationship/relationship-data/relationship-value[../relationship-key/text()='model.model-name-version-id']",
+			"value": "relationship-list/relationship/related-to-property/property-value[../property-key/text()='model.model-name']",
+			"filter": {
+				"path": "relationship-list/relationship/related-to-property/property-value[../property-key/text()='model.model-type']",
+				"valid": ["INVALID_TYPE"]
+			}
+		},
+		"instance": {
+			"origin": "$.inventory-response-item[0]",
+			"root": "$.inventory-response-items.inventory-response-item[*]"
+		}
+	}
+]

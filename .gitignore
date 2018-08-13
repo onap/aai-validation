@@ -1,0 +1,9 @@
+logs/
+debug-logs/
+appconfig-local/
+bundleconfig-local/etc/auth/tomcat_keystore
+.classpath
+.project
+.settings/
+target/
+src/main/java/META-INF/

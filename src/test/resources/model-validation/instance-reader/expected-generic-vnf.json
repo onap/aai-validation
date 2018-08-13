@@ -1,0 +1,36 @@
+{
+	"generic-vnf": {
+		"vnf-id": "generic-vnf-01",
+		"vnf-name": "example-vnf-name-val-3501",
+		"vnf-name2": "example-vnf-name2-val-3501",
+		"vnf-type": "example-vnf-type-val-3501",
+		"regional-resource-zone": "example-regional-resource-zone-val-3501",
+		"prov-status": "example-prov-status-val-3501",
+		"operational-state": "example-operational-state-val-3501",
+		"license-key": "example-license-key-val-3501",
+		"equipment-role": "example-equipment-role-val-3501",
+		"orchestration-status": "example-orchestration-status-val-3501",
+		"heat-stack-id": "example-heat-stack-id-val-3501",
+		"mso-catalog-key": "example-mso-catalog-key-val-3501",
+		"management-option": "example-management-option-val-3501",
+		"ipv4-oam-address": "example-ipv4-oam-address-val-3501",
+		"ipv4-loopback0-address": "example-ipv4-loopback0-address-val-3501",
+		"nm-lan-v6-address": "example-nm-lan-v6-address-val-3501",
+		"management-v6-address": "example-management-v6-address-val-3501",
+		"vcpu": 1817,
+		"vcpu-units": "example-vcpu-units-val-3501",
+		"vmemory": 6020,
+		"vmemory-units": "example-vmemory-units-val-3501",
+		"vdisk": 5281,
+		"vdisk-units": "example-vdisk-units-val-3501",
+		"in-maint": false,
+		"is-closed-loop-disabled": true,
+		"resource-version": "1468321711"
+	},
+	"extra-properties": {
+		
+	},
+	"inventory-response-items": {
+		
+	}
+}

@@ -1,0 +1,17 @@
+[
+	{
+		"mappingType" : "RELATIONSHIP",
+		"model": {
+			"root": "model-elements/model-element",
+			"filter": {
+				"path": "relationship-list/relationship/related-to-property/property-value[../property-key/text()='model.model-type']",
+				"valid": ["widget"]
+			},
+			"value": "relationship-list/relationship/related-to-property/property-value[../property-key/text()='model.model-name']"
+		},
+		"instance": {
+			"origin": "$.inventory-response-item[0]",
+			"root": "NOT_KNOWN"
+		}
+	}
+]

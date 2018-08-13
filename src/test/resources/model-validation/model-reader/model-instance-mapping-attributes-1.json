@@ -1,0 +1,11 @@
+[
+	{
+		"mappingType": "ATTRIBUTE",
+		"model": {
+			"value": "metadata/metadatum/metaname"
+		},
+		"instance": {
+			"value": "$..metadata.metadatum[*].metaname"
+		}
+	}
+]
