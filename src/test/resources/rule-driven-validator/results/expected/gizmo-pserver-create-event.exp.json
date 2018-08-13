@@ -1,0 +1,13 @@
+{
+    "validationId":"f7c28a16-2bdf-40a9-9414-ad430e2550c8",
+    "validationTimestamp":"20180220T172745Z",
+    "entityId":{
+        "hostname":"myhost"
+    },
+    "entityType":"pserver",
+    "entityLink":"",
+    "resourceVersion":"1477013499",
+    "violations":[
+
+    ]
+}

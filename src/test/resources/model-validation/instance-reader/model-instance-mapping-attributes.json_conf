@@ -1,0 +1,12 @@
+[
+	{
+		"mappingType": "ATTRIBUTE",
+		"model": {
+			"value": "metadata/metadatum/metaname"
+		},
+		"instance": {
+			"origin": "$.inventory-response-item[0]",
+			"value": "$..extra-properties.metadatum[*].metaname"
+		}
+	}
+]

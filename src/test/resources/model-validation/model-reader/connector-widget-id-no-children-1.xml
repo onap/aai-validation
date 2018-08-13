@@ -1,0 +1,51 @@
+<!--
+============LICENSE_START===================================================
+Copyright (c) 2018 Amdocs
+============================================================================
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+============LICENSE_END=====================================================
+-->
+<model>
+	<model-name-version-id>connector-widget-id</model-name-version-id>
+	<model-type>widget</model-type>
+	<model-name>connector</model-name>
+	<model-id>connector-model-id</model-id>
+	<model-version>v1.0</model-version>
+	<resource-version>1466417894</resource-version>
+	<metadata>
+		<metadatum>
+			<metaname>vpn-id</metaname>
+			<metaval>a</metaval>
+			<resource-version>1466417844</resource-version>
+		</metadatum>
+		<metadatum>
+			<metaname>product</metaname>
+			<metaval>b</metaval>
+			<resource-version>1466417844</resource-version>
+		</metadatum>
+	</metadata>
+	<relationship-list>
+		<relationship>
+			<related-to>model-element</related-to>
+			<related-link>https://dummy-host.onap.org:8443/aai/v7/service-design-and-creation/model-elements/model-element/54629607-160a-4dcf-8c5c-15b8a3756f9a/</related-link>
+			<relationship-data>
+				<relationship-key>model-element.model-element-uuid</relationship-key>
+				<relationship-value>54629607-160a-4dcf-8c5c-15b8a3756f9a</relationship-value>
+			</relationship-data>
+			<relationship-data>
+				<relationship-key>model.model-name-version-id</relationship-key>
+				<relationship-value>wan-connector-service-id</relationship-value>
+			</relationship-data>
+		</relationship>
+	</relationship-list>
+</model>

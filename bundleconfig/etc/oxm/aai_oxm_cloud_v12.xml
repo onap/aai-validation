@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+============LICENSE_START===================================================
+Copyright (c) 2018 Amdocs
+============================================================================
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+============LICENSE_END=====================================================
+-->
+
+<xml-bindings xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/oxm" package-name="inventory.aai.onap.org.v12" xml-mapping-metadata-complete="true">
+	<xml-schema element-form-default="QUALIFIED">
+		<xml-ns namespace-uri="http://org.onap.aai.inventory/v12" />
+	</xml-schema>
+	<java-types>
+		<java-type name="Inventory">
+			<xml-root-element name="inventory" />
+			<java-attributes>
+				<xml-element java-attribute="search" name="search" type="inventory.aai.onap.org.v12.Search" />
+				<xml-element java-attribute="actions" name="actions" type="inventory.aai.onap.org.v12.Actions" />
+				<xml-element java-attribute="cloudInfrastructure" name="cloud-infrastructure" type="inventory.aai.onap.org.v12.CloudInfrastructure" />
+				<xml-element java-attribute="licenseManagement" name="license-management" type="inventory.aai.onap.org.v12.LicenseManagement" />
+				<xml-element java-attribute="business" name="business" type="inventory.aai.onap.org.v12.Business" />
+				<xml-element java-attribute="serviceDesignAndCreation" name="service-design-and-creation" type="inventory.aai.onap.org.v12.ServiceDesignAndCreation" />
+				<xml-element java-attribute="network" name="network" type="inventory.aai.onap.org.v12.Network" />
+				<xml-element java-attribute="aaiInternal" name="aai-internal" type="inventory.aai.onap.org.v12.AaiInternal" />
+				<xml-element java-attribute="nodes" name="nodes" type="inventory.aai.onap.org.v12.Nodes"/>
+			</java-attributes>
+		</java-type>
+
+		<java-type name="Nodes">
+			<xml-root-element name="nodes" />
+		</java-type>
+		<java-type name="Search">
+			<xml-root-element name="search" />
+			<java-attributes>
+				<xml-element java-attribute="edgeTagQueryResult" name="edge-tag-query-result" type="inventory.aai.onap.org.v12.EdgeTagQueryResult" />
+				<xml-element java-attribute="edgeTagQueryRequest" name="edge-tag-query-request" type="inventory.aai.onap.org.v12.EdgeTagQueryRequest" />
+				<xml-element java-attribute="searchResults" name="search-results" type="inventory.aai.onap.org.v12.SearchResults" />
+				<xml-element java-attribute="sdnZoneResponse" name="sdn-zone-response" type="inventory.aai.onap.org.v12.SdnZoneResponse" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="EdgeTagQueryResult">
+			<xml-root-element name="edge-tag-query-result" />
+			<java-attributes>
+				<xml-element container-type="java.util.ArrayList" java-attribute="taggedInventoryItemList" name="tagged-inventory-item-list" type="inventory.aai.onap.org.v12.TaggedInventoryItemList" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="TaggedInventoryItemList">
+			<xml-root-element name="tagged-inventory-item-list" />
+			<java-attributes>
+				<xml-element container-type="java.util.ArrayList" java-attribute="inventoryItem" name="inventory-item" type="inventory.aai.onap.org.v12.InventoryItem" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="InventoryItem">
+			<xml-root-element name="inventory-item" />
+			<java-attributes>
+				<xml-element java-attribute="inventoryItemType" name="inventory-item-type" type="java.lang.String" />
+				<xml-element java-attribute="inventoryItemLink" name="inventory-item-link" type="java.lang.String" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="inventoryItemData" name="inventory-item-data" type="inventory.aai.onap.org.v12.InventoryItemData" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="taggedInventoryItemList" name="tagged-inventory-item-list" type="inventory.aai.onap.org.v12.TaggedInventoryItemList" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="InventoryItemData">
+			<xml-root-element name="inventory-item-data" />
+			<java-attributes>
+				<xml-element java-attribute="propertyName" name="property-name" type="java.lang.String" />
+				<xml-element java-attribute="propertyValue" name="property-value" type="java.lang.String" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="EdgeTagQueryRequest">
+			<xml-root-element name="edge-tag-query-request" />
+			<java-attributes>
+				<xml-element java-attribute="edgeTag" name="edge-tag" type="java.lang.String" />
+				<xml-element java-attribute="resultDetail" name="result-detail" type="java.lang.String" />
+				<xml-element java-attribute="startNodeType" name="start-node-type" type="java.lang.String" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="startNodeFilter" name="start-node-filter" type="inventory.aai.onap.org.v12.StartNodeFilter" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="includeNodeFilter" name="include-node-filter" type="inventory.aai.onap.org.v12.IncludeNodeFilter" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="secondaryFilter" name="secondary-filter" type="inventory.aai.onap.org.v12.SecondaryFilter" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="StartNodeFilter">
+			<xml-root-element name="start-node-filter" />
+			<java-attributes>
+				<xml-element java-attribute="propertyName" name="property-name" type="java.lang.String" />
+				<xml-element java-attribute="propertyValue" name="property-value" type="java.lang.String" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="IncludeNodeFilter">
+			<xml-root-element name="include-node-filter" />
+			<java-attributes>
+				<xml-element java-attribute="includeNodeType" name="include-node-type" type="java.lang.String" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="SecondaryFilter">
+			<xml-root-element name="secondary-filter" />
+			<java-attributes>
+				<xml-element java-attribute="propertyName" name="property-name" type="java.lang.String" />
+				<xml-element java-attribute="filterType" name="filter-type" type="java.lang.String" />
+				<xml-element java-attribute="propertyValue" name="property-value" type="java.lang.String" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="SearchResults">
+			<xml-root-element name="search-results" />
+			<java-attributes>
+				<xml-element container-type="java.util.ArrayList" java-attribute="resultData" name="result-data" type="inventory.aai.onap.org.v12.ResultData" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="ResultData">
+			<xml-root-element name="result-data" />
+			<java-attributes>
+				<xml-element java-attribute="resourceType" name="resource-type" type="java.lang.String">
+					<xml-properties>
+						<xml-property name="description" value="The specific type of node in the A&amp;AI graph" />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="resourceLink" name="resource-link" type="java.lang.String">
+					<xml-properties>
+						<xml-property name="description" value="The URL to the specific resource" />
+					</xml-properties>
+				</xml-element>
+			</java-attributes>
+		</java-type>
+
+		<java-type name="SdnZoneResponse">
+			<xml-root-element name="sdn-zone-response" />
+			<java-attributes>
+				<xml-element java-attribute="oamNetworks" name="oam-networks" type="inventory.aai.onap.org.v12.OamNetworks" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="azAndDvsSwitches" name="az-and-dvs-switches" type="inventory.aai.onap.org.v12.AzAndDvsSwitches" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="AzAndDvsSwitches">
+			<xml-root-element name="az-and-dvs-switches" />
+			<java-attributes>
+				<xml-element java-attribute="dvsSwitches" name="dvs-switches" type="inventory.aai.onap.org.v12.DvsSwitches" />
+				<xml-element java-attribute="availabilityZone" name="availability-zone" type="inventory.aai.onap.org.v12.AvailabilityZone" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="Actions">
+			<xml-properties>
+				<xml-property name="description" value="APIs that are more action related than REST (e.g., notify, update)." />
+			</xml-properties>
+			<xml-root-element name="actions" />
+			<java-attributes>
+				<xml-element java-attribute="update" name="update" type="inventory.aai.onap.org.v12.Update" />
+				<xml-element java-attribute="notify" name="notify" type="inventory.aai.onap.org.v12.Notify" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="Update">
+			<xml-properties>
+				<xml-property name="description" value="Serves a PATCH like function.  Does not enforce concurrency control.  Clear each usage with AAI team." />
+			</xml-properties>
+			<xml-root-element name="update" />
+			<java-attributes>
+				<xml-element java-attribute="updateNodeType" name="update-node-type" required="true" type="java.lang.String" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="updateNodeKey" name="update-node-key" type="inventory.aai.onap.org.v12.UpdateNodeKey" />
+				<xml-element java-attribute="updateNodeUri" name="update-node-uri" type="java.lang.String" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="action" name="action" type="inventory.aai.onap.org.v12.Action" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="Action">
+			<xml-root-element name="action" />
+			<java-attributes>
+				<xml-element java-attribute="actionType" name="action-type" type="java.lang.String" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="actionData" name="action-data" type="inventory.aai.onap.org.v12.ActionData" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="ActionData">
+			<xml-root-element name="action-data" />
+			<java-attributes>
+				<xml-element java-attribute="propertyName" name="property-name" type="java.lang.String" />
+				<xml-element java-attribute="propertyValue" name="property-value" type="java.lang.String" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="UpdateNodeKey">
+			<xml-root-element name="update-node-key" />
+			<java-attributes>
+				<xml-element java-attribute="keyName" name="key-name" type="java.lang.String" />
+				<xml-element java-attribute="keyValue" name="key-value" type="java.lang.String" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="Notify">
+			<xml-root-element name="notify" />
+			<java-attributes>
+				<xml-element java-attribute="eventId" name="event-id" required="true" type="java.lang.String" />
+				<xml-element java-attribute="nodeType" name="node-type" type="java.lang.String" />
+				<xml-element java-attribute="eventTrigger" name="event-trigger" type="java.lang.String" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="keyData" name="key-data" type="inventory.aai.onap.org.v12.KeyData" />
+				<xml-element java-attribute="selflink" name="selflink" type="java.lang.String" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="KeyData">
+			<xml-root-element name="key-data" />
+			<java-attributes>
+				<xml-element java-attribute="keyName" name="key-name" type="java.lang.String" />
+				<xml-element java-attribute="keyValue" name="key-value" type="java.lang.String" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="CloudInfrastructure">
+			<xml-properties>
+				<xml-property name="description" value="Namespace for cloud infrastructure." />
+			</xml-properties>
+			<xml-root-element name="cloud-infrastructure" />
+			<java-attributes>
+				<xml-element java-attribute="complexes" name="complexes" type="inventory.aai.onap.org.v12.Complexes" />
+				<xml-element java-attribute="cloudRegions" name="cloud-regions" type="inventory.aai.onap.org.v12.CloudRegions" />
+				<xml-element java-attribute="networkProfiles" name="network-profiles" type="inventory.aai.onap.org.v12.NetworkProfiles" />
+				<xml-element java-attribute="pservers" name="pservers" type="inventory.aai.onap.org.v12.Pservers" />
+				<xml-element java-attribute="virtualDataCenters" name="virtual-data-centers" type="inventory.aai.onap.org.v12.VirtualDataCenters" />
+			</java-attributes>
+		</java-type>
+
+		<java-type name="CloudRegions">
+			<xml-root-element name="cloud-regions" />
+			<java-attributes>
+				<xml-element container-type="java.util.ArrayList" java-attribute="cloudRegion" name="cloud-region" type="inventory.aai.onap.org.v12.CloudRegion" />
+			</java-attributes>
+            <xml-properties>
+				<xml-property name="maximumDepth" value="0" />
+			</xml-properties>
+		</java-type>
+
+		<java-type name="CloudRegion">
+			<xml-root-element name="cloud-region" />
+			<java-attributes>
+				<xml-element java-attribute="cloudOwner" name="cloud-owner" required="true" type="java.lang.String" xml-key="true">
+					<xml-properties>
+						<xml-property name="description" value="Identifies the vendor and cloud name, e.g., vendor-cloudname. First part of composite key should be formatted as vendor-cloudname" />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="cloudRegionId" name="cloud-region-id" required="true" type="java.lang.String" xml-key="true">
+					<xml-properties>
+						<xml-property name="description" value="Identifier used by the vendor for the region. Second part of composite key" />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="cloudType" name="cloud-type" type="java.lang.String">
+					<xml-properties>
+						<xml-property name="description" value="Type of the cloud (e.g., openstack)" />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="ownerDefinedType" name="owner-defined-type" type="java.lang.String">
+					<xml-properties>
+						<xml-property name="description" value="Cloud-owner defined type indicator (e.g., dcp, lcp)" />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="cloudRegionVersion" name="cloud-region-version" type="java.lang.String">
+					<xml-properties>
+						<xml-property name="description" value="Software version employed at the site.  NOTE - THIS FIELD IS NOT KEPT UP TO DATE." />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="identityUrl" name="identity-url" type="java.lang.String">
+					<xml-properties>
+						<xml-property name="description" value="URL of the keystone identity service" />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="cloudZone" name="cloud-zone" type="java.lang.String">
+					<xml-properties>
+						<xml-property name="description" value="Zone where the cloud is homed.  NOTE - THIS FIELD IS NOT CORRECTLY POPULATED." />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="complexName" name="complex-name" type="java.lang.String">
+					<xml-properties>
+						<xml-property name="description" value="complex name for cloud-region instance.  NOTE - THIS FIELD IS NOT CORRECTLY POPULATED." />
+					</xml-properties>
+				</xml-element>
+				<xml-element default-value="false" required="true" java-attribute="sriovAutomation" name="sriov-automation" type="java.lang.Boolean">
+					<xml-properties>
+						<xml-property name="defaultValue" value="false"/>
+						<xml-property name="description" value="Whether the cloud region supports (true) or does not support (false) SR-IOV automation." />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="resourceVersion" name="resource-version" type="java.lang.String">
+					<xml-properties>
+						<xml-property name="description" value="Used for optimistic concurrency.  Must be empty on create, valid on update and delete." />
+					</xml-properties>
+				</xml-element>
+				<xml-element java-attribute="volumeGroups" name="volume-groups" type="inventory.aai.onap.org.v12.VolumeGroups" />
+				<xml-element java-attribute="tenants" name="tenants" type="inventory.aai.onap.org.v12.Tenants" />
+				<xml-element java-attribute="flavors" name="flavors" type="inventory.aai.onap.org.v12.Flavors" />
+				<xml-element java-attribute="groupAssignments" name="group-assignments" type="inventory.aai.onap.org.v12.GroupAssignments" />
+				<xml-element java-attribute="snapshots" name="snapshots" type="inventory.aai.onap.org.v12.Snapshots" />
+				<xml-element java-attribute="images" name="images" type="inventory.aai.onap.org.v12.Images" />
+				<xml-element java-attribute="dvsSwitches" name="dvs-switches" type="inventory.aai.onap.org.v12.DvsSwitches" />
+				<xml-element java-attribute="oamNetworks" name="oam-networks" type="inventory.aai.onap.org.v12.OamNetworks" />
+				<xml-element java-attribute="availabilityZones" name="availability-zones" type="inventory.aai.onap.org.v12.AvailabilityZones" />
+				<xml-element java-attribute="relationshipList" name="relationship-list" type="inventory.aai.onap.org.v12.RelationshipList" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="vipIpv4AddressList" name="vip-ipv4-address-list" type="inventory.aai.onap.org.v12.VipIpv4AddressList" />
+				<xml-element container-type="java.util.ArrayList" java-attribute="vipIpv6AddressList" name="vip-ipv6-address-list" type="inventory.aai.onap.org.v12.VipIpv6AddressList" />
+			</java-attributes>
+			<xml-properties>
+				<xml-property name="description" value="cloud-region designates an installation of a cloud cluster or region or instantiation" />
+				<xml-property name="indexedProps" value="cloud-owner,cloud-region-id,cloud-type,owner-defined-type" />
+				<xml-property name="nameProps" value="owner-defined-type" />
+				<xml-property name="container" value="cloud-regions" />
+				<xml-property name="namespace" value="cloud-infrastructure" />
+			</xml-properties>
+		</java-type>
+	</java-types>
+</xml-bindings>
