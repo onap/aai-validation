@@ -1,0 +1,399 @@
+{
+    "inventory-response-item": [
+        {
+            "model-name": "NetBond WAN Connector v0.1",
+            "connector": {
+                "resource-instance-id": "100559",
+                "resource-version": "1465571381",
+                "persona-model-id": "dc700a83-c507-47d9-b775-1fdfcdd5f9eb",
+                "persona-model-version": "0.1"
+            },
+            "extra-properties": {
+                "metadatum": [
+                    {
+                        "metaname": "vpn-id",
+                        "metaval": "vpn-id value 1",
+                        "resource-version": "1466418452"
+                    },
+                    {
+                        "metaname": "unexpected",
+                        "metaval": "unexpected value 1",
+                        "resource-version": "1466418452"
+                    }
+                ]
+            },
+            "inventory-response-items": {
+                "inventory-response-item": [
+                    {
+                        "virtual-data-center": {
+                            "vdc-id": "15001220",
+                            "vdc-name": "SAN_DIEGO_CA01",
+                            "resource-version": "1465571382"
+                        },
+                        "extra-properties": {},
+                        "inventory-response-items": {
+                            "inventory-response-item": [
+                                {
+                                    "model-name": "vLAN on a Physical Wire",
+                                    "logical-link": {
+                                        "link-name": "sn6ca391ve2-xe-10/2/3.117|sn4ca01pbg",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571381",
+                                        "persona-model-id": "32bee148-2cae-4f3d-a42e-22c9e4f078a2",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                            	"model-name": "pBgf",
+                                                "pserver": {
+                                                    "hostname": "sn4ca01pbg",
+                                                    "in-maint": false,
+                                                    "resource-version": "1470978156"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "VL ELAN",
+                                    "logical-link": {
+                                        "link-name": "sn6ca391ve2-ae6.1322|dbzx0003v",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571381",
+                                        "persona-model-id": "932518e5-4260-4cc4-8038-df604a367f85",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "vDbe",
+                                                "generic-vnf": {
+                                                    "vnf-id": "VAPP-2883",
+                                                    "vnf-name": "dbzx0004v",
+                                                    "vnf-type": "vSRX vDBE-V VNF",
+                                                    "service-id": "12a96a9d-4b4c-4349-a950-fe1159602621",
+                                                    "prov-status": "ACTIVE",
+                                                    "in-maint": false,
+                                                    "is-closed-loop-disabled": false,
+                                                    "resource-version": "1470978155"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "VL ELAN",
+                                    "logical-link": {
+                                        "link-name": "sn6ca392ve2-ae6.1322|dbzx0003v",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571382",
+                                        "persona-model-id": "932518e5-4260-4cc4-8038-df604a367f85",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "vDbe",
+                                                "generic-vnf": {
+                                                    "vnf-id": "VAPP-2883",
+                                                    "vnf-name": "dbzx0004v",
+                                                    "vnf-type": "vSRX vDBE-V VNF",
+                                                    "service-id": "12a96a9d-4b4c-4349-a950-fe1159602621",
+                                                    "prov-status": "ACTIVE",
+                                                    "in-maint": false,
+                                                    "is-closed-loop-disabled": false,
+                                                    "resource-version": "1470978155"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "VL ELAN",
+                                    "logical-link": {
+                                        "link-name": "sn6ca392ve2-ae6.1927|asbg0003v",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571382",
+                                        "persona-model-id": "932518e5-4260-4cc4-8038-df604a367f85",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "vDbe",
+                                                "generic-vnf": {
+                                                    "vnf-id": "VAPP-9320",
+                                                    "vnf-name": "asbg0003v",
+                                                    "vnf-type": "ASBGv No TLS",
+                                                    "service-id": "c7611ebe-c324-48f1-8085-94aef0c6ef3d",
+                                                    "prov-status": "PROV",
+                                                    "ipv4-oam-address": "135.193.152.168",
+                                                    "in-maint": false,
+                                                    "is-closed-loop-disabled": false,
+                                                    "resource-version": "1470978156"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "vLAN on a Physical Wire",
+                                    "logical-link": {
+                                        "link-name": "sn6ca392ve2-xe-10/2/3.117|sn4ca01pbg",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571382",
+                                        "persona-model-id": "32bee148-2cae-4f3d-a42e-22c9e4f078a2",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "pBgf",
+                                                "pserver": {
+                                                    "hostname": "sn4ca01pbg",
+                                                    "in-maint": false,
+                                                    "resource-version": "1470978156"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "VL ELAN",
+                                    "logical-link": {
+                                        "link-name": "sn6ca391ve2-ae6.1927|asbg0003v",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571381",
+                                        "persona-model-id": "932518e5-4260-4cc4-8038-df604a367f85",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "vDbe",
+                                                "generic-vnf": {
+                                                    "vnf-id": "VAPP-9320",
+                                                    "vnf-name": "asbg0003v",
+                                                    "vnf-type": "ASBGv No TLS",
+                                                    "service-id": "c7611ebe-c324-48f1-8085-94aef0c6ef3d",
+                                                    "prov-status": "PROV",
+                                                    "ipv4-oam-address": "135.193.152.168",
+                                                    "in-maint": false,
+                                                    "is-closed-loop-disabled": false,
+                                                    "resource-version": "1470978156"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "virtual-data-center": {
+                            "vdc-id": "15001219",
+                            "vdc-name": "ALPHARETTA_GA01",
+                            "resource-version": "1465571380"
+                        },
+                        "extra-properties": {},
+                        "inventory-response-items": {
+                            "inventory-response-item": [
+                                {
+                                    "model-name": "VL ELAN",
+                                    "logical-link": {
+                                        "link-name": "alrga392ve2-ae6.1322|dbzx0004v",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571380",
+                                        "persona-model-id": "932518e5-4260-4cc4-8038-df604a367f85",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "vDbe",
+                                                "generic-vnf": {
+                                                    "vnf-id": "VAPP-1883",
+                                                    "vnf-name": "dbzx0003v",
+                                                    "vnf-type": "vSRX vDBE-V VNF",
+                                                    "service-id": "12a96a9d-4b4c-4349-a950-fe1159602621",
+                                                    "prov-status": "ACTIVE",
+                                                    "in-maint": false,
+                                                    "is-closed-loop-disabled": false,
+                                                    "resource-version": "1470978153"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "VL ELAN",
+                                    "logical-link": {
+                                        "link-name": "alrga391ve2-ae6.1322|dbzx0004v",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571379",
+                                        "persona-model-id": "932518e5-4260-4cc4-8038-df604a367f85",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "vDbe",
+                                                "generic-vnf": {
+                                                    "vnf-id": "VAPP-1883",
+                                                    "vnf-name": "dbzx0003v",
+                                                    "vnf-type": "vSRX vDBE-V VNF",
+                                                    "service-id": "12a96a9d-4b4c-4349-a950-fe1159602621",
+                                                    "prov-status": "ACTIVE",
+                                                    "in-maint": false,
+                                                    "is-closed-loop-disabled": false,
+                                                    "resource-version": "1470978153"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "VL ELAN",
+                                    "logical-link": {
+                                        "link-name": "alrga392ve2-ae6.1927|asbg0004v",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571380",
+                                        "persona-model-id": "932518e5-4260-4cc4-8038-df604a367f85",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "vDbe",
+                                                "generic-vnf": {
+                                                    "vnf-id": "VAPP-5305",
+                                                    "vnf-name": "asbg0004v",
+                                                    "vnf-type": "ASBGv No TLS",
+                                                    "service-id": "c7611ebe-c324-48f1-8085-94aef0c6ef3d",
+                                                    "prov-status": "PROV",
+                                                    "ipv4-oam-address": "135.190.182.168",
+                                                    "in-maint": false,
+                                                    "is-closed-loop-disabled": false,
+                                                    "resource-version": "1470978152"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "vLAN on a Physical Wire",
+                                    "logical-link": {
+                                        "link-name": "alrga391ve2-xe-10/2/3.117|ar4ga01pbg",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571379",
+                                        "persona-model-id": "32bee148-2cae-4f3d-a42e-22c9e4f078a2",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "pBgf",
+                                                "pserver": {
+                                                    "hostname": "ar4ga01pbg",
+                                                    "in-maint": false,
+                                                    "resource-version": "1470978153"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "VL ELAN",
+                                    "logical-link": {
+                                        "link-name": "alrga391ve2-ae6.1927|asbg0004v",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571380",
+                                        "persona-model-id": "932518e5-4260-4cc4-8038-df604a367f85",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "vDbe",
+                                                "generic-vnf": {
+                                                    "vnf-id": "VAPP-5305",
+                                                    "vnf-name": "asbg0004v",
+                                                    "vnf-type": "ASBGv No TLS",
+                                                    "service-id": "c7611ebe-c324-48f1-8085-94aef0c6ef3d",
+                                                    "prov-status": "PROV",
+                                                    "ipv4-oam-address": "135.190.182.168",
+                                                    "in-maint": false,
+                                                    "is-closed-loop-disabled": false,
+                                                    "resource-version": "1470978152"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "model-name": "vLAN on a Physical Wire",
+                                    "logical-link": {
+                                        "link-name": "alrga392ve2-xe-10/2/3.117|ar4ga01pbg",
+                                        "link-type": "l2bridge",
+                                        "resource-version": "1465571380",
+                                        "persona-model-id": "32bee148-2cae-4f3d-a42e-22c9e4f078a2",
+                                        "persona-model-version": "1"
+                                    },
+                                    "extra-properties": {},
+                                    "inventory-response-items": {
+                                        "inventory-response-item": [
+                                            {
+                                                "model-name": "pBgf",
+                                                "pserver": {
+                                                    "hostname": "ar4ga01pbg",
+                                                    "in-maint": false,
+                                                    "resource-version": "1470978153"
+                                                },
+                                                "extra-properties": {},
+                                                "inventory-response-items": {}
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
