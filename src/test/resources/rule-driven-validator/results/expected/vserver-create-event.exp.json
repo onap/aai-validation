@@ -1,0 +1,208 @@
+{
+  "validationId": "VALIDATIONID",
+  "validationTimestamp": "TIMESTAMP",
+  "entityId": {
+    "vserver-id": "example-vserver-id-val-34666"
+  },
+  "entityType": "vserver",
+  "entityLink": "cloud-infrastructure/cloud-regions/cloud-region/region1/AAIregion1/tenants/tenant/example-tenant-id-val-88551/vservers/vserver/example-vserver-id-val-34666",
+  "resourceVersion": "1464193654",
+  "violations": [
+    {
+      "violationId": "312ed832aed6adfff008732d5d3c4e03d46195ea38f2c305c4e58c9779e4721f",
+      "category": "INVALID_VALUE",
+      "severity": "CRITICAL",
+      "violationType": "Rule",
+      "validationRule": "prov-status",
+      "violationDetails": {
+        "prov-status": "INVALID"
+      },
+      "errorMessage": "Invalid prov-status value. Must be PREPROV, NVTPROV, PROV, CAPPED, DECOM, or RETIRED"
+    },
+    {
+      "violationId": "819a20606acf8eefa64ea06ddb1041edebdec7eb18c5695860eda5e3d1729460",
+      "modelName": null,
+      "category": "INVALID_NAME",
+      "severity": "MINOR",
+      "violationType": "Rule",
+      "validationRule": "vserver related to TRINITY image and generic-vnf.vnf-name matches naming convention",
+      "violationDetails": {
+        "relationship-list.relationship[*]": [
+          {
+            "related-to": "generic-vnf",
+            "related-link": "https://dummy-host.onap.org:8443/aai/v8/network/generic-vnfs/generic-vnf/bmsx0001v-1661/",
+            "relationship-data": [
+              {
+                "relationship-key": "generic-vnf.vnf-id",
+                "relationship-value": "bmsx0001v-1661"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "generic-vnf.vnf-name",
+                "property-value": "bmsx000x"
+              }
+            ]
+          },
+          {
+            "related-to": "image",
+            "related-link": "https://dummy-host.onap.org:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/region1/AAIregion1/images/image/ee49d429-283d-4f79-9c58-e11cc38d8856/",
+            "relationship-data": [
+              {
+                "relationship-key": "cloud-region.cloud-owner",
+                "relationship-value": "region1"
+              },
+              {
+                "relationship-key": "cloud-region.cloud-region-id",
+                "relationship-value": "AAIregion1"
+              },
+              {
+                "relationship-key": "image.image-id",
+                "relationship-value": "ee49d429-283d-4f79-9c58-e11cc38d8856"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "image.image-name",
+                "property-value": "TRINITY"
+              }
+            ]
+          },
+          {
+            "related-to": "pserver",
+            "related-link": "https://dummy-host.onap.org:8443/aai/v8/cloud-infrastructure/pservers/pserver/dpa2r03c007/",
+            "relationship-data": [
+              {
+                "relationship-key": "pserver.hostname",
+                "relationship-value": "dpa2r03c007"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "pserver.pserver-name2"
+              }
+            ]
+          },
+          {
+            "related-to": "flavor",
+            "related-link": "https://dummy-host.onap.org:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/region1/AAIregion1/flavors/flavor/5288f576-d9c6-46fc-9dcb-f6946a2b3597/",
+            "relationship-data": [
+              {
+                "relationship-key": "cloud-region.cloud-owner",
+                "relationship-value": "region1"
+              },
+              {
+                "relationship-key": "cloud-region.cloud-region-id",
+                "relationship-value": "AAIregion1"
+              },
+              {
+                "relationship-key": "flavor.flavor-id",
+                "relationship-value": "5288f576-d9c6-46fc-9dcb-f6946a2b3597"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "flavor.flavor-name",
+                "property-value": "l5.xLarge"
+              }
+            ]
+          }
+        ]
+      },
+      "errorMessage": "Invalid name - if vserver is related to an image named TRINITY, then the related generic-vnf name must match xxxxnnnnv (where x = character and n = number)"
+    },
+    {
+      "violationId": "50819193f02c57e6878573dbe4d8d43942ee0b20cb539aed817c067072733f6e",
+      "modelName": null,
+      "category": "INVALID_NAME",
+      "severity": "MINOR",
+      "violationType": "Rule",
+      "validationRule": "vserver is related to a TRINITY image and vserver-name matches naming convention",
+      "violationDetails": {
+        "relationship-list.relationship[*]": [
+          {
+            "related-to": "generic-vnf",
+            "related-link": "https://dummy-host.onap.org:8443/aai/v8/network/generic-vnfs/generic-vnf/bmsx0001v-1661/",
+            "relationship-data": [
+              {
+                "relationship-key": "generic-vnf.vnf-id",
+                "relationship-value": "bmsx0001v-1661"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "generic-vnf.vnf-name",
+                "property-value": "bmsx000x"
+              }
+            ]
+          },
+          {
+            "related-to": "image",
+            "related-link": "https://dummy-host.onap.org:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/region1/AAIregion1/images/image/ee49d429-283d-4f79-9c58-e11cc38d8856/",
+            "relationship-data": [
+              {
+                "relationship-key": "cloud-region.cloud-owner",
+                "relationship-value": "region1"
+              },
+              {
+                "relationship-key": "cloud-region.cloud-region-id",
+                "relationship-value": "AAIregion1"
+              },
+              {
+                "relationship-key": "image.image-id",
+                "relationship-value": "ee49d429-283d-4f79-9c58-e11cc38d8856"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "image.image-name",
+                "property-value": "TRINITY"
+              }
+            ]
+          },
+          {
+            "related-to": "pserver",
+            "related-link": "https://dummy-host.onap.org:8443/aai/v8/cloud-infrastructure/pservers/pserver/dpa2r03c007/",
+            "relationship-data": [
+              {
+                "relationship-key": "pserver.hostname",
+                "relationship-value": "dpa2r03c007"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "pserver.pserver-name2"
+              }
+            ]
+          },
+          {
+            "related-to": "flavor",
+            "related-link": "https://dummy-host.onap.org:8443/aai/v8/cloud-infrastructure/cloud-regions/cloud-region/region1/AAIregion1/flavors/flavor/5288f576-d9c6-46fc-9dcb-f6946a2b3597/",
+            "relationship-data": [
+              {
+                "relationship-key": "cloud-region.cloud-owner",
+                "relationship-value": "region1"
+              },
+              {
+                "relationship-key": "cloud-region.cloud-region-id",
+                "relationship-value": "AAIregion1"
+              },
+              {
+                "relationship-key": "flavor.flavor-id",
+                "relationship-value": "5288f576-d9c6-46fc-9dcb-f6946a2b3597"
+              }
+            ],
+            "related-to-property": [
+              {
+                "property-key": "flavor.flavor-name",
+                "property-value": "l5.xLarge"
+              }
+            ]
+          }
+        ],
+        "vserver-name": "example-vserver-name-val-34666"
+      },
+      "errorMessage": "Invalid name - if vserver is related to an image named TRINITY, then the vserver name must match xxxxnnnnvmnnn (where x = character and n = number)"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+	"cambria.partition": "AAI",
+	"entity": {
+		"resource-version": "1476736914",
+		"equipment-role": "UCPE",
+		"ipv4-oam-address": "",
+		"is-closed-loop-disabled": false,
+		"vnf-name": "USETEJORLFL0154UJTE08",
+		"vnf-type": "TE",
+		"nm-lan-v6-address": "2001:1890:e00e:fffe::943",
+		"vnf-id": "e5365951-9d90-4853-afae-c34a0707e3b6",
+		"in-maint": false,
+		"ipv4-loopback0-address": "",
+		"management-option": "ATT",
+		"orchestration-status": "created",
+		"service-id": "d7bb0a21-66f2-4e6d-87d9-9ef3ced63ae4",
+		"management-v6-address": "",
+		"relationship-list": {
+			"relationship": [{
+				"relationship-data":[{
+					"relationship-key": "service-instance.service-instance-id",
+					"relationship-value": "USETEJORLFL0154UJZZ01"
+				}],
+				"related-to-property": [{
+					"property-key": "service-instance.service-instance-name"
+				}],
+				"related-link": "https://aai-app-e2e.test.onap.org:8443/aai/v8/business/customers/customer/300DLE/service-subscriptions/service-subscription/uCPE-VMS/service-instances/service-instance/USETEJORLFL0154UJZZ01/",
+				"related-to": "service-instance"
+			}]
+		}
+	},
+	"event-header": {
+		"timestamp": "20161017-20:41:55:044",
+		"id": "20161017204155-be84d9c2-909c-427c-9ad5-0bdcdb498a06",
+		"action": "CREATE",
+		"domain": "e2e1",
+		"source-name": "SDNC",
+		"entity-link": "https://aai-app.test.onap.org:8443/aai/v8/network/generic-vnfs/generic-vnf/e5365951-9d90-4853-afae-c34a0707e3b6",
+		"entity-type": "generic-vnf",
+		"sequence-number": "0",
+		"severity": "NORMAL",
+		"event-type": "AAI-EVENT",
+		"top-entity-type": "generic-vnf",
+		"version": "v8"
+	}
+}

@@ -1,0 +1,35 @@
+{
+  "validationId": "",
+  "validationTimestamp": "",
+  "entityId": {
+    "vnf-id": "e5365951-9d90-4853-afae-c34a0707e3b6"
+  },
+  "entityType": "generic-vnf",
+  "entityLink": "network/generic-vnfs/generic-vnf/e5365951-9d90-4853-afae-c34a0707e3b6",
+  "resourceVersion": "1476736914",
+  "entity":"fkdlfkdl",
+  "violations": [
+    {
+      "violationId": "f47ce3b89d92659086e986f674cec4a7bed54601b8007aac69c6157101973b90",
+      "category": "INVALID_VALUE",
+      "severity": "CRITICAL",
+      "violationType": "Rule",
+      "validationRule": "prov-status",
+      "violationDetails": {
+        "prov-status": null
+      },
+      "errorMessage": "Invalid prov-status value. Must be PREPROV, NVTPROV, PROV, CAPPED, DECOM, or RETIRED"
+    },
+    {
+      "violationId": "227d68c5fb944636cc9b8a08e8fcefadf13bfd1ba2c40547d664b7150f1ebc14",
+      "category": "INVALID_VALUE",
+      "severity": "MINOR",
+      "violationType": "Rule",
+      "validationRule": "valid_ipv4_addr",
+      "violationDetails": {
+        "ipv4-oam-address": ""
+      },
+      "errorMessage": "Invalid value - attribute is not a valid IPv4 address"
+    }
+  ]
+}
