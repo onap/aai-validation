@@ -1,0 +1,33 @@
+{
+    "cambria.partition":"AAI",
+    "entity":{
+        "timestamp":1514927928167,
+        "operation":"CREATE",
+        "vertex":{
+            "properties":{
+                "ipv4-oam-address":"1.2.3.4",
+                "resource-version":"1477013499",
+                "purpose":"my-purpose",
+                "fqdn":"myhost.onap.net",
+                "in-maint":false,
+                "equip-model":"DL380p-nd",
+                "equip-vendor":"HP",
+                "equip-type":"server",
+                "hostname":"myhost",
+                "ptnii-equip-name":"e-name"
+            },
+            "key":"",
+            "type":"pserver",
+            "schema-version":"vX"
+        },
+        "transaction-id":"c0a81fa7-5ef4-49cd-ab39-e42c53c9b9a4",
+        "database-transaction-id":"b3e2853e-f643-47a3-a0c3-cb54cc997ad3"
+    },
+    "event-header":{
+        "timestamp":"1514927928167",
+        "id":"c0a81fa7-5ef4-49cd-ab39-e42c53c9b9a4",
+        "source-name":"GIZMO",
+        "entity-type":"pserver",
+        "event-type":"GIZMO-EVENT"
+    }
+}
