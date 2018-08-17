@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_e49f03b3",
+        "filename": "appconfig-local/aai-environment.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "Example properties under appconfig-local should be checked into test-config project.\n\nThis will apply to all files currently under the appconfig-local branch.",
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a4a90be1",
+        "filename": "appconfig-local/aai-environment.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "Non-default values should be replaced with placeholder values.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_44b03743",
+        "filename": "appconfig-local/aai-environment.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "Non-default values should be replaced with placeholder values.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 51
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_649213a1",
+        "filename": "appconfig-local/auth/tomcat_keystore",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "Make sure this is the ONAP keystore, NOT the AT\u0026T keystore.\n\nAs mentioned before, this should also be moved into the test-config project.",
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f02fbe9f",
+        "filename": "src/main/bin/start.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "AJSC_HOME should be renamed. (APP_HOME is a good alternative). This change will need to be rolled out to any file in the code base that references AJSC_HOME.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_903f6ad6",
+        "filename": "src/main/resources/logback.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "There should be no mention of AJSC anywhere in the code base.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 56
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_302696cf",
+        "filename": "src/main/resources/logback.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "Camel used to be packaged with AJSC. Do we still need this?",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 66
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c400c703",
+        "filename": "src/test/resources/logback.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "AJSC + Camel references should not be needed any more.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 56
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e403830b",
+        "filename": "src/test/resources/logback.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "AJSC + Camel references should not be needed any more.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 66
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a45b4b2d",
+        "filename": "src/test/resources/model-validation/instance-validator/all-models.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "I\u0027m thinking we should probably further genericise this file by changing the model-name fields, so that any proprietary network models are not directly exposed.",
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_643d33bb",
+        "filename": "src/test/resources/model-validation/model-parser/all-models.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "I\u0027m thinking we should probably further genericise this file by changing the model-name fields, so that any proprietary network models are not directly exposed.",
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_044c7f6f",
+        "filename": "src/test/resources/model-validation/model-reader/all-models.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-17T15:44:23Z",
+      "side": 1,
+      "message": "I\u0027m thinking we should probably further genericise this file by changing the model-name fields, so that any proprietary network models are not directly exposed.",
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
