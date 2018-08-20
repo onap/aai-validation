@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_872171a1",
+        "filename": "appconfig-local/aai-environment.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "appconfig-local will be moved to aai/test_config/validation.",
+      "parentUuid": "1a76adc5_e49f03b3",
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_a4a90be1",
         "filename": "appconfig-local/aai-environment.properties",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2018-08-17T15:44:23Z",
       "side": 1,
       "message": "Non-default values should be replaced with placeholder values.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c70689ce",
+        "filename": "appconfig-local/aai-environment.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "replaced with dummy value",
+      "parentUuid": "1a76adc5_a4a90be1",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_87109102",
+        "filename": "appconfig-local/aai-environment.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "found onap tomcat_keystore file and password; values replaced",
+      "parentUuid": "1a76adc5_44b03743",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 51
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_649213a1",
         "filename": "appconfig-local/auth/tomcat_keystore",
         "patchSetId": 2
@@ -76,6 +142,24 @@
       "writtenOn": "2018-08-17T15:44:23Z",
       "side": 1,
       "message": "Make sure this is the ONAP keystore, NOT the AT\u0026T keystore.\n\nAs mentioned before, this should also be moved into the test-config project.",
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a7134d0c",
+        "filename": "appconfig-local/auth/tomcat_keystore",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "Replaced with onap keystore and moved to aai/test-config/validation",
+      "parentUuid": "1a76adc5_649213a1",
       "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -128,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_671c5514",
+        "filename": "src/main/bin/start.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_f02fbe9f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_903f6ad6",
         "filename": "src/main/resources/logback.xml",
         "patchSetId": 2
@@ -139,6 +247,30 @@
       "writtenOn": "2018-08-17T15:44:23Z",
       "side": 1,
       "message": "There should be no mention of AJSC anywhere in the code base.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 56
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e7d70522",
+        "filename": "src/main/resources/logback.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "1a76adc5_903f6ad6",
       "range": {
         "startLine": 170,
         "startChar": 0,
@@ -174,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_87de513e",
+        "filename": "src/main/resources/logback.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "1a76adc5_302696cf",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 66
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_c400c703",
         "filename": "src/test/resources/logback.xml",
         "patchSetId": 2
@@ -185,6 +341,30 @@
       "writtenOn": "2018-08-17T15:44:23Z",
       "side": 1,
       "message": "AJSC + Camel references should not be needed any more.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 56
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c7bbe9e3",
+        "filename": "src/test/resources/logback.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "1a76adc5_c400c703",
       "range": {
         "startLine": 171,
         "startChar": 0,
@@ -220,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_e7be25d4",
+        "filename": "src/test/resources/logback.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "1a76adc5_e403830b",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 66
+      },
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_a45b4b2d",
         "filename": "src/test/resources/model-validation/instance-validator/all-models.xml",
         "patchSetId": 2
@@ -231,6 +435,24 @@
       "writtenOn": "2018-08-17T15:44:23Z",
       "side": 1,
       "message": "I\u0027m thinking we should probably further genericise this file by changing the model-name fields, so that any proprietary network models are not directly exposed.",
+      "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a786ed11",
+        "filename": "src/test/resources/model-validation/instance-validator/all-models.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-20T15:28:54Z",
+      "side": 1,
+      "message": "Removed references to NetBond; other model names don\u0027t have proprietary names.\n(Same goes for remaining all-models.xml files)",
+      "parentUuid": "1a76adc5_a45b4b2d",
       "revId": "ee7a9aa7c2512b0e8b589314635907e3e6bac3d8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
