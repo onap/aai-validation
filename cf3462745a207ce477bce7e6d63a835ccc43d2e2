@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_7ccb7b1e",
+        "filename": "bundleconfig/etc/oxm/aai_oxm_cloud_v12.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-21T15:24:28Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "1a76adc5_a11d7068",
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_61751897",
         "filename": "src/main/docker/readme.txt",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_7c67fb25",
+        "filename": "src/main/docker/readme.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-21T15:24:28Z",
+      "side": 1,
+      "message": "Image name changed to onap/validation-service",
+      "parentUuid": "1a76adc5_61751897",
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_41249cae",
         "filename": "src/test/resources/oxm-reader/single/aai_oxm_v10.xml",
         "patchSetId": 5
@@ -47,6 +83,30 @@
       "writtenOn": "2018-08-21T10:11:26Z",
       "side": 1,
       "message": "\"ATT\" references should be removed from test resources",
+      "range": {
+        "startLine": 4318,
+        "startChar": 46,
+        "endLine": 4318,
+        "endChar": 86
+      },
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1c6e0702",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v10.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 4318,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-08-21T15:24:28Z",
+      "side": 1,
+      "message": "All instances of ATT in these oxm files have been changed to \"vendor\".",
+      "parentUuid": "1a76adc5_41249cae",
       "range": {
         "startLine": 4318,
         "startChar": 46,
