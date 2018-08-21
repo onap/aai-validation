@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_a11d7068",
+        "filename": "bundleconfig/etc/oxm/aai_oxm_cloud_v12.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-21T10:11:26Z",
+      "side": 1,
+      "message": "The OXM files in bundleconfig/etc are unpacked at build time, and do not need to be committed.",
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_61751897",
+        "filename": "src/main/docker/readme.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-21T10:11:26Z",
+      "side": 1,
+      "message": "\"openecomp\" is mentioned in this file. Is this still valid?",
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_41249cae",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v10.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 4318,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-21T10:11:26Z",
+      "side": 1,
+      "message": "\"ATT\" references should be removed from test resources",
+      "range": {
+        "startLine": 4318,
+        "startChar": 46,
+        "endLine": 4318,
+        "endChar": 86
+      },
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0136a4e7",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v10.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 4862,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-21T10:11:26Z",
+      "side": 1,
+      "message": "\"ATT\" references should be removed from test resources",
+      "range": {
+        "startLine": 4862,
+        "startChar": 46,
+        "endLine": 4862,
+        "endChar": 86
+      },
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c12f4c87",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v8.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3191,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-21T10:11:26Z",
+      "side": 1,
+      "message": "\"ATT\" references should be removed from test resources",
+      "range": {
+        "startLine": 3191,
+        "startChar": 46,
+        "endLine": 3191,
+        "endChar": 86
+      },
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_614e7871",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v8.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3592,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-21T10:11:26Z",
+      "side": 1,
+      "message": "\"ATT\" references should be removed from test resources",
+      "range": {
+        "startLine": 3592,
+        "startChar": 46,
+        "endLine": 3592,
+        "endChar": 86
+      },
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_21588031",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v9.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3478,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-21T10:11:26Z",
+      "side": 1,
+      "message": "\"ATT\" references should be removed from test resources",
+      "range": {
+        "startLine": 3478,
+        "startChar": 46,
+        "endLine": 3478,
+        "endChar": 86
+      },
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_415b3c2e",
+        "filename": "src/test/resources/oxm-reader/single/aai_oxm_v9.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3885,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-21T10:11:26Z",
+      "side": 1,
+      "message": "\"ATT\" references should be removed from test resources",
+      "range": {
+        "startLine": 3885,
+        "startChar": 46,
+        "endLine": 3885,
+        "endChar": 86
+      },
+      "revId": "cf3462745a207ce477bce7e6d63a835ccc43d2e2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
