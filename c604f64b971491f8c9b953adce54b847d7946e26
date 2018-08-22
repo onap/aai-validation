@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_bb4b5058",
+        "filename": "pom.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2018-08-22T22:55:16Z",
+      "side": 1,
+      "message": "The path produced by the artifact needs to match the name of the repo. For example, the name of the repo is aai-validation and the path to post in Nexus should match:\nhttps://nexus.onap.org/content/repositories/snapshots/org/onap/aai/validation/...\nCurrently it is trying to post these bins to:\nhttps://nexus.onap.org/content/repositories/snapshots/org/onap/aai/validation-service/ which is a path not allowed. \n\nWe can fix this by doing these changes:\n\n\t\u003cgroupId\u003eorg.onap.aai.validation\u003c/groupId\u003e\n\t\u003cartifactId\u003eservice\u003c/artifactId\u003e",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "c604f64b971491f8c9b953adce54b847d7946e26",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
