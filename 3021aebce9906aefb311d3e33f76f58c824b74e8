@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_4e4cb79e",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 481
+      },
+      "writtenOn": "2018-08-23T21:24:07Z",
+      "side": 1,
+      "message": "this will result in a link like /org/onap/aai/validation/validation\n\ndo we prefer using: /org/onap/aai/validation/service?\n\nbasically is \u003cgroupID\u003e/\u003cartifactId\u003e",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "3021aebce9906aefb311d3e33f76f58c824b74e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
