@@ -22,6 +22,30 @@
       "revId": "5aa4107ab4c463cf5a5c5b4173aa048450a0ac97",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2b012805",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3479
+      },
+      "writtenOn": "2018-08-24T11:22:57Z",
+      "side": 1,
+      "message": "Good catch Tian.  Fixed in patch 2.",
+      "parentUuid": "1a76adc5_48a6eac2",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 25
+      },
+      "revId": "5aa4107ab4c463cf5a5c5b4173aa048450a0ac97",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
