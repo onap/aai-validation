@@ -19,7 +19,7 @@
 # This path is referenced in the file logback.xml.
 APP_HOME="${APP_HOME-/opt/app/validation-service}"
 
-JARFILE="$APP_HOME/validation-service.jar"
+JARFILE="$APP_HOME/validation.jar"
 LOGBACK_FILE=logback.xml
 
 # CONFIG_HOME is used as the base folder for relative paths, e.g. in the file aai-environment.properties

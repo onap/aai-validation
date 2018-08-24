@@ -71,6 +71,12 @@ limitations under the License.
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>logback-classic</artifactId>
+					<groupId>ch.qos.logback</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -360,6 +366,10 @@ limitations under the License.
 								</resource>
 								<resource>
 									<directory>${basedir}/src/main/bin/</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>**/*</include>
+									</includes>
 								</resource>
 							</resources>
 						</configuration>
@@ -387,7 +397,21 @@ limitations under the License.
 					</execution>
 				</executions>
 			</plugin>
-
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.11</version>
+				<configuration>
+					<verbose>true</verbose>
+					<serverId>docker-hub</serverId>
+					<imageName>${docker.push.registry}/onap/${project.artifactId}</imageName>
+					<dockerDirectory>${docker.location}</dockerDirectory>
+					<imageTags>
+						<imageTag>latest</imageTag>
+					</imageTags>
+					<forceTags>true</forceTags>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
