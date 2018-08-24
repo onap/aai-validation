@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_48a6eac2",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2018-08-24T08:56:26Z",
+      "side": 1,
+      "message": "Needs to be updated to validation. Please check for other such cases.",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 25
+      },
+      "revId": "5aa4107ab4c463cf5a5c5b4173aa048450a0ac97",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
