@@ -18,7 +18,7 @@ FROM ubuntu:14.04
 ARG MICRO_HOME=/opt/app/validation-service
 ARG BIN_HOME=$MICRO_HOME/bin
 ARG LOG_HOME=$MICRO_HOME/logs/AAI-VS
-ARG JAR_FILE=validation-service.jar
+ARG JAR_FILE=validation.jar
 
 RUN apt-get update
 
