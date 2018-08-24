@@ -65,6 +65,7 @@ limitations under the License.
 		<version.jacoco.maven.plugin>0.7.9</version.jacoco.maven.plugin>
 		<version.org.glassfish.jersey.core.jersey-client>2.23</version.org.glassfish.jersey.core.jersey-client>
 		<version.aai.aai-schema-ingest>1.2.4</version.aai.aai-schema-ingest>
+		<docker.location>${basedir}/target</docker.location>
 	</properties>
 
 	<dependencies>
