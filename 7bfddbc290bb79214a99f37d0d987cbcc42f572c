@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_911f9d5b",
+        "filename": "bundleconfig/etc/rules/poa-event/default-rules.groovy",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-09-27T13:51:14Z",
+      "side": 1,
+      "message": "This file has been moved to OOM for POMBA specific deployments.",
+      "revId": "7bfddbc290bb79214a99f37d0d987cbcc42f572c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_3119e979",
+        "filename": "src/main/java/org/onap/aai/validation/ruledriven/RuleDrivenValidator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-09-27T13:51:14Z",
+      "side": 1,
+      "message": "Refer to https://gerrit.onap.org/r/#/c/69311/ for rule example.",
+      "range": {
+        "startLine": 179,
+        "startChar": 14,
+        "endLine": 179,
+        "endChar": 104
+      },
+      "revId": "7bfddbc290bb79214a99f37d0d987cbcc42f572c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
