@@ -22,6 +22,7 @@ import groovy.lang.GroovyObject;
 import groovy.lang.MetaMethod;
 import groovy.lang.MissingMethodException;
 import groovy.lang.MissingPropertyException;
+import groovy.lang.Tuple2;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -125,7 +126,7 @@ public class GroovyRule implements Rule {
      * @return
      */
     @Override
-    public Boolean execute(AttributeValues attributeValues) {
+    public Tuple2<Boolean, List<String>> execute(AttributeValues attributeValues) {
         // Obtain the values of each of the attributes to pass into the rule
         List<Object> valueList = new ArrayList<>();
         for (String attrName : this.attributePaths) {
@@ -143,8 +144,9 @@ public class GroovyRule implements Rule {
      * @param groovyObject an instance/object of a Groovy class that implements one or more rule methods
      * @return the Boolean result of evaluating the expression
      */
-    @Override
-    public Boolean execute(Object... values) {
+    @SuppressWarnings("unchecked")
+	@Override
+    public Tuple2<Boolean, List<String>> execute(Object... values) {
         Object result = null;
         try {
             result = groovyObject.invokeMethod(getRuleMethod(), values);
@@ -155,9 +157,11 @@ public class GroovyRule implements Rule {
         }
 
         if (result instanceof Number) {
-            return !result.equals(0);
+        	return new Tuple2<>(!result.equals(0), null);
+        } else if (result instanceof groovy.lang.Tuple2) {
+        	return (Tuple2<Boolean, List<String>>)result;
         } else {
-            return (Boolean) result;
+        	return new Tuple2<>((Boolean)result, null);
         }
     }
 

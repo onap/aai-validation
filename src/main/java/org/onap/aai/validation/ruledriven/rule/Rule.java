@@ -17,6 +17,7 @@
  */
 package org.onap.aai.validation.ruledriven.rule;
 
+import groovy.lang.Tuple2;
 import java.util.List;
 import org.onap.aai.validation.reader.data.AttributeValues;
 
@@ -65,17 +66,19 @@ public interface Rule {
 	 *
 	 * @param values
 	 *            the attribute values to pass to the rule
-	 * @return a boolean representing the rule evaluation (meaning success/failure)
+	 * @return a tuple where 'first' represents the rule evaluation (meaning success/failure)
+	 *         and 'second' holds a list of Strings used to expand the rule's error message 
 	 */
-	Boolean execute(AttributeValues values);
+	Tuple2<Boolean, List<String>> execute(AttributeValues values);
 
 	/**
 	 * Execute the rule.
 	 *
 	 * @param values
 	 *            the attribute values to pass to the rule
-	 * @return a boolean representing the rule evaluation (meaning success/failure)
+	 * @return a tuple where 'first' represents the rule evaluation (meaning success/failure)
+	 *         and 'second' holds a list of Strings used to expand the rule's error message 
 	 */
-	Boolean execute(Object... values);
+	Tuple2<Boolean, List<String>> execute(Object... values);
 
 }

@@ -17,10 +17,12 @@
  */
 package org.onap.aai.validation.ruledriven;
 
+import groovy.lang.Tuple2;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -159,18 +161,26 @@ public class RuleDrivenValidator implements Validator {
             AttributeValues attributeValues = entity.getAttributeValues(rule.getAttributePaths());
 
             // Execute the rule for this particular set of attribute values.
-            boolean valid = false;
+            Tuple2<Boolean, List<String>> result = null;
             try {
-                valid = rule.execute(attributeValues);
+                result = rule.execute(attributeValues);
             } catch (IllegalArgumentException e) {
                 throw new ValidationServiceException(ValidationServiceError.RULE_EXECUTION_ERROR, e, rule,
                         attributeValues);
             }
 
+            boolean valid = result.getFirst();
             applicationLogger.debug(String.format("%s|%s|\"%s\"|%s", entity.getType(), entity.getIds(), rule.getName(),
                     valid ? "pass" : "fail"));
 
             if (!valid) {
+            	String errorMessage;
+            	if(result.getSecond() != null && !result.getSecond().isEmpty()) {
+            		errorMessage = MessageFormat.format(rule.getErrorMessage(), result.getSecond().toArray());
+            	} else {
+                	errorMessage = rule.getErrorMessage();
+            	}
+            	
                 //@formatter:off
 				Violation violation = builder
 									.category(rule.getErrorCategory())
@@ -178,7 +188,7 @@ public class RuleDrivenValidator implements Validator {
 									.violationType(ViolationType.RULE)
 									.validationRule(rule.getName())
 									.violationDetails(attributeValues.generateReport())
-									.errorMessage(rule.getErrorMessage())
+									.errorMessage(errorMessage)
 									.build();
 				//@formatter:on
 

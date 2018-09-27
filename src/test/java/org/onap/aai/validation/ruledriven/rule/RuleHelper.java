@@ -27,10 +27,10 @@ import org.onap.aai.validation.ruledriven.rule.Rule;
 public class RuleHelper {
 
     static void assertRuleResult(Rule rule, AttributeValues values, Boolean expectedResult) {
-        assertThat(rule + " failed for values [" + values + "]", rule.execute(values), is(equalTo(expectedResult)));
+        assertThat(rule + " failed for values [" + values + "]", rule.execute(values).getFirst(), is(equalTo(expectedResult)));
     }
 
     static void assertRuleResult(Rule rule, Object value, Boolean expectedResult) {
-        assertThat(rule + " failed for value [" + value + "]", rule.execute(value), is(equalTo(expectedResult)));
+        assertThat(rule + " failed for value [" + value + "]", rule.execute(value).getFirst(), is(equalTo(expectedResult)));
     }
 }
