@@ -46,13 +46,12 @@ public class TopicConfig {
     List<Topic> publisherTopics = new ArrayList<>();
 
     @Autowired
-    public TopicConfig (@Value("${consumer.topic.names}") final String consumerNames, @Value("${publisher.topic.names}") final String publisherNames){
-
-        consumerTopicNames = Arrays.asList(consumerNames.split(","));;
-        publisherTopicNames = Arrays.asList(publisherNames.split(","));;
-
-
+    public TopicConfig (@Value("${consumer.topic.names}") final String consumerNames,
+            @Value("${publisher.topic.names}") final String publisherNames) {
+        consumerTopicNames = Arrays.asList(consumerNames.split(","));
+        publisherTopicNames = Arrays.asList(publisherNames.split(","));
     }
+
     /**
      * Gets the configuration of topics for consumption.
      *

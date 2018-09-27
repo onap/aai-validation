@@ -125,7 +125,7 @@ public class GroovyRule implements Rule {
      * @return
      */
     @Override
-    public Boolean execute(AttributeValues attributeValues) {
+    public RuleResult execute(AttributeValues attributeValues) {
         // Obtain the values of each of the attributes to pass into the rule
         List<Object> valueList = new ArrayList<>();
         for (String attrName : this.attributePaths) {
@@ -141,10 +141,10 @@ public class GroovyRule implements Rule {
      * @param values
      *
      * @param groovyObject an instance/object of a Groovy class that implements one or more rule methods
-     * @return the Boolean result of evaluating the expression
+     * @return the result of evaluating the expression
      */
     @Override
-    public Boolean execute(Object... values) {
+    public RuleResult execute(Object... values) {
         Object result = null;
         try {
             result = groovyObject.invokeMethod(getRuleMethod(), values);
@@ -153,12 +153,7 @@ public class GroovyRule implements Rule {
         } catch (NullPointerException e) {
             throw new IllegalArgumentException("Argument is null", e);
         }
-
-        if (result instanceof Number) {
-            return !result.equals(0);
-        } else {
-            return (Boolean) result;
-        }
+        return new RuleResult(result);
     }
 
     @Override

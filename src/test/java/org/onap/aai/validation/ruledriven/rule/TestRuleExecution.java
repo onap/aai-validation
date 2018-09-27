@@ -34,7 +34,6 @@ import org.junit.rules.ExpectedException;
 import org.onap.aai.validation.reader.data.AttributeValues;
 import org.onap.aai.validation.ruledriven.configuration.GroovyConfigurationException;
 import org.onap.aai.validation.ruledriven.configuration.RuleSection;
-import org.onap.aai.validation.ruledriven.rule.GroovyRule;
 
 /**
  * Tests for creating an AuditRule object and then executing the rule expression against fixed attribute values
@@ -79,6 +78,51 @@ public class TestRuleExecution {
         assertRuleResult(rule, Arrays.asList(5, 5), false);
         assertRuleResult(rule, Arrays.asList(22, 5), false);
         assertRuleResult(rule, Arrays.asList(5, 44), false);
+    }
+
+    /**
+     * Simple example of a rule using error message expansion
+     * @throws Exception
+     */
+    @Test
+    public void testRuleErrorTextWithArguments() throws Exception {
+
+        final String errorMessage = "Error message with arguments: {0}, {1}";
+        final String expectedErrorMessage = "Error message with arguments: arg1, arg2";
+
+        String expression = "return new groovy.lang.Tuple2(true, java.util.Arrays.asList(\"arg1\", \"arg2\"))";
+        GroovyRule rule = buildRuleWithErrorMessage("i", expression, errorMessage);
+        assertRuleResult(rule, 1, expectedErrorMessage);
+
+        String expressionOneArgumentTooMany = "return new groovy.lang.Tuple2(true, java.util.Arrays.asList(\"arg1\", \"arg2\", \"arg3\"))";
+        GroovyRule rule3 = buildRuleWithErrorMessage("i", expressionOneArgumentTooMany, errorMessage);
+        assertRuleResult(rule3, 1, expectedErrorMessage);
+
+        String expressionOneLessArgument = "return new groovy.lang.Tuple2(true, java.util.Arrays.asList(\"arg1\"))";
+        GroovyRule rule2 = buildRuleWithErrorMessage("i", expressionOneLessArgument, errorMessage);
+        assertRuleResult(rule2, 1, "Error message with arguments: arg1, {1}");
+    }
+
+    /**
+     * Simple example of a rule using error message expansion, without arguments
+     * @throws Exception
+     */
+    @Test
+    public void testRuleErrorTextWithoutArguments() throws Exception {
+
+        final String errorMessage = "Error message without arguments";
+
+        String expressionWithArgs = "return new groovy.lang.Tuple2(true, java.util.Arrays.asList(\"arg1\", \"arg2\"))";
+        GroovyRule rule = buildRuleWithErrorMessage("i", expressionWithArgs, errorMessage);
+        assertRuleResult(rule, 1, errorMessage);
+
+        String expressionWithoutArgs = "return new groovy.lang.Tuple2(true, java.util.Collections.emptyList())";
+        GroovyRule rule2 = buildRuleWithErrorMessage("i", expressionWithoutArgs, errorMessage);
+        assertRuleResult(rule2, 1, errorMessage);
+
+        String expressionWithNullAsArgs = "return new groovy.lang.Tuple2(true, null)";
+        GroovyRule rule3 = buildRuleWithErrorMessage("i", expressionWithNullAsArgs, errorMessage);
+        assertRuleResult(rule3, 1, errorMessage);
     }
 
     /**
@@ -468,6 +512,18 @@ public class TestRuleExecution {
         return new GroovyRule(ruleConfig);
     }
 
+    private GroovyRule buildRuleWithErrorMessage(String name, String attribute, String expression, String errorMessage)
+            throws IOException, InstantiationException, IllegalAccessException, GroovyConfigurationException {
+        RuleSection ruleConfig = new RuleSection();
+        ruleConfig.setName(name);
+        ruleConfig.setAttributes(Collections.singletonList(attribute));
+        ruleConfig.setExpression(expression);
+        if(errorMessage != null) {
+            ruleConfig.setErrorMessage(errorMessage);
+        }
+        return new GroovyRule(ruleConfig);
+    }
+
     /**
      * Build a simple rule (with a default name) using a RuleConfiguration object
      *
@@ -487,8 +543,17 @@ public class TestRuleExecution {
         return buildRule("testRule", attributes, expression);
     }
 
+    private GroovyRule buildRuleWithErrorMessage(String attribute, String expression, String errorText)
+            throws InstantiationException, IllegalAccessException, IOException, GroovyConfigurationException {
+        return buildRuleWithErrorMessage("testRule", attribute, expression, errorText);
+    }
+
     private void assertRuleResult(GroovyRule rule, Object value, boolean expectedResult) {
         RuleHelper.assertRuleResult(rule, value, expectedResult);
+    }
+
+    private void assertRuleResult(GroovyRule rule, Object value, String expectedErrorMessage) {
+        RuleHelper.assertRuleErrorMessage(rule, value, expectedErrorMessage);
     }
 
 }

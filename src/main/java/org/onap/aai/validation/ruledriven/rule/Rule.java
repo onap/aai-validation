@@ -25,57 +25,57 @@ import org.onap.aai.validation.reader.data.AttributeValues;
  */
 public interface Rule {
 
-	/**
-	 * Gets the name of the rule
-	 *
-	 * @return the name
-	 */
-	String getName();
+    /**
+     * Gets the name of the rule
+     *
+     * @return the name
+     */
+    String getName();
 
-	/**
-	 * Gets the error message.
-	 *
-	 * @return the error message
-	 */
-	String getErrorMessage();
+    /**
+     * Gets the error message.
+     *
+     * @return the error message
+     */
+    String getErrorMessage();
 
-	/**
-	 * Gets the error category.
-	 *
-	 * @return the error category
-	 */
-	String getErrorCategory();
+    /**
+     * Gets the error category.
+     *
+     * @return the error category
+     */
+    String getErrorCategory();
 
-	/**
-	 * Gets the severity.
-	 *
-	 * @return the severity
-	 */
-	String getSeverity();
+    /**
+     * Gets the severity.
+     *
+     * @return the severity
+     */
+    String getSeverity();
 
-	/**
-	 * Gets the paths to the attributes to pass to the rule
-	 *
-	 * @return the attribute paths
-	 */
-	List<String> getAttributePaths();
+    /**
+     * Gets the paths to the attributes to pass to the rule
+     *
+     * @return the attribute paths
+     */
+    List<String> getAttributePaths();
 
-	/**
-	 * Execute the rule.
-	 *
-	 * @param values
-	 *            the attribute values to pass to the rule
-	 * @return a boolean representing the rule evaluation (meaning success/failure)
-	 */
-	Boolean execute(AttributeValues values);
+    /**
+     * Execute the rule.
+     *
+     * @param values
+     *            the attribute values to pass to the rule
+     * @return a RuleResult instance representing the rule evaluation (meaning success/failure)
+     */
+    RuleResult execute(AttributeValues values);
 
-	/**
-	 * Execute the rule.
-	 *
-	 * @param values
-	 *            the attribute values to pass to the rule
-	 * @return a boolean representing the rule evaluation (meaning success/failure)
-	 */
-	Boolean execute(Object... values);
+    /**
+     * Execute the rule.
+     *
+     * @param values
+     *            the attribute values to pass to the rule
+     * @return a RuleResult instance representing the rule evaluation (meaning success/failure)
+     */
+    RuleResult execute(Object... values);
 
 }

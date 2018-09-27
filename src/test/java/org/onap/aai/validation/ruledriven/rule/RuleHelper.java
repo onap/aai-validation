@@ -21,16 +21,23 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.text.MessageFormat;
 import org.onap.aai.validation.reader.data.AttributeValues;
-import org.onap.aai.validation.ruledriven.rule.Rule;
 
 public class RuleHelper {
 
     static void assertRuleResult(Rule rule, AttributeValues values, Boolean expectedResult) {
-        assertThat(rule + " failed for values [" + values + "]", rule.execute(values), is(equalTo(expectedResult)));
+        assertThat(rule + " failed for values [" + values + "]", rule.execute(values).getSuccess(), is(equalTo(expectedResult)));
     }
 
     static void assertRuleResult(Rule rule, Object value, Boolean expectedResult) {
-        assertThat(rule + " failed for value [" + value + "]", rule.execute(value), is(equalTo(expectedResult)));
+        assertThat(rule + " failed for value [" + value + "]", rule.execute(value).getSuccess(), is(equalTo(expectedResult)));
+    }
+
+    static void assertRuleErrorMessage(Rule rule, Object value, String expectedErrorMessage) {
+        RuleResult result = rule.execute(value);
+        String errorMessage = MessageFormat.format(rule.getErrorMessage(), result.getErrorArguments().toArray());
+        assertThat(rule + " failed to validate error message [" + expectedErrorMessage + "]",
+                errorMessage, is(equalTo(expectedErrorMessage)));
     }
 }
