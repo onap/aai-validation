@@ -65,17 +65,17 @@ public interface Rule {
 	 *
 	 * @param values
 	 *            the attribute values to pass to the rule
-	 * @return a boolean representing the rule evaluation (meaning success/failure)
+	 * @return a RuleResult instance representing the rule evaluation (meaning success/failure)
 	 */
-	Boolean execute(AttributeValues values);
+	RuleResult execute(AttributeValues values);
 
 	/**
 	 * Execute the rule.
 	 *
 	 * @param values
 	 *            the attribute values to pass to the rule
-	 * @return a boolean representing the rule evaluation (meaning success/failure)
+	 * @return a RuleResult instance representing the rule evaluation (meaning success/failure)
 	 */
-	Boolean execute(Object... values);
+	RuleResult execute(Object... values);
 
 }

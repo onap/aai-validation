@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -49,6 +50,7 @@ import org.onap.aai.validation.ruledriven.configuration.EntitySection;
 import org.onap.aai.validation.ruledriven.configuration.GroovyConfigurationException;
 import org.onap.aai.validation.ruledriven.configuration.RulesConfigurationLoader;
 import org.onap.aai.validation.ruledriven.rule.Rule;
+import org.onap.aai.validation.ruledriven.rule.RuleResult;
 
 /**
  * Validator using explicit rules
@@ -159,30 +161,32 @@ public class RuleDrivenValidator implements Validator {
             AttributeValues attributeValues = entity.getAttributeValues(rule.getAttributePaths());
 
             // Execute the rule for this particular set of attribute values.
-            boolean valid = false;
+            RuleResult result = null;
             try {
-                valid = rule.execute(attributeValues);
+            	result = rule.execute(attributeValues);
             } catch (IllegalArgumentException e) {
-                throw new ValidationServiceException(ValidationServiceError.RULE_EXECUTION_ERROR, e, rule,
-                        attributeValues);
+            	throw new ValidationServiceException(ValidationServiceError.RULE_EXECUTION_ERROR, e, rule,
+            			attributeValues);
             }
 
             applicationLogger.debug(String.format("%s|%s|\"%s\"|%s", entity.getType(), entity.getIds(), rule.getName(),
-                    valid ? "pass" : "fail"));
+            		result.getSuccess() ? "pass" : "fail"));
 
-            if (!valid) {
-                //@formatter:off
-				Violation violation = builder
-									.category(rule.getErrorCategory())
-									.severity(rule.getSeverity())
-									.violationType(ViolationType.RULE)
-									.validationRule(rule.getName())
-									.violationDetails(attributeValues.generateReport())
-									.errorMessage(rule.getErrorMessage())
-									.build();
-				//@formatter:on
+            if (!result.getSuccess()) {
+            	String errorMessage = MessageFormat.format(rule.getErrorMessage(), result.getErrorArguments().toArray());
 
-                validationResult.addViolation(violation);
+            	//@formatter:off
+            	Violation violation = builder
+            			.category(rule.getErrorCategory())
+            			.severity(rule.getSeverity())
+            			.violationType(ViolationType.RULE)
+            			.validationRule(rule.getName())
+            			.violationDetails(attributeValues.generateReport())
+            			.errorMessage(errorMessage)
+            			.build();
+            	//@formatter:on
+
+            	validationResult.addViolation(violation);
             }
         }
         validationResults.add(validationResult);
