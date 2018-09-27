@@ -47,12 +47,10 @@ public class TopicConfig {
 
     @Autowired
     public TopicConfig (@Value("${consumer.topic.names}") final String consumerNames, @Value("${publisher.topic.names}") final String publisherNames){
-
-        consumerTopicNames = Arrays.asList(consumerNames.split(","));;
-        publisherTopicNames = Arrays.asList(publisherNames.split(","));;
-
-
+        consumerTopicNames = Arrays.asList(consumerNames.split(","));
+        publisherTopicNames = Arrays.asList(publisherNames.split(","));
     }
+
     /**
      * Gets the configuration of topics for consumption.
      *
