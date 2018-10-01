@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "bada0100_39e25304",
+        "filename": "src/main/java/org/onap/aai/validation/config/TopicConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1313
+      },
+      "writtenOn": "2018-10-01T15:15:07Z",
+      "side": 1,
+      "message": "Please remove empty lines",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "7bfddbc290bb79214a99f37d0d987cbcc42f572c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_d9a2279a",
+        "filename": "src/main/java/org/onap/aai/validation/ruledriven/RuleDrivenValidator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1313
+      },
+      "writtenOn": "2018-10-01T15:15:07Z",
+      "side": 1,
+      "message": "I am very much against the idea of introducing Groovy language specific types into the Rule interface. The code was designed to be implementation independent: GroovyRule (using Groovy language features) implements Rule (a Java-based interface). We are now enforcing a dependency that is not warranted. Anyone implementing the Rule interface will need to import Groovy libraries.\n\nThe execute method\u0027s return type is now Tuple2\u003cBoolean, List\u003cString\u003e which looks very clumsy, especially given that we are passing null values into constructors.\n\nIt would make a lot more sense to create a new Result class (e.g. RuleResult.java) which would simplify calling code and provide a mechanism for extending the Result behaviour in the future. What if we want to return 3 things in the next update?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "7bfddbc290bb79214a99f37d0d987cbcc42f572c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_3119e979",
         "filename": "src/main/java/org/onap/aai/validation/ruledriven/RuleDrivenValidator.java",
         "patchSetId": 1
@@ -35,6 +81,75 @@
         "startChar": 14,
         "endLine": 179,
         "endChar": 104
+      },
+      "revId": "7bfddbc290bb79214a99f37d0d987cbcc42f572c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_b9a9637d",
+        "filename": "src/main/java/org/onap/aai/validation/ruledriven/rule/GroovyRule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1313
+      },
+      "writtenOn": "2018-10-01T15:15:07Z",
+      "side": 1,
+      "message": "This looks like a maintenance headache. I can\u0027t tell at a glance what this code is doing.\nSomething like return new ResultBuilder().numeric(result).build() is much easier to understand.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 54
+      },
+      "revId": "7bfddbc290bb79214a99f37d0d987cbcc42f572c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_59b637de",
+        "filename": "src/main/java/org/onap/aai/validation/ruledriven/rule/Rule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1313
+      },
+      "writtenOn": "2018-10-01T15:15:07Z",
+      "side": 1,
+      "message": "This is not very object-oriented. We can replace this with a specific Result object.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "7bfddbc290bb79214a99f37d0d987cbcc42f572c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_79bbfbc4",
+        "filename": "src/test/java/org/onap/aai/validation/ruledriven/rule/RuleHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1313
+      },
+      "writtenOn": "2018-10-01T15:15:07Z",
+      "side": 1,
+      "message": "Why getFirst() ? \nSomething like getExecutionResult() or getSuccess() or isValid() would be a lot clearer.",
+      "range": {
+        "startLine": 30,
+        "startChar": 65,
+        "endLine": 30,
+        "endChar": 96
       },
       "revId": "7bfddbc290bb79214a99f37d0d987cbcc42f572c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
