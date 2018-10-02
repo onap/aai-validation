@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_0574c0cd",
+        "filename": "src/main/java/org/onap/aai/validation/ruledriven/rule/RuleResult.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2965
+      },
+      "writtenOn": "2018-10-02T16:29:04Z",
+      "side": 1,
+      "message": "The reason I decided to handle groovy.lang.Tuple2 here is because I believe it\u0027s better to encapsulate groovy object handling in 1 spot than to force users to import validation code within a rule\u0027s groovy code. Importing \"org.onap.aai.validation.ruledriven.rule.RuleResult\" is very cryptic and doesn\u0027t help the legibility of the rule.\nI don\u0027t think users who create rules for their deployments should learn implementation details of validation code.",
+      "revId": "29738b31cc670fc8623b7e3e05b3c942e4921dd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
