@@ -16,6 +16,24 @@
       "revId": "29738b31cc670fc8623b7e3e05b3c942e4921dd4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_42ce345c",
+        "filename": "src/main/java/org/onap/aai/validation/ruledriven/rule/RuleResult.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313
+      },
+      "writtenOn": "2018-10-08T12:01:23Z",
+      "side": 1,
+      "message": "As a side note, it is not strictly necessary to have the import statement explicitly in the rule definition. It should be possible to inject the import at the point that the Groovy Rule is created. The user would still be exposed to the new Class of course. But is this much different to having to document that the rule can return the Tuple\u003c\u003e class?\nAnother point is that using generics causes some headaches with type erasure.\nIt might help with future-proofing to use builder methods (possibly statically imported) in the rules rather than directly constructing Java objects.",
+      "parentUuid": "bada0100_0574c0cd",
+      "revId": "29738b31cc670fc8623b7e3e05b3c942e4921dd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
