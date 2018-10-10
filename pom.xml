@@ -124,11 +124,6 @@ limitations under the License.
     <!-- 02: Logging -->
 
     <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>org.onap.aai.logging-service</groupId>
       <artifactId>logging-api</artifactId>
       <version>${version.org.onap.aai.logging-service}</version>
