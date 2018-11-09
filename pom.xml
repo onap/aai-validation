@@ -43,7 +43,7 @@ limitations under the License.
   </dependencyManagement>
 
   <properties>
-    <spring-boot.version>1.5.15.RELEASE</spring-boot.version>
+    <spring-boot.version>1.5.17.RELEASE</spring-boot.version>
     <start-class>org.onap.aai.validation.ValidationServiceApplication</start-class>
     <serverPort>9500</serverPort>
     <sslport>9501</sslport>
