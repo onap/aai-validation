@@ -17,9 +17,11 @@ limitations under the License.
 ============LICENSE_END=====================================================
 -->
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
 
@@ -36,6 +38,8 @@ limitations under the License.
 	<bean id="mappingFile" class="org.apache.commons.io.IOUtils" factory-method="toString">
 		<constructor-arg value="file:${APP_HOME}/bundleconfig/etc/appprops/model-instance-mapping.json_conf" type="java.io.InputStream" />
 	</bean>
+
+    <util:properties id="dataDictionaryProperties" location="file:${CONFIG_HOME}/rule-data-dictionary.properties" />
 
 	<!-- ////////////////////////////////////////////////////////////////// -->
 	<!-- CONFIG BEANS -->
@@ -98,6 +102,15 @@ limitations under the License.
 	<bean id="validationServiceAuthConfig" class="org.onap.aai.validation.config.ValidationServiceAuthConfig">
 		<property name="authenticationDisable" value="${auth.authentication.disable}" />
 		<property name="authPolicyFile" value="${auth.policy.file}" />
+	</bean>
+
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="staticMethod" value="org.onap.aai.validation.ruledriven.rule.builtin.DataDictionary.setProperties" />
+		<property name="arguments">
+			<list>
+				<ref bean="dataDictionaryProperties" />
+			</list>
+		</property>
 	</bean>
 
 	<!-- ////////////////////////////////////////////////////////////////// -->
