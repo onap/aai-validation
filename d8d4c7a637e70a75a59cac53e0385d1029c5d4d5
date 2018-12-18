@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Norm Traxler <normant@amdocs.com>
+Code-Review+1: Geora Barsky <georab@amdocs.com>
+Code-Review+2: Steven Blimkie <Steven.Blimkie@amdocs.com>
+Submitted-by: Steven Blimkie <Steven.Blimkie@amdocs.com>
+Submitted-at: Tue, 18 Dec 2018 20:23:53 +0000
+Reviewed-on: https://gerrit.onap.org/r/74592
+Project: aai/validation
+Branch: refs/heads/master
