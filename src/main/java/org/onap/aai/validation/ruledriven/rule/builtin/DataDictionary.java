@@ -22,7 +22,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
-import groovy.lang.GString;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +44,12 @@ public class DataDictionary {
     private static String credentials;
     private static String urlTemplate;
     private static org.onap.aai.restclient.client.RestClient restClient;
+
+    public enum COMMON_MODEL_ELEMENT_TYPE {
+        INSTANCE,
+        ATTRIBUTE,
+        UNSUPPORTED;
+    }
 
 
     private DataDictionary() {
@@ -72,32 +77,59 @@ public class DataDictionary {
 
 
     /**
-     * Generates a REST request to data-dictionary to validate the given entities.
-     * URI: /commonModelElements/[entityType]~[entityName]~1.0/validateInstance
-     * Currently only "instance" is supported for entityType.
+     * Generates a REST request to data-dictionary to validate the given attributes.
      *
-     * @param entityType
-     * @param entityName
-     * @param entities
+     * URI: /commonModelElements/[commonModelElementId]/validateInstance
+     *      where commonModelElementId is defined as:
+     *          [commonModelElementType]~[commonModelElementName]~[commonModelElementVersion]
+     *
+     *      Supported commonModelElementType:
+     *          instance
+     *          attribute
+     *
+     *      Examples:
+     *          /commonModelElements/instance~nfValuesCatalog~1.0/validateInstance
+     *          /commonModelElements/attribute~nfRole~1.0/validateInstance
+     *
+     * @param commonModelElementType "instance" or "attribute"
+     * @param commonModelElementName name of common model element
+     * @param attributeName
+     * @param attributeValue
      * @return
      */
-    public static String validate(String entityType, String entityName, List<Map<GString, GString>> entities) {
+    public static String validate(String commonModelElementType, String commonModelElementName,
+            String attributeName, String attributeValue) {
 
-        logger.debug("Executing built-in rule with...");
-        for(Map<GString, GString> attributes : entities) {
-            logger.debug("   " + attributes.toString());
-        }
-
-        if(entities == null || entities.isEmpty()) {
-            final String error = "list of instances missing";
+        COMMON_MODEL_ELEMENT_TYPE cmeType = COMMON_MODEL_ELEMENT_TYPE.UNSUPPORTED;
+        try {
+            cmeType = COMMON_MODEL_ELEMENT_TYPE.valueOf(commonModelElementType.toUpperCase());
+        } catch(IllegalArgumentException e) {
+            final String error = "unsupported commonModelElementType: " + commonModelElementType;
             logger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, error);
             return error;
         }
 
-        String url = MessageFormat.format(urlTemplate, entityType, entityName);
+        if(attributeValue == null || attributeValue.isEmpty()) {
+            final String error = "element value missing";
+            logger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, error);
+            return error;
+        }
+
+        logger.debug("Executing built-in rule with: '" + commonModelElementType + "', '" + commonModelElementName +
+                "'; attribute: " + attributeName + "=" + attributeValue);
+
         Gson gson = new GsonBuilder().create();
-        String payload = gson.toJson(new Request(entities));
+        String payload = gson.toJson(new Request(cmeType, attributeName, attributeValue));
+
+        String url = MessageFormat.format(urlTemplate, commonModelElementType, commonModelElementName);
         OperationResult result = post(url, payload);
+
+        if(result.getResultCode() == 500) {
+            // network unreachable; log a warning and return success
+            logger.warn(ApplicationMsgs.EVENT_CLIENT_CLOSE_UNSENT_MESSAGE,
+                    ValidationServiceError.REST_CLIENT_RESPONSE_ERROR.getMessage(result.getResultCode(), result.getFailureCause()));
+            return "";
+        }
 
         if(result.getResultCode() != 200 && result.getResultCode() != 204) {
             String error = ValidationServiceError.REST_CLIENT_RESPONSE_ERROR.getMessage(result.getResultCode(), result.getFailureCause());
@@ -127,30 +159,28 @@ public class DataDictionary {
     public static class Request {
         @Expose
         @SerializedName("instance")
-        private List<Object> instances;
+        private Object instance;
 
-        public Request(List<Map<GString, GString>> groovyInstances) {
-            instances = new ArrayList<>();
-            for(Map<GString, GString> groovyEntry : groovyInstances) {
-                instances.add(createInstance(groovyEntry));
+        public Request(COMMON_MODEL_ELEMENT_TYPE cmeType, String attributeName, String attributeValue) {
+            switch(cmeType) {
+                case INSTANCE:
+                    Map<String, String> map = new HashMap<>();
+                    map.put(attributeName, attributeValue);
+                    List<Object> list = new ArrayList<>();
+                    list.add(map);
+                    instance = list;
+                    break;
+                case ATTRIBUTE:
+                    instance = attributeValue;
+                    break;
+                default:
+                    logger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, "unsupported commonModelElementType");
+                    break;
             }
         }
 
-        public List<Object> getInstance() {
-            return instances;
-        }
-
-        /**
-         * Creates an instance entry; converts Groovy's GString into a java String
-         * @param groovyMap
-         * @return
-         */
-        private Map<String, String> createInstance(Map<GString, GString> groovyMap) {
-            Map<String, String> newMap = new HashMap<>();
-            for(Map.Entry<GString, GString> groovyEntry : groovyMap.entrySet()) {
-                newMap.put(groovyEntry.getKey().toString(), groovyEntry.getValue().toString());
-            }
-            return newMap;
+        public Object getInstance() {
+            return instance;
         }
     }
 }
