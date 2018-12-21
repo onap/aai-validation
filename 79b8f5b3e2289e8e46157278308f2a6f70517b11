@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Phillip Leigh <phillip.leigh@amdocs.com>
+Code-Review+2: Steven Blimkie <Steven.Blimkie@amdocs.com>
+Submitted-by: Steven Blimkie <Steven.Blimkie@amdocs.com>
+Submitted-at: Fri, 21 Dec 2018 20:23:51 +0000
+Reviewed-on: https://gerrit.onap.org/r/75067
+Project: aai/validation
+Branch: refs/heads/master
