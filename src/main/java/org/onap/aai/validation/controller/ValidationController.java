@@ -276,6 +276,7 @@ public class ValidationController {
                 publishValidationResults(result.validationResults);
             } else {
                 stats.incrementEventCount(eventSource, "filtered");
+                applicationLogger.info(ApplicationMsgs.FILTERED_EVENT,event);
             }
         } catch (Exception e) {
             applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, e, event);
@@ -312,10 +313,11 @@ public class ValidationController {
                 validationResults = modelDrivenValidator.validate(event);
                 stats.incrementEventCount(eventSource, "model");
             } else {
-                applicationLogger.debug("Event has not been validated. Invalid event type. Event :" + event);
+                applicationLogger.info(ApplicationMsgs.INVALID_EVENT_TYPE, event);
                 stats.incrementEventCount(eventSource, "invalid");
             }
         } else {
+            applicationLogger.info(ApplicationMsgs.MISSING_EVENT_TYPE, event);
             stats.incrementEventCount(eventSource, "missing event type");
         }
 
