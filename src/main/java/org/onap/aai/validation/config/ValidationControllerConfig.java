@@ -25,52 +25,52 @@ import org.springframework.beans.factory.annotation.Value;
  */
 public class ValidationControllerConfig extends PropertiesConfig {
 
-	@Value("${event.domain}")
-	private String eventDomain;
+    @Value("${event.domain}")
+    private String eventDomain;
 
-	@Value("#{'${event.action.exclude}'.split(',')}")
-	private List<String> excludedEventActions;
+    @Value("#{'${event.action.exclude}'.split(',')}")
+    private List<String> excludedEventActions;
 
-	@Value("#{'${event.type.rule}'.split(',')}")
-	private List<String> eventTypeRule;
+    @Value("#{'${event.type.rule}'.split(',')}")
+    private List<String> eventTypeRule;
 
-	@Value("#{'${event.type.model}'.split(',')}")
-	private List<String> eventTypeModel;
+    @Value("#{'${event.type.model}'.split(',')}")
+    private List<String> eventTypeModel;
 
-	@Value("${event.type.end:END-EVENT}")
+    @Value("${event.type.end:END-EVENT}")
     private String eventTypeEnd;
 
-	public String getEventDomain() {
-		return eventDomain;
-	}
+    public String getEventDomain() {
+        return eventDomain;
+    }
 
-	public void setEventDomain(String eventDomain) {
-		this.eventDomain = eventDomain;
-	}
+    public void setEventDomain(String eventDomain) {
+        this.eventDomain = eventDomain;
+    }
 
-	public List<String> getExcludedEventActions() {
-		return excludedEventActions;
-	}
+    public List<String> getExcludedEventActions() {
+        return excludedEventActions;
+    }
 
-	public void setExcludedEventActions(List<String> excludedEventActions) {
-		this.excludedEventActions = excludedEventActions;
-	}
+    public void setExcludedEventActions(List<String> excludedEventActions) {
+        this.excludedEventActions = excludedEventActions;
+    }
 
-	public List<String> getEventTypeRule() {
-		return eventTypeRule;
-	}
+    public List<String> getEventTypeRule() {
+        return eventTypeRule;
+    }
 
-	public void setEventTypeRule(List<String> eventTypeRule) {
-		this.eventTypeRule = eventTypeRule;
-	}
+    public void setEventTypeRule(List<String> eventTypeRule) {
+        this.eventTypeRule = eventTypeRule;
+    }
 
-	public List<String> getEventTypeModel() {
-		return eventTypeModel;
-	}
+    public List<String> getEventTypeModel() {
+        return eventTypeModel;
+    }
 
-	public void setEventTypeModel(List<String> eventTypeModel) {
-		this.eventTypeModel = eventTypeModel;
-	}
+    public void setEventTypeModel(List<String> eventTypeModel) {
+        this.eventTypeModel = eventTypeModel;
+    }
 
     public String getEventTypeEnd() {
         return eventTypeEnd;

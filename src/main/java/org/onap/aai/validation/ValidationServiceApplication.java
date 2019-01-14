@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ============LICENSE_START===================================================
  * Copyright (c) 2018 Amdocs
  * ============================================================================
@@ -17,33 +17,26 @@
  */
 package org.onap.aai.validation;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.eclipse.jetty.util.security.Password;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
-import java.util.HashMap;
-
-
 /**
  * Validation Service Spring Boot Application.
  */
 
 @SpringBootApplication
-@ComponentScan(basePackages = "org.onap.aai.validation")
+@ComponentScan(basePackages = "org.onap.aai.validation.config")
 @ImportResource("classpath:validation-service-beans.xml")
 public class ValidationServiceApplication extends SpringBootServletInitializer {
 
-   // public static void main(String[] args) {
-   //     SpringApplication.run(ValidationServiceApplication.class, args);
-   // }
-
-
     public static void main(String[] args) {
-        HashMap<String, Object> props = new HashMap<>();
+        Map<String, Object> props = new HashMap<>();
         String keyStorePassword = System.getProperty("KEY_STORE_PASSWORD");
         if (keyStorePassword != null && !keyStorePassword.isEmpty()) {
             props.put("server.ssl.key-store-password", Password.deobfuscate(keyStorePassword));
@@ -52,6 +45,5 @@ public class ValidationServiceApplication extends SpringBootServletInitializer {
                 .configure(new SpringApplicationBuilder(ValidationServiceApplication.class).properties(props))
                 .run(args);
     }
-
 
 }

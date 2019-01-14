@@ -24,140 +24,140 @@ import org.springframework.beans.factory.annotation.Value;
  */
 public class EventReaderConfig extends PropertiesConfig {
 
-	@Value("${event.domain.path}")
-	private String eventDomainPath;
+    @Value("${event.domain.path}")
+    private String eventDomainPath;
 
     @Value("${event.action.path}")
-	private String eventActionPath;
+    private String eventActionPath;
 
-	@Value("${event.type.path}")
-	private String eventTypePath;
+    @Value("${event.type.path}")
+    private String eventTypePath;
 
-	@Value("${event.entity.type.path}")
-	private String entityTypePath;
+    @Value("${event.entity.type.path}")
+    private String entityTypePath;
 
-	@Value("${event.entity.type.top.path}")
-	private String topEntityTypePath;
+    @Value("${event.entity.type.top.path}")
+    private String topEntityTypePath;
 
-	@Value("${event.entity.link.path}")
-	private String entityLinkPath;
+    @Value("${event.entity.link.path}")
+    private String entityLinkPath;
 
-	@Value("${event.entity.link.delimiter}")
-	private String entityLinkDelimiter;
+    @Value("${event.entity.link.delimiter}")
+    private String entityLinkDelimiter;
 
-	@Value("${event.entity.path}")
-	private String entityPath;
+    @Value("${event.entity.path}")
+    private String entityPath;
 
-	@Value("${event.entity.nested.path}")
-	private String nestedEntityPath;
+    @Value("${event.entity.nested.path}")
+    private String nestedEntityPath;
 
-	/** Entity relative path. Use when the entity has been extracted from the event. */
-	@Value("${entity.id.path}")
-	private String entityIdPath;
+    /** Entity relative path. Use when the entity has been extracted from the event. */
+    @Value("${entity.id.path}")
+    private String entityIdPath;
 
-	/** Entity relative path. Use when the entity has been extracted from the event. */
-	@Value("${entity.resource.version.path}")
-	private String entityResourceVersionPath;
+    /** Entity relative path. Use when the entity has been extracted from the event. */
+    @Value("${entity.resource.version.path}")
+    private String entityResourceVersionPath;
 
-	public String getEventDomainPath() {
-		return eventDomainPath;
-	}
+    public String getEventDomainPath() {
+        return eventDomainPath;
+    }
 
-	public void setEventDomainPath(String eventDomainPath) {
-		this.eventDomainPath = eventDomainPath;
-	}
+    public void setEventDomainPath(String eventDomainPath) {
+        this.eventDomainPath = eventDomainPath;
+    }
 
-	public String getEventActionPath() {
-		return eventActionPath;
-	}
+    public String getEventActionPath() {
+        return eventActionPath;
+    }
 
-	public void setEventActionPath(String eventActionPath) {
-		this.eventActionPath = eventActionPath;
-	}
+    public void setEventActionPath(String eventActionPath) {
+        this.eventActionPath = eventActionPath;
+    }
 
-	public String getEventTypePath() {
-		return eventTypePath;
-	}
+    public String getEventTypePath() {
+        return eventTypePath;
+    }
 
-	public void setEventTypePath(String eventTypePath) {
-		this.eventTypePath = eventTypePath;
-	}
+    public void setEventTypePath(String eventTypePath) {
+        this.eventTypePath = eventTypePath;
+    }
 
-	public String getTopEntityTypePath() {
-		return topEntityTypePath;
-	}
+    public String getTopEntityTypePath() {
+        return topEntityTypePath;
+    }
 
-	public void setTopEntityTypePath(String topEntityTypePath) {
-		this.topEntityTypePath = topEntityTypePath;
-	}
+    public void setTopEntityTypePath(String topEntityTypePath) {
+        this.topEntityTypePath = topEntityTypePath;
+    }
 
-	public String getEntityLinkPath() {
-		return entityLinkPath;
-	}
+    public String getEntityLinkPath() {
+        return entityLinkPath;
+    }
 
-	public void setEntityLinkPath(String entityLinkPath) {
-		this.entityLinkPath = entityLinkPath;
-	}
+    public void setEntityLinkPath(String entityLinkPath) {
+        this.entityLinkPath = entityLinkPath;
+    }
 
-	public String getEntityLinkDelimiter() {
-		return entityLinkDelimiter;
-	}
+    public String getEntityLinkDelimiter() {
+        return entityLinkDelimiter;
+    }
 
-	public void setEntityLinkDelimiter(String entityLinkDelimiter) {
-		this.entityLinkDelimiter = entityLinkDelimiter;
-	}
+    public void setEntityLinkDelimiter(String entityLinkDelimiter) {
+        this.entityLinkDelimiter = entityLinkDelimiter;
+    }
 
-	public String getEntityTypePath() {
-		return entityTypePath;
-	}
+    public String getEntityTypePath() {
+        return entityTypePath;
+    }
 
-	public void setEntityTypePath(String entityTypePath) {
-		this.entityTypePath = entityTypePath;
-	}
+    public void setEntityTypePath(String entityTypePath) {
+        this.entityTypePath = entityTypePath;
+    }
 
-	public String getEntityPath() {
-		return entityPath;
-	}
+    public String getEntityPath() {
+        return entityPath;
+    }
 
-	public void setEntityPath(String entityPath) {
-		this.entityPath = entityPath;
-	}
+    public void setEntityPath(String entityPath) {
+        this.entityPath = entityPath;
+    }
 
-	/**
-	 * Formats the nested entity path using the entity type provided.
-	 *
-	 * @param entityType
-	 *            an entity type
-	 * @return the formatted nested entity path
-	 */
-	public String getNestedEntityPath(String entityType) {
-		return formatter(nestedEntityPath, entityType);
-	}
+    /**
+     * Formats the nested entity path using the entity type provided.
+     *
+     * @param entityType
+     *        an entity type
+     * @return the formatted nested entity path
+     */
+    public String getNestedEntityPath(String entityType) {
+        return formatter(nestedEntityPath, entityType);
+    }
 
-	public void setNestedEntityPath(String nestedEntityPath) {
-		this.nestedEntityPath = nestedEntityPath;
-	}
+    public void setNestedEntityPath(String nestedEntityPath) {
+        this.nestedEntityPath = nestedEntityPath;
+    }
 
-	/**
-	 * Formats the entity ID path using the entity type provided.
-	 *
-	 * @param entityType
-	 *            an entity type
-	 * @return the formatted entity ID path
-	 */
-	public String getEntityIdPath(String entityType) {
-		return formatter(entityIdPath, entityType);
-	}
+    /**
+     * Formats the entity ID path using the entity type provided.
+     *
+     * @param entityType
+     *        an entity type
+     * @return the formatted entity ID path
+     */
+    public String getEntityIdPath(String entityType) {
+        return formatter(entityIdPath, entityType);
+    }
 
-	public void setEntityIdPath(String entityIdPath) {
-		this.entityIdPath = entityIdPath;
-	}
+    public void setEntityIdPath(String entityIdPath) {
+        this.entityIdPath = entityIdPath;
+    }
 
-	public String getEntityResourceVersionPath() {
-		return entityResourceVersionPath;
-	}
+    public String getEntityResourceVersionPath() {
+        return entityResourceVersionPath;
+    }
 
-	public void setEntityResourceVersionPath(String entityResourceVersionPath) {
-		this.entityResourceVersionPath = entityResourceVersionPath;
-	}
+    public void setEntityResourceVersionPath(String entityResourceVersionPath) {
+        this.entityResourceVersionPath = entityResourceVersionPath;
+    }
 }

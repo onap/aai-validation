@@ -1,4 +1,4 @@
-/*
+/**
  * ============LICENSE_START===================================================
  * Copyright (c) 2018 Amdocs
  * ============================================================================
@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -54,7 +54,7 @@ public class AAIMicroServiceAuthCore {
     private static boolean timerSet = false;
     private static String policyAuthFileName;
 
-    public enum HTTP_METHODS {
+    public enum HttpMethods {
         GET,
         PUT,
         DELETE,
@@ -73,6 +73,11 @@ public class AAIMicroServiceAuthCore {
         AAIMicroServiceAuthCore.defaultAuthFileName = Paths.get(defaultAuthFileName);
     }
 
+    /**
+     * @param authPolicyFile
+     * @throws AAIAuthException
+     *         if the policy file cannot be loaded
+     */
     public static synchronized void init(String authPolicyFile) throws AAIAuthException {
 
         try {
@@ -183,7 +188,7 @@ public class AAIMicroServiceAuthCore {
         JsonNode methodsNode = functionNode.path("methods");
 
         if (methodsNode.size() == 0) {
-            for (HTTP_METHODS method : HTTP_METHODS.values()) {
+            for (HttpMethods method : HttpMethods.values()) {
                 String fullFunctionName = method.toString() + ":" + functionName;
                 applicationLogger.debug("Installing (all methods) " + fullFunctionName + " on role " + roleName);
                 role.addAllowedFunction(fullFunctionName);
@@ -239,7 +244,7 @@ public class AAIMicroServiceAuthCore {
         }
 
         public boolean hasAllowedFunction(String functionName) {
-            return allowedFunctions.contains(functionName) ? true : false;
+            return allowedFunctions.contains(functionName);
         }
     }
 

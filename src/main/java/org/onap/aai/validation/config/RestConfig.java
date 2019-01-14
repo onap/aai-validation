@@ -111,7 +111,7 @@ public class RestConfig {
      * @return the decrypted password
      */
     public String getTrustStorePassword() {
-    	return trustStorePassword;
+        return trustStorePassword;
     }
 
     public void setTrustStorePassword(String trustStorePassword) {
@@ -132,7 +132,7 @@ public class RestConfig {
      * @return the decrypted password
      */
     public String getKeyStorePassword() {
-    	return keyStorePassword;
+        return keyStorePassword;
     }
 
     public void setKeyStorePassword(String keyStorePassword) {

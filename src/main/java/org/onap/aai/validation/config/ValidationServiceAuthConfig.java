@@ -21,26 +21,26 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class ValidationServiceAuthConfig {
 
-	@Value("${auth.authentication.disable}")
-	private boolean authenticationDisable;
+    @Value("${auth.authentication.disable}")
+    private boolean authenticationDisable;
 
-	@Value("${auth.policy.file}")
-	private String authPolicyFile;
+    @Value("${auth.policy.file}")
+    private String authPolicyFile;
 
-	public boolean isAuthenticationDisable() {
-		return authenticationDisable;
-	}
+    public boolean isAuthenticationDisable() {
+        return authenticationDisable;
+    }
 
-	public void setAuthenticationDisable(boolean authenticationDisable) {
-		this.authenticationDisable = authenticationDisable;
-	}
+    public void setAuthenticationDisable(boolean authenticationDisable) {
+        this.authenticationDisable = authenticationDisable;
+    }
 
-	public String getAuthPolicyFile() {
-		return authPolicyFile;
-	}
+    public String getAuthPolicyFile() {
+        return authPolicyFile;
+    }
 
-	public void setAuthPolicyFile(String authPolicyFile) {
-		this.authPolicyFile = authPolicyFile;
-	}
+    public void setAuthPolicyFile(String authPolicyFile) {
+        this.authPolicyFile = authPolicyFile;
+    }
 
 }

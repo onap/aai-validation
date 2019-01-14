@@ -98,7 +98,6 @@ public class XMLModelParser {
 	 *            The XPath expression to run on the Node.
 	 * @return A List of Nodes representing the result of the XPath expression.
 	 */
-	@SuppressWarnings("unchecked")
 	public static List<Node> getObjectsFromXPath(Node currentNode, String xPath) {
 		return currentNode.selectNodes(xPath);
 	}

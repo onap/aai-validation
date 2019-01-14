@@ -46,7 +46,7 @@ public class TopicConfig {
     List<Topic> publisherTopics = new ArrayList<>();
 
     @Autowired
-    public TopicConfig (@Value("${consumer.topic.names}") final String consumerNames,
+    public TopicConfig(@Value("${consumer.topic.names}") final String consumerNames,
             @Value("${publisher.topic.names}") final String publisherNames) {
         consumerTopicNames = Arrays.asList(consumerNames.split(","));
         publisherTopicNames = Arrays.asList(publisherNames.split(","));
@@ -57,8 +57,7 @@ public class TopicConfig {
      *
      * @return a list of topic configurations.
      */
-    public List<Topic> getConsumerTopics()
-    {
+    public List<Topic> getConsumerTopics() {
         return populateTopics(consumerTopics, consumerTopicNames);
     }
 
@@ -73,31 +72,31 @@ public class TopicConfig {
     }
 
     /**
-	 * Populates the topics list with topic objects created from each item in the topicNames list.
-	 *
-	 * @param topics
-	 *            The topic list to populate.
-	 * @param topicNames
-	 *            The list of topic names to populate the topic list with.
-	 * @return The populated topic list.
-	 */
-	private List<Topic> populateTopics(List<Topic> topics, List<String> topicNames) {
-		if (topics.isEmpty()) {
-			for (String topicName : topicNames) {
-				Topic topicConfig = new Topic();
-				topicConfig.setName(getTopicProperties().getProperty(topicName + ".name"));
-				topicConfig.setHost(getTopicProperties().getProperty(topicName + ".host"));
-				topicConfig.setUsername(getTopicProperties().getProperty(topicName + ".username"));
-				topicConfig.setPassword(getTopicProperties().getProperty(topicName + ".password"));
-				topicConfig.setPartition(getTopicProperties().getProperty(topicName + ".publisher.partition"));
-				topicConfig.setConsumerGroup(getTopicProperties().getProperty(topicName + ".consumer.group"));
-				topicConfig.setConsumerId(getTopicProperties().getProperty(topicName + ".consumer.id"));
-				topicConfig.setTransportType(getTopicProperties().getProperty(topicName + ".transport.type"));
-				topics.add(topicConfig);
-			}
-		}
-		return topics;
-	}
+     * Populates the topics list with topic objects created from each item in the topicNames list.
+     *
+     * @param topics
+     *        The topic list to populate.
+     * @param topicNames
+     *        The list of topic names to populate the topic list with.
+     * @return The populated topic list.
+     */
+    private List<Topic> populateTopics(List<Topic> topics, List<String> topicNames) {
+        if (topics.isEmpty()) {
+            for (String topicName : topicNames) {
+                Topic topicConfig = new Topic();
+                topicConfig.setName(getTopicProperties().getProperty(topicName + ".name"));
+                topicConfig.setHost(getTopicProperties().getProperty(topicName + ".host"));
+                topicConfig.setUsername(getTopicProperties().getProperty(topicName + ".username"));
+                topicConfig.setPassword(getTopicProperties().getProperty(topicName + ".password"));
+                topicConfig.setPartition(getTopicProperties().getProperty(topicName + ".publisher.partition"));
+                topicConfig.setConsumerGroup(getTopicProperties().getProperty(topicName + ".consumer.group"));
+                topicConfig.setConsumerId(getTopicProperties().getProperty(topicName + ".consumer.id"));
+                topicConfig.setTransportType(getTopicProperties().getProperty(topicName + ".transport.type"));
+                topics.add(topicConfig);
+            }
+        }
+        return topics;
+    }
 
     public List<String> getConsumerTopicNames() {
         return consumerTopicNames;
@@ -161,7 +160,7 @@ public class TopicConfig {
         }
 
         public String getPassword() {
-        	return password;
+            return password;
         }
 
         public void setPassword(String password) {
@@ -206,8 +205,8 @@ public class TopicConfig {
 
         @Override
         public int hashCode() {
-            return Objects.hash(this.consumerGroup, this.consumerId, this.host, this.username, this.name, this.partition,
-                    this.password, this.transportType);
+            return Objects.hash(this.consumerGroup, this.consumerId, this.host, this.username, this.name,
+                    this.partition, this.password, this.transportType);
         }
 
         @Override
@@ -234,8 +233,8 @@ public class TopicConfig {
 
         @Override
         public String toString() {
-            return "Topic [name=" + name + ", host=" + host + ", username=" + username + ", password=" + password + ", partition="
-                    + partition + ", consumerGroup=" + consumerGroup + ", consumerId=" + consumerId
+            return "Topic [name=" + name + ", host=" + host + ", username=" + username + ", password=" + password
+                    + ", partition=" + partition + ", consumerGroup=" + consumerGroup + ", consumerId=" + consumerId
                     + ", transportType =" + transportType + "]";
         }
     }

@@ -25,15 +25,15 @@ import org.springframework.beans.factory.annotation.Value;
  */
 public class ModelConfig {
 
-	@Value("${model.cache.expirySeconds}")
-	private Long modelCacheExpirySeconds;
+    @Value("${model.cache.expirySeconds}")
+    private Long modelCacheExpirySeconds;
 
-	public Long getModelCacheExpirySeconds() {
-		return modelCacheExpirySeconds;
-	}
+    public Long getModelCacheExpirySeconds() {
+        return modelCacheExpirySeconds;
+    }
 
-	public void setModelCacheExpirySeconds(Long modelCacheExpirySeconds) {
-		this.modelCacheExpirySeconds = modelCacheExpirySeconds;
-	}
+    public void setModelCacheExpirySeconds(Long modelCacheExpirySeconds) {
+        this.modelCacheExpirySeconds = modelCacheExpirySeconds;
+    }
 
 }

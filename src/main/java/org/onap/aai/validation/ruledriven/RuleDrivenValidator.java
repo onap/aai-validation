@@ -73,12 +73,15 @@ public class RuleDrivenValidator implements Validator {
     /**
      * Construct a Validator that is configured using rule files
      *
-     * @param configurationPath path to the Groovy rules files
-     * @param oxmReader required for validating entity types
-     * @param eventReader a reader for extracting entities from each event to be validated
+     * @param configurationPath
+     *        path to the Groovy rules files
+     * @param oxmReader
+     *        required for validating entity types
+     * @param eventReader
+     *        a reader for extracting entities from each event to be validated
      */
-    public RuleDrivenValidator(final Path configurationPath, final OxmReader oxmReader,
-            final EventReader eventReader, final RuleIndexingConfig ruleIndexingConfig) {
+    public RuleDrivenValidator(final Path configurationPath, final OxmReader oxmReader, final EventReader eventReader,
+            final RuleIndexingConfig ruleIndexingConfig) {
         this.configurationPath = configurationPath;
         this.oxmReader = oxmReader;
         this.eventReader = eventReader;
@@ -116,7 +119,7 @@ public class RuleDrivenValidator implements Validator {
     private void validateRulesConfiguration() throws ValidationServiceException {
         for (RuleManager ruleManager : ruleManagers.values()) {
             for (EntitySection entity : ruleManager.getEntities()) {
-                if(ruleIndexingConfig.isPresent() && ruleIndexingConfig.get().skipOxmValidation(entity.getName())) {
+                if (ruleIndexingConfig.isPresent() && ruleIndexingConfig.get().skipOxmValidation(entity.getName())) {
                     continue;
                 }
                 if (oxmReader != null && oxmReader.getPrimaryKeys(entity.getName()).isEmpty()) {
@@ -141,7 +144,6 @@ public class RuleDrivenValidator implements Validator {
 
     /*
      * (non-Javadoc)
-     *
      * @see org.onap.aai.validation.Validator#validate(java.lang.String)
      */
     @Override
@@ -173,7 +175,8 @@ public class RuleDrivenValidator implements Validator {
                     result.getSuccess() ? "pass" : "fail"));
 
             if (!result.getSuccess()) {
-                String errorMessage = MessageFormat.format(rule.getErrorMessage(), result.getErrorArguments().toArray());
+                String errorMessage =
+                        MessageFormat.format(rule.getErrorMessage(), result.getErrorArguments().toArray());
 
                 //@formatter:off
                 Violation violation = builder
@@ -200,8 +203,8 @@ public class RuleDrivenValidator implements Validator {
         if (eventType.isPresent()) {
             Optional<RuleManager> ruleManager = getRuleManager(eventType.get().toLowerCase(Locale.getDefault()));
             if (ruleManager.isPresent()) {
-                if (ruleIndexingConfig.isPresent() && ruleIndexingConfig.get().getIndexedEvents() != null &&
-                        ruleIndexingConfig.get().getIndexedEvents().contains(eventType.get())) {
+                if (ruleIndexingConfig.isPresent() && ruleIndexingConfig.get().getIndexedEvents() != null
+                        && ruleIndexingConfig.get().getIndexedEvents().contains(eventType.get())) {
                     rules = getRulesByIndex(entity, eventType.get(), ruleManager.get());
                 } else {
                     rules = Optional.of(ruleManager.get().getRulesForEntity(entity.getType()));
@@ -216,32 +219,35 @@ public class RuleDrivenValidator implements Validator {
         applicationLogger.debug(String.format("Retrieving indexed rules for key '%s'", rulesKey));
         Optional<List<Rule>> rules = Optional.of(ruleManager.getRulesForEntity(rulesKey));
         if (rules.get().isEmpty() && ruleIndexingConfig.isPresent()) {
-            if (ruleIndexingConfig.get().getDefaultIndexKey() == null || ruleIndexingConfig.get().getDefaultIndexKey().isEmpty()) {
+            if (ruleIndexingConfig.get().getDefaultIndexKey() == null
+                    || ruleIndexingConfig.get().getDefaultIndexKey().isEmpty()) {
                 applicationLogger.debug("Default index value not configured, unable to get rules");
                 applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, eventType);
                 return rules;
             }
-            String defaultKey = RuleManager.generateKey(new String[] {ruleIndexingConfig.get().getDefaultIndexKey()});
+            String defaultKey = RuleManager.generateKey(new String[] { ruleIndexingConfig.get().getDefaultIndexKey() });
             rules = Optional.of(ruleManager.getRulesForEntity(defaultKey));
         }
         return rules;
     }
 
     private String generateKey(Entity entity, String eventType) {
-        if (!ruleIndexingConfig.isPresent() || ruleIndexingConfig.get().getIndexAttributes() == null ||
-                ruleIndexingConfig.get().getIndexAttributes().isEmpty()) {
+        if (!ruleIndexingConfig.isPresent() || ruleIndexingConfig.get().getIndexAttributes() == null
+                || ruleIndexingConfig.get().getIndexAttributes().isEmpty()) {
             applicationLogger.debug(String.format(
-                    "Event '%s' is configured to use indexed rules but indexing attributes are not configured", eventType));
+                    "Event '%s' is configured to use indexed rules but indexing attributes are not configured",
+                    eventType));
             return "";
         }
         try {
             AttributeValues attributeValues = entity.getAttributeValues(ruleIndexingConfig.get().getIndexAttributes());
-            applicationLogger.debug("Generating index using attributes: " + attributeValues.generateReport().toString());
+            applicationLogger
+                    .debug("Generating index using attributes: " + attributeValues.generateReport().toString());
             Collection<Object> values = attributeValues.generateReport().values();
             return RuleManager.generateKey(values.stream().toArray(String[]::new));
         } catch (ValidationServiceException e) {
-            applicationLogger.debug("Failed to retrieve index key attributes from event");
-            applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, eventType);
+            applicationLogger.debug("Failed to retrieve index key attributes from event: " + e.getMessage());
+            applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, e, eventType);
             return "";
         }
     }
@@ -260,7 +266,8 @@ public class RuleDrivenValidator implements Validator {
     /**
      * Read the text content of the specified Path and append this to the specified String
      *
-     * @param sb StringBuilder for the rule configuration text
+     * @param sb
+     *        StringBuilder for the rule configuration text
      * @return a Consumer function that appends file content
      */
     private Consumer<? super Path> appendFileContent(StringBuilder sb) {

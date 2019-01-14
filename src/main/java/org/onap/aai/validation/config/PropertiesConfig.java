@@ -24,18 +24,18 @@ import java.text.MessageFormat;
  */
 public class PropertiesConfig {
 
-	/**
-	 * Replaces place-holders in property values.
-	 *
-	 * @param s
-	 *            a string with place-holders in the form {n}
-	 * @param args
-	 *            values for place-holders
-	 * @return a formated String with replaced place-holders.
-	 */
-	public String formatter(String s, Object... args) {
-		MessageFormat formatter = new MessageFormat("");
-		formatter.applyPattern(s);
-		return formatter.format(args);
-	}
+    /**
+     * Replaces place-holders in property values.
+     *
+     * @param s
+     *        a string with place-holders in the form {n}
+     * @param args
+     *        values for place-holders
+     * @return a formated String with replaced place-holders.
+     */
+    public String formatter(String s, Object... args) {
+        MessageFormat formatter = new MessageFormat("");
+        formatter.applyPattern(s);
+        return formatter.format(args);
+    }
 }

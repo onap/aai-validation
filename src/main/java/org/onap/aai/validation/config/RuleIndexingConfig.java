@@ -65,7 +65,7 @@ public class RuleIndexingConfig extends PropertiesConfig {
     }
 
     public boolean skipOxmValidation(String event) {
-        if(excludedOxmValidationEvents == null) {
+        if (excludedOxmValidationEvents == null) {
             return false;
         }
         return excludedOxmValidationEvents.contains(event);
