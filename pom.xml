@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 ============LICENSE_START===================================================
-Copyright (c) 2018 Amdocs
+Copyright (c) 2018-2019 European Software Marketing Ltd.
 ============================================================================
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ limitations under the License.
     <serverPort>9500</serverPort>
     <sslport>9501</sslport>
     <version.org.onap.aai.logging-service>1.2.2</version.org.onap.aai.logging-service>
-    <version.org.onap.aai-rest-client>1.2.1</version.org.onap.aai-rest-client>
+    <version.aai.rest.client>1.4.0</version.aai.rest.client>
     <version.org.onap.aai.event.client>1.2.2</version.org.onap.aai.event.client>
     <version.com.ecomp.aai.gap.data.client>1.0</version.com.ecomp.aai.gap.data.client>
     <version.com.google.code.gson>2.7</version.com.google.code.gson>
@@ -62,7 +62,6 @@ limitations under the License.
     <version.org.hamcrest.hamcrest-library>1.3</version.org.hamcrest.hamcrest-library>
     <version.org.json.json>20160212</version.org.json.json>
     <version.org.onap.aai.aai-schema>1.2.4</version.org.onap.aai.aai-schema>
-    <version.jacoco.maven.plugin>0.7.9</version.jacoco.maven.plugin>
     <version.org.glassfish.jersey.core.jersey-client>2.23</version.org.glassfish.jersey.core.jersey-client>
     <version.aai.aai-schema-ingest>1.2.4</version.aai.aai-schema-ingest>
     <docker.location>${basedir}/target</docker.location>
@@ -86,7 +85,6 @@ limitations under the License.
     <dependency>
           <groupId>ch.qos.logback</groupId>
           <artifactId>logback-classic</artifactId>
-          <version>1.2.3</version>
       </dependency>
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
@@ -150,7 +148,7 @@ limitations under the License.
     <dependency>
       <groupId>org.onap.aai</groupId>
       <artifactId>rest-client</artifactId>
-      <version>${version.org.onap.aai-rest-client}</version>
+      <version>${version.aai.rest.client}</version>
     </dependency>
 
     <dependency>
@@ -299,7 +297,6 @@ limitations under the License.
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
         <configuration>
           <!-- Skips unit tests if the value of skip.unit.tests property is true -->
           <skipTests>${skip.unit.tests}</skipTests>
@@ -386,7 +383,6 @@ limitations under the License.
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>${version.jacoco.maven.plugin}</version>
         <executions>
           <execution>
             <id>prepare-agent</id>

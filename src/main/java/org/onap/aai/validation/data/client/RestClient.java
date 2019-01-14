@@ -1,12 +1,12 @@
-/*
+/**
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,12 +16,12 @@
  * ============LICENSE_END=====================================================
  */
 package org.onap.aai.validation.data.client;
-    
-import com.sun.jersey.core.util.MultivaluedMapImpl;
+
 import java.util.Arrays;
 import java.util.UUID;
 import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import org.onap.aai.restclient.client.OperationResult;
 import org.onap.aai.validation.config.RestConfig;
@@ -51,23 +51,20 @@ public class RestClient {
         initialiseRestClient();
     }
 
-    /**
-     * Initialises the REST client
-     *
-     */
+    /** Initialises the REST client */
     private void initialiseRestClient() {
         // @formatter:off
-		aaiRestClient = new org.onap.aai.restclient.client.RestClient()
-		    .validateServerHostname(false)
-		    .validateServerCertChain(true)
-		    .clientCertFile(APP_CONFIG_HOME + restConfig.getKeyStorePath())
-		    .clientCertPassword(restConfig.getKeyStorePassword())
-		    .trustStore(APP_CONFIG_HOME + restConfig.getTrustStorePath())
-		    .connectTimeoutMs(restConfig.getConnectionTimeout())
-		    .readTimeoutMs(restConfig.getReadTimeout());
-		// @formatter:on
+        aaiRestClient = new org.onap.aai.restclient.client.RestClient()
+            .validateServerHostname(false)
+            .validateServerCertChain(true)
+            .clientCertFile(APP_CONFIG_HOME + restConfig.getKeyStorePath())
+            .clientCertPassword(restConfig.getKeyStorePassword())
+            .trustStore(APP_CONFIG_HOME + restConfig.getTrustStorePath())
+            .connectTimeoutMs(restConfig.getConnectionTimeout())
+            .readTimeoutMs(restConfig.getReadTimeout());
+        // @formatter:on
 
-        headers = new MultivaluedMapImpl();
+        headers = new MultivaluedHashMap<>();
         headers.put("Accept", Arrays.asList(ACCEPT));
         headers.put("X-FromAppId", Arrays.asList(HEADER_X_FROM_APP_ID));
         headers.put("X-TransactionId", Arrays.asList(UUID.randomUUID().toString()));
@@ -103,7 +100,6 @@ public class RestClient {
      *
      * @param url
      * @param payload
-     *
      * @return The payload of the REST URL call as a string.
      * @throws GapServiceException
      */
@@ -116,6 +112,5 @@ public class RestClient {
             throw new ValidationServiceException(ValidationServiceError.REST_CLIENT_RESPONSE_ERROR,
                     result.getResultCode(), result.getFailureCause());
         }
-
     }
 }

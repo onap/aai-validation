@@ -8,3 +8,4 @@ bundleconfig-local/etc/auth/tomcat_keystore
 staticContent/
 target/
 src/main/java/META-INF/
+.checkstyle

@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.sun.jersey.core.util.MultivaluedMapImpl;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import org.onap.aai.cl.api.Logger;
 import org.onap.aai.restclient.client.OperationResult;
@@ -51,13 +51,13 @@ public class DataDictionary {
         UNSUPPORTED;
     }
 
-
     private DataDictionary() {
         // intentionally empty
     }
 
     /**
      * Initializes this class' static variables using MethodInvokingFactoryBean
+     *
      * @param props
      */
     public static void setProperties(Properties props) {
@@ -69,54 +69,51 @@ public class DataDictionary {
 
         credentials = "Basic " + props.getProperty("rule.datadictionary.credentials");
         urlTemplate = hostport + uriTemplate;
-        restClient = new org.onap.aai.restclient.client.RestClient()
-                .validateServerHostname(false)
-                .connectTimeoutMs(Integer.parseInt(connectTimeout))
+        restClient = new org.onap.aai.restclient.client.RestClient() //
+                .validateServerHostname(false) //
+                .connectTimeoutMs(Integer.parseInt(connectTimeout)) //
                 .readTimeoutMs(Integer.parseInt(readTimeout));
     }
-
 
     /**
      * Generates a REST request to data-dictionary to validate the given attributes.
      *
-     * URI: /commonModelElements/[commonModelElementId]/validateInstance
-     *      where commonModelElementId is defined as:
-     *          [commonModelElementType]~[commonModelElementName]~[commonModelElementVersion]
+     * URI: /commonModelElements/[commonModelElementId]/validateInstance where commonModelElementId is defined as:
+     * [commonModelElementType]~[commonModelElementName]~[commonModelElementVersion]
      *
-     *      Supported commonModelElementType:
-     *          instance
-     *          attribute
+     * Supported commonModelElementType: instance attribute
      *
-     *      Examples:
-     *          /commonModelElements/instance~nfValuesCatalog~1.0/validateInstance
-     *          /commonModelElements/attribute~nfRole~1.0/validateInstance
+     * Examples: /commonModelElements/instance~nfValuesCatalog~1.0/validateInstance
+     * /commonModelElements/attribute~nfRole~1.0/validateInstance
      *
-     * @param commonModelElementType "instance" or "attribute"
-     * @param commonModelElementName name of common model element
+     * @param commonModelElementType
+     *        "instance" or "attribute"
+     * @param commonModelElementName
+     *        name of common model element
      * @param attributeName
      * @param attributeValue
      * @return
      */
-    public static String validate(String commonModelElementType, String commonModelElementName,
-            String attributeName, String attributeValue) {
+    public static String validate(String commonModelElementType, String commonModelElementName, String attributeName,
+            String attributeValue) {
 
         COMMON_MODEL_ELEMENT_TYPE cmeType = COMMON_MODEL_ELEMENT_TYPE.UNSUPPORTED;
         try {
             cmeType = COMMON_MODEL_ELEMENT_TYPE.valueOf(commonModelElementType.toUpperCase());
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             final String error = "unsupported commonModelElementType: " + commonModelElementType;
             logger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, error);
             return error;
         }
 
-        if(attributeValue == null || attributeValue.isEmpty()) {
+        if (attributeValue == null || attributeValue.isEmpty()) {
             final String error = "element value missing";
             logger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, error);
             return error;
         }
 
-        logger.debug("Executing built-in rule with: '" + commonModelElementType + "', '" + commonModelElementName +
-                "'; attribute: " + attributeName + "=" + attributeValue);
+        logger.debug("Executing built-in rule with: '" + commonModelElementType + "', '" + commonModelElementName
+                + "'; attribute: " + attributeName + "=" + attributeValue);
 
         Gson gson = new GsonBuilder().create();
         String payload = gson.toJson(new Request(cmeType, attributeName, attributeValue));
@@ -124,34 +121,35 @@ public class DataDictionary {
         String url = MessageFormat.format(urlTemplate, commonModelElementType, commonModelElementName);
         OperationResult result = post(url, payload);
 
-        if(result.getResultCode() == 500) {
+        if (result.getResultCode() == 500) {
             // network unreachable; log a warning and return success
             logger.warn(ApplicationMsgs.EVENT_CLIENT_CLOSE_UNSENT_MESSAGE,
-                    ValidationServiceError.REST_CLIENT_RESPONSE_ERROR.getMessage(result.getResultCode(), result.getFailureCause()));
+                    ValidationServiceError.REST_CLIENT_RESPONSE_ERROR.getMessage(result.getResultCode(),
+                            result.getFailureCause()));
             return "";
         }
 
-        if(result.getResultCode() != 200 && result.getResultCode() != 204) {
-            String error = ValidationServiceError.REST_CLIENT_RESPONSE_ERROR.getMessage(result.getResultCode(), result.getFailureCause());
+        if (result.getResultCode() != 200 && result.getResultCode() != 204) {
+            String error = ValidationServiceError.REST_CLIENT_RESPONSE_ERROR.getMessage(result.getResultCode(),
+                    result.getFailureCause());
             logger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, error);
             return result.getFailureCause();
         }
         return "";
     }
 
-
     /**
      * Posts the payload to the URL
+     *
      * @param url
      * @param payload
      * @return
      */
     private static OperationResult post(String url, String payload) {
-        MultivaluedMap<String, String> headers = new MultivaluedMapImpl();
+        MultivaluedMap<String, String> headers = new MultivaluedHashMap<>();
         headers.put("x-authorization", Arrays.asList(credentials));
         return restClient.post(url, payload, headers, MediaType.APPLICATION_JSON_TYPE, MediaType.APPLICATION_JSON_TYPE);
     }
-
 
     /**
      * JSON serializable class representing an instance sent to data-dictionary.
@@ -162,7 +160,7 @@ public class DataDictionary {
         private Object instance;
 
         public Request(COMMON_MODEL_ELEMENT_TYPE cmeType, String attributeName, String attributeValue) {
-            switch(cmeType) {
+            switch (cmeType) {
                 case INSTANCE:
                     Map<String, String> map = new HashMap<>();
                     map.put(attributeName, attributeValue);
