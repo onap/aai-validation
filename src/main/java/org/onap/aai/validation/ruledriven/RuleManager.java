@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import org.onap.aai.validation.ruledriven.configuration.EntitySection;
@@ -45,7 +46,8 @@ public class RuleManager {
     /**
      * Create the rules for each type of entity based on the supplied configuration
      *
-     * @param entities configuration (all entities)
+     * @param entities
+     *        configuration (all entities)
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws GroovyConfigurationException
@@ -69,11 +71,10 @@ public class RuleManager {
 
     /**
      * @param entityType
-     * @return the rules configured for this entity type
+     * @return the Optional rules configured for this entity type
      */
-    public List<Rule> getRulesForEntity(String entityType) {
-        List<Rule> rules = rulesMap.get(entityType);
-        return rules == null ? Collections.emptyList() : rules;
+    public Optional<List<Rule>> getRulesForEntity(String entityType) {
+        return Optional.ofNullable(rulesMap.get(entityType));
     }
 
     public static String generateKey(String[] indices) {

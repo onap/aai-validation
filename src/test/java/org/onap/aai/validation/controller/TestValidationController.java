@@ -1,12 +1,12 @@
-/*
+/**
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -22,7 +22,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.util.ArrayList;
@@ -39,9 +38,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.onap.aai.validation.Validator;
-import org.onap.aai.validation.config.EventReaderConfig;
 import org.onap.aai.validation.config.ValidationControllerConfig;
-import org.onap.aai.validation.controller.ValidationController;
 import org.onap.aai.validation.exception.ValidationServiceError;
 import org.onap.aai.validation.exception.ValidationServiceException;
 import org.onap.aai.validation.publisher.MessagePublisher;
@@ -49,6 +46,7 @@ import org.onap.aai.validation.reader.EventReader;
 import org.onap.aai.validation.reader.data.Entity;
 import org.onap.aai.validation.reader.data.EntityId;
 import org.onap.aai.validation.result.ValidationResult;
+import org.onap.aai.validation.result.ValidationResultBuilder;
 import org.onap.aai.validation.result.Violation;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -172,12 +170,11 @@ public class TestValidationController {
         when(eventReader.getEntity(TESTDATA_EXCEPTION_EVENT)).thenReturn(entity);
         when(eventReader.getEntityType(TESTDATA_HANDLE_EXCEPTION_EXCEPTION_EVENT)).thenThrow(
                 new RuntimeException("Error during handling the exception for an event that couldn't be validated"));
-        //@formatter:off
-		Mockito.doThrow(new ValidationServiceException(ValidationServiceError.EVENT_CLIENT_PUBLISHER_INIT_ERROR))
-				.when(messagePublisher)
-				.publishMessage(
-						Mockito.contains("\"entityId\":\"[vserver-id=instanceid1]\",\"entityType\":\"entitytype1\",\"resourceVersion\":\"resourceVersion1\""));
-		//@formatter:on
+
+        Mockito.doThrow(new ValidationServiceException(ValidationServiceError.EVENT_CLIENT_PUBLISHER_INIT_ERROR))
+                .when(messagePublisher).publishMessage(
+                        Mockito.contains("\"entityId\":\"[vserver-id=instanceid1]\",\"entityType\":\"entitytype1\","
+                                + "\"resourceVersion\":\"resourceVersion1\""));
     }
 
     private Map<String, List<String>> setupEventTypeData() {
@@ -196,66 +193,72 @@ public class TestValidationController {
     }
 
     private Map<String, List<ValidationResult>> setupTestData() throws ValidationServiceException {
+        final Map<String, List<ValidationResult>> validationResultsMap = new HashMap<>();
 
-        Map<String, List<ValidationResult>> validationResultsMap = new HashMap<>();
-
-        List<ValidationResult> aaiEventValidationResults = new ArrayList<>();
-
+        when(eventReader.getEntity(VSERVER)).thenReturn(entity);
         setUpEntityMock("20160525162737-61c49d41-5338-4755-af54-06cee9fe4aca", VSERVER, "1464193654");
 
-        aaiEventValidationResults.add(new ValidationResult(entity));
-        aaiEventValidationResults.add(new ValidationResult(entity));
+        ValidationResultBuilder builder = new ValidationResultBuilder(eventReader, VSERVER);
+        List<ValidationResult> aaiEventValidationResults = new ArrayList<>();
+        aaiEventValidationResults.add(builder.build());
+        aaiEventValidationResults.add(builder.build());
         validationResultsMap.put(TESTDATA_EVENTTYPE_AAI, aaiEventValidationResults);
 
         List<ValidationResult> apiEventValidationResults = new ArrayList<>();
 
         setUpEntityMock("20160525162737-61c49d41-5338-4755-af54-06cee9fe4acb", VSERVER, "1464193655");
 
-        apiEventValidationResults.add(new ValidationResult(entity));
+        apiEventValidationResults.add(builder.build());
         validationResultsMap.put(TESTDATA_EVENTTYPE_API, apiEventValidationResults);
 
         List<ValidationResult> namedQueryEventValidationResults = new ArrayList<>();
 
         setUpEntityMock("20160525162737-61c49d41-5338-4755-af54-06cee9fe4acc", VSERVER, "1464193656");
 
-        namedQueryEventValidationResults.add(new ValidationResult(entity));
+        namedQueryEventValidationResults.add(builder.build());
         validationResultsMap.put(TESTDATA_EVENTTYPE_NAMEDQUERY, namedQueryEventValidationResults);
 
         List<ValidationResult> messagePublishExceptionValidationResults = new ArrayList<>();
 
         setUpEntityMock("instanceid1", "entitytype1", "resourceVersion1");
 
-        messagePublishExceptionValidationResults.add(new ValidationResult(entity));
+        messagePublishExceptionValidationResults.add(builder.build());
         validationResultsMap.put(TESTDATA_VALIDATION_RESULT_PUBLISH_ERROR, messagePublishExceptionValidationResults);
 
         return validationResultsMap;
     }
 
     @Test
-    public void testExecuteForAAIEvent() throws Exception {
+    public void testExecuteForAaiEvent() throws Exception {
         // Test for AAI-EVENT
         validationController.execute(TESTDATA_EVENTTYPE_AAI, TEST);
         verify(ruleDrivenValidator, times(1)).validate(TESTDATA_EVENTTYPE_AAI);
-        verify(messagePublisher, times(2)).publishMessage(Mockito.contains(
-                "\"entityId\":{\"vserver-id\":\"20160525162737-61c49d41-5338-4755-af54-06cee9fe4aca\"},\"entityType\":\"vserver\",\"entityLink\":\"entityLink\",\"resourceVersion\":\"1464193654\",\"entity\":{},\"violations\":[]}"));
+        verify(messagePublisher, times(2)).publishMessage(Mockito
+                .contains("\"entityId\":{\"vserver-id\":\"20160525162737-61c49d41-5338-4755-af54-06cee9fe4aca\"},"
+                        + "\"entityType\":\"vserver\",\"entityLink\":\"entityLink\","
+                        + "\"resourceVersion\":\"1464193654\",\"entity\":{},\"violations\":[]}"));
     }
 
     @Test
-    public void testExecuteForAPIEvent() throws Exception {
+    public void testExecuteForApiEvent() throws Exception {
         // Test for AAI-DATA-EXPORT-API
         validationController.execute(TESTDATA_EVENTTYPE_API, TEST);
         verify(ruleDrivenValidator, times(1)).validate(TESTDATA_EVENTTYPE_API);
-        verify(messagePublisher, times(1)).publishMessage(Mockito.contains(
-                "\"entityId\":{\"vserver-id\":\"20160525162737-61c49d41-5338-4755-af54-06cee9fe4acb\"},\"entityType\":\"vserver\",\"entityLink\":\"entityLink\",\"resourceVersion\":\"1464193655\",\"entity\":{},\"violations\":[]}"));
+        verify(messagePublisher, times(1)).publishMessage(Mockito
+                .contains("\"entityId\":{\"vserver-id\":\"20160525162737-61c49d41-5338-4755-af54-06cee9fe4acb\"},"
+                        + "\"entityType\":\"vserver\",\"entityLink\":\"entityLink\","
+                        + "\"resourceVersion\":\"1464193655\",\"entity\":{},\"violations\":[]}"));
     }
 
     @Test
-    public void testExecuteForNQEvent() throws Exception {
+    public void testExecuteForNqEvent() throws Exception {
         // Test for AAI-DATA-EXPORT-NQ
         validationController.execute(TESTDATA_EVENTTYPE_NAMEDQUERY, TEST);
         verify(modelDrivenValidator, times(1)).validate(TESTDATA_EVENTTYPE_NAMEDQUERY);
-        verify(messagePublisher, times(1)).publishMessage(Mockito.contains(
-                "\"entityId\":{\"vserver-id\":\"20160525162737-61c49d41-5338-4755-af54-06cee9fe4acc\"},\"entityType\":\"vserver\",\"entityLink\":\"entityLink\",\"resourceVersion\":\"1464193656\",\"entity\":{},\"violations\":[]}"));
+        verify(messagePublisher, times(1)).publishMessage(Mockito
+                .contains("\"entityId\":{\"vserver-id\":\"20160525162737-61c49d41-5338-4755-af54-06cee9fe4acc\"},"
+                        + "\"entityType\":\"vserver\",\"entityLink\":\"entityLink\","
+                        + "\"resourceVersion\":\"1464193656\",\"entity\":{},\"violations\":[]}"));
     }
 
     @Test
@@ -332,26 +335,25 @@ public class TestValidationController {
         verify(ruleDrivenValidator, times(1)).validate(TESTDATA_EXCEPTION_EVENT);
 
         // @formatter:off
-		Violation violation = new Violation.Builder(entity)
-		                                   .category("CANNOT_VALIDATE")
-		                                   .severity("CRITICAL")
-		                                   .violationType("NONE")
-				                           .errorMessage("Failed to validate")
-				                           .build();
-		// @formatter:on
+        Violation violation = new Violation.Builder(entity)
+                                           .category("CANNOT_VALIDATE")
+                                           .severity("CRITICAL")
+                                           .violationType("NONE")
+                                           .errorMessage("Failed to validate")
+                                           .build();
+        // @formatter:on
 
         JsonObject violationObject = new JsonParser().parse(violation.toString()).getAsJsonObject();
         violationObject.remove("validationRule"); // Not set
 
         JsonObject validationResult = new JsonObject();
         JsonObject entityIdObject = new JsonObject();
-        JsonElement entity = new JsonObject();
         entityIdObject.addProperty(primaryKey, value);
         validationResult.add(Violation.ENTITY_ID_PROPERTY, entityIdObject);
         validationResult.addProperty(Violation.ENTITY_TYPE_PROPERTY, "entitytype1");
         validationResult.addProperty(ENTITY_LINK, ENTITY_LINK);
         validationResult.addProperty("resourceVersion", resourceVersion);
-        validationResult.add("entity", entity);
+        validationResult.add("entity", new JsonObject());
         JsonArray violations = new JsonArray();
         violations.add(violationObject);
         validationResult.add("violations", violations);
@@ -376,12 +378,13 @@ public class TestValidationController {
         // This test is here for code coverage.
         validationController.execute(TESTDATA_VALIDATION_RESULT_PUBLISH_ERROR, TEST);
         verify(ruleDrivenValidator, times(1)).validate(TESTDATA_VALIDATION_RESULT_PUBLISH_ERROR);
-        verify(messagePublisher, times(1)).publishMessage(Mockito.contains(
-                "\"entityId\":{\"vserver-id\":\"instanceid1\"},\"entityType\":\"entitytype1\",\"entityLink\":\"entityLink\",\"resourceVersion\":\"resourceVersion1\",\"entity\":{},\"violations\":[]}"));
+        verify(messagePublisher, times(1)).publishMessage(
+                Mockito.contains("\"entityId\":{\"vserver-id\":\"instanceid1\"},\"entityType\":\"entitytype1\","
+                        + "\"entityLink\":\"entityLink\",\"resourceVersion\":\"resourceVersion1\","
+                        + "\"entity\":{},\"violations\":[]}"));
     }
 
     private void setUpEntityMock(String id, String type, String resourceVersion) throws ValidationServiceException {
-        when(eventReader.getEventReaderConfig()).thenReturn(new EventReaderConfig());
         when(entity.getType()).thenReturn(type);
         EntityId entityId = new EntityId("vserver-id", id);
         when(entity.getIds()).thenReturn(Collections.singletonList(entityId));

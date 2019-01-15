@@ -1,4 +1,4 @@
-/*
+/**
  * ============LICENSE_START===================================================
  * Copyright (c) 2018 Amdocs
  * ============================================================================
@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,7 +23,7 @@ import org.hamcrest.Matcher;
 import org.onap.aai.validation.result.ValidationResult;
 
 /**
- * Matcher for comparing actual and expected ValidationResults
+ * Matcher for comparing actual and expected ValidationResults.
  *
  */
 public class ValidationResultIsEqual extends BaseMatcher<ValidationResult> {
@@ -38,11 +38,11 @@ public class ValidationResultIsEqual extends BaseMatcher<ValidationResult> {
     }
 
     @Override
-    public boolean matches(Object o) {
+    public boolean matches(Object obj) {
         if (expected == null) {
             return false;
         }
-        ValidationResult actual = (ValidationResult) o;
+        ValidationResult actual = (ValidationResult) obj;
         return actual.getEntityId().equals(expected.getEntityId()) && //
                 actual.getEntityType().equals(expected.getEntityType()) && //
                 (actual.getEntityLink() == null ? "" : actual.getEntityLink()).equals(expected.getEntityLink()) && //
