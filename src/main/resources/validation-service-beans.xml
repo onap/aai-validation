@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ============LICENSE_START===================================================
-Copyright (c) 2018 Amdocs
+Copyright (c) 2018-2019 Amdocs
 ============================================================================
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -28,12 +28,16 @@ limitations under the License.
 	<!-- ////////////////////////////////////////////////////////////////// -->
 	<!-- PROPERTY AND CONFIGURATION FILES -->
 	<!-- ////////////////////////////////////////////////////////////////// -->
-	<context:property-placeholder location="classpath:event-reader.properties" ignore-unresolvable="true" />
-	<context:property-placeholder location="file:${CONFIG_HOME}/aai-environment.properties" ignore-unresolvable="true" />
-	<context:property-placeholder location="file:${CONFIG_HOME}/validation-service.properties" ignore-unresolvable="true" />
-	<context:property-placeholder location="file:${CONFIG_HOME}/validation-service-auth.properties" ignore-unresolvable="true" />
-	<context:property-placeholder location="file:${CONFIG_HOME}/rule-indexing.properties" ignore-unresolvable="true" ignore-resource-not-found="true" />
-	<context:property-placeholder location="file:${schemaIngestPropLoc}" ignore-unresolvable="true" />
+    <context:property-placeholder location="file:${CONFIG_HOME}/rule-indexing.properties"
+        ignore-unresolvable="true" ignore-resource-not-found="true" />
+    <context:property-placeholder
+        location="
+        classpath:event-reader.properties,
+        file:${CONFIG_HOME}/aai-environment.properties,
+        file:${CONFIG_HOME}/validation-service.properties,
+        file:${CONFIG_HOME}/validation-service-auth.properties,
+        file:${CONFIG_HOME}/schemaIngest.properties"
+        ignore-unresolvable="true" />
 
 	<bean id="mappingFile" class="org.apache.commons.io.IOUtils" factory-method="toString">
 		<constructor-arg value="file:${APP_HOME}/bundleconfig/etc/appprops/model-instance-mapping.json_conf" type="java.io.InputStream" />
@@ -112,26 +116,18 @@ limitations under the License.
 			</list>
 		</property>
 	</bean>
+    <!-- ////////////////////////////////////////////////////////////////// -->
+    <!-- READER BEANS -->
+    <!-- ////////////////////////////////////////////////////////////////// -->
+    <bean id="configTranslator" class="org.onap.aai.setup.AAIConfigTranslator" />
 
-	<!-- ////////////////////////////////////////////////////////////////// -->
-	<!-- READER BEANS -->
-	<!-- ////////////////////////////////////////////////////////////////// -->
-	<bean id="schemaLocationsBean" class="org.onap.aai.setup.SchemaLocationsBean">
-		<property name="nodeDirectory" value="${nodeDir}" />
-		<property name="edgeDirectory" value="${edgeDir}" />
-	</bean>
-
-	<bean id="configTranslator" class="org.onap.aai.validation.reader.OxmConfigTranslator">
-		<constructor-arg ref="schemaLocationsBean" />
-	</bean>
-
-	<bean id="nodeIngestor" class="org.onap.aai.nodes.NodeIngestor">
-		<constructor-arg ref="configTranslator" />
+    <bean id="schemaVersionBean" class="org.onap.aai.setup.SchemaVersion">
+        <constructor-arg value="${schema.version.api.default}" />
 	</bean>
 
 	<bean id="oxmReader" class="org.onap.aai.validation.reader.OxmReader" init-method="init">
 		<constructor-arg ref="nodeIngestor" />
-		<constructor-arg value="V${aai.oxm.version}" />
+        <constructor-arg ref="schemaVersionBean" />
 	</bean>
 
 	<bean id="jsonReader" class="org.onap.aai.validation.reader.JsonReader" />

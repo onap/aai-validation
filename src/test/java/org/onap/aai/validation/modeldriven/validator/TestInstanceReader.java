@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 Amdocs
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.onap.aai.validation.exception.ValidationServiceException;
 import org.onap.aai.validation.modeldriven.configuration.mapping.ModelInstanceMapper;
-import org.onap.aai.validation.modeldriven.validator.InstanceReader;
 import org.onap.aai.validation.test.util.TestUtil;
 import org.onap.aai.validation.util.JsonUtil;
 import org.springframework.test.context.ContextConfiguration;
@@ -43,7 +42,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(properties = {"schemaIngestPropLoc = src/test/resources/oxm-reader/schemaIngest.properties"})
+@TestPropertySource(locations = { "classpath:oxm-reader/schemaIngest.properties" })
 @ContextConfiguration(locations = {"classpath:model-validation/instance-reader/test-validation-service-beans.xml"})
 public class TestInstanceReader {
 
@@ -84,22 +83,26 @@ public class TestInstanceReader {
 
     enum TestData {
         // @formatter:off
-		MAPPING                 ("model-validation/instance-reader/model-instance-mapping.json_conf"),
-		MAPPING_ROOT_UNKNOWN    ("model-validation/instance-reader/model-instance-mapping-root-unknown.json_conf"),
-		MAPPING_ROOT_MISSING    ("model-validation/instance-reader/model-instance-mapping-root-missing.json_conf"),
-		CONNECTOR               ("model-validation/instance-reader/connector.json"),
-		CONNECTOR_MODEL_NAME    ("model-validation/instance-reader/connector-model-name.json"),
-		CONNECTOR_SIBLING       ("model-validation/instance-reader/connector-sibling-inventory-items.json"),
-		EXPECTED_VDC            ("model-validation/instance-reader/expected-virtual-data-center.json"),
-		EXPECTED_VDC_MODEL_NAME ("model-validation/instance-reader/expected-virtual-data-center-model-name.json"),
-		EXPECTED_LOGICAL_LINK   ("model-validation/instance-reader/expected-logical-link.json"),
-		EXPECTED_GENERIC_VNF    ("model-validation/instance-reader/expected-generic-vnf.json"),
-		EXPECTED_PSERVER        ("model-validation/instance-reader/expected-pserver.json");
+        MAPPING                 ("model-validation/instance-reader/model-instance-mapping.json_conf"),
+        MAPPING_ROOT_UNKNOWN    ("model-validation/instance-reader/model-instance-mapping-root-unknown.json_conf"),
+        MAPPING_ROOT_MISSING    ("model-validation/instance-reader/model-instance-mapping-root-missing.json_conf"),
+        CONNECTOR               ("model-validation/instance-reader/connector.json"),
+        CONNECTOR_MODEL_NAME    ("model-validation/instance-reader/connector-model-name.json"),
+        CONNECTOR_SIBLING       ("model-validation/instance-reader/connector-sibling-inventory-items.json"),
+        EXPECTED_VDC            ("model-validation/instance-reader/expected-virtual-data-center.json"),
+        EXPECTED_VDC_MODEL_NAME ("model-validation/instance-reader/expected-virtual-data-center-model-name.json"),
+        EXPECTED_LOGICAL_LINK   ("model-validation/instance-reader/expected-logical-link.json"),
+        EXPECTED_GENERIC_VNF    ("model-validation/instance-reader/expected-generic-vnf.json"),
+        EXPECTED_PSERVER        ("model-validation/instance-reader/expected-pserver.json");
+        // @formatter:on
 
 		private String filename;
-		TestData(String filename) {this.filename = filename;}
-		public String getFilename() {return this.filename;}
-		// @formatter:on
+        TestData(String filename) {
+            this.filename = filename;
+        }
+        public String getFilename() {
+            return this.filename;
+        }
     }
 
     @Rule
@@ -161,8 +164,6 @@ public class TestInstanceReader {
         JsonElement genericVnfJsonElement = jsonParser.parse(expectedGenericVnf);
         String expectedGenericVnf = genericVnfJsonElement.toString();
 
-        JsonElement pserverJsonElement = jsonParser.parse(expectedPserver);
-        String expectedPserver = pserverJsonElement.toString();
 
         // Method under test
         Multimap<String, String> values = instanceReader.getValues(connectorSibling, mapping);
@@ -178,7 +179,7 @@ public class TestInstanceReader {
         values = instanceReader.getValues(logicalLinkInstance, mapping);
 
         assertThat(values.get("generic-vnf").iterator().next(), is(equalTo(expectedGenericVnf)));
-        assertThat(values.get("pserver").iterator().next(), is(equalTo(expectedPserver)));
+        assertThat(values.get("pserver").iterator().next(), is(equalTo(jsonParser.parse(expectedPserver).toString())));
     }
 
     @Test

@@ -1,12 +1,12 @@
-/*
+/**
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 Amdocs
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,7 +24,6 @@ import static org.junit.Assert.assertThat;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
-import org.onap.aai.validation.reader.JsonReader;
 import org.onap.aai.validation.test.util.TestUtil;
 
 public class TestJsonReader {
@@ -34,13 +33,19 @@ public class TestJsonReader {
     }
 
     enum TestData {
-        // @formatter:off
-		SAMPLE_JSON ("json-reader/sample.json");
+        SAMPLE_JSON(
+                "json-reader/sample.json"
+        );
 
-		private String filename;
-		TestData(String filename) {this.filename = filename;}
-		public String getFilename() {return this.filename;}
-		// @formatter:on
+        private String filename;
+
+        TestData(String filename) {
+            this.filename = filename;
+        }
+
+        public String getFilename() {
+            return this.filename;
+        }
     }
 
     @Test
