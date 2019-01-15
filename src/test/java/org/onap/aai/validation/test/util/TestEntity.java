@@ -1,4 +1,4 @@
-/*
+/**
  * ============LICENSE_START===================================================
  * Copyright (c) 2018 Amdocs
  * ============================================================================
@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,6 +25,7 @@ import java.net.URISyntaxException;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import org.onap.aai.validation.result.ValidationResult;
+import org.onap.aai.validation.result.ValidationResultBuilder;
 
 public class TestEntity {
 
@@ -44,6 +45,8 @@ public class TestEntity {
     }
 
     /**
+     * Fetch the expected JSON output from the test resources.
+     *
      * @return the contents of the file that stores the expected JSON, or an empty string if there is no expected JSON
      * @throws URISyntaxException
      * @throws IOException
@@ -57,7 +60,7 @@ public class TestEntity {
     }
 
     public ValidationResult getExpectedValidationResult() throws JsonSyntaxException, URISyntaxException, IOException {
-        return ValidationResult.fromJson(getExpectedJson());
+        return ValidationResultBuilder.fromJson(getExpectedJson());
     }
 
     @Override
@@ -79,10 +82,10 @@ public class TestEntity {
     }
 
     private String getErrorFileContents() throws URISyntaxException, IOException {
-        return TestUtil.getFileAsString(new URI(getErrorFileURI()).getPath());
+        return TestUtil.getFileAsString(new URI(getErrorFileUri()).getPath());
     }
 
-    private String getErrorFileURI() {
+    private String getErrorFileUri() {
         return expectedResultsFile.replaceAll("\\.exp\\.json$", ".error");
     }
 }

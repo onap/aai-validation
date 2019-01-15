@@ -29,7 +29,6 @@ import org.junit.Test;
 import org.onap.aai.validation.reader.OxmReader;
 import org.onap.aai.validation.reader.data.AttributeValues;
 import org.onap.aai.validation.ruledriven.RuleDrivenValidator;
-import org.onap.aai.validation.ruledriven.rule.Rule;
 
 public class TestConfigurationLoader {
 
@@ -77,7 +76,7 @@ public class TestConfigurationLoader {
 
         // Find the trinity rule
         Rule trinityRule = null;
-        for (Rule rule : validator.getRulesForEntity("vserver", "aai-event")) {
+        for (Rule rule : validator.getRulesForEntity("vserver", "aai-event").get()) {
             if (rule.getName().contains("TRINITY") && rule.getName().contains("generic-vnf")) {
                 trinityRule = rule;
             }

@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
+import org.apache.commons.lang.StringUtils;
 import org.onap.aai.validation.Validator;
 import org.onap.aai.validation.config.RuleIndexingConfig;
 import org.onap.aai.validation.exception.ValidationServiceError;
@@ -44,6 +45,7 @@ import org.onap.aai.validation.reader.OxmReader;
 import org.onap.aai.validation.reader.data.AttributeValues;
 import org.onap.aai.validation.reader.data.Entity;
 import org.onap.aai.validation.result.ValidationResult;
+import org.onap.aai.validation.result.ValidationResultBuilder;
 import org.onap.aai.validation.result.Violation;
 import org.onap.aai.validation.result.Violation.ViolationType;
 import org.onap.aai.validation.ruledriven.configuration.EntitySection;
@@ -136,9 +138,9 @@ public class RuleDrivenValidator implements Validator {
      *
      * @param entityType
      * @param eventType
-     * @return the rules defined for this entityType
+     * @return the Optional rules defined for this entityType
      */
-    public List<Rule> getRulesForEntity(String entityType, String eventType) {
+    public Optional<List<Rule>> getRulesForEntity(String entityType, String eventType) {
         return ruleManagers.get(eventType.toLowerCase(Locale.getDefault())).getRulesForEntity(entityType);
     }
 
@@ -152,11 +154,10 @@ public class RuleDrivenValidator implements Validator {
 
         Entity entity = getEventReader().getEntity(event);
         Optional<String> eventType = eventReader.getEventType(event);
-        List<Rule> rules = getRulesToApply(entity, eventType).orElse(null);
-        if (rules == null) {
-            throw new ValidationServiceException(ValidationServiceError.RULES_NOT_DEFINED, eventType.orElse(null));
-        }
-        ValidationResult validationResult = new ValidationResult(entity);
+        List<Rule> rules = getRulesToApply(entity, eventType).orElseThrow(
+                () -> new ValidationServiceException(ValidationServiceError.RULES_NOT_DEFINED, eventType.orElse(null)));
+
+        ValidationResult validationResult = new ValidationResultBuilder(eventReader, event).build();
         Violation.Builder builder = new Violation.Builder(entity);
 
         for (Rule rule : rules) {
@@ -207,7 +208,7 @@ public class RuleDrivenValidator implements Validator {
                         && ruleIndexingConfig.get().getIndexedEvents().contains(eventType.get())) {
                     rules = getRulesByIndex(entity, eventType.get(), ruleManager.get());
                 } else {
-                    rules = Optional.of(ruleManager.get().getRulesForEntity(entity.getType()));
+                    rules = ruleManager.get().getRulesForEntity(entity.getType());
                 }
             }
         }
@@ -217,18 +218,21 @@ public class RuleDrivenValidator implements Validator {
     private Optional<List<Rule>> getRulesByIndex(Entity entity, String eventType, RuleManager ruleManager) {
         String rulesKey = generateKey(entity, eventType);
         applicationLogger.debug(String.format("Retrieving indexed rules for key '%s'", rulesKey));
-        Optional<List<Rule>> rules = Optional.of(ruleManager.getRulesForEntity(rulesKey));
-        if (rules.get().isEmpty() && ruleIndexingConfig.isPresent()) {
-            if (ruleIndexingConfig.get().getDefaultIndexKey() == null
-                    || ruleIndexingConfig.get().getDefaultIndexKey().isEmpty()) {
+
+        final Optional<List<Rule>> entityRules = ruleManager.getRulesForEntity(rulesKey);
+        final boolean rulesDefined = entityRules.filter(l -> !l.isEmpty()).isPresent();
+
+        if (!rulesDefined && ruleIndexingConfig.isPresent()) {
+            final String defaultIndexKey = ruleIndexingConfig.get().getDefaultIndexKey();
+            if (StringUtils.isEmpty(defaultIndexKey)) {
+                return ruleManager.getRulesForEntity(RuleManager.generateKey(new String[] { defaultIndexKey }));
+            } else {
                 applicationLogger.debug("Default index value not configured, unable to get rules");
                 applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, eventType);
-                return rules;
             }
-            String defaultKey = RuleManager.generateKey(new String[] { ruleIndexingConfig.get().getDefaultIndexKey() });
-            rules = Optional.of(ruleManager.getRulesForEntity(defaultKey));
         }
-        return rules;
+
+        return entityRules;
     }
 
     private String generateKey(Entity entity, String eventType) {

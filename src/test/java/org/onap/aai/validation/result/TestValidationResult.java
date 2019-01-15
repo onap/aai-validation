@@ -1,6 +1,6 @@
-/*
+/**
  * ============LICENSE_START===================================================
- * Copyright (c) 2018-2019 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,11 +59,15 @@ public class TestValidationResult {
         System.setProperty("APP_HOME", ".");
     }
 
+    private static final DateTimeFormatter formatter =
+            DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmssX").withZone(ZoneOffset.UTC);
+
     @Inject
     private EventReader eventReader;
 
     private static String vserverEvent;
     private static Entity entity;
+
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -76,13 +80,19 @@ public class TestValidationResult {
     }
 
     enum TestData {
-        // @formatter:off
-		VSERVER ("validation-result/vserver-create-event.json");
+        VSERVER(
+                "validation-result/vserver-create-event.json"
+        );
 
 		private String filename;
-		TestData(String filename) {this.filename = filename;}
-		public String getFilename() {return this.filename;}
-		// @formatter:on
+
+        TestData(String filename) {
+            this.filename = filename;
+    }
+
+        public String getFilename() {
+            return this.filename;
+        }
     }
 
     @Test
@@ -96,8 +106,8 @@ public class TestValidationResult {
         ValidationResult transformedVr = toAndFromJson(validationResult);
 
         assertThatValidationResultIsValid(transformedVr);
-        Violation v = assertThatViolationIsValid(transformedVr, validationResult.getViolations().get(0));
-        assertThat(v.getViolationDetails(), is(violationDetails));
+        Violation violation = assertThatViolationIsValid(transformedVr, validationResult.getViolations().get(0));
+        assertThat(violation.getViolationDetails(), is(violationDetails));
     }
 
     @Test
@@ -112,8 +122,8 @@ public class TestValidationResult {
 
         // Check
         assertThatValidationResultIsValid(transformedVr);
-        Violation v = assertThatViolationIsValid(transformedVr, validationResult.getViolations().get(0));
-        assertThat(v.getViolationDetails(), is(violationDetails));
+        Violation violation = assertThatViolationIsValid(transformedVr, validationResult.getViolations().get(0));
+        assertThat(violation.getViolationDetails(), is(violationDetails));
     }
 
     @Test
@@ -128,8 +138,8 @@ public class TestValidationResult {
 
         // Check
         assertThatValidationResultIsValid(transformedVr);
-        Violation v = assertThatViolationIsValid(transformedVr, validationResult.getViolations().get(0));
-        assertThat(v.getViolationDetails(), is(violationDetails));
+        Violation violation = assertThatViolationIsValid(transformedVr, validationResult.getViolations().get(0));
+        assertThat(violation.getViolationDetails(), is(violationDetails));
     }
 
     @Test
@@ -140,13 +150,13 @@ public class TestValidationResult {
         violationDetails.put("attr2", 2);
 
         ValidationResult validationResult = getValidationResult(violationDetails);
-        ValidationResult vr = toAndFromJson(validationResult);
+        ValidationResult transformedVr = toAndFromJson(validationResult);
 
         // Check
-        assertThatValidationResultIsValid(vr);
-        Violation v = assertThatViolationIsValid(vr, validationResult.getViolations().get(0));
-        assertThat(v.getViolationDetails().get("attr1"), is(1.0));
-        assertThat(v.getViolationDetails().get("attr2"), is(2.0));
+        assertThatValidationResultIsValid(transformedVr);
+        Violation violation = assertThatViolationIsValid(transformedVr, validationResult.getViolations().get(0));
+        assertThat(violation.getViolationDetails().get("attr1"), is(1.0));
+        assertThat(violation.getViolationDetails().get("attr2"), is(2.0));
     }
 
     @Test
@@ -165,8 +175,8 @@ public class TestValidationResult {
 
         // Check
         assertThatValidationResultIsValid(transformedVr);
-        Violation v = assertThatViolationIsValid(transformedVr, validationResult.getViolations().get(0));
-        String jsonDetails = v.getViolationDetails().get("attr1").toString();
+        Violation violation = assertThatViolationIsValid(transformedVr, validationResult.getViolations().get(0));
+        String jsonDetails = violation.getViolationDetails().get("attr1").toString();
         JsonParser jsonParser = new JsonParser();
         JsonElement jsonElement = jsonParser.parse(jsonDetails);
         assertThat(jsonObject, is(jsonElement));
@@ -174,13 +184,14 @@ public class TestValidationResult {
 
     @Test
     public void testCompareObjects() throws Exception {
-        ValidationResult validationResult = new ValidationResult(entity);
+        ValidationResultBuilder builder = new ValidationResultBuilder(eventReader, vserverEvent);
+        ValidationResult validationResult = builder.build();
         assertThat(validationResult, is(not(equalTo(null))));
 
         validationResult.setEntityId(new JsonObject());
         assertThat(validationResult, is(not(equalTo(null))));
 
-        ValidationResult other = new ValidationResult(entity);
+        ValidationResult other = builder.build();
         assertThat(validationResult, is(not(equalTo(other))));
 
         validationResult.setEntityType("type");
@@ -254,9 +265,12 @@ public class TestValidationResult {
      * Generate various violations using the supplied builders and assert the expected equality of the generated
      * Violation IDs whenever the values supplied to the builders are the same.
      *
-     * @param b1 a builder
-     * @param b2 another builder
-     * @param expectedResult whether or not the two builders should produce identical violations
+     * @param b1
+     *        a builder
+     * @param b2
+     *        another builder
+     * @param expectedResult
+     *        whether or not the two builders should produce identical violations
      * @throws ValidationServiceException
      */
     private void testViolationIdsForEquality(Builder b1, Builder b2, Boolean expectedResult)
@@ -370,7 +384,7 @@ public class TestValidationResult {
 
     private ValidationResult getValidationResult(Map<String, Object> violationDetails)
             throws ValidationServiceException {
-        ValidationResult validationResult = new ValidationResult(entity);
+        ValidationResult validationResult = new ValidationResultBuilder(eventReader, vserverEvent).build();
 
         //@formatter:off
 		Violation violation = new Violation.Builder(entity)
@@ -388,29 +402,29 @@ public class TestValidationResult {
     }
 
     private ValidationResult toAndFromJson(ValidationResult validationResult) {
-        return JsonUtil.toAnnotatedClassfromJson(validationResult.toJson(), ValidationResult.class);
+        return JsonUtil.toAnnotatedClassfromJson(validationResult.toJson(), ValidationResultImpl.class);
     }
 
-    private void assertThatValidationResultIsValid(ValidationResult vr) {
-        assertTrue("Expected valid UUID", isValidEventId(vr.getValidationId()));
-        assertIsValidTimestamp(vr.getValidationTimestamp());
+    private void assertThatValidationResultIsValid(ValidationResult validationResult) {
+        assertTrue("Expected valid UUID", isValidEventId(validationResult.getValidationId()));
+        assertIsValidTimestamp(validationResult.getValidationTimestamp());
         JsonObject expectedEntityId = new JsonObject();
         expectedEntityId.addProperty("vserver-id", "example-vserver-id-val-34666");
-        assertThat(vr.getEntityId(), is(expectedEntityId));
-        assertThat(vr.getEntityType(), is("vserver"));
-        assertThat(vr.getResourceVersion(), is("1464193654"));
-        assertThat(vr.getEntityLink(), is(
-                "cloud-infrastructure/cloud-regions/cloud-region/region1/AAIregion1/tenants/tenant/example-tenant-id-val-88551/vservers/vserver/example-vserver-id-val-34666"));
+        assertThat(validationResult.getEntityId(), is(expectedEntityId));
+        assertThat(validationResult.getEntityType(), is("vserver"));
+        assertThat(validationResult.getResourceVersion(), is("1464193654"));
+        assertThat(validationResult.getEntityLink(), is("cloud-infrastructure/cloud-regions/cloud-region/region1/"
+                + "AAIregion1/tenants/tenant/example-tenant-id-val-88551/vservers/vserver/example-vserver-id-val-34666"));
     }
 
-    private Violation assertThatViolationIsValid(ValidationResult vr, Violation expectedViolation) {
-        Violation v = vr.getViolations().get(0);
-        assertThat(v.getViolationId(), is(expectedViolation.getViolationId()));
-        assertThat(v.getCategory(), is("category"));
-        assertThat(v.getSeverity(), is("severity"));
-        assertThat(v.getViolationType(), is("violationType"));
-        assertThat(v.getErrorMessage(), is("errorMessage"));
-        return v;
+    private Violation assertThatViolationIsValid(ValidationResult validationResult, Violation expectedViolation) {
+        Violation violation = validationResult.getViolations().get(0);
+        assertThat(violation.getViolationId(), is(expectedViolation.getViolationId()));
+        assertThat(violation.getCategory(), is("category"));
+        assertThat(violation.getSeverity(), is("severity"));
+        assertThat(violation.getViolationType(), is("violationType"));
+        assertThat(violation.getErrorMessage(), is("errorMessage"));
+        return violation;
     }
 
     private void assertThatViolationsAreEqual(Violation v1, Violation v2, Boolean expectedResult) {
@@ -429,14 +443,13 @@ public class TestValidationResult {
     private boolean isValidEventId(String eventId) {
         try {
             UUID.fromString(eventId);
+            return true;
         } catch (IllegalArgumentException exception) {
             return false;
         }
-        return true;
     }
 
     private void assertIsValidTimestamp(String date) {
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmssX").withZone(ZoneOffset.UTC);
-        Instant.from(f.parse(date));
+        Instant.from(formatter.parse(date));
     }
 }
