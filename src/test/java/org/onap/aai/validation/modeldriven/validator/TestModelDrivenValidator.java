@@ -1,12 +1,12 @@
-/*
+/**
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 Amdocs
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -43,7 +43,6 @@ import org.onap.aai.validation.controller.ValidationController;
 import org.onap.aai.validation.modeldriven.ModelCacheManager;
 import org.onap.aai.validation.modeldriven.ModelId;
 import org.onap.aai.validation.modeldriven.parser.XMLModelParser;
-import org.onap.aai.validation.modeldriven.validator.ModelDrivenValidator;
 import org.onap.aai.validation.result.ValidationResult;
 import org.onap.aai.validation.result.Violation;
 import org.onap.aai.validation.test.util.TestUtil;
@@ -52,7 +51,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(properties = {"schemaIngestPropLoc = src/test/resources/oxm-reader/schemaIngest.properties"})
+@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties"})
 @ContextConfiguration(locations = {"classpath:model-validation/instance-validator/test-validation-service-beans.xml"})
 public class TestModelDrivenValidator {
 
@@ -74,21 +73,21 @@ public class TestModelDrivenValidator {
     private String objectInstance;
     private String connectorModel;
 
-    enum INSTANCE_VALIDATION_FILE {
+    static enum InstanceValidationFile {
         // @formatter:off
-		CONNECTOR_MODEL           ("model-validation/instance-validator/connector-widget-id.xml"),
-		NO_MODEL_ID               ("model-validation/instance-validator/connector-instance-no-model-id.json"),
-		UNKNOWN_MODEL_ID          ("model-validation/instance-validator/connector-instance-unknown-model-id.json"),
-		ERRORS                    ("model-validation/instance-validator/connector-instance-errors.json"),
-		MULTIPLE_MISSING_ATTRS    ("model-validation/instance-validator/connector-instance-multiple-missing-attrs.json"),
-		MULTIPLE_UNEXPECTED_ATTRS ("model-validation/instance-validator/connector-instance-multiple-unexpected-attrs.json"),
-		SUCCESS                   ("model-validation/instance-validator/connector-instance-success.json");
-		// @formatter:on
+        CONNECTOR_MODEL           ("connector-widget-id.xml"),
+        NO_MODEL_ID               ("connector-instance-no-model-id.json"),
+        UNKNOWN_MODEL_ID          ("connector-instance-unknown-model-id.json"),
+        ERRORS                    ("connector-instance-errors.json"),
+        MULTIPLE_MISSING_ATTRS    ("connector-instance-multiple-missing-attrs.json"),
+        MULTIPLE_UNEXPECTED_ATTRS ("connector-instance-multiple-unexpected-attrs.json"),
+        SUCCESS                   ("connector-instance-success.json");
+        // @formatter:on
 
         private String filename;
 
-        INSTANCE_VALIDATION_FILE(String filename) {
-            this.filename = filename;
+        InstanceValidationFile(String filename) {
+            this.filename = "model-validation/instance-validator/" + filename;
         }
 
         public String getFilename() {
@@ -103,12 +102,12 @@ public class TestModelDrivenValidator {
 
     @Before
     public void setUp() throws Exception {
-        connectorModel = TestUtil.getFileAsString(INSTANCE_VALIDATION_FILE.CONNECTOR_MODEL.getFilename());
+        connectorModel = TestUtil.getFileAsString(InstanceValidationFile.CONNECTOR_MODEL.getFilename());
     }
 
     @Test
     public void testValidateInstanceWithoutModelId() throws Exception {
-        objectInstance = TestUtil.getFileAsString(INSTANCE_VALIDATION_FILE.NO_MODEL_ID.getFilename());
+        objectInstance = TestUtil.getFileAsString(InstanceValidationFile.NO_MODEL_ID.getFilename());
 
         ValidationResult validationResult = modelDrivenValidator.validate(objectInstance).get(0);
         assertThatValidationResultIsValid(validationResult, "c7611ebe-c324-48f1-8085-94aef0c12fd", "connector",
@@ -123,7 +122,7 @@ public class TestModelDrivenValidator {
 
     @Test
     public void testValidateInstanceWithUnknownModelId() throws Exception {
-        objectInstance = TestUtil.getFileAsString(INSTANCE_VALIDATION_FILE.UNKNOWN_MODEL_ID.getFilename());
+        objectInstance = TestUtil.getFileAsString(InstanceValidationFile.UNKNOWN_MODEL_ID.getFilename());
 
         Mockito.when(mockModelCacheManager.get(new ModelId(MODEL_ID_ATTRIBUTE_MID, "UNKNOWN-MODEL"))).thenReturn(null);
 
@@ -140,7 +139,7 @@ public class TestModelDrivenValidator {
 
     @Test
     public void testValidate() throws Exception {
-        objectInstance = TestUtil.getFileAsString(INSTANCE_VALIDATION_FILE.ERRORS.getFilename());
+        objectInstance = TestUtil.getFileAsString(InstanceValidationFile.ERRORS.getFilename());
 
         Element modelElement = XMLModelParser.parse(connectorModel, true);
 
@@ -186,7 +185,7 @@ public class TestModelDrivenValidator {
 
     @Test
     public void testValidateMultipleMissingAttrs() throws Exception {
-        objectInstance = TestUtil.getFileAsString(INSTANCE_VALIDATION_FILE.MULTIPLE_MISSING_ATTRS.getFilename());
+        objectInstance = TestUtil.getFileAsString(InstanceValidationFile.MULTIPLE_MISSING_ATTRS.getFilename());
 
         Element modelElement = XMLModelParser.parse(connectorModel, true);
 
@@ -209,7 +208,7 @@ public class TestModelDrivenValidator {
 
     @Test
     public void testValidateMultipleUnexpectedAttrs() throws Exception {
-        objectInstance = TestUtil.getFileAsString(INSTANCE_VALIDATION_FILE.MULTIPLE_UNEXPECTED_ATTRS.getFilename());
+        objectInstance = TestUtil.getFileAsString(InstanceValidationFile.MULTIPLE_UNEXPECTED_ATTRS.getFilename());
 
         Element modelElement = XMLModelParser.parse(connectorModel, true);
 
@@ -232,7 +231,7 @@ public class TestModelDrivenValidator {
 
     @Test
     public void testValidateSuccess() throws Exception {
-        objectInstance = TestUtil.getFileAsString(INSTANCE_VALIDATION_FILE.SUCCESS.getFilename());
+        objectInstance = TestUtil.getFileAsString(InstanceValidationFile.SUCCESS.getFilename());
 
         Element modelElement = XMLModelParser.parse(connectorModel, true);
 

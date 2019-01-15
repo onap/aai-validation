@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 Amdocs
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,8 +42,6 @@ import org.junit.runner.RunWith;
 import org.onap.aai.validation.exception.ValidationServiceException;
 import org.onap.aai.validation.reader.EventReader;
 import org.onap.aai.validation.reader.data.Entity;
-import org.onap.aai.validation.result.ValidationResult;
-import org.onap.aai.validation.result.Violation;
 import org.onap.aai.validation.result.Violation.Builder;
 import org.onap.aai.validation.result.Violation.ViolationType;
 import org.onap.aai.validation.test.util.TestUtil;
@@ -53,7 +51,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(properties = {"schemaIngestPropLoc = src/test/resources/oxm-reader/schemaIngest.properties"})
+@TestPropertySource(locations = { "classpath:oxm-reader/schemaIngest.properties" })
 @ContextConfiguration(locations = {"classpath:validation-result/test-validation-service-beans.xml"})
 public class TestValidationResult {
 

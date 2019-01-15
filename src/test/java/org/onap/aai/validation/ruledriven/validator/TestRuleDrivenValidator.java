@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 Amdocs
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,9 +45,9 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(properties = {"schemaIngestPropLoc = src/test/resources/oxm-reader/schemaIngest.properties"})
-@ContextConfiguration(
-        locations = {"classpath:" + TestRuleDrivenValidator.UNIT_TEST_FOLDER + "/test-rule-driven-validator-beans.xml"})
+@TestPropertySource(locations = { "classpath:oxm-reader/schemaIngest.properties" })
+@ContextConfiguration(locations = {
+        "classpath:" + TestRuleDrivenValidator.UNIT_TEST_FOLDER + "/test-rule-driven-validator-beans.xml" })
 public class TestRuleDrivenValidator {
 
     static {

@@ -1,12 +1,12 @@
-/*
+/**
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 Amdocs
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -35,7 +35,6 @@ import org.junit.runner.RunWith;
 import org.onap.aai.validation.controller.ValidationController;
 import org.onap.aai.validation.exception.ValidationServiceException;
 import org.onap.aai.validation.publisher.MockEventPublisher;
-import org.onap.aai.validation.services.InfoService;
 import org.onap.aai.validation.test.util.TestEntity;
 import org.onap.aai.validation.test.util.TestUtil;
 import org.springframework.test.context.ContextConfiguration;
@@ -43,7 +42,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(properties = {"schemaIngestPropLoc = src/test/resources/oxm-reader/schemaIngest.properties"})
+@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties", "classpath:application.properties"})
 @ContextConfiguration(locations = {"classpath:/info-service/test-validation-service-beans.xml"})
 public class TestInfoService {
 
@@ -53,12 +52,18 @@ public class TestInfoService {
 
     enum TestData {
         // @formatter:off
-        VSERVER ("rule-driven-validator/test_events/vserver-create-event.json");
+        VSERVER("rule-driven-validator/test_events/vserver-create-event.json");
+        // @formatter:on
 
         private String filename;
-        TestData(String filename) {this.filename = filename;}
-        public String getFilename() {return this.filename;}
-        // @formatter:on
+
+        TestData(String filename) {
+            this.filename = filename;
+        }
+
+        public String getFilename() {
+            return this.filename;
+        }
     }
 
     private InfoService infoService;
@@ -107,13 +112,9 @@ public class TestInfoService {
         assertThat(info, containsString("errored=1"));
     }
 
-    /**
-     * @throws ValidationServiceException
-     * @throws IOException
-     * @throws URISyntaxException
-     */
+
     @Test
-    public void testVserverEventRecorded() throws ValidationServiceException, URISyntaxException, IOException {
+    public void testVserverEventRecorded() throws URISyntaxException, IOException {
         Path vserverTestFile = Paths.get(ClassLoader.getSystemResource(TestData.VSERVER.getFilename()).toURI());
         Path root = vserverTestFile.getParent();
         assertThat(root, is(not(nullValue())));
@@ -128,7 +129,7 @@ public class TestInfoService {
 
     /**
      * Assert that the info service status string contains the expected standard results and formatting.
-     * 
+     *
      * @param info
      */
     private void assertResultsStringFormatted(String info) {

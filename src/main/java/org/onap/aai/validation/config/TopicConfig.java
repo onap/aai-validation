@@ -26,13 +26,11 @@ import javax.annotation.Resource;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 /**
  * Gets the configuration of the topics. The topics are configured using Spring in topic-config-beans.xml.
  */
 
-@Component("TopicConfig")
 public class TopicConfig {
 
     private List<String> consumerTopicNames;
