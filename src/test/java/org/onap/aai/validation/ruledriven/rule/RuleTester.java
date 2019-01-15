@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 Amdocs
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@
 package org.onap.aai.validation.ruledriven.rule;
 
 import org.onap.aai.validation.reader.data.AttributeValues;
-import org.onap.aai.validation.ruledriven.rule.Rule;
 
 /**
  * Helper class for testing rules

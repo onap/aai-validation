@@ -1,4 +1,4 @@
-/*
+/**
  * ============LICENSE_START===================================================
  * Copyright (c) 2018 Amdocs
  * ============================================================================
@@ -6,7 +6,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,7 +25,7 @@ import java.util.ServiceConfigurationError;
 import org.eclipse.persistence.internal.oxm.mappings.Descriptor;
 import org.eclipse.persistence.jaxb.dynamic.DynamicJAXBContext;
 import org.onap.aai.nodes.NodeIngestor;
-import org.onap.aai.setup.Version;
+import org.onap.aai.setup.SchemaVersion;
 import org.onap.aai.validation.exception.ValidationServiceError;
 import org.onap.aai.validation.exception.ValidationServiceException;
 import org.onap.aai.validation.util.StringUtils;
@@ -36,16 +36,12 @@ import org.onap.aai.validation.util.StringUtils;
 public class OxmReader {
 
     private NodeIngestor nodeIngestor;
-    private Version version;
+    private SchemaVersion version;
     private Map<String, List<String>> primaryKeysMap = new HashMap<>();
 
-    public OxmReader(NodeIngestor nodeIngestor, Version version) {
+    public OxmReader(NodeIngestor nodeIngestor, SchemaVersion version) {
         this.nodeIngestor = nodeIngestor;
         this.version = version;
-    }
-
-    public OxmReader(NodeIngestor nodeIngestor) {
-        this(nodeIngestor, Version.getLatest());
     }
 
     /**
