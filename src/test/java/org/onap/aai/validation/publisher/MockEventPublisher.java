@@ -1,12 +1,12 @@
-/*
+/**
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,15 +17,14 @@
  */
 package org.onap.aai.validation.publisher;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import org.onap.aai.validation.exception.ValidationServiceException;
-import org.onap.aai.validation.publisher.MessagePublisher;
 import org.onap.aai.validation.result.ValidationResult;
+import org.onap.aai.validation.result.ValidationResultBuilder;
 import org.onap.aai.validation.test.util.TestEntity;
 import org.onap.aai.validation.test.util.ValidationResultIsEqual;
 
@@ -54,8 +53,8 @@ public class MockEventPublisher implements MessagePublisher {
 
     @Override
     public void publishMessage(String message) throws ValidationServiceException {
-        ValidationResult validationResult = ValidationResult.fromJson(message);
-        assertThat(testDescription, validationResult, is(ValidationResultIsEqual.equalTo(expectedValidationResult)));
+        assertThat(testDescription, ValidationResultBuilder.fromJson(message),
+                ValidationResultIsEqual.equalTo(expectedValidationResult));
         publishedMessage = true;
     }
 

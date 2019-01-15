@@ -1,12 +1,12 @@
-/*
+/**
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,14 +36,15 @@ import org.onap.aai.validation.exception.ValidationServiceException;
 import org.onap.aai.validation.modeldriven.ModelCacheManager;
 import org.onap.aai.validation.modeldriven.ModelId;
 import org.onap.aai.validation.modeldriven.configuration.mapping.ModelInstanceMapper;
-import org.onap.aai.validation.modeldriven.configuration.mapping.ModelInstanceMappingReader;
 import org.onap.aai.validation.modeldriven.configuration.mapping.ModelInstanceMapper.MappingType;
+import org.onap.aai.validation.modeldriven.configuration.mapping.ModelInstanceMappingReader;
 import org.onap.aai.validation.reader.EntityReader;
 import org.onap.aai.validation.reader.EventReader;
 import org.onap.aai.validation.reader.InstanceEntityReader;
 import org.onap.aai.validation.reader.data.Entity;
 import org.onap.aai.validation.reader.data.EntityId;
 import org.onap.aai.validation.result.ValidationResult;
+import org.onap.aai.validation.result.ValidationResultBuilder;
 import org.onap.aai.validation.result.Violation;
 import org.onap.aai.validation.result.Violation.Builder;
 import org.onap.aai.validation.result.Violation.ViolationType;
@@ -148,7 +149,7 @@ public class ModelDrivenValidator implements Validator {
 			}
 		}
 
-		ValidationResult validationResult = new ValidationResult(instanceEntity);
+		ValidationResult validationResult = new ValidationResultBuilder(instanceEntity).build();
 
 		// This is a shortcut to passing the parent model name all the way down.
 		populateViolationModelNames(violations, instanceEntity);
