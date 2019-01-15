@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 Amdocs
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.onap.aai.validation.exception.ValidationServiceException;
-import org.onap.aai.validation.reader.EventReader;
 import org.onap.aai.validation.reader.data.Entity;
 import org.onap.aai.validation.reader.data.EntityId;
 import org.onap.aai.validation.test.util.TestUtil;
@@ -43,7 +42,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(properties = {"schemaIngestPropLoc = src/test/resources/oxm-reader/schemaIngest.properties"})
+@TestPropertySource(locations = { "classpath:oxm-reader/schemaIngest.properties" })
 @ContextConfiguration(locations = {"classpath:event-reader/test-validation-service-beans.xml"})
 public class TestEventReader {
 
@@ -77,16 +76,20 @@ public class TestEventReader {
         // @formatter:off
 		VSERVER      ("event-reader/vserver-create-event.json"),
 		GENERIC_VNF  ("event-reader/generic-vnf-create-event.json"),
-		INVALID_1    ("event-reader/invalid-event-1.json"),
-		INVALID_2    ("event-reader/invalid-event-2.json"),
-		INVALID_3    ("event-reader/invalid-event-3.json"),
-		INVALID_4    ("event-reader/invalid-event-4.json"),
-		INVALID_5    ("event-reader/invalid-event-5.json");
+        INVALID_1      ("event-reader/invalid-event-1.json"),
+        INVALID_2      ("event-reader/invalid-event-2.json"),
+        INVALID_3      ("event-reader/invalid-event-3.json"),
+        INVALID_4      ("event-reader/invalid-event-4.json"),
+        INVALID_5      ("event-reader/invalid-event-5.json");
+        // @formatter:on
 
 		private String filename;
-		TestData(String filename) {this.filename = filename;}
-		public String getFilename() {return this.filename;}
-		// @formatter:on
+        TestData(String filename) {
+            this.filename = filename;
+        }
+        public String getFilename() {
+            return this.filename;
+        }
     }
 
     @Test
