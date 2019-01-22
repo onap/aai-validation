@@ -24,7 +24,6 @@ import static org.junit.Assert.assertTrue;
 import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.onap.aai.validation.config.RestConfig;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -48,9 +47,9 @@ public class TestRestConfig {
         expectedRestConfig.setProtocol("https");
         expectedRestConfig.setBaseModelURI("${baseModelURI}");
         expectedRestConfig.setTrustStorePath("/dir1/dir2/trustStorePath");
-        expectedRestConfig.setTrustStorePassword("70c87528c88dcd9f9c2558d30e817868");
+        expectedRestConfig.setTrustStorePassword("OBF:1i9a1u2a1unz1lr61wn51wn11lss1unz1u301i6o");
         expectedRestConfig.setKeyStorePath("/dir1/dir2/keyStorePath");
-        expectedRestConfig.setKeyStorePassword("70c87528c88dcd9f9c2558d30e817868");
+        expectedRestConfig.setKeyStorePassword("OBF:1i9a1u2a1unz1lr61wn51wn11lss1unz1u301i6o");
         expectedRestConfig.setKeyManagerFactoryAlgorithm("AES");
         expectedRestConfig.setKeyStoreType("jks");
         expectedRestConfig.setSecurityProtocol("TLS");

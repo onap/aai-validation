@@ -31,6 +31,7 @@ import org.onap.aai.validation.publisher.ValidationEventPublisher;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.eclipse.jetty.util.security.Password;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,12 +57,12 @@ public class TestValidationEventPublisher {
         TopicAdminConfig mockTopicAdminConfig = Mockito.mock(TopicAdminConfig.class);
         when(mockTopicAdminConfig.isPublishEnable()).thenReturn(true);
 
-        Topic topic1 = new TopicConfig("poa-rule-validation","poa-audit-result").new Topic();
+        Topic topic1 = mockTopicConfig.new Topic();
         topic1.setName("aai-data-integrity");
         topic1.setHost("integrity-dummy-host");
         topic1.setPartition("integrity-dummy-partition");
         topic1.setUsername("integrity-dummy-username");
-        topic1.setPassword("integrity-dummy-password");
+        topic1.setPassword(Password.obfuscate("integrity-dummy-password"));
         topic1.setTransportType("integrity-dummy-transport-type");
         topicList.add(topic1);
 

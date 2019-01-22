@@ -19,6 +19,7 @@ package org.onap.aai.validation.config;
 
 import java.util.Objects;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.eclipse.jetty.util.security.Password;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
@@ -111,7 +112,7 @@ public class RestConfig {
      * @return the decrypted password
      */
     public String getTrustStorePassword() {
-        return trustStorePassword;
+        return Password.deobfuscate(trustStorePassword);
     }
 
     public void setTrustStorePassword(String trustStorePassword) {
@@ -132,7 +133,7 @@ public class RestConfig {
      * @return the decrypted password
      */
     public String getKeyStorePassword() {
-        return keyStorePassword;
+        return Password.deobfuscate(keyStorePassword);
     }
 
     public void setKeyStorePassword(String keyStorePassword) {

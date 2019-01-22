@@ -24,11 +24,12 @@ import java.util.Objects;
 import java.util.Properties;
 import javax.annotation.Resource;
 import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.eclipse.jetty.util.security.Password;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
- * Gets the configuration of the topics. The topics are configured using Spring in topic-config-beans.xml.
+ * Gets the configuration of the topics using Spring.
  */
 
 public class TopicConfig {
@@ -132,6 +133,7 @@ public class TopicConfig {
         private String consumerGroup;
         private String consumerId;
         private String transportType;
+        private String protocol;
 
         public String getName() {
             return name;
@@ -158,7 +160,7 @@ public class TopicConfig {
         }
 
         public String getPassword() {
-            return password;
+            return Password.deobfuscate(password);
         }
 
         public void setPassword(String password) {

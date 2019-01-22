@@ -24,7 +24,6 @@ import static org.junit.Assert.assertTrue;
 import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.onap.aai.validation.config.TopicAdminConfig;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -44,9 +43,9 @@ public class TestTopicAdminConfig {
         TopicAdminConfig expectedTopicAdminConfig = new TopicAdminConfig();
 
         expectedTopicAdminConfig.setPublishEnable(true);
-        expectedTopicAdminConfig.setPublishRetries(3l);
+        expectedTopicAdminConfig.setPublishRetries(3L);
         expectedTopicAdminConfig.setConsumeEnable(true);
-        expectedTopicAdminConfig.setConsumePollingIntervalSeconds(3l);
+        expectedTopicAdminConfig.setConsumePollingIntervalSeconds(3L);
 
         assertThat(expectedTopicAdminConfig, is(topicAdminConfig));
         assertThat(expectedTopicAdminConfig.hashCode(), is(topicAdminConfig.hashCode()));

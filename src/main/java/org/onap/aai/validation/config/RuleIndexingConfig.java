@@ -20,7 +20,7 @@ package org.onap.aai.validation.config;
 import java.util.List;
 
 /**
- * Loads the properties needed by the controller using spring.
+ * Loads the properties needed by the controller using Spring.
  */
 public class RuleIndexingConfig extends PropertiesConfig {
 
