@@ -1,6 +1,6 @@
 ﻿/*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,12 @@
  */
 package org.onap.aai.validation;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.PostConstruct;
-import org.apache.commons.lang.StringUtils;
-import org.eclipse.jetty.util.security.Password;
 import org.onap.aai.validation.config.TopicPropertiesConfig;
+import org.onap.aai.validation.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -35,7 +35,6 @@ import org.springframework.core.env.Environment;
 /**
  * Validation Service Spring Boot Application.
  */
-
 @Configuration
 @EnableAutoConfiguration
 @Import(TopicPropertiesConfig.class)
@@ -45,18 +44,71 @@ public class ValidationServiceApplication extends SpringBootServletInitializer {
     @Autowired
     private Environment env;
 
-    public static void main(String[] args) {
-        Map<String, Object> props = new HashMap<>();
-        String keyStorePassword = System.getProperty("KEY_STORE_PASSWORD");
-        if (StringUtils.isEmpty(keyStorePassword)) {
-            throw new IllegalArgumentException("System Property KEY_STORE_PASSWORD not set");
+    private enum SystemProperty {
+        KEY_STORE_PASSWORD, // Mandatory password for the Application's keystore (containing the server cert)
+        JAVA_TRUST_STORE("javax.net.ssl.trustStore"), // JVM
+        JAVA_TRUST_STORE_PASSWORD("javax.net.ssl.trustStorePassword") // JVM
+        ;
+
+        final private String propertyName;
+
+        SystemProperty() {
+            propertyName = this.toString();
         }
-            String deobfuscated = Password.deobfuscate(keyStorePassword);
-            props.put("server.ssl.key-store-password", deobfuscated);
-            props.put("schema.service.ssl.key-store-password", deobfuscated);
-            props.put("schema.service.ssl.trust-store-password", deobfuscated);
-        new ValidationServiceApplication()
-                .configure(new SpringApplicationBuilder(ValidationServiceApplication.class).properties(props))
+
+        SystemProperty(String property) {
+            propertyName = property;
+        }
+
+        public String readValue() {
+            String propertyValue = System.getProperty(propertyName);
+            if (propertyValue == null) {
+                throw new IllegalArgumentException("System Property " + this + " not set");
+            }
+            return StringUtils.decrypt(propertyValue);
+        }
+
+        public void set(String propertyValue) {
+            System.setProperty(propertyName, propertyValue);            
+        }
+    }
+
+    private enum ApplicationProperty {
+        SERVER_SSL_KEY_STORE("server.ssl.key-store"), // Spring
+        SERVER_SSL_KEY_STORE_PASSWORD("server.ssl.key-store-password"), // Spring
+        SCHEMA_SERVICE_KEY_STORE_PASSWORD("schema.service.ssl.key-store-password"), // aai-schema-ingest
+        SCHEMA_SERVICE_TRUST_STORE_PASSWORD("schema.service.ssl.trust-store-password") // aai-schema-ingest
+        ;
+
+        final private String propertyName;
+
+        ApplicationProperty(String property) {
+            propertyName = property;
+        }
+
+        public String from(Environment env) {
+            return env.getProperty(this.propertyName);
+        }
+
+        public String mandatoryFrom(Environment env) {
+            String value = from(env);
+            if (value == null) {
+                throw new IllegalArgumentException("Env property " + this.propertyName + " not set");
+            }
+            return value;
+        }
+    }
+
+    /**
+     * Create and run the Application.
+     * 
+     * @param args
+     *            the command line arguments
+     */
+    public static void main(String[] args) {
+        new ValidationServiceApplication() //
+                .configure(new SpringApplicationBuilder(ValidationServiceApplication.class)
+                        .properties(buildEnvironmentProperties()))
                 .run(args);
     }
 
@@ -65,15 +117,31 @@ public class ValidationServiceApplication extends SpringBootServletInitializer {
      */
     @PostConstruct
     public void setSystemProperties() {
-        String trustStorePath = env.getProperty("server.ssl.key-store");
+        String trustStorePath = ApplicationProperty.SERVER_SSL_KEY_STORE.from(env);
         if (trustStorePath != null) {
-            String trustStorePassword = env.getProperty("server.ssl.key-store-password");
-            if (trustStorePassword != null) {
-                System.setProperty("javax.net.ssl.trustStore", trustStorePath);
-                System.setProperty("javax.net.ssl.trustStorePassword", trustStorePassword);
-            } else {
-                throw new IllegalArgumentException("Env property server.ssl.key-store-password not set");
-            }
+            String trustStorePassword = ApplicationProperty.SERVER_SSL_KEY_STORE_PASSWORD.mandatoryFrom(env);
+            SystemProperty.JAVA_TRUST_STORE.set(trustStorePath);
+            SystemProperty.JAVA_TRUST_STORE_PASSWORD.set(trustStorePassword);
         }
     }
+
+    /**
+     * Create the default properties for the Spring Application's environment.
+     * 
+     * @param keyStorePassword
+     *            SSL key store password
+     * @return the default environment properties
+     */
+    private static Map<String, Object> buildEnvironmentProperties() {
+        String keyStorePassword = SystemProperty.KEY_STORE_PASSWORD.readValue();
+        Map<String, Object> props = new HashMap<>();
+        for (ApplicationProperty property : Arrays.asList( //
+                ApplicationProperty.SERVER_SSL_KEY_STORE_PASSWORD,
+                ApplicationProperty.SCHEMA_SERVICE_KEY_STORE_PASSWORD,
+                ApplicationProperty.SCHEMA_SERVICE_TRUST_STORE_PASSWORD)) {
+            props.put(property.propertyName, keyStorePassword);
+        }
+        return props;
+    }
+
 }

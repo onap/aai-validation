@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import java.util.Objects;
 import java.util.Properties;
 import javax.annotation.Resource;
 import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.eclipse.jetty.util.security.Password;
+import org.onap.aai.validation.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -74,9 +74,9 @@ public class TopicConfig {
      * Populates the topics list with topic objects created from each item in the topicNames list.
      *
      * @param topics
-     *        The topic list to populate.
+     *            The topic list to populate.
      * @param topicNames
-     *        The list of topic names to populate the topic list with.
+     *            The list of topic names to populate the topic list with.
      * @return The populated topic list.
      */
     private List<Topic> populateTopics(List<Topic> topics, List<String> topicNames) {
@@ -160,7 +160,7 @@ public class TopicConfig {
         }
 
         public String getPassword() {
-            return Password.deobfuscate(password);
+            return StringUtils.decrypt(password);
         }
 
         public void setPassword(String password) {

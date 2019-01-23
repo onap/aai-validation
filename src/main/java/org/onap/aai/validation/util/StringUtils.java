@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+import org.eclipse.jetty.util.security.Password;
 import org.onap.aai.cl.api.Logger;
 import org.onap.aai.validation.exception.ValidationServiceError;
 import org.onap.aai.validation.exception.ValidationServiceException;
@@ -42,27 +43,48 @@ public class StringUtils {
     }
 
     /**
+     * Deobfuscate the supplied String value if it begins with "OBF:", otherwise return the value unchanged.
+     * 
+     * @param value
+     *            a password or passphrase
+     * @return the deobfuscated (or original) value
+     */
+    public static String decrypt(String value) {
+        if (value != null && value.startsWith(Password.__OBFUSCATE)) {
+            return Password.deobfuscate(value);
+        } else {
+            return value;
+        }
+    }
+
+    /**
      * Utility method to strip a prefix or set of prefixes (identified by a delimiter sequence) from the string. This is
      * achieved by finding the index of the last prefix delimiter in the string and removing all characters before and
      * including this index.
      *
-     * @param string the String to strip prefixes from
-     * @param prefixDelimiter the String that acts as the delimiter for the prefix(es)
+     * @param string
+     *            the String to strip prefixes from
+     * @param prefixDelimiter
+     *            the String that acts as the delimiter for the prefix(es)
      * @return the String minus the prefixes
      */
     public static String stripPrefix(String string, String prefixDelimiter) {
         return string.contains(prefixDelimiter)
-                ? string.substring(string.lastIndexOf(prefixDelimiter) + prefixDelimiter.length()) : string;
+                ? string.substring(string.lastIndexOf(prefixDelimiter) + prefixDelimiter.length())
+                : string;
     }
 
     /**
      * Strips a prefix identified by a delimiter. This is achieved by splitting the string in two around matches of the
      * first occurrence of the given regular expression.
      *
-     * @param string a String from which to strip a prefix
-     * @param regex the delimiting regular expression
+     * @param string
+     *            a String from which to strip a prefix
+     * @param regex
+     *            the delimiting regular expression
      * @return
-     * @throws ValidationServiceException If there is a problem with the provided regular expression.
+     * @throws ValidationServiceException
+     *             If there is a problem with the provided regular expression.
      */
     public static String stripPrefixRegex(String string, String regex) throws ValidationServiceException {
         String[] strings = validParameters(string, regex) ? string.split(regex, 2) : new String[0];
@@ -72,8 +94,10 @@ public class StringUtils {
     /**
      * Process a list of strings and strip the given suffix from each string in the list.
      *
-     * @param stringList a list of strings
-     * @param suffix a suffix to be removed from the strings
+     * @param stringList
+     *            a list of strings
+     * @param suffix
+     *            a suffix to be removed from the strings
      * @return stripped list of strings.
      */
     public static List<String> stripSuffix(List<String> stringList, String suffix) {

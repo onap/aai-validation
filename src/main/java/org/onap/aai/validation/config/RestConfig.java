@@ -1,6 +1,6 @@
 /*
  * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ============================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package org.onap.aai.validation.config;
 
 import java.util.Objects;
 import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.eclipse.jetty.util.security.Password;
+import org.onap.aai.validation.util.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
@@ -107,12 +107,12 @@ public class RestConfig {
     }
 
     /**
-     * Assumes the password is encrypted.
+     * Return the plain text password, decrypting if necessary.
      *
      * @return the decrypted password
      */
     public String getTrustStorePassword() {
-        return Password.deobfuscate(trustStorePassword);
+        return StringUtils.decrypt(trustStorePassword);
     }
 
     public void setTrustStorePassword(String trustStorePassword) {
@@ -128,12 +128,12 @@ public class RestConfig {
     }
 
     /**
-     * Assumes the password is encrypted.
+     * Return the plain text password, decrypting if necessary.
      *
      * @return the decrypted password
      */
     public String getKeyStorePassword() {
-        return Password.deobfuscate(keyStorePassword);
+        return StringUtils.decrypt(keyStorePassword);
     }
 
     public void setKeyStorePassword(String keyStorePassword) {
