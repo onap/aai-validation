@@ -219,4 +219,7 @@ limitations under the License.
 		<constructor-arg ref="validationController" />
 		<constructor-arg ref="aaiMicroServiceAuth" />
 	</bean>
+
+	<bean id="infoService" class="org.onap.aai.validation.services.InfoService" />
+	
 </beans>
