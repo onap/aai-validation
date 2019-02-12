@@ -2,8 +2,8 @@
  * ============LICENSE_START=======================================================
  * org.onap.aai
  * ================================================================================
- * Copyright © 2018-2019 AT&T Intellectual Property. All rights reserved.
- * Copyright © 2018-2019 European Software Marketing Ltd.
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,14 +24,15 @@ package org.onap.aai.validation.logging;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import org.apache.commons.lang.time.StopWatch;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.mockito.Mockito;
 import org.onap.aai.cl.api.LogFields;
 import org.onap.aai.cl.api.Logger;
@@ -41,26 +42,42 @@ import org.springframework.http.HttpHeaders;
 
 /**
  * Simple test to log each of the validation messages in turn.
- * 
+ *
  * This version tests only the error logger at INFO level.
  *
  */
 public class TestApplicationLogger {
+
+    @Rule
+    public TestName name = new TestName();
 
     static {
         System.setProperty("APP_HOME", ".");
     }
 
     /**
+     * Ensure that all of the EELF log files exist (and any log file rollover takes place) so that we can successfully
+     * read from the log files (during the Test method).
+     */
+    @Before
+    public void createLogFiles() {
+        final String startMessage = "begin testing " + name.getMethodName();
+        LogHelper.INSTANCE.debug(startMessage);
+        LogHelper.INSTANCE.info(ApplicationMsgs.MESSAGE_AUDIT, startMessage);
+        LogHelper.INSTANCE.logMetrics(startMessage);
+        LogHelper.INSTANCE.logAuditSuccess(startMessage);
+    }
+
+    /**
      * Check that each message can be logged and that (by implication of successful logging) there is a corresponding
      * resource (message format).
-     * 
+     *
      * @throws IOException
      */
     @Test
     public void logAllMessages() throws IOException {
         Logger logger = LogHelper.INSTANCE;
-        String logDirectory = getLogDirectory();
+        String logDirectory = LogHelper.getLogDirectory();
         LogReader errorReader = new LogReader(logDirectory, "error");
         LogReader debugReader = new LogReader(logDirectory, "debug");
         String[] args = {"1", "2", "3", "4"};
@@ -79,8 +96,10 @@ public class TestApplicationLogger {
                 validateLoggedMessage(msg, errorReader, "WARN");
             }
 
-            logger.debug(msg, args);
-            validateLoggedMessage(msg, debugReader, "DEBUG");
+            if (logger.isDebugEnabled()) {
+                logger.debug(msg, args);
+                validateLoggedMessage(msg, debugReader, "DEBUG");
+            }
 
             // The trace level is not enabled
             logger.trace(msg, args);
@@ -90,27 +109,28 @@ public class TestApplicationLogger {
     /**
      * Check that each message can be logged and that (by implication of successful logging) there is a corresponding
      * resource (message format).
-     * 
+     *
      * @throws IOException
      */
     @Test
     public void logDebugMessages() throws IOException {
-        LogReader reader = new LogReader(getLogDirectory(), "debug");
+        org.junit.Assume.assumeTrue(LogHelper.INSTANCE.isDebugEnabled());
+        LogReader reader = new LogReader(LogHelper.getLogDirectory(), "debug");
         LogHelper.INSTANCE.debug("a message");
-        String s = reader.getNewLines();
-        assertThat(s, is(notNullValue()));
+        String str = reader.getNewLines();
+        assertThat(str, is(notNullValue()));
     }
 
 
     /**
      * Check logAudit with HTTP headers
-     * 
+     *
      * @throws IOException
      */
     @Test
     public void logAuditMessage() throws IOException {
-        LogHelper logger = LogHelper.INSTANCE;
-        LogReader reader = new LogReader(getLogDirectory(), "audit");
+        final LogHelper logger = LogHelper.INSTANCE;
+        final LogReader reader = new LogReader(LogHelper.getLogDirectory(), "audit");
 
         HttpHeaders headers = Mockito.mock(HttpHeaders.class);
         Mockito.when(headers.getFirst("X-ECOMP-RequestID")).thenReturn("ecomp-request-id");
@@ -118,58 +138,58 @@ public class TestApplicationLogger {
 
         // Call logAudit without first calling startAudit
         logger.logAuditSuccess("first call: bob");
-        String s = reader.getNewLines();
-        assertThat(s, is(notNullValue()));
-        assertThat("audit message log level", s, containsString("INFO"));
-        assertThat("audit message content", s, containsString("bob"));
+        String str = reader.getNewLines();
+        assertThat(str, is(notNullValue()));
+        assertThat("audit message log level", str, containsString("INFO"));
+        assertThat("audit message content", str, containsString("bob"));
 
         // This time call the start method
         logger.startAudit(headers, null);
         logger.logAuditSuccess("second call: foo");
-        s = reader.getNewLines();
-        assertThat(s, is(notNullValue()));
-        assertThat("audit message log level", s, containsString("INFO"));
-        assertThat("audit message content", s, containsString("foo"));
-        assertThat("audit message content", s, containsString("ecomp-request-id"));
-        assertThat("audit message content", s, containsString("app-id"));
+        str = reader.getNewLines();
+        assertThat(str, is(notNullValue()));
+        assertThat("audit message log level", str, containsString("INFO"));
+        assertThat("audit message content", str, containsString("foo"));
+        assertThat("audit message content", str, containsString("ecomp-request-id"));
+        assertThat("audit message content", str, containsString("app-id"));
     }
 
     /**
      * Check logAudit with no HTTP headers
-     * 
+     *
      * @throws IOException
      */
     @Test
     public void logAuditMessageWithoutHeaders() throws IOException {
         LogHelper logger = LogHelper.INSTANCE;
-        LogReader reader = new LogReader(getLogDirectory(), "audit");
+        LogReader reader = new LogReader(LogHelper.getLogDirectory(), "audit");
         logger.startAudit(null, null);
         logger.logAuditSuccess("foo");
-        String s = reader.getNewLines();
-        assertThat(s, is(notNullValue()));
-        assertThat("audit message log level", s, containsString("INFO"));
-        assertThat("audit message content", s, containsString("foo"));
+        String str = reader.getNewLines();
+        assertThat(str, is(notNullValue()));
+        assertThat("audit message log level", str, containsString("INFO"));
+        assertThat("audit message content", str, containsString("foo"));
     }
 
     /**
      * Check logMetrics
-     * 
+     *
      * @throws IOException
      */
     @Test
     public void logMetricsMessage() throws IOException {
-        LogReader reader = new LogReader(getLogDirectory(), "metrics");
+        LogReader reader = new LogReader(LogHelper.getLogDirectory(), "metrics");
         LogHelper logger = LogHelper.INSTANCE;
         logger.logMetrics("metrics: fred");
-        String s = reader.getNewLines();
-        assertThat(s, is(notNullValue()));
-        assertThat("metrics message log level", s, containsString("INFO"));
-        assertThat("metrics message content", s, containsString("fred"));
+        String str = reader.getNewLines();
+        assertThat(str, is(notNullValue()));
+        assertThat("metrics message log level", str, containsString("INFO"));
+        assertThat("metrics message content", str, containsString("fred"));
     }
 
     @Test
     public void logMetricsMessageWithStopwatch() throws IOException {
-        LogReader reader = new LogReader(getLogDirectory(), "metrics");
+        LogReader reader = new LogReader(LogHelper.getLogDirectory(), "metrics");
         LogHelper logger = LogHelper.INSTANCE;
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
@@ -206,16 +226,9 @@ public class TestApplicationLogger {
         }
     }
 
-    private String getLogDirectory() {
-        String logDirectory = LogHelper.getLogDirectory();
-        assertThat(Paths.get(logDirectory).toAbsolutePath().toString(),
-                startsWith(Paths.get(System.getProperty("APP_HOME")).toAbsolutePath().toString()));
-        return logDirectory;
-    }
-
     /**
      * Call a logger method which is expected to throw an UnsupportedOperationException
-     * 
+     *
      * @param logMethod
      * @param dummyMsg
      */
@@ -231,15 +244,15 @@ public class TestApplicationLogger {
 
     /**
      * Assert that a log message was logged to the expected log file at the expected severity
-     * 
+     *
      * @param msg
      * @param reader
      * @param severity
      * @throws IOException
      */
     private void validateLoggedMessage(ApplicationMsgs msg, LogReader reader, String severity) throws IOException {
-        String s = reader.getNewLines();
-        assertThat(s, is(notNullValue()));
-        assertThat(msg.toString() + " log level", s, containsString(severity));
+        String str = reader.getNewLines();
+        assertThat(str, is(notNullValue()));
+        assertThat(msg.toString() + " log level", str, containsString(severity));
     }
 }
