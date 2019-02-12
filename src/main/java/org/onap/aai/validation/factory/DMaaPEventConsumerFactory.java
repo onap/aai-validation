@@ -21,19 +21,20 @@
 
 package org.onap.aai.validation.factory;
 
-import org.onap.aai.event.client.DMaaPEventPublisher;
+import java.net.MalformedURLException;
+import org.onap.aai.event.client.DMaaPEventConsumer;
 
-public class DMaaPEventPublisherFactory {
+public class DMaaPEventConsumerFactory {
 
-    public DMaaPEventPublisher createEventPublisher(String topicHost, String topicName, String topicUsername,
-            String topicPassword, String transportType, String protocol) {
-        return new DMaaPEventPublisher(topicHost, topicName, topicUsername, topicPassword,
-                DMaaPEventPublisher.DEFAULT_BATCH_SIZE, //
-                DMaaPEventPublisher.DEFAULT_BATCH_AGE, //
-                DMaaPEventPublisher.DEFAULT_BATCH_DELAY, //
-                transportType == null ? DMaaPEventPublisher.DEFAULT_TRANSPORT_TYPE : transportType,
-                protocol == null ? DMaaPEventPublisher.DEFAULT_PROTOCOL : protocol,
-                DMaaPEventPublisher.DEFAULT_CONTENT_TYPE);
+    public DMaaPEventConsumer createEventConsumer(String topicHost, String topicName, String topicUsername,
+            String topicPassword, String consumerGroup, String consumerId, String transportType, String protocol)
+            throws MalformedURLException {
+        return new DMaaPEventConsumer(topicHost, topicName, topicUsername, topicPassword, consumerGroup, consumerId,
+                DMaaPEventConsumer.DEFAULT_MESSAGE_WAIT_TIMEOUT, //
+                DMaaPEventConsumer.DEFAULT_MESSAGE_LIMIT,
+                transportType == null ? DMaaPEventConsumer.DEFAULT_TRANSPORT_TYPE : transportType,
+                protocol == null ? DMaaPEventConsumer.DEFAULT_PROTOCOL : protocol, //
+                null /* no filter */);
     }
 
 }
