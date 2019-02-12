@@ -1,19 +1,22 @@
-/*
- * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
- * ============================================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
 package org.onap.aai.validation.publisher;
 
@@ -22,12 +25,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.onap.aai.event.client.DMaaPEventPublisher;
-import org.onap.aai.validation.config.TopicAdminConfig;
-import org.onap.aai.validation.config.TopicConfig;
-import org.onap.aai.validation.config.TopicConfig.Topic;
-import org.onap.aai.validation.factory.DMaaPEventPublisherFactory;
-import org.onap.aai.validation.publisher.ValidationEventPublisher;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -37,14 +34,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.onap.aai.event.client.DMaaPEventPublisher;
+import org.onap.aai.validation.config.TopicAdminConfig;
+import org.onap.aai.validation.config.TopicConfig;
+import org.onap.aai.validation.config.TopicConfig.Topic;
+import org.onap.aai.validation.factory.DMaaPEventPublisherFactory;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestValidationEventPublisher {
 
     static {
         System.setProperty("APP_HOME", ".");
-        System.setProperty("consumer.topic.names", "poa-rule-validation");
-        System.setProperty("publisher.topic.names", "poa-audit-result");
     }
 
     private DMaaPEventPublisher mockEventPublisher;
@@ -73,7 +73,7 @@ public class TestValidationEventPublisher {
         when(mockEventPublisher.closeWithUnsent()).thenReturn(new ArrayList<>());
 
         DMaaPEventPublisherFactory mockEventPublisherFactory = Mockito.mock(DMaaPEventPublisherFactory.class);
-        when(mockEventPublisherFactory.createEventPublisher(any(), any(), any(), any(), any()))
+        when(mockEventPublisherFactory.createEventPublisher(any(), any(), any(), any(), any(), any()))
                 .thenReturn(mockEventPublisher);
 
         validationEventPublisher.setEventPublisherFactory(mockEventPublisherFactory);

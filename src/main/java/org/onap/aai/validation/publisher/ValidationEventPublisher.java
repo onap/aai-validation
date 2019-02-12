@@ -2,8 +2,8 @@
  * ============LICENSE_START=======================================================
  * org.onap.aai
  * ================================================================================
- * Copyright © 2018-2019 AT&T Intellectual Property. All rights reserved.
- * Copyright © 2018-2019 European Software Marketing Ltd.
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,9 +85,7 @@ public class ValidationEventPublisher implements MessagePublisher {
      */
     @Override
     public void publishMessages(Collection<String> messages) throws ValidationServiceException {
-        if (!enablePublishing) {
-            return;
-        } else {
+        if (enablePublishing) {
             applicationLogger.debug("Publishing messages: " + messages);
             for (Topic topic : publisherTopics) {
                 retriesRemaining = retries;
@@ -99,7 +97,7 @@ public class ValidationEventPublisher implements MessagePublisher {
     private void publishMessages(Collection<String> messages, Topic topic) throws ValidationServiceException {
 
         DMaaPEventPublisher dMaapEventPublisher = dMaapFactory.createEventPublisher(topic.getHost(), topic.getName(),
-                topic.getUsername(), topic.getPassword(), topic.getTransportType());
+                topic.getUsername(), topic.getPassword(), topic.getTransportType(), topic.getProtocol());
 
         try {
             // Add our message to the publisher's queue/bus

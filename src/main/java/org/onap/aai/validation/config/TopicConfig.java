@@ -91,6 +91,7 @@ public class TopicConfig {
                 topicConfig.setConsumerGroup(getTopicProperties().getProperty(topicName + ".consumer.group"));
                 topicConfig.setConsumerId(getTopicProperties().getProperty(topicName + ".consumer.id"));
                 topicConfig.setTransportType(getTopicProperties().getProperty(topicName + ".transport.type"));
+                topicConfig.setProtocol(getTopicProperties().getProperty(topicName + ".protocol"));
                 topics.add(topicConfig);
             }
         }
@@ -203,10 +204,18 @@ public class TopicConfig {
             this.transportType = transportType;
         }
 
+        public String getProtocol() {
+            return protocol;
+        }
+
+        public void setProtocol(String protocol) {
+            this.protocol = protocol;
+        }
+
         @Override
         public int hashCode() {
             return Objects.hash(this.consumerGroup, this.consumerId, this.host, this.username, this.name,
-                    this.partition, this.password, this.transportType);
+                    this.partition, this.password, this.transportType, this.protocol);
         }
 
         @Override
@@ -227,6 +236,7 @@ public class TopicConfig {
 	                  .append(partition, rhs.partition)
 	                  .append(password, rhs.password)
 	                  .append(transportType, rhs.transportType)
+	                  .append(protocol, rhs.protocol)
 	                  .isEquals();
 	     // @formatter:on
         }
@@ -235,7 +245,7 @@ public class TopicConfig {
         public String toString() {
             return "Topic [name=" + name + ", host=" + host + ", username=" + username + ", password=" + password
                     + ", partition=" + partition + ", consumerGroup=" + consumerGroup + ", consumerId=" + consumerId
-                    + ", transportType =" + transportType + "]";
+                    + ", transportType=" + transportType + ", protocol=" + protocol + "]";
         }
     }
 }
