@@ -1,0 +1,39 @@
+{
+	"cambria.partition": "AAI",
+	"event-header": {
+		"id": "test",
+		"timestamp": "20190213-16:27:37:353",
+		"domain": "test",
+		"event-type": "POA-EVENT",
+		"action": "CREATE",
+		"entity-type": "poa-entity",
+		"top-entity-type": "poa-entity",
+		"entity-link": ""
+	},
+	"entity": {
+		"poa-event": {
+			"modelVersionId": "model-version-id",
+			"modelInvariantId": "model-invariant-id"
+		},
+		"vnfList": [
+			{
+				"vfModuleList": [
+					{
+						"networkList": [
+							{
+								"type": "test1"
+							}
+						]
+					},
+					{
+						"networkList": [
+							{
+								"type": "test2"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

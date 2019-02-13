@@ -1,20 +1,24 @@
-/*
- * ============LICENSE_START===================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
  * Copyright (c) 2018-2019 European Software Marketing Ltd.
- * ============================================================================
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
+
 package org.onap.aai.validation.ruledriven;
 
 import java.io.File;
@@ -55,7 +59,7 @@ import org.onap.aai.validation.ruledriven.rule.Rule;
 import org.onap.aai.validation.ruledriven.rule.RuleResult;
 
 /**
- * Validator using explicit rules
+ * Validator using explicit rules.
  *
  */
 public class RuleDrivenValidator implements Validator {
@@ -71,16 +75,16 @@ public class RuleDrivenValidator implements Validator {
     // Map of event type name against RuleManager for that event type
     private Map<String, RuleManager> ruleManagers;
 
-
     /**
-     * Construct a Validator that is configured using rule files
+     * Construct a Validator that is configured using rule files.
      *
      * @param configurationPath
-     *        path to the Groovy rules files
+     *            path to the Groovy rules files
      * @param oxmReader
-     *        required for validating entity types
+     *            required for validating entity types
      * @param eventReader
-     *        a reader for extracting entities from each event to be validated
+     *            a reader for extracting entities from each event to be validated
+     * @param ruleIndexingConfig
      */
     public RuleDrivenValidator(final Path configurationPath, final OxmReader oxmReader, final EventReader eventReader,
             final RuleIndexingConfig ruleIndexingConfig) {
@@ -146,6 +150,7 @@ public class RuleDrivenValidator implements Validator {
 
     /*
      * (non-Javadoc)
+     * 
      * @see org.onap.aai.validation.Validator#validate(java.lang.String)
      */
     @Override
@@ -224,8 +229,8 @@ public class RuleDrivenValidator implements Validator {
 
         if (!rulesDefined && ruleIndexingConfig.isPresent()) {
             final String defaultIndexKey = ruleIndexingConfig.get().getDefaultIndexKey();
-            if (StringUtils.isEmpty(defaultIndexKey)) {
-                return ruleManager.getRulesForEntity(RuleManager.generateKey(new String[] { defaultIndexKey }));
+            if (!StringUtils.isEmpty(defaultIndexKey)) {
+                return ruleManager.getRulesForEntity(RuleManager.generateKey(new String[] {defaultIndexKey}));
             } else {
                 applicationLogger.debug("Default index value not configured, unable to get rules");
                 applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, eventType);
@@ -244,11 +249,10 @@ public class RuleDrivenValidator implements Validator {
             return "";
         }
         try {
-            AttributeValues attributeValues = entity.getAttributeValues(ruleIndexingConfig.get().getIndexAttributes());
-            applicationLogger
-                    .debug("Generating index using attributes: " + attributeValues.generateReport().toString());
-            Collection<Object> values = attributeValues.generateReport().values();
-            return RuleManager.generateKey(values.stream().toArray(String[]::new));
+            Map<String, Object> valuesMap =
+                    entity.getAttributeValues(ruleIndexingConfig.get().getIndexAttributes()).generateReport();
+            applicationLogger.debug("Generating index using attributes: " + valuesMap);
+            return RuleManager.generateKey(valuesMap.values().stream().toArray(String[]::new));
         } catch (ValidationServiceException e) {
             applicationLogger.debug("Failed to retrieve index key attributes from event: " + e.getMessage());
             applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, e, eventType);
@@ -271,7 +275,7 @@ public class RuleDrivenValidator implements Validator {
      * Read the text content of the specified Path and append this to the specified String
      *
      * @param sb
-     *        StringBuilder for the rule configuration text
+     *            StringBuilder for the rule configuration text
      * @return a Consumer function that appends file content
      */
     private Consumer<? super Path> appendFileContent(StringBuilder sb) {

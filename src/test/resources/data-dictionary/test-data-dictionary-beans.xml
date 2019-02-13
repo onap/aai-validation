@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+	<import resource="../oxm-reader/oxm-reader-beans.xml" />
+
+	<context:property-placeholder
+		location="
+        classpath:event-reader.properties,
+        classpath:aai-environment.properties,
+        classpath:data-dictionary/validation-service.properties,
+        classpath:data-dictionary/validation-service-auth.properties,
+        classpath:data-dictionary/schemaIngest.properties,
+        classpath:data-dictionary/rule-indexing.properties"
+		ignore-unresolvable="true" />
+
+	<util:properties id="dataDictionaryProperties" location="classpath:data-dictionary/rule-data-dictionary.properties" />
+
+	<!-- CONFIG BEANS -->
+	<bean id="eventReaderConfig" class="org.onap.aai.validation.config.EventReaderConfig" />
+
+	<!-- READER BEANS -->
+	<bean id="jsonReader" class="org.onap.aai.validation.reader.JsonReader" />
+
+	<bean id="eventReader" class="org.onap.aai.validation.reader.EventReader">
+		<constructor-arg ref="eventReaderConfig" />
+		<constructor-arg ref="jsonReader" />
+		<constructor-arg ref="oxmReader" />
+	</bean>
+
+	<bean id="rulesConfigurationPath" class="java.nio.file.Paths" factory-method="get">
+		<constructor-arg value="src/test/resources/data-dictionary/rules/" />
+		<constructor-arg>
+			<array />
+		</constructor-arg>
+	</bean>
+
+	<bean id="ruleIndexingConfig" class="org.onap.aai.validation.config.RuleIndexingConfig">
+		<property name="indexedEvents" value="#{'${rule.indexing.events}'.split(',')}" />
+		<property name="excludedOxmValidationEvents" value="#{'${rule.indexing.exclude.oxm.validation}'.split(',')}" />
+		<property name="indexAttributes" value="#{'${rule.indexing.key.attributes}'.split(',')}" />
+		<property name="defaultIndexKey" value="${rule.indexing.default.key}" />
+	</bean>
+
+	<bean id="ruleDrivenValidator" class="org.onap.aai.validation.ruledriven.RuleDrivenValidator">
+		<constructor-arg ref="rulesConfigurationPath" />
+		<constructor-arg ref="oxmReader" />
+		<constructor-arg ref="eventReader" />
+		<constructor-arg ref="ruleIndexingConfig" />
+	</bean>
+
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="staticMethod" value="org.onap.aai.validation.ruledriven.rule.builtin.DataDictionary.setProperties" />
+		<property name="arguments">
+			<list>
+				<ref bean="dataDictionaryProperties" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
