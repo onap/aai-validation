@@ -185,7 +185,7 @@ class IndexingDelegate {
 
     void indices(String... indices) {
         this.configuration.setIndices indices
-        def index = RuleManager.generateKey(indices)
+        def index = RuleManager.generateKey(indices.toList())
         this.configuration.type = index
         this.configuration.getRules().each { rule ->
             rule.setObject configuration.type

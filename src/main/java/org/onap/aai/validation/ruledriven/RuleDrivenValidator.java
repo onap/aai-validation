@@ -9,7 +9,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *        http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -230,7 +230,8 @@ public class RuleDrivenValidator implements Validator {
         if (!rulesDefined && ruleIndexingConfig.isPresent()) {
             final String defaultIndexKey = ruleIndexingConfig.get().getDefaultIndexKey();
             if (!StringUtils.isEmpty(defaultIndexKey)) {
-                return ruleManager.getRulesForEntity(RuleManager.generateKey(new String[] {defaultIndexKey}));
+                return ruleManager
+                        .getRulesForEntity(RuleManager.generateKey(Collections.singletonList(defaultIndexKey)));
             } else {
                 applicationLogger.debug("Default index value not configured, unable to get rules");
                 applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, eventType);
@@ -252,7 +253,7 @@ public class RuleDrivenValidator implements Validator {
             Map<String, Object> valuesMap =
                     entity.getAttributeValues(ruleIndexingConfig.get().getIndexAttributes()).generateReport();
             applicationLogger.debug("Generating index using attributes: " + valuesMap);
-            return RuleManager.generateKey(valuesMap.values().stream().toArray(String[]::new));
+            return RuleManager.generateKey(valuesMap.values());
         } catch (ValidationServiceException e) {
             applicationLogger.debug("Failed to retrieve index key attributes from event: " + e.getMessage());
             applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, e, eventType);

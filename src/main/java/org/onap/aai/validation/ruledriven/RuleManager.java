@@ -1,32 +1,33 @@
-/*
- * ============LICENSE_START===================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
  * Copyright (c) 2018-2019 European Software Marketing Ltd.
- * ============================================================================
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
 package org.onap.aai.validation.ruledriven;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.stream.Collectors;
 import org.onap.aai.validation.ruledriven.configuration.EntitySection;
 import org.onap.aai.validation.ruledriven.configuration.GroovyConfigurationException;
 import org.onap.aai.validation.ruledriven.configuration.RuleSection;
@@ -47,7 +48,7 @@ public class RuleManager {
      * Create the rules for each type of entity based on the supplied configuration
      *
      * @param entities
-     *        configuration (all entities)
+     *            configuration (all entities)
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws GroovyConfigurationException
@@ -77,16 +78,7 @@ public class RuleManager {
         return Optional.ofNullable(rulesMap.get(entityType));
     }
 
-    public static String generateKey(String[] indices) {
-        SortedSet<String> sortedIndices = new TreeSet<>();
-        Collections.addAll(sortedIndices, indices);
-        StringBuilder sb = new StringBuilder();
-        Iterator<String> iterator = sortedIndices.iterator();
-        while (iterator.hasNext()) {
-            sb.append("[");
-            sb.append(iterator.next());
-            sb.append("]");
-        }
-        return sb.toString();
+    public static String generateKey(Collection<Object> collection) {
+        return collection.stream().sorted().map(String::valueOf).collect(Collectors.joining("][", "[", "]"));
     }
 }
