@@ -1,20 +1,24 @@
-/*
- * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
- * ============================================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
+
 package org.onap.aai.validation.ruledriven.mock;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -61,8 +65,7 @@ public class TestDefaultRules {
     }
 
     enum TestCase {
-        NULL,
-        VSERVER;
+        NULL, VSERVER;
     }
 
     // Data returned by the mocked EventReader
@@ -125,8 +128,8 @@ public class TestDefaultRules {
 
     @Before
     public void createRuleDrivenValidator() throws ValidationServiceException {
-        Path configurationPath = Paths.get("bundleconfig/etc/rules");
-        ruleDrivenValidator = new RuleDrivenValidator(configurationPath, null, eventReader, null);
+        List<Path> configurationPaths = Collections.singletonList(Paths.get("bundleconfig/etc/rules"));
+        ruleDrivenValidator = new RuleDrivenValidator(configurationPaths, null, eventReader, null);
     }
 
     @Test

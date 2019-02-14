@@ -20,30 +20,20 @@
  */
 
 entity {
-	type 'generic-vnf'
-	validation {
-		useRule {
-			name 'prov-status'
-			attributes 'prov-status'
-		}
-		useRule {
-			name 'valid_ipv4_addr'
-			attributes 'ipv4-oam-address'
-		}
-		useRule {
-			name 'ipv4_addr_present'
-			attributes 'equipment-role', 'l-interfaces.l-interface[*].l3-interface-ipv4-address-list'
-		}
-	}
+    type 'unknown_type'
+    validation {
+        useRule {
+            name 'dummy'
+            attributes 'dummy'
+        }
+    }
 }
 
-// If generic-vnf.equipment-role="UCPE" and there is an l-interface - then there must be an IPV4 address related to the l-interface
 rule {
-	name        'ipv4_addr_present'
-	category    'MISSING_REL'
-	description 'Validates that ICPE equipment has a related IPv4 address'
-	errorText   'UCPE l-interface missing the IPv4 relationship'
-	severity    'MINOR'
-	attributes  'equipment', 'ipv4'
-	validate    'equipment != "UCPE" || ipv4 != null'
+    name        'dummy'
+    category    'INVALID_VALUE'
+    description 'for test purposes'
+    errorText   ''
+    severity    'MINOR'
+    validate    'return false'
 }

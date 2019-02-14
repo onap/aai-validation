@@ -40,6 +40,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * Use Spring XML to create an instance of {@link RuleDrivenValidator} that is configured to use Data Dictionary based
+ * Validation Rules.
+ * 
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties"})
 @ContextConfiguration(locations = {"classpath:data-dictionary/test-data-dictionary-beans.xml"})

@@ -27,7 +27,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,6 +35,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.commons.lang.StringUtils;
 import org.onap.aai.validation.Validator;
@@ -68,7 +69,12 @@ public class RuleDrivenValidator implements Validator {
 
     private static final String RULES_CONFIG_FILE_SUFFIX = ".groovy";
 
-    private Path configurationPath;
+    /**
+     * The set of directories/folders containing the rules configuration files. Rules that are common to all event types
+     * will be stored in a file directly under a specified Path. Rules which are specific to a named event type will be
+     * stored in a direct child directory.
+     */
+    private Collection<Path> configurationPaths;
     private OxmReader oxmReader;
     private EventReader eventReader;
     private Optional<RuleIndexingConfig> ruleIndexingConfig;
@@ -78,17 +84,17 @@ public class RuleDrivenValidator implements Validator {
     /**
      * Construct a Validator that is configured using rule files.
      *
-     * @param configurationPath
-     *            path to the Groovy rules files
+     * @param configurationPaths
+     *            paths to the Groovy rules files and sub-folders
      * @param oxmReader
      *            required for validating entity types
      * @param eventReader
      *            a reader for extracting entities from each event to be validated
      * @param ruleIndexingConfig
      */
-    public RuleDrivenValidator(final Path configurationPath, final OxmReader oxmReader, final EventReader eventReader,
-            final RuleIndexingConfig ruleIndexingConfig) {
-        this.configurationPath = configurationPath;
+    public RuleDrivenValidator(final List<Path> configurationPaths, final OxmReader oxmReader,
+            final EventReader eventReader, final RuleIndexingConfig ruleIndexingConfig) {
+        this.configurationPaths = configurationPaths;
         this.oxmReader = oxmReader;
         this.eventReader = eventReader;
         this.ruleIndexingConfig = Optional.ofNullable(ruleIndexingConfig);
@@ -104,38 +110,6 @@ public class RuleDrivenValidator implements Validator {
         validateRulesConfiguration();
     }
 
-    private RuleManager loadRulesConfiguration(String eventType) throws ValidationServiceException {
-        StringBuilder rulesText = new StringBuilder();
-        try (Stream<Path> paths = Files.find(configurationPath.resolve(eventType), 1,
-                (path, basicFileAttributes) -> path.toFile().getName().matches(".*\\" + RULES_CONFIG_FILE_SUFFIX));) {
-            paths.forEach(appendFileContent(rulesText));
-        } catch (IOException e) {
-            throw new ValidationServiceException(ValidationServiceError.RULES_FILE_ERROR,
-                    configurationPath.toAbsolutePath(), e);
-        }
-
-        try {
-            return RulesConfigurationLoader.loadConfiguration(rulesText.toString());
-        } catch (GroovyConfigurationException e) {
-            throw new ValidationServiceException(ValidationServiceError.RULES_FILE_ERROR, e,
-                    configurationPath.toAbsolutePath() + File.separator + "*" + RULES_CONFIG_FILE_SUFFIX);
-        }
-    }
-
-    private void validateRulesConfiguration() throws ValidationServiceException {
-        for (RuleManager ruleManager : ruleManagers.values()) {
-            for (EntitySection entity : ruleManager.getEntities()) {
-                if (ruleIndexingConfig.isPresent() && ruleIndexingConfig.get().skipOxmValidation(entity.getName())) {
-                    continue;
-                }
-                if (oxmReader != null && oxmReader.getPrimaryKeys(entity.getName()).isEmpty()) {
-                    throw new ValidationServiceException(ValidationServiceError.OXM_MISSING_KEY,
-                            entity.getName() + " defined in " + configurationPath.toAbsolutePath() + File.separator
-                                    + "*" + RULES_CONFIG_FILE_SUFFIX);
-                }
-            }
-        }
-    }
 
     /**
      * Helper method to expose the configured rules. This simplifies testing of the validator.
@@ -201,6 +175,81 @@ public class RuleDrivenValidator implements Validator {
         validationResults.add(validationResult);
 
         return validationResults;
+    }
+
+    /**
+     * Find and concatenate the text content of all common rules files, and all the eventType-specific rules files.
+     * Invoke the Configuration Loader to parse the text content and create the Groovy Rules.
+     * 
+     * @param eventType
+     * @return
+     * @throws ValidationServiceException
+     */
+    private RuleManager loadRulesConfiguration(String eventType) throws ValidationServiceException {
+        StringBuilder rulesText = new StringBuilder();
+
+        Stream.concat(getGroovyRulePaths(Optional.of(eventType)), getGroovyRulePaths(Optional.empty()))
+                .forEach(appendFileContent(rulesText));
+
+        try {
+            return RulesConfigurationLoader.loadConfiguration(rulesText.toString());
+        } catch (GroovyConfigurationException e) {
+            throw new ValidationServiceException(ValidationServiceError.RULES_FILE_ERROR, e,
+                    getConfigurationPathWildcards());
+        }
+    }
+
+    /**
+     * For logging and error reporting purposes, create a set of Strings each formatted to document the top-level
+     * folders for rules configuration files, and also the file suffix used to find the files.
+     * 
+     * @return all the wildcard patterns used for matching rules files
+     */
+    private List<String> getConfigurationPathWildcards() {
+        return configurationPaths.stream()
+                .map(path -> path.toAbsolutePath() + File.separator + "*" + RULES_CONFIG_FILE_SUFFIX)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Find all files matching the rules configuration file suffix that are immediate children of a rules configuration
+     * Path. If a subPath is specified then only find files in the resolved subPath.
+     * 
+     * @param subPath
+     *            an optional subPath (e.g. for an event type)
+     * @return all rules configuration files as Paths
+     * @throws ValidationServiceException
+     *             if an I/O error occurs when accessing the file system
+     */
+    private Stream<Path> getGroovyRulePaths(Optional<String> subPath) throws ValidationServiceException {
+        List<Path> groovyRules = new ArrayList<>();
+        for (Path configPath : configurationPaths) {
+            Path rulesPath = subPath.map(configPath::resolve).orElse(configPath);
+            if (rulesPath.toFile().exists()) {
+                try (Stream<Path> stream = Files.find(rulesPath, 1, (path, basicFileAttributes) -> path.toFile()
+                        .getName().matches(".*\\" + RULES_CONFIG_FILE_SUFFIX));) {
+                    groovyRules.addAll(stream.collect(Collectors.toList()));
+                } catch (IOException e) {
+                    throw new ValidationServiceException(ValidationServiceError.RULES_FILE_ERROR,
+                            configPath.toAbsolutePath(), e);
+                }
+            }
+        }
+        return groovyRules.stream();
+    }
+
+    private void validateRulesConfiguration() throws ValidationServiceException {
+        for (RuleManager ruleManager : ruleManagers.values()) {
+            for (EntitySection entity : ruleManager.getEntities()) {
+                if (ruleIndexingConfig.isPresent() && ruleIndexingConfig.get().skipOxmValidation(entity.getName())) {
+                    continue;
+                }
+                if (oxmReader != null && oxmReader.getPrimaryKeys(entity.getName()).isEmpty()) {
+                    throw new ValidationServiceException(ValidationServiceError.OXM_MISSING_KEY,
+                            entity.getName() + " defined in " + getConfigurationPathWildcards());
+                }
+            }
+        }
     }
 
     private Optional<List<Rule>> getRulesToApply(Entity entity, Optional<String> eventType)
@@ -292,7 +341,17 @@ public class RuleDrivenValidator implements Validator {
     }
 
     private Collection<String> getSupportedEventTypes() {
-        String[] list = configurationPath.toFile().list((current, name) -> new File(current, name).isDirectory());
-        return list == null ? Collections.emptyList() : Arrays.asList(list);
+        Function<? super Path, ? extends Stream<? extends Path>> getDirectories = path -> {
+            try {
+                return Files.walk(path, 1).filter(Files::isDirectory);
+            } catch (IOException e) {
+                applicationLogger.error(ApplicationMsgs.READ_FILE_ERROR, e, "from the rules configuration path");
+                return Stream.empty();
+            }
+        };
+        return configurationPaths.stream() //
+                .flatMap(getDirectories) //
+                .map(path -> path.getFileName().toString()) //
+                .collect(Collectors.toList());
     }
 }
