@@ -1,7 +1,10 @@
-/*
- * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
- * ============================================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
 package org.onap.aai.validation.ruledriven.rule;
 
@@ -82,6 +85,7 @@ public class TestRuleExecution {
 
     /**
      * Simple example of a rule using error message expansion
+     * 
      * @throws Exception
      */
     @Test
@@ -94,7 +98,8 @@ public class TestRuleExecution {
         GroovyRule rule = buildRuleWithErrorMessage("i", expression, errorMessage);
         assertRuleResult(rule, 1, expectedErrorMessage);
 
-        String expressionOneArgumentTooMany = "return new groovy.lang.Tuple2(true, java.util.Arrays.asList(\"arg1\", \"arg2\", \"arg3\"))";
+        String expressionOneArgumentTooMany =
+                "return new groovy.lang.Tuple2(true, java.util.Arrays.asList(\"arg1\", \"arg2\", \"arg3\"))";
         GroovyRule rule3 = buildRuleWithErrorMessage("i", expressionOneArgumentTooMany, errorMessage);
         assertRuleResult(rule3, 1, expectedErrorMessage);
 
@@ -105,6 +110,7 @@ public class TestRuleExecution {
 
     /**
      * Simple example of a rule using error message expansion, without arguments
+     * 
      * @throws Exception
      */
     @Test
@@ -126,7 +132,10 @@ public class TestRuleExecution {
     }
 
     /**
-     * vserver is related to vpe and vserver-name contains me6
+     * Test for "vserver is related to vpe and vserver-name contains me6".
+     *
+     * @throws Exception
+     *         if the rule expression in this test is invalid
      */
     @Test
     public void testConditionalRegExp() throws Exception {
@@ -137,7 +146,6 @@ public class TestRuleExecution {
 
         // Create some tests, varying the values for each attribute
         Collection<Collection<String>> relatedToTests = new ArrayList<>();
-        Collection<Collection<String>> vserverNameTests = new ArrayList<>();
 
         // These are the related-to values to test
         relatedToTests.add(Collections.<String>emptyList());
@@ -157,6 +165,7 @@ public class TestRuleExecution {
         testNames.add("123me6789");
 
         // Additional test for no vserver-name values present
+        Collection<Collection<String>> vserverNameTests = new ArrayList<>();
         vserverNameTests.add(Collections.<String>emptyList());
 
         for (String name : testNames) {
@@ -198,8 +207,8 @@ public class TestRuleExecution {
      */
     @Test
     public void testStringComparison() throws Exception {
-        String attribute = "generic-vnf.vnf-type";
-        String expression = "vnf-type == 'BW NFM'";
+        final String attribute = "generic-vnf.vnf-type";
+        final String expression = "vnf-type == 'BW NFM'";
         GroovyRule rule = buildRule(attribute, expression);
         assertRuleResult(rule, "BW NFM", true);
         assertRuleResult(rule, "bnfm", false);
@@ -238,8 +247,8 @@ public class TestRuleExecution {
 
     @Test
     public void testValidStringLength() throws Exception {
-        String attribute = "clli";
-        String expression = "clli.size() == 8 || clli.size() == 11";
+        final String attribute = "clli";
+        final String expression = "clli.size() == 8 || clli.size() == 11";
         Map<Object, Boolean> tests = new HashMap<>();
         tests.put("", false);
         tests.put("X", false);
@@ -262,7 +271,7 @@ public class TestRuleExecution {
     @Test
     public void testStringLengthAndChars() throws Exception {
         String attribute = "location_clli";
-        String expression = "location_clli != null && location_clli.matches('[a-zA-Z]{8,11}')";
+        final String expression = attribute + " != null && " + attribute + ".matches('[a-zA-Z]{8,11}')";
         Map<Object, Boolean> tests = new HashMap<>();
         tests.put(null, false);
         tests.put("", false);
@@ -282,8 +291,8 @@ public class TestRuleExecution {
      */
     @Test
     public void testRegularExpression() throws Exception {
-        String attribute = "unit";
-        String expression = "unit.matches('^ae0\\\\.(\\\\d)+')";
+        final String attribute = "unit";
+        final String expression = "unit.matches('^ae0\\\\.(\\\\d)+')";
         Map<Object, Boolean> tests = new HashMap<>();
         tests.put("", false);
         tests.put("X", false);
@@ -301,8 +310,8 @@ public class TestRuleExecution {
 
     @Test
     public void testNullStringLength() throws Exception {
-        String attribute = "clli";
-        String expression = "clli.size() == 8 || clli.size() == 11";
+        final String attribute = "clli";
+        final String expression = "clli.size() == 8 || clli.size() == 11";
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(containsString("Argument"));
         exception.expectMessage(containsString("null"));
@@ -312,8 +321,8 @@ public class TestRuleExecution {
 
     @Test
     public void testStringLengthWithNull() throws Exception {
-        String attribute = "a";
-        String expression = "a == null || a.size() > 4";
+        final String attribute = "a";
+        final String expression = "a == null || a.size() > 4";
         Map<Object, Boolean> tests = new HashMap<>();
         tests.put("", false);
         tests.put("X", false);
@@ -335,8 +344,8 @@ public class TestRuleExecution {
      */
     @Test
     public void testStringTextWithNull() throws Exception {
-        String attribute = "prov-status";
-        String expression = "prov-status != null && prov-status != 'ACTIVE'";
+        final String attribute = "prov-status";
+        final String expression = "prov-status != null && prov-status != 'ACTIVE'";
         Map<Object, Boolean> tests = new HashMap<>();
         tests.put(null, false);
         tests.put("ACTIVE", false);
@@ -360,9 +369,12 @@ public class TestRuleExecution {
      */
     @Test
     public void testCaseInsensitveStringMatch() throws Exception {
-        String attribute = "prov-status";
-        String expression =
-                "prov-status != null && prov-status.size() > 0 && !prov-status.equalsIgnoreCase('NULL') && !prov-status.equalsIgnoreCase('ACTIVE')";
+        final String attribute = "prov-status";
+        final String expression = new StringBuilder() //
+                .append(attribute).append(" != null && ") //
+                .append(attribute).append(".size() > 0 && !").append(attribute).append(".equalsIgnoreCase('NULL') && ")
+                .append("!").append(attribute).append(".equalsIgnoreCase('ACTIVE')") //
+                .toString();
         Map<Object, Boolean> tests = new HashMap<>();
         tests.put(null, false);
         tests.put("", false);
@@ -424,7 +436,6 @@ public class TestRuleExecution {
 
         // Create some tests, varying the values for each attribute
         Collection<String> heatStackIds = new ArrayList<>();
-        Collection<String> vnfNames = new ArrayList<>();
 
         heatStackIds.add("123me67890abcdef");
         heatStackIds.add("123me67890a");
@@ -432,6 +443,7 @@ public class TestRuleExecution {
         heatStackIds.add("");
         heatStackIds.add(null);
 
+        Collection<String> vnfNames = new ArrayList<>();
         vnfNames.add("123me67890abcdef");
         vnfNames.add("123me67890a");
         vnfNames.add("123me6789");
@@ -485,9 +497,12 @@ public class TestRuleExecution {
     /**
      * Build a simple rule using a RuleConfiguration object
      *
-     * @param name the rule name
-     * @param attribute a named variable, referenced in the expression
-     * @param expression the expression to evaluate (returns a Boolean value)
+     * @param name
+     *            the rule name
+     * @param attribute
+     *            a named variable, referenced in the expression
+     * @param expression
+     *            the expression to evaluate (returns a Boolean value)
      * @return
      * @throws IOException
      * @throws InstantiationException
@@ -503,6 +518,16 @@ public class TestRuleExecution {
         return new GroovyRule(ruleConfig);
     }
 
+    /**
+     * @param name
+     * @param attributes
+     * @param expression
+     * @return
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws IOException
+     * @throws GroovyConfigurationException
+     */
     private GroovyRule buildRule(String name, List<String> attributes, String expression)
             throws InstantiationException, IllegalAccessException, IOException, GroovyConfigurationException {
         RuleSection ruleConfig = new RuleSection();
@@ -529,8 +554,10 @@ public class TestRuleExecution {
      *
      * @see TestRuleExecution#buildRule(String, String, String)
      *
-     * @param attribute a named variable, referenced in the expression
-     * @param expression the expression to evaluate (returns a Boolean value)
+     * @param attribute
+     *            a named variable, referenced in the expression
+     * @param expression
+     *            the expression to evaluate (returns a Boolean value)
      * @throws GroovyConfigurationException
      */
     private GroovyRule buildRule(String attribute, String expression)
@@ -538,6 +565,15 @@ public class TestRuleExecution {
         return buildRule("testRule", attribute, expression);
     }
 
+    /**
+     * @param attributes
+     * @param expression
+     * @return
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws IOException
+     * @throws GroovyConfigurationException
+     */
     private GroovyRule buildRule(List<String> attributes, String expression)
             throws InstantiationException, IllegalAccessException, IOException, GroovyConfigurationException {
         return buildRule("testRule", attributes, expression);

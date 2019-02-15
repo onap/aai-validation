@@ -168,10 +168,39 @@ limitations under the License.
 	<logger name="org.springframework.beans" level="WARN" />
 	<logger name="org.springframework.web" level="WARN" />
 
+	<!-- AJSC Services (bootstrap services) -->
+	<logger name="ajsc" level="WARN" />
+	<logger name="ajsc.RouteMgmtService" level="WARN" />
+	<logger name="ajsc.ComputeService" level="WARN" />
+	<logger name="ajsc.VandelayService" level="WARN" />
+	<logger name="ajsc.FilePersistenceService" level="WARN" />
+	<logger name="ajsc.UserDefinedJarService" level="WARN" />
+	<logger name="ajsc.UserDefinedBeansDefService" level="WARN" />
+	<logger name="ajsc.LoggingConfigurationService" level="WARN" />
+
+	<!-- AJSC related loggers (DME2 Registration, csi logging, restlet, servlet logging) -->
+	<logger name="ajsc.utils" level="WARN" />
+	<logger name="ajsc.utils.DME2Helper" level="WARN" />
+	<logger name="ajsc.filters" level="WARN" />
+	<logger name="ajsc.beans.interceptors" level="WARN" />
+	<logger name="ajsc.restlet" level="WARN" />
+	<logger name="ajsc.servlet" level="WARN" />
+	<logger name="com.att.ajsc.csi.logging" level="WARN" />
+	<logger name="com.att.ajsc.filemonitor" level="WARN" />
+
 	<!-- Other Loggers that may help troubleshoot -->
 	<logger name="org.apache" level="WARN" />
 	<logger name="org.apache.commons" level="WARN" />
     <logger name="com.jayway.jsonpath.internal.path.CompiledPath" level="WARN" />
+
+	<!-- Camel Related Loggers (including restlet/servlet/jaxrs/cxf logging. May aid in troubleshooting) -->
+	<logger name="org.apache.camel" level="WARN" />
+	<logger name="org.apache.cxf" level="WARN" />
+	<logger name="org.apache.camel.processor.interceptor" level="WARN" />
+	<logger name="org.apache.cxf.jaxrs.interceptor" level="WARN" />
+	<logger name="org.apache.cxf.service" level="WARN" />
+	<logger name="org.restlet" level="WARN" />
+	<logger name="org.apache.camel.component.restlet" level="WARN" />
 
 	<!-- logback internals logging -->
 	<logger name="ch.qos.logback.classic" level="WARN" />

@@ -74,7 +74,8 @@ public class TestValidateServiceImpl {
     /**
      * Create a (mocked) HTTPS request and invoke the Babel generate artifacts API
      * 
-     * @param request for the Babel Service
+     * @param request
+     *            for the Babel Service
      * @return the Response from the HTTP API
      * @throws URISyntaxException
      */

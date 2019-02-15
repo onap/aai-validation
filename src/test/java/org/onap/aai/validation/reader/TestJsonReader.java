@@ -33,9 +33,7 @@ public class TestJsonReader {
     }
 
     enum TestData {
-        SAMPLE_JSON(
-                "json-reader/sample.json"
-        );
+        SAMPLE_JSON("json-reader/sample.json");
 
         private String filename;
 

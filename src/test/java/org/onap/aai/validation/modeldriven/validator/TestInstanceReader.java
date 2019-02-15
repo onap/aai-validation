@@ -42,7 +42,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(locations = { "classpath:oxm-reader/schemaIngest.properties" })
+@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties"})
 @ContextConfiguration(locations = {"classpath:model-validation/instance-reader/test-validation-service-beans.xml"})
 public class TestInstanceReader {
 
@@ -96,10 +96,12 @@ public class TestInstanceReader {
         EXPECTED_PSERVER        ("model-validation/instance-reader/expected-pserver.json");
         // @formatter:on
 
-		private String filename;
+        private String filename;
+
         TestData(String filename) {
             this.filename = filename;
         }
+
         public String getFilename() {
             return this.filename;
         }

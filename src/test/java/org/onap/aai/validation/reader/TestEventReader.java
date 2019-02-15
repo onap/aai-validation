@@ -42,7 +42,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(locations = { "classpath:oxm-reader/schemaIngest.properties" })
+@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties"})
 @ContextConfiguration(locations = {"classpath:event-reader/test-validation-service-beans.xml"})
 public class TestEventReader {
 
@@ -83,10 +83,12 @@ public class TestEventReader {
         INVALID_5      ("event-reader/invalid-event-5.json");
         // @formatter:on
 
-		private String filename;
+        private String filename;
+
         TestData(String filename) {
             this.filename = filename;
         }
+
         public String getFilename() {
             return this.filename;
         }
