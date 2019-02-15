@@ -1,7 +1,10 @@
 /**
- * ============LICENSE_START===================================================
- * Copyright (c) 2018-2019 Amdocs
- * ============================================================================
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
 package org.onap.aai.validation.services;
 
@@ -37,13 +40,15 @@ import org.onap.aai.validation.exception.ValidationServiceException;
 import org.onap.aai.validation.publisher.MockEventPublisher;
 import org.onap.aai.validation.test.util.TestEntity;
 import org.onap.aai.validation.test.util.TestUtil;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties", "classpath:application.properties"})
-@ContextConfiguration(locations = {"classpath:/info-service/test-validation-service-beans.xml"})
+@TestPropertySource(locations = { "classpath:oxm-reader/schemaIngest.properties", "classpath:application.properties" })
+@ContextConfiguration(locations = { "classpath:/info-service/test-validation-service-beans.xml" })
 public class TestInfoService {
 
     static {
@@ -51,9 +56,9 @@ public class TestInfoService {
     }
 
     enum TestData {
-        // @formatter:off
-        VSERVER("rule-driven-validator/test_events/vserver-create-event.json");
-        // @formatter:on
+        VSERVER(
+                "rule-driven-validator/test_events/vserver-create-event.json"
+        );
 
         private String filename;
 

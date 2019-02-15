@@ -1,7 +1,10 @@
 /**
- * ============LICENSE_START===================================================
- * Copyright (c) 2018-2019 Amdocs
- * ============================================================================
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +16,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
 package org.onap.aai.validation.modeldriven.validator;
 
@@ -35,8 +38,6 @@ import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.onap.aai.validation.controller.ValidationController;
@@ -46,10 +47,13 @@ import org.onap.aai.validation.modeldriven.parser.XMLModelParser;
 import org.onap.aai.validation.result.ValidationResult;
 import org.onap.aai.validation.result.Violation;
 import org.onap.aai.validation.test.util.TestUtil;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties"})
 @ContextConfiguration(locations = {"classpath:model-validation/instance-validator/test-validation-service-beans.xml"})
@@ -63,10 +67,9 @@ public class TestModelDrivenValidator {
     private static final String MODEL_ID_ATTRIBUTE_MNV = "model-name-version-id";
     private static final String MODEL_ID_ATTRIBUTE_MID = "model-id";
 
-    @Mock
+    @MockBean
     private ModelCacheManager mockModelCacheManager;
 
-    @InjectMocks
     @Inject
     private ModelDrivenValidator modelDrivenValidator;
 
