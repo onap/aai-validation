@@ -30,17 +30,19 @@ public class AAIMicroServiceAuth {
     private static LogHelper applicationLogger = LogHelper.INSTANCE;
 
     private ValidationServiceAuthConfig validationServiceAuthConfig;
+    private AAIMicroServiceAuthCore authCore;
 
     @Inject
     public AAIMicroServiceAuth(final ValidationServiceAuthConfig validationServiceAuthConfig) throws AAIAuthException {
         this.validationServiceAuthConfig = validationServiceAuthConfig;
+        this.authCore = new AAIMicroServiceAuthCore();
         if (!validationServiceAuthConfig.isAuthenticationDisable()) {
-            AAIMicroServiceAuthCore.init(validationServiceAuthConfig.getAuthPolicyFile());
+            authCore.init(validationServiceAuthConfig.getAuthPolicyFile());
         }
     }
 
     public boolean authBasic(String username, String authFunction) throws AAIAuthException {
-        return AAIMicroServiceAuthCore.authorize(username, authFunction);
+        return authCore.authorize(username, authFunction);
     }
 
     public String authUser(String authUser, String authFunction) throws AAIAuthException {
@@ -60,7 +62,7 @@ public class AAIMicroServiceAuth {
         }
         applicationLogger.debug("Got one:" + cookie);
 
-        return AAIMicroServiceAuthCore.authorize(username.toString(), authFunction);
+        return authCore.authorize(username.toString(), authFunction);
     }
 
     public boolean validateRequest(HttpServletRequest req, String action, String apiPath) throws AAIAuthException {

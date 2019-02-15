@@ -1,20 +1,24 @@
 /**
- * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
- * ============================================================================
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *        http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
+
 package org.onap.aai.auth;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -43,54 +47,39 @@ public class AAIMicroServiceAuthCore {
 
     private static LogHelper applicationLogger = LogHelper.INSTANCE;
 
-    public static final String APPCONFIG_DIR = (System.getProperty("CONFIG_HOME") == null)
-            ? Paths.get(System.getProperty("APP_HOME"), "appconfig").toString() : System.getProperty("CONFIG_HOME");
-
-    private static Path appConfigAuthDir = Paths.get(APPCONFIG_DIR, "auth");
-    private static Path defaultAuthFileName = appConfigAuthDir.resolve("auth_policy.json");
+    private Path appConfigAuthDir;
 
     private static boolean usersInitialized = false;
     private static HashMap<String, AAIAuthUser> users;
     private static boolean timerSet = false;
-    private static String policyAuthFileName;
+    private String policyAuthFileName;
 
     public enum HttpMethods {
-        GET,
-        PUT,
-        DELETE,
-        HEAD,
-        POST
+        GET, PUT, DELETE, HEAD, POST
     }
 
-    // Don't instantiate
-    private AAIMicroServiceAuthCore() {}
-
-    public static String getDefaultAuthFileName() {
-        return defaultAuthFileName.toString();
-    }
-
-    public static void setDefaultAuthFileName(String defaultAuthFileName) {
-        AAIMicroServiceAuthCore.defaultAuthFileName = Paths.get(defaultAuthFileName);
+    public AAIMicroServiceAuthCore() {
+        appConfigAuthDir = Paths.get(System.getProperty("CONFIG_HOME"), "auth");
     }
 
     /**
      * @param authPolicyFile
      * @throws AAIAuthException
-     *         if the policy file cannot be loaded
+     *             if the policy file cannot be loaded
      */
-    public static synchronized void init(String authPolicyFile) throws AAIAuthException {
-
+    public void init(String authPolicyFile) throws AAIAuthException {
         try {
-            policyAuthFileName = AAIMicroServiceAuthCore.getConfigFile(authPolicyFile);
+            policyAuthFileName = getConfigFile(authPolicyFile);
         } catch (IOException e) {
             applicationLogger.debug("Exception while retrieving policy file.");
             applicationLogger.error(ApplicationMsgs.PROCESS_REQUEST_ERROR, e);
             throw new AAIAuthException(e.getMessage());
         }
+
         if (policyAuthFileName == null) {
             throw new AAIAuthException("Auth policy file could not be found");
         }
-        AAIMicroServiceAuthCore.reloadUsers();
+        reloadUsers();
 
         TimerTask task = new FileWatcher(new File(policyAuthFileName)) {
             @Override
@@ -98,7 +87,7 @@ public class AAIMicroServiceAuthCore {
                 // here we implement the onChange
                 applicationLogger.debug("File " + file.getName() + " has been changed!");
                 try {
-                    AAIMicroServiceAuthCore.reloadUsers();
+                    reloadUsers();
                 } catch (AAIAuthException e) {
                     applicationLogger.error(ApplicationMsgs.PROCESS_REQUEST_ERROR, e);
                 }
@@ -115,7 +104,7 @@ public class AAIMicroServiceAuthCore {
         }
     }
 
-    public static String getConfigFile(String authPolicyFile) throws IOException {
+    public String getConfigFile(String authPolicyFile) throws IOException {
         File authFile = new File(authPolicyFile);
         if (authFile.exists()) {
             return authFile.getCanonicalPath();
@@ -123,20 +112,15 @@ public class AAIMicroServiceAuthCore {
         authFile = appConfigAuthDir.resolve(authPolicyFile).toFile();
         if (authFile.exists()) {
             return authFile.getCanonicalPath();
+        } else {
+            return null;
         }
-        if (getDefaultAuthFileName() != null) {
-            authFile = new File(getDefaultAuthFileName());
-            if (authFile.exists()) {
-                return getDefaultAuthFileName();
-            }
-        }
-        return null;
     }
 
     /**
      * @throws AAIAuthException
      */
-    public static synchronized void reloadUsers() throws AAIAuthException {
+    public synchronized void reloadUsers() throws AAIAuthException {
         users = new HashMap<>();
         ObjectMapper mapper = new ObjectMapper();
 
@@ -248,7 +232,7 @@ public class AAIMicroServiceAuthCore {
         }
     }
 
-    public static boolean authorize(String username, String authFunction) throws AAIAuthException {
+    public boolean authorize(String username, String authFunction) throws AAIAuthException {
         if (!usersInitialized || users == null) {
             throw new AAIAuthException("Auth module not initialized");
         }

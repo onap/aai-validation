@@ -1,7 +1,10 @@
-/*
- * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
- * ============================================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,8 +16,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
+
 package org.onap.aai.validation.auth;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -35,19 +39,16 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.onap.aai.auth.AAIAuthException;
 import org.onap.aai.auth.AAIMicroServiceAuth;
-import org.onap.aai.auth.AAIMicroServiceAuthCore;
 import org.onap.aai.validation.config.ValidationServiceAuthConfig;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 /**
  * Tests @{link AAIMicroServiceAuth}
  */
-
 public class MicroServiceAuthTest {
 
     static {
-        System.setProperty("APP_HOME", ".");
-        System.setProperty("CONFIG_HOME", Paths.get(System.getProperty("user.dir"), "src/test/resources").toString());
+        System.setProperty("CONFIG_HOME", Paths.get("src/test/resources").toString());
     }
 
     private static final String VALID_ADMIN_USER = "cn=common-name, ou=org-unit, o=org, l=location, st=state, c=us";
@@ -62,15 +63,9 @@ public class MicroServiceAuthTest {
      */
     @Test(expected = AAIAuthException.class)
     public void missingPolicyFile() throws AAIAuthException, IOException {
-        String defaultFile = AAIMicroServiceAuthCore.getDefaultAuthFileName();
-        try {
-            AAIMicroServiceAuthCore.setDefaultAuthFileName("invalid.default.file");
-            ValidationServiceAuthConfig authConfig = new ValidationServiceAuthConfig();
-            authConfig.setAuthPolicyFile("invalid.file.name");
-            new AAIMicroServiceAuth(authConfig);
-        } finally {
-            AAIMicroServiceAuthCore.setDefaultAuthFileName(defaultFile);
-        }
+        ValidationServiceAuthConfig authConfig = new ValidationServiceAuthConfig();
+        authConfig.setAuthPolicyFile("invalid.file.name");
+        new AAIMicroServiceAuth(authConfig);
     }
 
     /**
