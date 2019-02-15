@@ -42,12 +42,11 @@ import org.springframework.mock.web.MockHttpServletRequest;
 /**
  * Tests @{link AAIMicroServiceAuth}
  */
-
 public class MicroServiceAuthTest {
 
     static {
         System.setProperty("APP_HOME", ".");
-        System.setProperty("CONFIG_HOME", Paths.get(System.getProperty("user.dir"), "src/test/resources").toString());
+        System.setProperty("CONFIG_HOME", Paths.get("src/test/resources").toString());
     }
 
     private static final String VALID_ADMIN_USER = "cn=common-name, ou=org-unit, o=org, l=location, st=state, c=us";

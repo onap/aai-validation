@@ -20,6 +20,9 @@
  */
 package org.onap.aai.validation;
 
+import java.io.IOException;
+import org.hamcrest.Description;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -63,4 +66,40 @@ public class TestApplication {
         ValidationServiceApplication.main(new String[] {});
     }
 
+    @Test
+    public void testApplicationWithEmptyKeyStorePassword() {
+        System.setProperty("KEY_STORE_PASSWORD", "");
+        final CauseMatcher expectedCause = new CauseMatcher(IOException.class, "password was incorrect");
+        expectedEx.expectCause(expectedCause);
+        ValidationServiceApplication.main(new String[] {});
+    }
+
+    @Test
+    public void testApplicationWithIncorrectKeyStorePassword() {
+        System.setProperty("KEY_STORE_PASSWORD", "test");
+        final CauseMatcher expectedCause = new CauseMatcher(IOException.class, "password was incorrect");
+        expectedEx.expectCause(expectedCause);
+        ValidationServiceApplication.main(new String[] {});
+    }
+
+    private static class CauseMatcher extends TypeSafeMatcher<Throwable> {
+
+        private final Class<? extends Throwable> type;
+        private final String expectedMessage;
+
+        public CauseMatcher(Class<? extends Throwable> type, String expectedMessage) {
+            this.type = type;
+            this.expectedMessage = expectedMessage;
+        }
+
+        @Override
+        protected boolean matchesSafely(Throwable item) {
+            return item.getClass().isAssignableFrom(type) && item.getMessage().contains(expectedMessage);
+        }
+
+        @Override
+        public void describeTo(Description description) {
+            description.appendValue(type).appendText(" and message ").appendValue(expectedMessage);
+        }
+    }
 }
