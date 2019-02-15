@@ -34,7 +34,8 @@ public class TestUtil {
     /**
      * Gets files, such as test data from the classpath.
      *
-     * @param filename the name of the file
+     * @param filename
+     *            the name of the file
      * @return a String with the file contents.
      * @throws URISyntaxException
      * @throws IOException

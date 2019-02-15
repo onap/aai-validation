@@ -171,7 +171,7 @@ limitations under the License.
 	<!-- Other Loggers that may help troubleshoot -->
 	<logger name="org.apache" level="WARN" />
 	<logger name="org.apache.commons" level="WARN" />
-    <logger name="com.jayway.jsonpath.internal.path.CompiledPath" level="WARN" />
+	<logger name="com.jayway.jsonpath.internal.path.CompiledPath" level="WARN" />
 
 	<!-- logback internals logging -->
 	<logger name="ch.qos.logback.classic" level="WARN" />

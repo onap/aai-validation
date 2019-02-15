@@ -134,7 +134,8 @@ public class TestRuleValidation {
     /**
      * Utility to build and test different expressions using the supplied attribute name
      *
-     * @param attribute attribute (field) identifier
+     * @param attribute
+     *            attribute (field) identifier
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws IOException
@@ -148,7 +149,8 @@ public class TestRuleValidation {
     /**
      * Utility to build and test an expression asserting that the size() of the attribute is 8 or 11
      *
-     * @param attribute attribute (field) identifier
+     * @param attribute
+     *            attribute (field) identifier
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws IOException
@@ -191,9 +193,12 @@ public class TestRuleValidation {
     /**
      * Build a simple rule using a RuleConfiguration object
      *
-     * @param name the rule name
-     * @param attribute a named variable, referenced in the expression
-     * @param expression the expression to evaluate (returns a Boolean value)
+     * @param name
+     *            the rule name
+     * @param attribute
+     *            a named variable, referenced in the expression
+     * @param expression
+     *            the expression to evaluate (returns a Boolean value)
      * @return
      * @throws IOException
      * @throws InstantiationException
@@ -212,7 +217,8 @@ public class TestRuleValidation {
     /**
      * Utility to build a rule and test that the attribute is valid
      *
-     * @param attribute attribute (field) identifier
+     * @param attribute
+     *            attribute (field) identifier
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws IOException

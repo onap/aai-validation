@@ -51,7 +51,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(locations = { "classpath:oxm-reader/schemaIngest.properties" })
+@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties"})
 @ContextConfiguration(locations = {"classpath:validation-result/test-validation-service-beans.xml"})
 public class TestValidationResult {
 
@@ -80,15 +80,13 @@ public class TestValidationResult {
     }
 
     enum TestData {
-        VSERVER(
-                "validation-result/vserver-create-event.json"
-        );
+        VSERVER("validation-result/vserver-create-event.json");
 
-		private String filename;
+        private String filename;
 
         TestData(String filename) {
             this.filename = filename;
-    }
+        }
 
         public String getFilename() {
             return this.filename;
@@ -266,11 +264,11 @@ public class TestValidationResult {
      * Violation IDs whenever the values supplied to the builders are the same.
      *
      * @param b1
-     *        a builder
+     *            a builder
      * @param b2
-     *        another builder
+     *            another builder
      * @param expectedResult
-     *        whether or not the two builders should produce identical violations
+     *            whether or not the two builders should produce identical violations
      * @throws ValidationServiceException
      */
     private void testViolationIdsForEquality(Builder b1, Builder b2, Boolean expectedResult)

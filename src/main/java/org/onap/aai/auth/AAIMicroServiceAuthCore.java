@@ -9,7 +9,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -49,9 +49,8 @@ public class AAIMicroServiceAuthCore {
 
     private Path appConfigAuthDir;
 
-    private static boolean usersInitialized = false;
-    private static HashMap<String, AAIAuthUser> users;
-    private static boolean timerSet = false;
+    private boolean usersInitialized = false;
+    private HashMap<String, AAIAuthUser> users;
     private String policyAuthFileName;
 
     public enum HttpMethods {
@@ -64,8 +63,7 @@ public class AAIMicroServiceAuthCore {
 
     /**
      * @param authPolicyFile
-     * @throws AAIAuthException
-     *             if the policy file cannot be loaded
+     * @throws AAIAuthException if the policy file cannot be loaded
      */
     public void init(String authPolicyFile) throws AAIAuthException {
         try {
@@ -95,13 +93,8 @@ public class AAIMicroServiceAuthCore {
             }
         };
 
-        if (!timerSet) {
-            timerSet = true;
-            Timer timer = new Timer();
-            long period = TimeUnit.SECONDS.toMillis(1);
-            timer.schedule(task, new Date(), period);
-            applicationLogger.debug("Config Watcher Interval = " + period);
-        }
+        new Timer().schedule(task, new Date(), TimeUnit.SECONDS.toMillis(1));
+        applicationLogger.debug("Config Watcher Interval = " + TimeUnit.SECONDS.toMillis(1));
     }
 
     public String getConfigFile(String authPolicyFile) throws IOException {
@@ -167,7 +160,7 @@ public class AAIMicroServiceAuthCore {
      * @param roleName
      * @param functionNode
      */
-    private static void addFunctionToRole(AAIAuthRole role, String roleName, JsonNode functionNode) {
+    private void addFunctionToRole(AAIAuthRole role, String roleName, JsonNode functionNode) {
         String functionName = functionNode.path("name").asText();
         JsonNode methodsNode = functionNode.path("methods");
 
@@ -207,7 +200,6 @@ public class AAIMicroServiceAuthCore {
             }
             return false;
         }
-
     }
 
     public static class AAIAuthRole {
@@ -219,12 +211,6 @@ public class AAIMicroServiceAuthCore {
 
         public void addAllowedFunction(String func) {
             this.allowedFunctions.add(func);
-        }
-
-        public void delAllowedFunction(String delFunc) {
-            if (this.allowedFunctions.contains(delFunc)) {
-                this.allowedFunctions.remove(delFunc);
-            }
         }
 
         public boolean hasAllowedFunction(String functionName) {
@@ -251,7 +237,7 @@ public class AAIMicroServiceAuthCore {
         }
     }
 
-    private static void logAuthenticationResult(String username, String authFunction, String result) {
+    private void logAuthenticationResult(String username, String authFunction, String result) {
         applicationLogger.debug(result + ": " + username + " on function " + authFunction);
     }
 

@@ -1,7 +1,10 @@
 /**
- * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
- * ============================================================================
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,10 +16,11 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
 package org.onap.aai.validation.test.util;
 
+import java.util.Objects;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -43,11 +47,11 @@ public class ValidationResultIsEqual extends BaseMatcher<ValidationResult> {
             return false;
         }
         ValidationResult actual = (ValidationResult) obj;
-        return actual.getEntityId().equals(expected.getEntityId()) && //
-                actual.getEntityType().equals(expected.getEntityType()) && //
-                (actual.getEntityLink() == null ? "" : actual.getEntityLink()).equals(expected.getEntityLink()) && //
-                actual.getResourceVersion().equals(expected.getResourceVersion()) && //
-                actual.getViolations().equals(expected.getViolations());
+        return actual.getEntityId().equals(expected.getEntityId())
+                && actual.getEntityType().equals(expected.getEntityType())
+                && Objects.equals(actual.getEntityLink(), expected.getEntityLink())
+                && Objects.equals(actual.getResourceVersion(), expected.getResourceVersion())
+                && actual.getViolations().equals(expected.getViolations());
     }
 
     @Override

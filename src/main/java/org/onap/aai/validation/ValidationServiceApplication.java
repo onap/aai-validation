@@ -2,8 +2,8 @@
  * ============LICENSE_START=======================================================
  * org.onap.aai
  * ================================================================================
- * Copyright © 2017-2019 AT&T Intellectual Property. All rights reserved.
- * Copyright © 2017-2019 European Software Marketing Ltd.
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ public class ValidationServiceApplication extends SpringBootServletInitializer {
         JAVA_TRUST_STORE_PASSWORD("javax.net.ssl.trustStorePassword") // JVM
         ;
 
-        final private String propertyName;
+        private final String propertyName;
 
         SystemProperty() {
             propertyName = this.toString();
@@ -73,7 +73,7 @@ public class ValidationServiceApplication extends SpringBootServletInitializer {
         }
 
         public void set(String propertyValue) {
-            System.setProperty(propertyName, propertyValue);            
+            System.setProperty(propertyName, propertyValue);
         }
     }
 
@@ -84,7 +84,7 @@ public class ValidationServiceApplication extends SpringBootServletInitializer {
         SCHEMA_SERVICE_TRUST_STORE_PASSWORD("schema.service.ssl.trust-store-password") // aai-schema-ingest
         ;
 
-        final private String propertyName;
+        private final String propertyName;
 
         ApplicationProperty(String property) {
             propertyName = property;

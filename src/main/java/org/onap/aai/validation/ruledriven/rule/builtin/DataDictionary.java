@@ -1,32 +1,34 @@
-/*
- * ============LICENSE_START===================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
  * Copyright (c) 2018-2019 European Software Marketing Ltd.
- * ============================================================================
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
+
 package org.onap.aai.validation.ruledriven.rule.builtin;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Collections;
 import java.util.Properties;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedHashMap;
@@ -46,9 +48,7 @@ public class DataDictionary {
     private static org.onap.aai.restclient.client.RestClient restClient;
 
     public enum COMMON_MODEL_ELEMENT_TYPE {
-        INSTANCE,
-        ATTRIBUTE,
-        UNSUPPORTED;
+        INSTANCE, ATTRIBUTE, UNSUPPORTED;
     }
 
     private DataDictionary() {
@@ -87,9 +87,9 @@ public class DataDictionary {
      * /commonModelElements/attribute~nfRole~1.0/validateInstance
      *
      * @param commonModelElementType
-     *        "instance" or "attribute"
+     *            "instance" or "attribute"
      * @param commonModelElementName
-     *        name of common model element
+     *            name of common model element
      * @param attributeName
      * @param attributeValue
      * @return
@@ -162,11 +162,7 @@ public class DataDictionary {
         public Request(COMMON_MODEL_ELEMENT_TYPE cmeType, String attributeName, String attributeValue) {
             switch (cmeType) {
                 case INSTANCE:
-                    Map<String, String> map = new HashMap<>();
-                    map.put(attributeName, attributeValue);
-                    List<Object> list = new ArrayList<>();
-                    list.add(map);
-                    instance = list;
+                    instance = Collections.singletonList(ImmutableMap.of(attributeName, attributeValue));
                     break;
                 case ATTRIBUTE:
                     instance = attributeValue;

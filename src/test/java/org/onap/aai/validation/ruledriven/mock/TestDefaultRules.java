@@ -93,6 +93,10 @@ public class TestDefaultRules {
 
     private Validator ruleDrivenValidator;
 
+    /**
+     * @throws ValidationServiceException
+     *         if mocking a JSON parsing exception
+     */
     @Before
     public void createMockEventReader() throws ValidationServiceException {
         when(eventReader.getEventType(TestCase.VSERVER.name())).thenReturn(Optional.of("aai-event"));
