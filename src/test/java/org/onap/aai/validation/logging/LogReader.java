@@ -42,6 +42,15 @@ public class LogReader {
         cachedReader = getReader(logDirectory, logFilePrefix);
     }
 
+    /**
+     * @param logDirectory
+     *            the directory containing all log files
+     * @param logFilePrefix
+     *            the prefix to match
+     * @return a new buffered reader
+     * @throws IOException
+     *             if an I/O error occurs when opening the log directory, or no files were found
+     */
     private BufferedReader getReader(String logDirectory, String logFilePrefix) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(getLogFile(logDirectory, logFilePrefix)));
         while (reader.readLine() != null) {
@@ -51,15 +60,18 @@ public class LogReader {
     }
 
     /**
+     * Find the log file matching the given prefix.
+     * 
      * @param logDirectory
+     *            the directory containing all log files
      * @return the most recently created log file.
      * @throws IOException
+     *             if an I/O error occurs when opening the log directory, or no files were found
      */
     private File getLogFile(String logDirectory, String filenamePrefix) throws IOException {
-        Optional<Path> latestFilePath = Files.list(Paths.get(logDirectory))
-                .filter(f -> Files.isDirectory(f) == false //
-                        && f.getFileName().toString().startsWith(filenamePrefix)
-                        && !f.getFileName().toString().endsWith(".zip"))
+        Optional<Path> latestFilePath = Files.list(Paths.get(logDirectory)).filter(f -> Files.isDirectory(f) == false //
+                && f.getFileName().toString().startsWith(filenamePrefix)
+                && !f.getFileName().toString().endsWith(".zip"))
                 .max(Comparator.comparingLong(f -> f.toFile().lastModified()));
         if (latestFilePath.isPresent()) {
             cachedLog = latestFilePath.get();

@@ -2,8 +2,8 @@
  * ============LICENSE_START=======================================================
  * org.onap.aai
  * ================================================================================
- * Copyright ?? 2018-2019 AT&T Intellectual Property. All rights reserved.
- * Copyright ?? 2018-2019 European Software Marketing Ltd.
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
  * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ public class AAIMicroServiceAuth {
     /**
      * @param validationServiceAuthConfig
      * @throws AAIAuthException
-     *         if the policy file cannot be loaded
+     *             if the policy file cannot be loaded
      */
     @Inject
     public AAIMicroServiceAuth(final ValidationServiceAuthConfig validationServiceAuthConfig) throws AAIAuthException {
@@ -49,10 +49,33 @@ public class AAIMicroServiceAuth {
         }
     }
 
+    /**
+     * Check whether the given user may access the give function.
+     * 
+     * @param username
+     *            user to be authorized
+     * @param authFunction
+     *            function the user wishes to access
+     * @return true if the user is authorized to access the function, false otherwsie
+     * @throws AAIAuthException
+     *             if the auth object has not been initialized
+     */
     public boolean authBasic(String username, String authFunction) throws AAIAuthException {
         return authCore.authorize(username, authFunction);
     }
 
+
+    /**
+     * Check whether the given user may access the give function.
+     * 
+     * @param username
+     *            user to be authorized
+     * @param authFunction
+     *            function the user wishes to access
+     * @return true if the user is authorized to access the function, false otherwsie
+     * @throws AAIAuthException
+     *             if the auth object has not been initialized
+     */
     public String authUser(String authUser, String authFunction) throws AAIAuthException {
         StringBuilder username = new StringBuilder();
 

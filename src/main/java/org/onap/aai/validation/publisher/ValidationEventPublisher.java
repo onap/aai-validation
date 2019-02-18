@@ -36,7 +36,7 @@ import org.onap.aai.validation.logging.ApplicationMsgs;
 import org.onap.aai.validation.logging.LogHelper;
 
 /**
- * Event Publisher
+ * Event Publisher.
  *
  */
 public class ValidationEventPublisher implements MessagePublisher {

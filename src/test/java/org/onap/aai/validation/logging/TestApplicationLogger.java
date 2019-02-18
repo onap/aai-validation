@@ -9,7 +9,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -42,7 +42,7 @@ import org.springframework.http.HttpHeaders;
 
 /**
  * Simple test to log each of the validation messages in turn.
- * 
+ *
  * This version tests only the error logger at INFO level.
  *
  */
@@ -71,8 +71,9 @@ public class TestApplicationLogger {
     /**
      * Check that each message can be logged and that (by implication of successful logging) there is a corresponding
      * resource (message format).
-     * 
+     *
      * @throws IOException
+     *             if an I/O error occurs when opening the log directory, or no files were found
      */
     @Test
     public void logAllMessages() throws IOException {
@@ -97,8 +98,8 @@ public class TestApplicationLogger {
             }
 
             if (logger.isDebugEnabled()) {
-            logger.debug(msg, args);
-            validateLoggedMessage(msg, debugReader, "DEBUG");
+                logger.debug(msg, args);
+                validateLoggedMessage(msg, debugReader, "DEBUG");
             }
 
             // The trace level is not enabled
@@ -109,7 +110,7 @@ public class TestApplicationLogger {
     /**
      * Check that each message can be logged and that (by implication of successful logging) there is a corresponding
      * resource (message format).
-     * 
+     *
      * @throws IOException
      */
     @Test
@@ -124,7 +125,7 @@ public class TestApplicationLogger {
 
     /**
      * Check logAudit with HTTP headers
-     * 
+     *
      * @throws IOException
      */
     @Test
@@ -156,7 +157,7 @@ public class TestApplicationLogger {
 
     /**
      * Check logAudit with no HTTP headers
-     * 
+     *
      * @throws IOException
      */
     @Test
@@ -173,7 +174,7 @@ public class TestApplicationLogger {
 
     /**
      * Check logMetrics
-     * 
+     *
      * @throws IOException
      */
     @Test
@@ -228,7 +229,7 @@ public class TestApplicationLogger {
 
     /**
      * Call a logger method which is expected to throw an UnsupportedOperationException
-     * 
+     *
      * @param logMethod
      * @param dummyMsg
      */
@@ -244,7 +245,7 @@ public class TestApplicationLogger {
 
     /**
      * Assert that a log message was logged to the expected log file at the expected severity
-     * 
+     *
      * @param msg
      * @param reader
      * @param severity

@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-============LICENSE_START===================================================
-Copyright (c) 2018 Amdocs
-============================================================================
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+    ============LICENSE_START=======================================================
+    org.onap.aai
+    ================================================================================
+    Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+    Copyright (c) 2018-2019 European Software Marketing Ltd.
+    ================================================================================
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-============LICENSE_END=====================================================
+          http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    ============LICENSE_END=========================================================
+
 -->
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -37,7 +42,7 @@ limitations under the License.
 	<bean id="topicAdminConfig" class="org.onap.aai.validation.config.TopicAdminConfig" />
 	<bean id="validationControllerConfig" class="org.onap.aai.validation.config.ValidationControllerConfig" />
 	<bean id="mappingFile" class="org.apache.commons.io.IOUtils" factory-method="toString">
-		<constructor-arg value="file:src/test/resources/model-instance-mapping.json_conf" type="java.io.InputStream" />
+		<constructor-arg value="file:src/test/resources/model-validation/model-instance-mapping.json_conf" type="java.io.InputStream" />
 	</bean>
 	<bean id="modelConfig" class="org.onap.aai.validation.config.ModelConfig">
 		<property name="modelCacheExpirySeconds" value="${model.cache.expirySeconds}" />

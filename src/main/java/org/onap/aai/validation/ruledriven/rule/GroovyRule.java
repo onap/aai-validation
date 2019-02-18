@@ -70,13 +70,15 @@ public class GroovyRule implements Rule {
 
     /**
      * @param ruleConfig
+     * @throws GroovyConfigurationException
+     *             if the Groovy expression cannot be compiled
+     * @throws IOException
+     *             if the Groovy class loader throws an internal exception
      * @throws InstantiationException
      * @throws IllegalAccessException
-     * @throws IOException
-     * @throws GroovyConfigurationException
      */
     public GroovyRule(RuleSection ruleConfig)
-            throws InstantiationException, IllegalAccessException, IOException, GroovyConfigurationException {
+            throws GroovyConfigurationException, IOException, InstantiationException, IllegalAccessException {
         setName(ruleConfig.getName());
         setErrorCategory(ruleConfig.getCategory());
         setErrorMessage(ruleConfig.getErrorMessage());
@@ -142,7 +144,8 @@ public class GroovyRule implements Rule {
      *
      * @param values
      *
-     * @param groovyObject an instance/object of a Groovy class that implements one or more rule methods
+     * @param groovyObject
+     *            an instance/object of a Groovy class that implements one or more rule methods
      * @return the result of evaluating the expression
      */
     @Override
@@ -222,20 +225,26 @@ public class GroovyRule implements Rule {
     }
 
     /**
-     * @param fields
+     * Create an anonymous Java Class implementing a Groovy Rule method for the supplied attributes and rule expression.
+     *
+     * @param attributes
+     *            the attributes that form the parameters of the Groovy method
      * @param expression
-     * @return
-     * @throws IOException
+     *            a valid Groovy method expression (implementing a rule)
+     * @return the Java Class for accessing the Groovy method
      * @throws GroovyConfigurationException
+     *             if the Groovy expression cannot be compiled
+     * @throws IOException
+     *             if the Groovy class loader throws an internal exception
      */
-    private Class<?> createRule(List<String> fields, String expression)
-            throws IOException, GroovyConfigurationException {
+    private Class<?> createRule(List<String> attributes, String expression)
+            throws GroovyConfigurationException, IOException {
         originalExpression = expression;
         groovyExpression = expression;
         String methodParams = "";
 
         int i = 1;
-        for (String attribute : fields) {
+        for (String attribute : attributes) {
             if (isValidAttributeName(attribute)) {
                 String fieldName = "field" + i++;
                 methodParams = appendParameter(methodParams, fieldName);
@@ -295,20 +304,23 @@ public class GroovyRule implements Rule {
     }
 
     /**
-     * Load and parse a Groovy script to create an anonymous class
+     * Load and parse a Groovy script to create an anonymous Java Class.
      *
-     * @param script a file containing the Groovy scripting language
-     * @return the Java Class for accessing the Groovy methods
-     * @throws IOException
+     * @param script
+     *            valid Groovy content (for the class)
+     * @return the Java Class for accessing the Groovy script
      * @throws GroovyConfigurationException
+     *             if the Groovy script cannot be compiled
+     * @throws IOException
+     *             if the Groovy class loader throws an internal exception
      */
     @SuppressWarnings("rawtypes")
-    private static Class loadGroovyClass(String expression) throws IOException, GroovyConfigurationException {
+    private static Class loadGroovyClass(String script) throws GroovyConfigurationException, IOException {
         ClassLoader parent = GroovyRule.class.getClassLoader();
         GroovyClassLoader loader = new GroovyClassLoader(parent);
         Class groovyClass;
         try {
-            groovyClass = loader.parseClass(expression);
+            groovyClass = loader.parseClass(script);
         } catch (CompilationFailedException e) {
             throw new GroovyConfigurationException(e);
         } finally {

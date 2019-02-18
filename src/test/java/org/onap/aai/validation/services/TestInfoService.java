@@ -47,8 +47,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(locations = { "classpath:oxm-reader/schemaIngest.properties", "classpath:application.properties" })
-@ContextConfiguration(locations = { "classpath:/info-service/test-validation-service-beans.xml" })
+@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties", "classpath:application.properties"})
+@ContextConfiguration(locations = {"classpath:/info-service/test-validation-service-beans.xml"})
 public class TestInfoService {
 
     static {
@@ -56,9 +56,7 @@ public class TestInfoService {
     }
 
     enum TestData {
-        VSERVER(
-                "rule-driven-validator/test_events/vserver-create-event.json"
-        );
+        VSERVER("rule-driven-validator/test_events/vserver-create-event.json");
 
         private String filename;
 
@@ -116,7 +114,6 @@ public class TestInfoService {
         assertResultsStringFormatted(info);
         assertThat(info, containsString("errored=1"));
     }
-
 
     @Test
     public void testVserverEventRecorded() throws URISyntaxException, IOException {

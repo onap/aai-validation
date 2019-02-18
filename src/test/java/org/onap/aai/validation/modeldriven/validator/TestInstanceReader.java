@@ -1,19 +1,22 @@
-/*
- * ============LICENSE_START===================================================
- * Copyright (c) 2018-2019 Amdocs
- * ============================================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
 package org.onap.aai.validation.modeldriven.validator;
 
@@ -166,7 +169,6 @@ public class TestInstanceReader {
         JsonElement genericVnfJsonElement = jsonParser.parse(expectedGenericVnf);
         String expectedGenericVnf = genericVnfJsonElement.toString();
 
-
         // Method under test
         Multimap<String, String> values = instanceReader.getValues(connectorSibling, mapping);
 
@@ -179,7 +181,6 @@ public class TestInstanceReader {
 
         // Method under test
         values = instanceReader.getValues(logicalLinkInstance, mapping);
-
         assertThat(values.get("generic-vnf").iterator().next(), is(equalTo(expectedGenericVnf)));
         assertThat(values.get("pserver").iterator().next(), is(equalTo(jsonParser.parse(expectedPserver).toString())));
     }
@@ -226,14 +227,12 @@ public class TestInstanceReader {
     @Test
     public void testGetResourceVersion() throws Exception {
         String resourceVersion = instanceReader.getResourceVersion(connector);
-
         assertThat(resourceVersion, is("1467975776"));
     }
 
     private static ModelInstanceMapper getMapping(String mappingFileName) throws Exception {
         JSONArray jsonArray = new JSONArray(TestUtil.getFileAsString(mappingFileName));
         JSONObject jsonObject = jsonArray.getJSONObject(0);
-
         return JsonUtil.fromJson(jsonObject.toString(), ModelInstanceMapper.class);
     }
 }
