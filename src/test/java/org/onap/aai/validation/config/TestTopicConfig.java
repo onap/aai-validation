@@ -18,7 +18,6 @@
  * limitations under the License.
  * ============LICENSE_END=========================================================
  */
-
 package org.onap.aai.validation.config;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -40,8 +39,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 @Import(TopicPropertiesConfig.class)
-@TestPropertySource(locations = { "classpath:test-application.properties" })
-@ContextConfiguration(locations = { "classpath:topic-config/test-validation-service-beans.xml" })
+@TestPropertySource(locations = {"classpath:test-application.properties"})
+@ContextConfiguration(locations = {"classpath:topic-config/test-validation-service-beans.xml"})
 public class TestTopicConfig {
 
     static {
@@ -75,6 +74,7 @@ public class TestTopicConfig {
         eventTopic.setConsumerGroup("event-dummy-consumer-group");
         eventTopic.setConsumerId("event-dummy-consumer-id");
         eventTopic.setTransportType("event-dummy-transport-type");
+        eventTopic.setProtocol("event-dummy-protocol-type");
 
         Topic exportTopic = new TopicConfig("aai-data-export", "aai-data-integrity").new Topic();
         exportTopic.setName("aai-data-export");
@@ -99,6 +99,7 @@ public class TestTopicConfig {
         integrityTopic.setUsername("integrity-dummy-username");
         integrityTopic.setPassword("integrity-dummy-password");
         integrityTopic.setTransportType("integrity-dummy-transport-type");
+        integrityTopic.setProtocol("http");
 
         List<Topic> publisherTopics = topicConfig.getPublisherTopics();
 

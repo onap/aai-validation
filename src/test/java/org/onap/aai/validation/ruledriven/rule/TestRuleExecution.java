@@ -9,7 +9,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -135,7 +135,7 @@ public class TestRuleExecution {
      * Test for "vserver is related to vpe and vserver-name contains me6".
      *
      * @throws Exception
-     *         if the rule expression in this test is invalid
+     *             if the rule expression in this test is invalid
      */
     @Test
     public void testConditionalRegExp() throws Exception {
@@ -266,7 +266,7 @@ public class TestRuleExecution {
     }
 
     /**
-     * location_clli is 8 or 11 characters and must be characters only
+     * location_clli is 8 or 11 characters and must be characters only.
      */
     @Test
     public void testStringLengthAndChars() throws Exception {
@@ -537,18 +537,6 @@ public class TestRuleExecution {
         return new GroovyRule(ruleConfig);
     }
 
-    private GroovyRule buildRuleWithErrorMessage(String name, String attribute, String expression, String errorMessage)
-            throws IOException, InstantiationException, IllegalAccessException, GroovyConfigurationException {
-        RuleSection ruleConfig = new RuleSection();
-        ruleConfig.setName(name);
-        ruleConfig.setAttributes(Collections.singletonList(attribute));
-        ruleConfig.setExpression(expression);
-        if(errorMessage != null) {
-            ruleConfig.setErrorMessage(errorMessage);
-        }
-        return new GroovyRule(ruleConfig);
-    }
-
     /**
      * Build a simple rule (with a default name) using a RuleConfiguration object
      *
@@ -577,6 +565,18 @@ public class TestRuleExecution {
     private GroovyRule buildRule(List<String> attributes, String expression)
             throws InstantiationException, IllegalAccessException, IOException, GroovyConfigurationException {
         return buildRule("testRule", attributes, expression);
+    }
+
+    private GroovyRule buildRuleWithErrorMessage(String name, String attribute, String expression, String errorMessage)
+            throws IOException, InstantiationException, IllegalAccessException, GroovyConfigurationException {
+        RuleSection ruleConfig = new RuleSection();
+        ruleConfig.setName(name);
+        ruleConfig.setAttributes(Collections.singletonList(attribute));
+        ruleConfig.setExpression(expression);
+        if (errorMessage != null) {
+            ruleConfig.setErrorMessage(errorMessage);
+        }
+        return new GroovyRule(ruleConfig);
     }
 
     private GroovyRule buildRuleWithErrorMessage(String attribute, String expression, String errorText)

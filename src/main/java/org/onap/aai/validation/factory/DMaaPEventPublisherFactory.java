@@ -18,12 +18,11 @@
  * limitations under the License.
  * ============LICENSE_END=========================================================
  */
-
 package org.onap.aai.validation.factory;
 
 import org.onap.aai.event.client.DMaaPEventPublisher;
 
-public class DMaaPEventPublisherFactory {
+public class DMaaPEventPublisherFactory {  
 
     public DMaaPEventPublisher createEventPublisher(String topicHost, String topicName, String topicUsername,
             String topicPassword, String transportType, String protocol) {

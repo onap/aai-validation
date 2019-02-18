@@ -1,19 +1,22 @@
-/*
- * ============LICENSE_START===================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
  * Copyright (c) 2018-2019 European Software Marketing Ltd.
- * ============================================================================
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
 package org.onap.aai.validation.config;
 
@@ -31,11 +34,9 @@ import org.springframework.beans.factory.annotation.Value;
 /**
  * Gets the configuration of the topics using Spring.
  */
-
 public class TopicConfig {
 
     private List<String> consumerTopicNames;
-
     private List<String> publisherTopicNames;
 
     @Resource(name = "topicProperties")
@@ -60,7 +61,6 @@ public class TopicConfig {
         return populateTopics(consumerTopics, consumerTopicNames);
     }
 
-
     /**
      * Gets the configuration of topics for publishing.
      *
@@ -74,9 +74,9 @@ public class TopicConfig {
      * Populates the topics list with topic objects created from each item in the topicNames list.
      *
      * @param topics
-     *            The topic list to populate.
+     *        The topic list to populate.
      * @param topicNames
-     *            The list of topic names to populate the topic list with.
+     *        The list of topic names to populate the topic list with.
      * @return The populated topic list.
      */
     private List<Topic> populateTopics(List<Topic> topics, List<String> topicNames) {

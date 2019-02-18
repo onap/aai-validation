@@ -9,7 +9,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -40,10 +40,11 @@ import org.mockito.Mockito;
 import org.onap.aai.auth.AAIAuthException;
 import org.onap.aai.auth.AAIMicroServiceAuth;
 import org.onap.aai.validation.config.ValidationServiceAuthConfig;
+import org.onap.aai.validation.test.util.TestUtil;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 /**
- * Tests @{link AAIMicroServiceAuth}
+ * Tests @{link AAIMicroServiceAuth}.
  */
 public class MicroServiceAuthTest {
 
@@ -59,24 +60,25 @@ public class MicroServiceAuthTest {
      * of a policy file that does not exist.
      *
      * @throws AAIAuthException
-     * @throws IOException
+     *             if the authorization policy file cannot be loaded
      */
     @Test(expected = AAIAuthException.class)
-    public void missingPolicyFile() throws AAIAuthException, IOException {
+    public void missingPolicyFile() throws AAIAuthException {
         ValidationServiceAuthConfig authConfig = new ValidationServiceAuthConfig();
         authConfig.setAuthPolicyFile("invalid.file.name");
         new AAIMicroServiceAuth(authConfig);
     }
 
     /**
-     * Test loading of a temporary file created with the specified roles
+     * Test loading of a temporary file created with the specified roles.
      *
-     * @throws AAIAuthException
      * @throws IOException
-     * @throws JSONException
+     *             if the policy file could not be written
+     * @throws AAIAuthException
+     *             if the policy file cannot be loaded
      */
     @Test
-    public void createLocalAuthFile() throws AAIAuthException, IOException, JSONException {
+    public void createLocalAuthFile() throws AAIAuthException, IOException {
         JSONObject roles = createRoleObject("role", createUserObject("user"), createFunctionObject("func"));
         AAIMicroServiceAuth auth = createAuthService(roles);
         assertThat(auth.authUser("nosuchuser", "method:func"), is(equalTo("AAI_9101")));
@@ -84,9 +86,10 @@ public class MicroServiceAuthTest {
     }
 
     /**
-     * Test loading of the policy file relative to CONFIG_HOME
+     * Test loading of the policy file relative to CONFIG_HOME.
      *
      * @throws AAIAuthException
+     *             if the policy file cannot be loaded
      */
     @Test
     public void createAuth() throws AAIAuthException {
@@ -128,7 +131,7 @@ public class MicroServiceAuthTest {
         servletRequest.setScheme("https");
         servletRequest.setServerPort(9501);
         servletRequest.setServerName("localhost");
-        servletRequest.setRequestURI("/services/validation-service/v1/app/validate");
+        servletRequest.setRequestURI(TestUtil.VALIDATION_SERVICE_URL);
 
         X509Certificate mockCertificate = Mockito.mock(X509Certificate.class);
         Mockito.when(mockCertificate.getSubjectX500Principal())
@@ -139,6 +142,13 @@ public class MicroServiceAuthTest {
         return servletRequest;
     }
 
+    /**
+     * Create a new auth object using the standard policy JSON
+     * 
+     * @return a new auth object
+     * @throws AAIAuthException
+     *             if the policy file cannot be loaded
+     */
     private AAIMicroServiceAuth createStandardAuth() throws AAIAuthException {
         ValidationServiceAuthConfig authConfig = new ValidationServiceAuthConfig();
         authConfig.setAuthPolicyFile(authPolicyFile);
@@ -146,13 +156,15 @@ public class MicroServiceAuthTest {
     }
 
     /**
-     * @param rolesJson
-     * @return
+     * @param roles
+     * @return a new auth object (to be tested)
      * @throws IOException
+     *             if the policy file could not be written
      * @throws AAIAuthException
+     *             if the policy file cannot be loaded
+     * 
      */
     private AAIMicroServiceAuth createAuthService(JSONObject roles) throws IOException, AAIAuthException {
-        ValidationServiceAuthConfig authConfig = new ValidationServiceAuthConfig();
         File file = File.createTempFile("auth-policy", "json");
         file.deleteOnExit();
         FileWriter fileWriter = new FileWriter(file);
@@ -160,15 +172,18 @@ public class MicroServiceAuthTest {
         fileWriter.flush();
         fileWriter.close();
 
+        ValidationServiceAuthConfig authConfig = new ValidationServiceAuthConfig();
         authConfig.setAuthPolicyFile(file.getAbsolutePath());
         return new AAIMicroServiceAuth(authConfig);
     }
 
     /**
-     * Assert authorisation results for an admin user based on the test policy file
+     * Assert authorisation results for an admin user based on the test policy file.
      *
      * @param auth
+     *            the auth object
      * @param adminUser
+     *            the admin user name
      * @throws AAIAuthException
      */
     private void assertAdminUserAuthorisation(AAIMicroServiceAuth auth, String adminUser) throws AAIAuthException {
@@ -203,10 +218,7 @@ public class MicroServiceAuthTest {
         return usersArray;
     }
 
-    private JSONObject createRoleObject(String roleName, JSONArray usersArray, JSONArray functionsArray)
-            throws JSONException {
-        JSONObject roles = new JSONObject();
-
+    private JSONObject createRoleObject(String roleName, JSONArray usersArray, JSONArray functionsArray) {
         JSONObject role = new JSONObject();
         role.put("name", roleName);
         role.put("functions", functionsArray);
@@ -214,6 +226,8 @@ public class MicroServiceAuthTest {
 
         JSONArray rolesArray = new JSONArray();
         rolesArray.put(role);
+
+        JSONObject roles = new JSONObject();
         roles.put("roles", rolesArray);
 
         return roles;

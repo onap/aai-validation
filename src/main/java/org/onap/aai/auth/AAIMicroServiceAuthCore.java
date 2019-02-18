@@ -63,7 +63,8 @@ public class AAIMicroServiceAuthCore {
 
     /**
      * @param authPolicyFile
-     * @throws AAIAuthException if the policy file cannot be loaded
+     * @throws AAIAuthException
+     *             if the policy file cannot be loaded
      */
     public void init(String authPolicyFile) throws AAIAuthException {
         try {
@@ -218,6 +219,17 @@ public class AAIMicroServiceAuthCore {
         }
     }
 
+    /**
+     * Check whether the given user may access the give function.
+     * 
+     * @param username
+     *            user to be authorized
+     * @param authFunction
+     *            function the user wishes to access
+     * @return true if the user is authorized to access the function, false otherwsie
+     * @throws AAIAuthException
+     *             of the auth object has not been initialized
+     */
     public boolean authorize(String username, String authFunction) throws AAIAuthException {
         if (!usersInitialized || users == null) {
             throw new AAIAuthException("Auth module not initialized");
