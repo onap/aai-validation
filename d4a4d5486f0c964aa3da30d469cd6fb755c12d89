@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78124e18_88264a99",
+        "filename": "src/main/java/org/onap/aai/auth/AAIMicroServiceAuth.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 33
+      },
+      "writtenOn": "2019-02-18T21:42:36Z",
+      "side": 1,
+      "message": "The ?? looks strange to me",
+      "revId": "d4a4d5486f0c964aa3da30d469cd6fb755c12d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
