@@ -16,6 +16,24 @@
       "revId": "d4a4d5486f0c964aa3da30d469cd6fb755c12d89",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "817de59c_632e2353",
+        "filename": "src/main/java/org/onap/aai/auth/AAIMicroServiceAuth.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 703
+      },
+      "writtenOn": "2019-02-19T11:23:06Z",
+      "side": 1,
+      "message": "This is fixed by Mark\u0027s subsequent commit.",
+      "parentUuid": "78124e18_88264a99",
+      "revId": "d4a4d5486f0c964aa3da30d469cd6fb755c12d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
