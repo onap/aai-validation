@@ -277,7 +277,7 @@ public class ValidationController {
                 publishValidationResults(result.validationResults);
             } else {
                 stats.incrementEventCount(eventSource, "filtered");
-                applicationLogger.info(ApplicationMsgs.FILTERED_EVENT,event);
+                applicationLogger.debug(ApplicationMsgs.FILTERED_EVENT,event);
             }
         } catch (Exception e) {
             applicationLogger.error(ApplicationMsgs.CANNOT_VALIDATE_ERROR, e, event);
