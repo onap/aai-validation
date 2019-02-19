@@ -53,7 +53,7 @@ public class MicroServiceAuthTest {
     }
 
     private static final String VALID_ADMIN_USER = "cn=common-name, ou=org-unit, o=org, l=location, st=state, c=us";
-    private static final String authPolicyFile = "auth_policy.json";
+    private static final String authPolicyFile = "auth/auth_policy.json";
 
     /**
      * Temporarily invalidate the default policy file and then try to initialise the authorisation class using the name

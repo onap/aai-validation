@@ -27,7 +27,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,18 +46,12 @@ public class AAIMicroServiceAuthCore {
 
     private static LogHelper applicationLogger = LogHelper.INSTANCE;
 
-    private Path appConfigAuthDir;
-
     private boolean usersInitialized = false;
     private HashMap<String, AAIAuthUser> users;
     private String policyAuthFileName;
 
     public enum HttpMethods {
         GET, PUT, DELETE, HEAD, POST
-    }
-
-    public AAIMicroServiceAuthCore() {
-        appConfigAuthDir = Paths.get(System.getProperty("CONFIG_HOME"), "auth");
     }
 
     /**
@@ -103,7 +96,7 @@ public class AAIMicroServiceAuthCore {
         if (authFile.exists()) {
             return authFile.getCanonicalPath();
         }
-        authFile = appConfigAuthDir.resolve(authPolicyFile).toFile();
+        authFile = Paths.get(System.getProperty("CONFIG_HOME")).resolve(authPolicyFile).toFile();
         if (authFile.exists()) {
             return authFile.getCanonicalPath();
         } else {
