@@ -47,18 +47,12 @@ public class AAIMicroServiceAuthCore {
 
     private static LogHelper applicationLogger = LogHelper.INSTANCE;
 
-    private Path appConfigAuthDir;
-
     private boolean usersInitialized = false;
     private HashMap<String, AAIAuthUser> users;
     private String policyAuthFileName;
 
     public enum HttpMethods {
         GET, PUT, DELETE, HEAD, POST
-    }
-
-    public AAIMicroServiceAuthCore() {
-        appConfigAuthDir = Paths.get(System.getProperty("CONFIG_HOME"), "auth");
     }
 
     /**
@@ -98,17 +92,39 @@ public class AAIMicroServiceAuthCore {
         applicationLogger.debug("Config Watcher Interval = " + TimeUnit.SECONDS.toMillis(1));
     }
 
+    /**
+     * Locate the auth policy file by its name or path.
+     * <ul>
+     * <li>First try to use the absolute path to the file (if provided), or instead locate the path relative to the
+     * current (or user) dir.</li>
+     * <li>If this fails, try resolving the path relative to the configuration home location
+     * <code>$CONFIG_HOME</code></li>
+     * <li>If this fails try resolving relative to the <code>auth</code> folder under configuration home.</li>
+     * 
+     * @param authPolicyFile
+     *            filename or path (absolute or relative)
+     * @return the canonical path to the located policy file, or null if no file was found
+     * @throws IOException
+     *             if the construction of the canonical pathname requires filesystem queries which cause I/O error(s)
+     */
     public String getConfigFile(String authPolicyFile) throws IOException {
-        File authFile = new File(authPolicyFile);
-        if (authFile.exists()) {
-            return authFile.getCanonicalPath();
+        if (authPolicyFile != null) {
+            List<Path> paths = new ArrayList<>();
+            paths.add(Paths.get("."));
+
+            String configHome = System.getProperty("CONFIG_HOME");
+            paths.add(Paths.get(configHome));
+            paths.add(Paths.get(configHome).resolve("auth"));
+
+            for (Path path : paths) {
+                File authFile = path.resolve(authPolicyFile).toFile();
+                if (authFile.exists()) {
+                    return authFile.getCanonicalPath();
+                }
+            }
         }
-        authFile = appConfigAuthDir.resolve(authPolicyFile).toFile();
-        if (authFile.exists()) {
-            return authFile.getCanonicalPath();
-        } else {
-            return null;
-        }
+
+        return null;
     }
 
     /**

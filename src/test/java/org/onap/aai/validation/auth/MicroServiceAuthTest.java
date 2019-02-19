@@ -53,11 +53,10 @@ public class MicroServiceAuthTest {
     }
 
     private static final String VALID_ADMIN_USER = "cn=common-name, ou=org-unit, o=org, l=location, st=state, c=us";
-    private static final String authPolicyFile = "auth_policy.json";
+    private static final String authPolicyFile = "auth/auth_policy.json";
 
     /**
-     * Temporarily invalidate the default policy file and then try to initialise the authorisation class using the name
-     * of a policy file that does not exist.
+     * Initialize the authorization class using the name of a policy file that does not exist.
      *
      * @throws AAIAuthException
      *             if the authorization policy file cannot be loaded
@@ -66,6 +65,19 @@ public class MicroServiceAuthTest {
     public void missingPolicyFile() throws AAIAuthException {
         ValidationServiceAuthConfig authConfig = new ValidationServiceAuthConfig();
         authConfig.setAuthPolicyFile("invalid.file.name");
+        new AAIMicroServiceAuth(authConfig);
+    }
+
+    /**
+     * Initialize the authorization class using a null policy file name.
+     *
+     * @throws AAIAuthException
+     *             if the authorization policy file cannot be loaded
+     */
+    @Test(expected = AAIAuthException.class)
+    public void testNullPolicyFile() throws AAIAuthException {
+        ValidationServiceAuthConfig authConfig = new ValidationServiceAuthConfig();
+        authConfig.setAuthPolicyFile(null);
         new AAIMicroServiceAuth(authConfig);
     }
 
