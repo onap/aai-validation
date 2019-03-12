@@ -72,7 +72,7 @@ public class ValidationServiceApplication extends SpringBootServletInitializer {
             return StringUtils.decrypt(propertyValue);
         }
 
-        public void set(String propertyValue) {
+        protected void set(String propertyValue) {
             System.setProperty(propertyName, propertyValue);
         }
     }
