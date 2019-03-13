@@ -1,37 +1,41 @@
-/*
- * ============LICENSE_START===================================================
- * Copyright (c) 2018 Amdocs
- * ============================================================================
+/**
+ * ============LICENSE_START=======================================================
+ * org.onap.aai
+ * ================================================================================
+ * Copyright (c) 2018-2019 AT&T Intellectual Property. All rights reserved.
+ * Copyright (c) 2018-2019 European Software Marketing Ltd.
+ * ================================================================================
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============LICENSE_END=====================================================
+ * ============LICENSE_END=========================================================
  */
+
 package org.onap.aai.validation.exception;
 
 import java.text.MessageFormat;
 
 /**
- * Error text formatting
+ * Error text formatting.
  *
  */
 public enum ValidationServiceError {
 
-	//@formatter:off
+    //@formatter:off
 
 	// Rule Configuration exceptions. Range 100..199
 	RULES_FILE_ERROR("VS-100", "Error reading rules configuration file(s) {0}"),
 	RULE_UNEXPECTED_TOKEN("VS-101", "Token {0} unexpected in rules configuration file."),
-    RULES_NOT_DEFINED("VS-102", "Event type {0} has no rule definitions."),
-
+    RULES_NOT_DEFINED("VS-102", "Entity type {0} (Event type {1}) has no rule definitions."),
+    
 	// Rule exceptions. Range 200..299
 	RULE_EXECUTION_ERROR("VS-201", "Error executing rule {0} with arguments {1}"),
 
@@ -78,26 +82,26 @@ public enum ValidationServiceError {
 
 	//@formatter:on
 
-	private String id;
-	private String message;
+    private String id;
+    private String message;
 
-	private ValidationServiceError(String id, String message) {
-		this.id = id;
-		this.message = message;
-	}
+    private ValidationServiceError(String id, String message) {
+        this.id = id;
+        this.message = message;
+    }
 
-	public String getId() {
-		return this.id;
-	}
+    public String getId() {
+        return this.id;
+    }
 
-	/**
-	 * @param args
-	 *            to be formatted
-	 * @return the formatted error message
-	 */
-	public String getMessage(Object... args) {
-		MessageFormat formatter = new MessageFormat("");
-		formatter.applyPattern(this.message);
-		return formatter.format(args);
-	}
+    /**
+     * @param args
+     *            to be formatted
+     * @return the formatted error message
+     */
+    public String getMessage(Object... args) {
+        MessageFormat formatter = new MessageFormat("");
+        formatter.applyPattern(this.message);
+        return formatter.format(args);
+    }
 }

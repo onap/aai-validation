@@ -54,7 +54,8 @@ import org.onap.aai.validation.result.Violation;
 import org.onap.aai.validation.ruledriven.RuleDrivenValidator;
 
 /**
- * Test that the rules present under bundleconfig/etc/rules/ can be loaded and evaluated (using a mocked event).
+ * Test that the rules present under bundleconfig/etc/rules/ can be loaded and evaluated (using a mocked event). Test
+ * for both a supported and an unsupported entity type.
  *
  */
 @RunWith(MockitoJUnitRunner.class)
@@ -65,14 +66,38 @@ public class TestDefaultRules {
     }
 
     enum TestCase {
-        NULL, VSERVER;
+        NULL(null), VSERVER("aai-event", "vserver"), UNKNOWN("aai-event", "unknown");
+
+        private Optional<String> eventType;
+        private String entityType;
+
+        TestCase(String eventType, String entityType) {
+            this(eventType);
+            this.entityType = entityType;
+        }
+
+        TestCase(String eventType) {
+            if (eventType != null) {
+                this.eventType = Optional.of(eventType);
+            }
+        }
+
+        public Optional<String> getEventType() {
+            return eventType;
+        }
+
+        public String getEntityType() {
+            return entityType;
+        }
     }
 
-    // Data returned by the mocked EventReader
+    /**
+     * Data returned by the mocked EventReader. Currently this applies to the vserver test only.
+     *
+     */
     enum TestData {
         // @formatter:off
 		ENTITTY_DATA          ("vserver dummy json data"),
-		ENTITTY_TYPE          ("vserver"),
 		RESOURCE_VERSION_VALUE("1476735182"),
 		VSERVER_ID_KEY        ("vserver-id"),
 		VSERVER_ID_VALUE      ("13b629a4-87ae-492d-943f-acb8f3d9c3d9");
@@ -91,22 +116,52 @@ public class TestDefaultRules {
     @Mock
     private Entity entity;
 
+    /**
+     * A single instance shared by each test.
+     */
     private Validator ruleDrivenValidator;
+
+    @Before
+    public void createRuleDrivenValidator() throws ValidationServiceException {
+        List<Path> configurationPaths = Collections.singletonList(Paths.get("bundleconfig/etc/rules"));
+        ruleDrivenValidator = new RuleDrivenValidator(configurationPaths, null, eventReader, null);
+    }
+
+    @Test
+    public void testExecuteRulesForVserver() throws Exception {
+        createMockEventReader(TestCase.VSERVER);
+
+        List<ValidationResult> results = ruleDrivenValidator.validate(TestCase.VSERVER.name());
+        assertThat(results.size(), is(1));
+
+        ValidationResult validationResult = results.get(0);
+        assertThat(validationResult.getEntityType(), is(equalTo(TestCase.VSERVER.getEntityType())));
+        JsonObject expectedEntityId = new JsonObject();
+        expectedEntityId.addProperty(TestData.VSERVER_ID_KEY.value, TestData.VSERVER_ID_VALUE.value);
+        assertThat(validationResult.getEntityId(), is(equalTo(expectedEntityId)));
+        assertThat(validationResult.getViolations().size(), is(2));
+
+        Violation violation = validationResult.getViolations().get(0);
+        assertThat(violation.getCategory(), is(equalTo("MISSING_REL")));
+    }
+
+    @Test(expected = ValidationServiceException.class)
+    public void testExecuteRulesForUnsupportedEntityType() throws ValidationServiceException {
+        createMockEventReader(TestCase.UNKNOWN);
+        ruleDrivenValidator.validate(TestCase.UNKNOWN.name());
+    }
 
     /**
      * @throws ValidationServiceException
-     *         if mocking a JSON parsing exception
+     *             if mocking a JSON parsing exception
      */
-    @Before
-    public void createMockEventReader() throws ValidationServiceException {
-        when(eventReader.getEventType(TestCase.VSERVER.name())).thenReturn(Optional.of("aai-event"));
-        when(eventReader.getEventType(TestCase.NULL.name())).thenReturn(null);
-
-        when(eventReader.getEntityType(anyString())).thenReturn(Optional.of(TestData.ENTITTY_TYPE.value));
+    private void createMockEventReader(TestCase testCase) throws ValidationServiceException {
+        when(eventReader.getEventType(testCase.name())).thenReturn(testCase.getEventType());
+        when(eventReader.getEntityType(anyString())).thenReturn(Optional.ofNullable(testCase.getEntityType()));
         when(eventReader.getEntity(anyString())).thenReturn(entity);
 
         // Mocked entity returned by the event reader
-        when(entity.getType()).thenReturn(TestData.ENTITTY_TYPE.value);
+        when(entity.getType()).thenReturn(testCase.getEntityType());
         when(entity.getResourceVersion()).thenReturn(Optional.of(TestData.RESOURCE_VERSION_VALUE.value));
 
         EntityId entityId = new EntityId(TestData.VSERVER_ID_KEY.value, TestData.VSERVER_ID_VALUE.value);
@@ -129,27 +184,4 @@ public class TestDefaultRules {
             }
         });
     }
-
-    @Before
-    public void createRuleDrivenValidator() throws ValidationServiceException {
-        List<Path> configurationPaths = Collections.singletonList(Paths.get("bundleconfig/etc/rules"));
-        ruleDrivenValidator = new RuleDrivenValidator(configurationPaths, null, eventReader, null);
-    }
-
-    @Test
-    public void testExecuteRulesForVserver() throws Exception {
-        List<ValidationResult> results = ruleDrivenValidator.validate(TestCase.VSERVER.name());
-        assertThat(results.size(), is(1));
-
-        ValidationResult validationResult = results.get(0);
-        assertThat(validationResult.getEntityType(), is(equalTo(TestData.ENTITTY_TYPE.value)));
-        JsonObject expectedEntityId = new JsonObject();
-        expectedEntityId.addProperty(TestData.VSERVER_ID_KEY.value, TestData.VSERVER_ID_VALUE.value);
-        assertThat(validationResult.getEntityId(), is(equalTo(expectedEntityId)));
-        assertThat(validationResult.getViolations().size(), is(2));
-
-        Violation violation = validationResult.getViolations().get(0);
-        assertThat(violation.getCategory(), is(equalTo("MISSING_REL")));
-    }
-
 }

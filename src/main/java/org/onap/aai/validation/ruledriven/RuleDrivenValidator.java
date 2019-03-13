@@ -133,8 +133,9 @@ public class RuleDrivenValidator implements Validator {
 
         Entity entity = getEventReader().getEntity(event);
         Optional<String> eventType = eventReader.getEventType(event);
-        List<Rule> rules = getRulesToApply(entity, eventType).orElseThrow(
-                () -> new ValidationServiceException(ValidationServiceError.RULES_NOT_DEFINED, eventType.orElse(null)));
+        List<Rule> rules = getRulesToApply(entity, eventType)
+                .orElseThrow(() -> new ValidationServiceException(ValidationServiceError.RULES_NOT_DEFINED,
+                        entity.getType(), eventType.orElse(null)));
 
         ValidationResult validationResult = new ValidationResultBuilder(eventReader, event).build();
         Violation.Builder builder = new Violation.Builder(entity);
