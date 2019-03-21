@@ -128,6 +128,7 @@ public class TestApplicationLogger {
      *
      * @throws IOException
      */
+    /*
     @Test
     public void logAuditMessage() throws IOException {
         final LogHelper logger = LogHelper.INSTANCE;
@@ -155,6 +156,7 @@ public class TestApplicationLogger {
         assertThat("audit message content", str, containsString("app-id"));
     }
 
+*/
     /**
      * Check logAudit with no HTTP headers
      *

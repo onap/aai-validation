@@ -139,6 +139,8 @@ limitations under the License.
 		<constructor-arg ref="schemaVersionBean" />
 	</bean>
 
+	<bean id="nodeIngestor" class="org.onap.aai.nodes.NodeIngestor" />
+
 	<bean id="jsonReader" class="org.onap.aai.validation.reader.JsonReader" />
 
 	<bean id="eventReader" class="org.onap.aai.validation.reader.EventReader">
