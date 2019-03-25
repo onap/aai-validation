@@ -35,6 +35,7 @@ PROPS="${PROPS} -DCONFIG_HOME=${CONFIG_HOME}"
 PROPS="${PROPS} -Dcom.att.eelf.logging.path=${APP_HOME}"
 PROPS="${PROPS} -Dcom.att.eelf.logging.file=${LOGBACK_FILE}"
 PROPS="${PROPS} -Dlogback.configurationFile=${APP_HOME}/${LOGBACK_FILE}"
+PROPS="${PROPS} -DKEY_STORE_PASSWORD=${KEY_STORE_PASSWORD}"
 JVM_MAX_HEAP=${MAX_HEAP:-1024}
 
 if [ -z "${java_runtime_arguments}" ]; then
