@@ -49,13 +49,13 @@
 	</dependencyManagement>
 
 	<properties>
-		<spring-boot.version>1.5.18.RELEASE</spring-boot.version>
+		<spring-boot.version>1.5.19.RELEASE</spring-boot.version>
 		<start-class>org.onap.aai.validation.ValidationServiceApplication</start-class>
 		<serverPort>9500</serverPort>
 		<sslport>9501</sslport>
 		<version.org.onap.aai.logging-service>1.2.2</version.org.onap.aai.logging-service>
 		<version.aai.rest.client>1.4.0</version.aai.rest.client>
-		<version.org.onap.aai.event.client>1.4.0-SNAPSHOT</version.org.onap.aai.event.client>
+		<version.org.onap.aai.event.client>1.4.0</version.org.onap.aai.event.client>
 		<version.com.ecomp.aai.gap.data.client>1.0</version.com.ecomp.aai.gap.data.client>
 		<version.com.google.code.gson>2.7</version.com.google.code.gson>
 		<version.com.jayway.jsonpath>2.2.0</version.com.jayway.jsonpath>
