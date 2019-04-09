@@ -49,7 +49,7 @@
 	</dependencyManagement>
 
 	<properties>
-		<spring-boot.version>1.5.19.RELEASE</spring-boot.version>
+		<spring-boot.version>1.5.20.RELEASE</spring-boot.version>
 		<start-class>org.onap.aai.validation.ValidationServiceApplication</start-class>
 		<serverPort>9500</serverPort>
 		<sslport>9501</sslport>
