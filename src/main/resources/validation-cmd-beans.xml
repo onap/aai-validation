@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <context:component-scan base-package="org.onap.aai.nodes,org.onap.aai.setup">
+    <!-- Exclude EdgesConfiguration since edge rules are not required -->
+    <context:exclude-filter type="assignable" expression="org.onap.aai.config.EdgesConfiguration" />
+  </context:component-scan>
+
+  <bean id="configTranslator" class="org.onap.aai.setup.AAIConfigTranslator" />
+
+  <bean id="nodeIngestor" class="org.onap.aai.nodes.NodeIngestor">
+    <constructor-arg ref="configTranslator" />
+  </bean>
+
+  <context:property-placeholder location="file:${CONFIG_HOME}/rule-indexing.properties"
+    ignore-unresolvable="true" ignore-resource-not-found="true" />
+
+  <context:property-placeholder
+    location="
+        classpath:event-reader.properties,
+        file:${CONFIG_HOME}/aai-environment.properties,
+        file:${CONFIG_HOME}/validation-service.properties,
+        file:${CONFIG_HOME}/validation-service-auth.properties,
+        file:${CONFIG_HOME}/schemaIngest.properties"
+    ignore-unresolvable="true" />
+
+  <bean id="eventReaderConfig" class="org.onap.aai.validation.config.EventReaderConfig">
+    <property name="eventDomainPath" value="${event.domain.path}" />
+    <property name="eventActionPath" value="${event.action.path}" />
+    <property name="eventTypePath" value="${event.type.path}" />
+    <property name="entityTypePath" value="${event.entity.type.path}" />
+    <property name="topEntityTypePath" value="${event.entity.type.top.path}" />
+    <property name="entityLinkPath" value="${event.entity.link.path}" />
+    <property name="entityLinkDelimiter" value="${event.entity.link.delimiter}" />
+    <property name="entityPath" value="${event.entity.path}" />
+    <property name="nestedEntityPath" value="${event.entity.nested.path}" />
+    <property name="entityIdPath" value="${entity.id.path}" />
+    <property name="entityResourceVersionPath" value="${entity.resource.version.path}" />
+  </bean>
+
+  <bean id="jsonReader" class="org.onap.aai.validation.reader.JsonReader" />
+
+  <bean id="schemaVersionBean" class="org.onap.aai.setup.SchemaVersion">
+    <constructor-arg value="${schema.version.api.default}" />
+  </bean>
+
+  <bean id="ruleIndexingConfig" class="org.onap.aai.validation.config.RuleIndexingConfig">
+    <property name="indexedEvents" value="#{'${rule.indexing.events}'.split(',')}" />
+    <property name="excludedOxmValidationEvents" value="#{'${rule.indexing.exclude.oxm.validation}'.split(',')}" />
+    <property name="indexAttributes" value="#{'${rule.indexing.key.attributes}'.split(',')}" />
+    <property name="defaultIndexKey" value="${rule.indexing.default.key}" />
+  </bean>
+
+  <bean id="eventReader" class="org.onap.aai.validation.reader.EventReader">
+    <constructor-arg ref="eventReaderConfig" />
+    <constructor-arg ref="jsonReader" />
+    <constructor-arg ref="oxmReader" />
+  </bean>
+
+  <bean id="oxmReader" class="org.onap.aai.validation.reader.OxmReader" init-method="init">
+    <constructor-arg ref="nodeIngestor" />
+    <constructor-arg ref="schemaVersionBean" />
+  </bean>
+
+  <bean id="rulesConfigurationPath" class="java.nio.file.Paths" factory-method="get">
+    <constructor-arg value="${APP_HOME}/bundleconfig/etc/rules/" />
+    <constructor-arg>
+      <array />
+    </constructor-arg>
+  </bean>
+
+  <bean id="ruleDrivenValidator" class="org.onap.aai.validation.ruledriven.RuleDrivenValidator">
+    <constructor-arg ref="rulesConfigurationPath" />
+    <constructor-arg ref="oxmReader" />
+    <constructor-arg ref="eventReader" />
+    <constructor-arg ref="ruleIndexingConfig" />
+  </bean>
+
+</beans>
