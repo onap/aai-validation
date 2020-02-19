@@ -32,7 +32,7 @@
     <parent>
         <groupId>org.onap.oparent</groupId>
         <artifactId>oparent</artifactId>
-        <version>2.0.0</version>
+        <version>2.1.0</version>
         <relativePath />
     </parent>
 
@@ -72,8 +72,20 @@
         <aai.oxm.target.folder>${project.build.directory}/bundleconfig/etc/oxm/</aai.oxm.target.folder>
         <version.org.glassfish.jersey.core.jersey-client>2.23</version.org.glassfish.jersey.core.jersey-client>
         <docker.location>${basedir}/target</docker.location>
-		<!-- Code coverage enforcement -->
-        <jacoco.report.directory>${project.build.directory}/code-coverage</jacoco.report.directory>
+	<!-- Code coverage enforcement -->
+	<sonar.jacoco.reportPath />
+	<sonar.jacoco.itReportPath />
+	<sonar.jacoco.reportMissing.force.zero />
+	
+	<jacoco.line.coverage.limit>0.90</jacoco.line.coverage.limit>
+	<jacoco.version>0.8.5</jacoco.version>
+	<sonar-jacoco-listeners.version>3.2</sonar-jacoco-listeners.version>
+	<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+	<sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco-ut/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+	<sonar.exclusions>**/gen/**,**/generated-sources/**,**/yang-gen**,**/pax/**</sonar.exclusions>
+	
+	<sonar.scanner.version>3.7.0.1746</sonar.scanner.version>
+	
         <jacoco.line.coverage.limit>0.80</jacoco.line.coverage.limit>
     </properties>
 
@@ -345,21 +357,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-					<!-- Skips unit tests if the value of skip.unit.tests property is true -->
-                    <skipTests>${skip.unit.tests}</skipTests>
-					<!-- Excludes integration tests when unit tests are run -->
-                    <excludes>
-                        <exclude>**/IT*.java</exclude>
-                    </excludes>
-                    <environmentVariables>
-                        <APP_HOME>.</APP_HOME>
-                    </environmentVariables>
-                </configuration>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -431,34 +428,151 @@
                     <forceTags>true</forceTags>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default-check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <dataFile>${jacoco.report.directory}/jacoco-ut.exec</dataFile>
-                            <rules>
-                                <!--  implementation is needed only for Maven 2  -->
-                                <rule implementation="org.jacoco.maven.RuleConfiguration">
-                                    <element>BUNDLE</element>
-                                    <limits>
-                                        <limit implementation="org.jacoco.report.check.Limit">
-                                            <counter>LINE</counter>
-                                            <value>COVEREDRATIO</value>
-                                            <minimum>${jacoco.line.coverage.limit}</minimum>
-                                        </limit>
-                                    </limits>
-                                </rule>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
+	    <!-- once we connect aai-parent or oparent 3.0+ we can take out this
+		 whole section -->
+
+	    <plugin>
+	      <groupId>org.jacoco</groupId>
+	      <artifactId>jacoco-maven-plugin</artifactId>
+	      <version>${jacoco.version}</version>
+	      <configuration>
+		<!-- Note: This exclusion list should match <sonar.exclusions> property
+		     above -->
+		<excludes>
+		  <exclude>**/gen/**</exclude>
+		  <exclude>**/generated-sources/**</exclude>
+		  <exclude>**/yang-gen/**</exclude>
+		  <exclude>**/pax/**</exclude>
+		  <exclude>org/onap/aai/babel/xml/generator/xsd/*</exclude>
+		</excludes>
+	      </configuration>
+	      <executions>
+		<!-- Prepares the property pointing to the JaCoCo runtime agent which
+		     is passed as VM argument when Maven the Surefire plugin is executed. -->
+		<execution>
+		  <id>pre-unit-test</id>
+		  <goals>
+		    <goal>prepare-agent</goal>
+		  </goals>
+		  <configuration>
+		    <!-- Sets the path to the file which contains the execution data
+			 . -->
+		    <destFile>${project.build.directory}/code-coverage/jacoco-ut.exec</destFile>
+		    <!-- Sets the name of the property containing the settings for JaCoCo
+			 runtime agent. -->
+		    <propertyName>surefireArgLine</propertyName>
+		  </configuration>
+		</execution>
+		<!-- Ensures that the code coverage report for unit tests is created
+		     after unit tests have been run. -->
+		<execution>
+		  <id>post-unit-test</id>
+		  <phase>test</phase>
+		  <goals>
+		    <goal>report</goal>
+		  </goals>
+		  <configuration>
+		    <!-- Sets the path to the file which contains the execution data
+			 . -->
+		    <dataFile>${project.build.directory}/code-coverage/jacoco-ut.exec</dataFile>
+		    <!-- Sets the output directory for the code coverage report. -->
+		    <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+		  </configuration>
+		</execution>
+		<execution>
+		  <id>pre-integration-test</id>
+		  <phase>pre-integration-test</phase>
+		  <goals>
+		    <goal>prepare-agent</goal>
+		  </goals>
+		  <configuration>
+		    <!-- Sets the path to the file which contains the execution data
+			 . -->
+		    <destFile>${project.build.directory}/code-coverage/jacoco-it.exec</destFile>
+		    <!-- Sets the name of the property containing the settings for JaCoCo
+			 runtime agent. -->
+		    <propertyName>failsafeArgLine</propertyName>
+		  </configuration>
+		</execution>
+		<!-- Ensures that the code coverage report for integration tests after
+		     integration tests have been run. -->
+		<execution>
+		  <id>post-integration-test</id>
+		  <phase>post-integration-test</phase>
+		  <goals>
+		    <goal>report</goal>
+		  </goals>
+		  <configuration>
+		    <!-- Sets the path to the file which contains the execution data
+			 . -->
+		    <dataFile>${project.build.directory}/code-coverage/jacoco-it.exec</dataFile>
+		    <!-- Sets the output directory for the code coverage report. -->
+		    <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
+		  </configuration>
+		</execution>
+		<execution>
+		  <id>default-check</id>
+		  <goals>
+		    <goal>check</goal>
+		  </goals>
+		  <configuration>
+		    <dataFile>${project.build.directory}/code-coverage/jacoco-ut.exec</dataFile>
+		    <rules>
+		      <rule implementation="org.jacoco.maven.RuleConfiguration">
+			<element>BUNDLE</element>
+			<limits>
+			  <limit implementation="org.jacoco.report.check.Limit">
+			    <counter>LINE</counter>
+			    <value>COVEREDRATIO</value>
+			    <minimum>${jacoco.line.coverage.limit}</minimum>
+			  </limit>
+			</limits>
+		      </rule>
+		    </rules>
+		  </configuration>
+		</execution>
+	      </executions>
+	    </plugin>
+	    <plugin>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-surefire-plugin</artifactId>
+	      <version>3.0.0-M4</version>
+	      <configuration>
+		<!-- Sets the VM argument line used when unit tests are run. -->
+		<argLine>${surefireArgLine}</argLine>
+		<!-- Excludes integration tests when unit tests are run. -->
+		<excludes>
+		  <exclude>**/IT*.java</exclude>
+		</excludes>
+	      </configuration>
+	    </plugin>
+	    <plugin>
+	      <groupId>org.apache.maven.plugins</groupId>
+	      <artifactId>maven-failsafe-plugin</artifactId>
+	      <version>3.0.0-M4</version>
+	      <executions>
+		<!-- Ensures that both integration-test and verify goals of the Failsafe
+		     Maven plugin are executed. -->
+		<execution>
+		  <id>integration-tests</id>
+		  <goals>
+		    <goal>integration-test</goal>
+		    <goal>verify</goal>
+		  </goals>
+		  <configuration>
+		    <!-- Sets the VM argument line used when integration tests are run. -->
+		    <argLine>${failsafeArgLine}</argLine>
+		  </configuration>
+		</execution>
+	      </executions>
+	    </plugin>
+	    <plugin>
+	      <groupId>org.sonarsource.scanner.maven</groupId>
+	      <artifactId>sonar-maven-plugin</artifactId>
+	      <version>${sonar.scanner.version}</version>
+	    </plugin>
+	    <!-- end removable sonar config -->
         </plugins>
     </build>
 
