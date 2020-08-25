@@ -7,7 +7,7 @@
 
     <bean id="schemaLocationsBean" class="org.onap.aai.setup.SchemaLocationsBean" />
 
-    <bean id="schemaVersionsBean" class="org.onap.aai.setup.SchemaVersions" />
+    <bean id="schemaConfigVersionsBean" class="org.onap.aai.setup.SchemaConfigVersions" />
 
     <bean id="configTranslator" class="org.onap.aai.setup.AAIConfigTranslator" />
 

@@ -27,17 +27,20 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Invoke the Spring Boot Application (primarily for code coverage).
  *
  */
-@SpringBootTest(classes = ValidationServiceApplication.class)
-@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties", "classpath:test-application.properties"})
-@ContextConfiguration(locations = {"classpath:validation-service-beans.xml"})
+@SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:data-dictionary/test-data-dictionary-beans.xml"})
+@TestPropertySource(locations = {"classpath:schema-ingest.properties", "classpath:test-application.properties"})
 public class TestApplication {
 
     @Rule

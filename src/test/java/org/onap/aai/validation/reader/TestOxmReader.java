@@ -31,7 +31,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties"})
+@TestPropertySource(locations = {"classpath:schema-ingest.properties"})
 @ContextConfiguration(locations = {"classpath:oxm-reader/oxm-reader-beans.xml"})
 public class TestOxmReader {
 

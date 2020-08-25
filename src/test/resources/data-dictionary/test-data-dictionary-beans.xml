@@ -18,7 +18,7 @@
         classpath:aai-environment.properties,
         classpath:data-dictionary/validation-service.properties,
         classpath:data-dictionary/validation-service-auth.properties,
-        classpath:data-dictionary/schemaIngest.properties,
+        classpath:schema-ingest.properties,
         classpath:data-dictionary/rule-indexing.properties"
 		ignore-unresolvable="true" />
 

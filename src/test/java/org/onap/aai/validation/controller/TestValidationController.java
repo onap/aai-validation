@@ -17,26 +17,17 @@
  */
 package org.onap.aai.validation.controller;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.stubbing.OngoingStubbing;
 import org.onap.aai.validation.Validator;
 import org.onap.aai.validation.config.ValidationControllerConfig;
 import org.onap.aai.validation.exception.ValidationServiceError;
@@ -49,7 +40,11 @@ import org.onap.aai.validation.result.ValidationResult;
 import org.onap.aai.validation.result.ValidationResultBuilder;
 import org.onap.aai.validation.result.Violation;
 
-@RunWith(MockitoJUnitRunner.class)
+import java.util.*;
+
+import static org.mockito.Mockito.*;
+
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class TestValidationController {
 
     private static final String AAI_EVENT = "AAI-EVENT";
@@ -105,7 +100,6 @@ public class TestValidationController {
 
     @Before
     public void setupMocks() throws ValidationServiceException {
-
         Map<String, List<ValidationResult>> validationResultsMap = setupTestData();
 
         when(ruleDrivenValidator.validate(TESTDATA_EVENTTYPE_AAI))
@@ -263,16 +257,19 @@ public class TestValidationController {
 
     @Test
     public void testExecuteForNullDomain() throws Exception {
-        doVerifyMockInteractionsTest(TESTDATA_DOMAIN_NULL, TEST);
+        doVerifyMockInteractionsTest(TESTDATA_DOMAIN_NULL, TEST, 2);
     }
 
-    private void doVerifyMockInteractionsTest(String event, String eventSource) throws Exception {
+    private void doVerifyMockInteractionsTest(String event, String eventSource, int eventReaderCallsCount) throws Exception {
         validationController.execute(event, eventSource);
-        verify(eventReader, times(1)).getEventType(Mockito.anyString());
+        verify(eventReader, times(eventReaderCallsCount)).getEventType(Mockito.anyString());
         verify(ruleDrivenValidator, times(0)).validate(Mockito.anyString());
         verify(modelDrivenValidator, times(0)).validate(Mockito.anyString());
         verify(messagePublisher, times(0)).publishMessage(Mockito.anyString());
+    }
 
+    private void doVerifyMockInteractionsTest(String event, String eventSource) throws Exception {
+        doVerifyMockInteractionsTest(event, eventSource, 1);
     }
 
     @Test
@@ -318,7 +315,7 @@ public class TestValidationController {
 
     @Test
     public void testExecuteForEndEventType() throws Exception {
-        doVerifyMockInteractionsTest(TESTDATA_EVENTTYPE_END_EVENT, TEST);
+        doVerifyMockInteractionsTest(TESTDATA_EVENTTYPE_END_EVENT, TEST, 2);
     }
 
     @Test
@@ -391,4 +388,5 @@ public class TestValidationController {
         when(entity.getEntityLink()).thenReturn(ENTITY_LINK);
         when(entity.getResourceVersion()).thenReturn(Optional.of(resourceVersion));
     }
+
 }

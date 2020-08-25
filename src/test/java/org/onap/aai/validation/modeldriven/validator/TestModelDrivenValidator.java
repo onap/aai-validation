@@ -55,7 +55,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource(locations = {"classpath:oxm-reader/schemaIngest.properties"})
+@TestPropertySource(locations = {"classpath:schema-ingest.properties"})
 @ContextConfiguration(locations = {"classpath:model-validation/instance-validator/test-validation-service-beans.xml"})
 public class TestModelDrivenValidator {
 

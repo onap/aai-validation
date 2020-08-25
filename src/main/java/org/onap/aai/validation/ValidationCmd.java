@@ -33,7 +33,7 @@ import org.onap.aai.validation.result.ValidationResult;
 import org.onap.aai.validation.result.Violation;
 import org.onap.aai.validation.ruledriven.RuleDrivenValidator;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
